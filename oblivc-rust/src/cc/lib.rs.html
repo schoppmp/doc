@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/schoppmp/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.3/src/lib.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.4/src/lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
@@ -1931,6 +1931,116 @@
 <span id="1886">1886</span>
 <span id="1887">1887</span>
 <span id="1888">1888</span>
+<span id="1889">1889</span>
+<span id="1890">1890</span>
+<span id="1891">1891</span>
+<span id="1892">1892</span>
+<span id="1893">1893</span>
+<span id="1894">1894</span>
+<span id="1895">1895</span>
+<span id="1896">1896</span>
+<span id="1897">1897</span>
+<span id="1898">1898</span>
+<span id="1899">1899</span>
+<span id="1900">1900</span>
+<span id="1901">1901</span>
+<span id="1902">1902</span>
+<span id="1903">1903</span>
+<span id="1904">1904</span>
+<span id="1905">1905</span>
+<span id="1906">1906</span>
+<span id="1907">1907</span>
+<span id="1908">1908</span>
+<span id="1909">1909</span>
+<span id="1910">1910</span>
+<span id="1911">1911</span>
+<span id="1912">1912</span>
+<span id="1913">1913</span>
+<span id="1914">1914</span>
+<span id="1915">1915</span>
+<span id="1916">1916</span>
+<span id="1917">1917</span>
+<span id="1918">1918</span>
+<span id="1919">1919</span>
+<span id="1920">1920</span>
+<span id="1921">1921</span>
+<span id="1922">1922</span>
+<span id="1923">1923</span>
+<span id="1924">1924</span>
+<span id="1925">1925</span>
+<span id="1926">1926</span>
+<span id="1927">1927</span>
+<span id="1928">1928</span>
+<span id="1929">1929</span>
+<span id="1930">1930</span>
+<span id="1931">1931</span>
+<span id="1932">1932</span>
+<span id="1933">1933</span>
+<span id="1934">1934</span>
+<span id="1935">1935</span>
+<span id="1936">1936</span>
+<span id="1937">1937</span>
+<span id="1938">1938</span>
+<span id="1939">1939</span>
+<span id="1940">1940</span>
+<span id="1941">1941</span>
+<span id="1942">1942</span>
+<span id="1943">1943</span>
+<span id="1944">1944</span>
+<span id="1945">1945</span>
+<span id="1946">1946</span>
+<span id="1947">1947</span>
+<span id="1948">1948</span>
+<span id="1949">1949</span>
+<span id="1950">1950</span>
+<span id="1951">1951</span>
+<span id="1952">1952</span>
+<span id="1953">1953</span>
+<span id="1954">1954</span>
+<span id="1955">1955</span>
+<span id="1956">1956</span>
+<span id="1957">1957</span>
+<span id="1958">1958</span>
+<span id="1959">1959</span>
+<span id="1960">1960</span>
+<span id="1961">1961</span>
+<span id="1962">1962</span>
+<span id="1963">1963</span>
+<span id="1964">1964</span>
+<span id="1965">1965</span>
+<span id="1966">1966</span>
+<span id="1967">1967</span>
+<span id="1968">1968</span>
+<span id="1969">1969</span>
+<span id="1970">1970</span>
+<span id="1971">1971</span>
+<span id="1972">1972</span>
+<span id="1973">1973</span>
+<span id="1974">1974</span>
+<span id="1975">1975</span>
+<span id="1976">1976</span>
+<span id="1977">1977</span>
+<span id="1978">1978</span>
+<span id="1979">1979</span>
+<span id="1980">1980</span>
+<span id="1981">1981</span>
+<span id="1982">1982</span>
+<span id="1983">1983</span>
+<span id="1984">1984</span>
+<span id="1985">1985</span>
+<span id="1986">1986</span>
+<span id="1987">1987</span>
+<span id="1988">1988</span>
+<span id="1989">1989</span>
+<span id="1990">1990</span>
+<span id="1991">1991</span>
+<span id="1992">1992</span>
+<span id="1993">1993</span>
+<span id="1994">1994</span>
+<span id="1995">1995</span>
+<span id="1996">1996</span>
+<span id="1997">1997</span>
+<span id="1998">1998</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! A library for build scripts to compile custom C code</span>
 <span class="doccomment">//!</span>
@@ -1987,9 +2097,9 @@
 <span class="doccomment">//! }</span>
 <span class="doccomment">//! ```</span>
 
-<span class="attribute">#<span class="op">!</span>[<span class="ident">doc</span>(<span class="ident">html_root_url</span> <span class="op">=</span> <span class="string">&quot;https://docs.rs/cc/1.0&quot;</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">test</span>, <span class="ident">deny</span>(<span class="ident">warnings</span>))]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">deny</span>(<span class="ident">missing_docs</span>)]</span>
+<span class="attribute">#![<span class="ident">doc</span>(<span class="ident">html_root_url</span> <span class="op">=</span> <span class="string">&quot;https://docs.rs/cc/1.0&quot;</span>)]</span>
+<span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">test</span>, <span class="ident">deny</span>(<span class="ident">warnings</span>))]</span>
+<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">missing_docs</span>)]</span>
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;parallel&quot;</span>)]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">rayon</span>;
@@ -2035,6 +2145,7 @@
     <span class="ident">cpp</span>: <span class="ident">bool</span>,
     <span class="ident">cpp_link_stdlib</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;&gt;</span>,
     <span class="ident">cpp_set_stdlib</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
+    <span class="ident">cuda</span>: <span class="ident">bool</span>,
     <span class="ident">target</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
     <span class="ident">host</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
     <span class="ident">out_dir</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span>,
@@ -2067,12 +2178,12 @@
     <span class="ident">ToolNotFound</span>,
 }
 
-<span class="doccomment">/// Represents an internal error that occurred, with an explaination.</span>
+<span class="doccomment">/// Represents an internal error that occurred, with an explanation.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Error</span> {
     <span class="doccomment">/// Describes the kind of error that occurred.</span>
     <span class="ident">kind</span>: <span class="ident">ErrorKind</span>,
-    <span class="doccomment">/// More explaination of error that occurred.</span>
+    <span class="doccomment">/// More explanation of error that occurred.</span>
     <span class="ident">message</span>: <span class="ident">String</span>,
 }
 
@@ -2106,6 +2217,7 @@
     <span class="ident">args</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">OsString</span><span class="op">&gt;</span>,
     <span class="ident">env</span>: <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="ident">OsString</span>, <span class="ident">OsString</span>)<span class="op">&gt;</span>,
     <span class="ident">family</span>: <span class="ident">ToolFamily</span>,
+    <span class="ident">cuda</span>: <span class="ident">bool</span>,
 }
 
 <span class="doccomment">/// Represents the family of tools this tool belongs to.</span>
@@ -2167,6 +2279,45 @@
             <span class="ident">ToolFamily</span>::<span class="ident">Gnu</span> <span class="op">|</span> <span class="ident">ToolFamily</span>::<span class="ident">Clang</span> <span class="op">=&gt;</span> <span class="string">&quot;-Werror&quot;</span>,
         }
     }
+
+    <span class="doccomment">/// NVCC-specific. Device code debug info flag. This is separate from the</span>
+    <span class="doccomment">/// debug info flag passed to the C++ compiler.</span>
+    <span class="kw">fn</span> <span class="ident">nvcc_debug_flag</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> {
+        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
+            <span class="ident">ToolFamily</span>::<span class="ident">Msvc</span> <span class="op">=&gt;</span> <span class="macro">unimplemented</span><span class="macro">!</span>(),
+            <span class="ident">ToolFamily</span>::<span class="ident">Gnu</span> <span class="op">|</span>
+            <span class="ident">ToolFamily</span>::<span class="ident">Clang</span> <span class="op">=&gt;</span> <span class="string">&quot;-G&quot;</span>,
+        }
+    }
+
+    <span class="doccomment">/// NVCC-specific. Redirect the following flag to the underlying C++</span>
+    <span class="doccomment">/// compiler.</span>
+    <span class="kw">fn</span> <span class="ident">nvcc_redirect_flag</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> {
+        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
+            <span class="ident">ToolFamily</span>::<span class="ident">Msvc</span> <span class="op">=&gt;</span> <span class="macro">unimplemented</span><span class="macro">!</span>(),
+            <span class="ident">ToolFamily</span>::<span class="ident">Gnu</span> <span class="op">|</span>
+            <span class="ident">ToolFamily</span>::<span class="ident">Clang</span> <span class="op">=&gt;</span> <span class="string">&quot;-Xcompiler&quot;</span>,
+        }
+    }
+}
+
+<span class="doccomment">/// Represents an object.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This is a source file -&gt; object file pair.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
+<span class="kw">struct</span> <span class="ident">Object</span> {
+    <span class="ident">src</span>: <span class="ident">PathBuf</span>,
+    <span class="ident">dst</span>: <span class="ident">PathBuf</span>,
+}
+
+<span class="kw">impl</span> <span class="ident">Object</span> {
+    <span class="doccomment">/// Create a new source file -&gt; object file pair.</span>
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">src</span>: <span class="ident">PathBuf</span>, <span class="ident">dst</span>: <span class="ident">PathBuf</span>) <span class="op">-&gt;</span> <span class="ident">Object</span> {
+        <span class="ident">Object</span> {
+            <span class="ident">src</span>: <span class="ident">src</span>,
+            <span class="ident">dst</span>: <span class="ident">dst</span>,
+        }
+    }
 }
 
 <span class="kw">impl</span> <span class="ident">Build</span> {
@@ -2188,6 +2339,7 @@
             <span class="ident">cpp</span>: <span class="bool-val">false</span>,
             <span class="ident">cpp_link_stdlib</span>: <span class="prelude-val">None</span>,
             <span class="ident">cpp_set_stdlib</span>: <span class="prelude-val">None</span>,
+            <span class="ident">cuda</span>: <span class="bool-val">false</span>,
             <span class="ident">target</span>: <span class="prelude-val">None</span>,
             <span class="ident">host</span>: <span class="prelude-val">None</span>,
             <span class="ident">out_dir</span>: <span class="prelude-val">None</span>,
@@ -2266,7 +2418,10 @@
 
     <span class="kw">fn</span> <span class="ident">ensure_check_file</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PathBuf</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">out_dir</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_out_dir</span>()<span class="question-mark">?</span>;
-        <span class="kw">let</span> <span class="ident">src</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">cpp</span> {
+        <span class="kw">let</span> <span class="ident">src</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">cuda</span> {
+            <span class="macro">assert</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">cpp</span>);
+            <span class="ident">out_dir</span>.<span class="ident">join</span>(<span class="string">&quot;flag_check.cu&quot;</span>)
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">cpp</span> {
             <span class="ident">out_dir</span>.<span class="ident">join</span>(<span class="string">&quot;flag_check.cpp&quot;</span>)
         } <span class="kw">else</span> {
             <span class="ident">out_dir</span>.<span class="ident">join</span>(<span class="string">&quot;flag_check.c&quot;</span>)
@@ -2280,7 +2435,14 @@
         <span class="prelude-val">Ok</span>(<span class="ident">src</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">is_flag_supported</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flag</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Run the compiler to test if it accepts the given flag.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// For a convenience method for setting flags conditionally,</span>
+    <span class="doccomment">/// see `flag_if_supported()`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// It may return error if it&#39;s unable to run the compilier with a test file</span>
+    <span class="doccomment">/// (e.g. the compiler is missing or a write to the `out_dir` failed).</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_flag_supported</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">flag</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">out_dir</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_out_dir</span>()<span class="question-mark">?</span>;
         <span class="kw">let</span> <span class="ident">src</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">ensure_check_file</span>()<span class="question-mark">?</span>;
         <span class="kw">let</span> <span class="ident">obj</span> <span class="op">=</span> <span class="ident">out_dir</span>.<span class="ident">join</span>(<span class="string">&quot;flag_check&quot;</span>);
@@ -2291,7 +2453,8 @@
             .<span class="ident">opt_level</span>(<span class="number">0</span>)
             .<span class="ident">host</span>(<span class="kw-2">&amp;</span><span class="ident">target</span>)
             .<span class="ident">debug</span>(<span class="bool-val">false</span>)
-            .<span class="ident">cpp</span>(<span class="self">self</span>.<span class="ident">cpp</span>);
+            .<span class="ident">cpp</span>(<span class="self">self</span>.<span class="ident">cpp</span>)
+            .<span class="ident">cuda</span>(<span class="self">self</span>.<span class="ident">cuda</span>);
         <span class="kw">let</span> <span class="ident">compiler</span> <span class="op">=</span> <span class="ident">cfg</span>.<span class="ident">try_get_compiler</span>()<span class="question-mark">?</span>;
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cmd</span> <span class="op">=</span> <span class="ident">compiler</span>.<span class="ident">to_command</span>();
         <span class="ident">command_add_output_file</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">cmd</span>, <span class="kw-2">&amp;</span><span class="ident">obj</span>, <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;msvc&quot;</span>), <span class="bool-val">false</span>);
@@ -2386,6 +2549,22 @@
     <span class="doccomment">/// `true`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cpp</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">cpp</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Build</span> {
         <span class="self">self</span>.<span class="ident">cpp</span> <span class="op">=</span> <span class="ident">cpp</span>;
+        <span class="self">self</span>
+    }
+
+    <span class="doccomment">/// Set CUDA C++ support.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Enabling CUDA will pass the detected C/C++ toolchain as an argument to</span>
+    <span class="doccomment">/// the CUDA compiler, NVCC. NVCC itself accepts some limited GNU-like args;</span>
+    <span class="doccomment">/// any other arguments for the C/C++ toolchain will be redirected using</span>
+    <span class="doccomment">/// &quot;-Xcompiler&quot; flags.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If enabled, this also implicitly enables C++ support.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cuda</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">cuda</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Build</span> {
+        <span class="self">self</span>.<span class="ident">cuda</span> <span class="op">=</span> <span class="ident">cuda</span>;
+        <span class="kw">if</span> <span class="ident">cuda</span> {
+            <span class="self">self</span>.<span class="ident">cpp</span> <span class="op">=</span> <span class="bool-val">true</span>;
+        }
         <span class="self">self</span>
     }
 
@@ -2664,7 +2843,6 @@
         <span class="kw">let</span> <span class="ident">dst</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_out_dir</span>()<span class="question-mark">?</span>;
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">objects</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">src_dst</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
         <span class="kw">for</span> <span class="ident">file</span> <span class="kw">in</span> <span class="self">self</span>.<span class="ident">files</span>.<span class="ident">iter</span>() {
             <span class="kw">let</span> <span class="ident">obj</span> <span class="op">=</span> <span class="ident">dst</span>.<span class="ident">join</span>(<span class="ident">file</span>).<span class="ident">with_extension</span>(<span class="string">&quot;o&quot;</span>);
             <span class="kw">let</span> <span class="ident">obj</span> <span class="op">=</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">obj</span>.<span class="ident">starts_with</span>(<span class="kw-2">&amp;</span><span class="ident">dst</span>) {
@@ -2685,10 +2863,9 @@
                 }
             };
 
-            <span class="ident">src_dst</span>.<span class="ident">push</span>((<span class="ident">file</span>.<span class="ident">to_path_buf</span>(), <span class="ident">obj</span>.<span class="ident">clone</span>()));
-            <span class="ident">objects</span>.<span class="ident">push</span>(<span class="ident">obj</span>);
+            <span class="ident">objects</span>.<span class="ident">push</span>(<span class="ident">Object</span>::<span class="ident">new</span>(<span class="ident">file</span>.<span class="ident">to_path_buf</span>(), <span class="ident">obj</span>));
         }
-        <span class="self">self</span>.<span class="ident">compile_objects</span>(<span class="kw-2">&amp;</span><span class="ident">src_dst</span>)<span class="question-mark">?</span>;
+        <span class="self">self</span>.<span class="ident">compile_objects</span>(<span class="kw-2">&amp;</span><span class="ident">objects</span>)<span class="question-mark">?</span>;
         <span class="self">self</span>.<span class="ident">assemble</span>(<span class="ident">lib_name</span>, <span class="kw-2">&amp;</span><span class="ident">dst</span>.<span class="ident">join</span>(<span class="ident">gnu_lib_name</span>), <span class="kw-2">&amp;</span><span class="ident">objects</span>)<span class="question-mark">?</span>;
 
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">get_target</span>()<span class="question-mark">?</span>.<span class="ident">contains</span>(<span class="string">&quot;msvc&quot;</span>) {
@@ -2744,7 +2921,7 @@
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;parallel&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">compile_objects</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">objs</span>: <span class="kw-2">&amp;</span>[(<span class="ident">PathBuf</span>, <span class="ident">PathBuf</span>)]) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">compile_objects</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">objs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Object</span>]) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">rayon</span>::<span class="ident">prelude</span>::<span class="kw-2">*</span>;
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cfg</span> <span class="op">=</span> <span class="ident">rayon</span>::<span class="ident">Configuration</span>::<span class="ident">new</span>();
@@ -2758,8 +2935,8 @@
         <span class="kw">let</span> <span class="ident">results</span>: <span class="ident">Mutex</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Mutex</span>::<span class="ident">new</span>(<span class="ident">Vec</span>::<span class="ident">new</span>());
 
         <span class="ident">objs</span>.<span class="ident">par_iter</span>().<span class="ident">with_max_len</span>(<span class="number">1</span>).<span class="ident">for_each</span>(
-            <span class="op">|</span><span class="kw-2">&amp;</span>(<span class="kw-2">ref</span> <span class="ident">src</span>, <span class="kw-2">ref</span> <span class="ident">dst</span>)<span class="op">|</span> {
-                <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">compile_object</span>(<span class="ident">src</span>, <span class="ident">dst</span>);
+            <span class="op">|</span><span class="ident">obj</span><span class="op">|</span> {
+                <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">compile_object</span>(<span class="ident">obj</span>);
                 <span class="ident">results</span>.<span class="ident">lock</span>().<span class="ident">unwrap</span>().<span class="ident">push</span>(<span class="ident">res</span>)
             },
         );
@@ -2775,15 +2952,15 @@
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;parallel&quot;</span>))]</span>
-    <span class="kw">fn</span> <span class="ident">compile_objects</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">objs</span>: <span class="kw-2">&amp;</span>[(<span class="ident">PathBuf</span>, <span class="ident">PathBuf</span>)]) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
-        <span class="kw">for</span> <span class="kw-2">&amp;</span>(<span class="kw-2">ref</span> <span class="ident">src</span>, <span class="kw-2">ref</span> <span class="ident">dst</span>) <span class="kw">in</span> <span class="ident">objs</span> {
-            <span class="self">self</span>.<span class="ident">compile_object</span>(<span class="ident">src</span>, <span class="ident">dst</span>)<span class="question-mark">?</span>;
+    <span class="kw">fn</span> <span class="ident">compile_objects</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">objs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Object</span>]) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
+        <span class="kw">for</span> <span class="ident">obj</span> <span class="kw">in</span> <span class="ident">objs</span> {
+            <span class="self">self</span>.<span class="ident">compile_object</span>(<span class="ident">obj</span>)<span class="question-mark">?</span>;
         }
         <span class="prelude-val">Ok</span>(())
     }
 
-    <span class="kw">fn</span> <span class="ident">compile_object</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">file</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>, <span class="ident">dst</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">is_asm</span> <span class="op">=</span> <span class="ident">file</span>.<span class="ident">extension</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">to_str</span>()) <span class="op">==</span> <span class="prelude-val">Some</span>(<span class="string">&quot;asm&quot;</span>);
+    <span class="kw">fn</span> <span class="ident">compile_object</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">obj</span>: <span class="kw-2">&amp;</span><span class="ident">Object</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
+        <span class="kw">let</span> <span class="ident">is_asm</span> <span class="op">=</span> <span class="ident">obj</span>.<span class="ident">src</span>.<span class="ident">extension</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">to_str</span>()) <span class="op">==</span> <span class="prelude-val">Some</span>(<span class="string">&quot;asm&quot;</span>);
         <span class="kw">let</span> <span class="ident">msvc</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_target</span>()<span class="question-mark">?</span>.<span class="ident">contains</span>(<span class="string">&quot;msvc&quot;</span>);
         <span class="kw">let</span> (<span class="kw-2">mut</span> <span class="ident">cmd</span>, <span class="ident">name</span>) <span class="op">=</span> <span class="kw">if</span> <span class="ident">msvc</span> <span class="op">&amp;&amp;</span> <span class="ident">is_asm</span> {
             <span class="self">self</span>.<span class="ident">msvc_macro_assembler</span>()<span class="question-mark">?</span>
@@ -2805,9 +2982,9 @@
                     .<span class="ident">into_owned</span>(),
             )
         };
-        <span class="ident">command_add_output_file</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">cmd</span>, <span class="ident">dst</span>, <span class="ident">msvc</span>, <span class="ident">is_asm</span>);
+        <span class="ident">command_add_output_file</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">cmd</span>, <span class="kw-2">&amp;</span><span class="ident">obj</span>.<span class="ident">dst</span>, <span class="ident">msvc</span>, <span class="ident">is_asm</span>);
         <span class="ident">cmd</span>.<span class="ident">arg</span>(<span class="kw">if</span> <span class="ident">msvc</span> { <span class="string">&quot;/c&quot;</span> } <span class="kw">else</span> { <span class="string">&quot;-c&quot;</span> });
-        <span class="ident">cmd</span>.<span class="ident">arg</span>(<span class="ident">file</span>);
+        <span class="ident">cmd</span>.<span class="ident">arg</span>(<span class="kw-2">&amp;</span><span class="ident">obj</span>.<span class="ident">src</span>);
 
         <span class="ident">run</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">cmd</span>, <span class="kw-2">&amp;</span><span class="ident">name</span>)<span class="question-mark">?</span>;
         <span class="prelude-val">Ok</span>(())
@@ -2895,16 +3072,14 @@
         <span class="kw">let</span> <span class="ident">target</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_target</span>()<span class="question-mark">?</span>;
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cmd</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_base_compiler</span>()<span class="question-mark">?</span>;
-        <span class="kw">let</span> <span class="ident">nvcc</span> <span class="op">=</span> <span class="ident">cmd</span>.<span class="ident">path</span>
-            .<span class="ident">file_name</span>()
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">p</span><span class="op">|</span> <span class="ident">p</span>.<span class="ident">to_str</span>())
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">p</span><span class="op">|</span> <span class="ident">p</span>.<span class="ident">contains</span>(<span class="string">&quot;nvcc&quot;</span>))
-            .<span class="ident">unwrap_or</span>(<span class="bool-val">false</span>);
 
         <span class="comment">// Non-target flags</span>
         <span class="comment">// If the flag is not conditioned on target variable, it belongs here :)</span>
         <span class="kw">match</span> <span class="ident">cmd</span>.<span class="ident">family</span> {
             <span class="ident">ToolFamily</span>::<span class="ident">Msvc</span> <span class="op">=&gt;</span> {
+                <span class="macro">assert</span><span class="macro">!</span>(<span class="op">!</span><span class="self">self</span>.<span class="ident">cuda</span>,
+                    <span class="string">&quot;CUDA C++ compilation not supported for MSVC, yet... but you are welcome to implement it :)&quot;</span>);
+
                 <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;/nologo&quot;</span>.<span class="ident">into</span>());
 
                 <span class="kw">let</span> <span class="ident">crt_flag</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">static_crt</span> {
@@ -2939,15 +3114,10 @@
                     <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;-O{}&quot;</span>, <span class="ident">opt_level</span>).<span class="ident">into</span>());
                 }
 
-                <span class="kw">if</span> <span class="op">!</span><span class="ident">nvcc</span> {
-                    <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-ffunction-sections&quot;</span>.<span class="ident">into</span>());
-                    <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-fdata-sections&quot;</span>.<span class="ident">into</span>());
-                    <span class="kw">if</span> <span class="self">self</span>.<span class="ident">pic</span>.<span class="ident">unwrap_or</span>(<span class="op">!</span><span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;windows-gnu&quot;</span>)) {
-                        <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-fPIC&quot;</span>.<span class="ident">into</span>());
-                    }
-                } <span class="kw">else</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">pic</span>.<span class="ident">unwrap_or</span>(<span class="bool-val">false</span>) {
-                    <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-Xcompiler&quot;</span>.<span class="ident">into</span>());
-                    <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;\&#39;-fPIC\&#39;&quot;</span>.<span class="ident">into</span>());
+                <span class="ident">cmd</span>.<span class="ident">push_cc_arg</span>(<span class="string">&quot;-ffunction-sections&quot;</span>.<span class="ident">into</span>());
+                <span class="ident">cmd</span>.<span class="ident">push_cc_arg</span>(<span class="string">&quot;-fdata-sections&quot;</span>.<span class="ident">into</span>());
+                <span class="kw">if</span> <span class="self">self</span>.<span class="ident">pic</span>.<span class="ident">unwrap_or</span>(<span class="op">!</span><span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;windows-gnu&quot;</span>)) {
+                    <span class="ident">cmd</span>.<span class="ident">push_cc_arg</span>(<span class="string">&quot;-fPIC&quot;</span>.<span class="ident">into</span>());
                 }
             }
         }
@@ -2956,7 +3126,12 @@
         }
 
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">get_debug</span>() {
-            <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="ident">cmd</span>.<span class="ident">family</span>.<span class="ident">debug_flag</span>().<span class="ident">into</span>());
+            <span class="kw">if</span> <span class="self">self</span>.<span class="ident">cuda</span> {
+                <span class="kw">let</span> <span class="ident">nvcc_debug_flag</span> <span class="op">=</span> <span class="ident">cmd</span>.<span class="ident">family</span>.<span class="ident">nvcc_debug_flag</span>().<span class="ident">into</span>();
+                <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="ident">nvcc_debug_flag</span>);
+            }
+            <span class="kw">let</span> <span class="ident">debug_flag</span> <span class="op">=</span> <span class="ident">cmd</span>.<span class="ident">family</span>.<span class="ident">debug_flag</span>().<span class="ident">into</span>();
+            <span class="ident">cmd</span>.<span class="ident">push_cc_arg</span>(<span class="ident">debug_flag</span>);
         }
 
         <span class="comment">// Target flags</span>
@@ -2994,6 +3169,18 @@
                     <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-mthumb&quot;</span>.<span class="ident">into</span>());
                     <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-mfpu=vfpv3-d16&quot;</span>.<span class="ident">into</span>());
                     <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-mfloat-abi=softfp&quot;</span>.<span class="ident">into</span>());
+                }
+
+                <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">starts_with</span>(<span class="string">&quot;armv4t-unknown-linux-&quot;</span>) {
+                    <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-march=armv4t&quot;</span>.<span class="ident">into</span>());
+                    <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-marm&quot;</span>.<span class="ident">into</span>());
+                    <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-mfloat-abi=soft&quot;</span>.<span class="ident">into</span>());
+                }
+
+                <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">starts_with</span>(<span class="string">&quot;armv5te-unknown-linux-&quot;</span>) {
+                    <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-march=armv5te&quot;</span>.<span class="ident">into</span>());
+                    <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-marm&quot;</span>.<span class="ident">into</span>());
+                    <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-mfloat-abi=soft&quot;</span>.<span class="ident">into</span>());
                 }
 
                 <span class="comment">// For us arm == armv6 by default</span>
@@ -3071,7 +3258,7 @@
                 (<span class="prelude-val">None</span>, _) <span class="op">=&gt;</span> {}
                 (<span class="prelude-val">Some</span>(<span class="ident">stdlib</span>), <span class="ident">ToolFamily</span>::<span class="ident">Gnu</span>) <span class="op">|</span>
                 (<span class="prelude-val">Some</span>(<span class="ident">stdlib</span>), <span class="ident">ToolFamily</span>::<span class="ident">Clang</span>) <span class="op">=&gt;</span> {
-                    <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;-stdlib=lib{}&quot;</span>, <span class="ident">stdlib</span>).<span class="ident">into</span>());
+                    <span class="ident">cmd</span>.<span class="ident">push_cc_arg</span>(<span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;-stdlib=lib{}&quot;</span>, <span class="ident">stdlib</span>).<span class="ident">into</span>());
                 }
                 _ <span class="op">=&gt;</span> {
                     <span class="macro">println</span><span class="macro">!</span>(
@@ -3090,7 +3277,7 @@
 
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">warnings</span> {
             <span class="kw">for</span> <span class="ident">flag</span> <span class="kw">in</span> <span class="ident">cmd</span>.<span class="ident">family</span>.<span class="ident">warnings_flags</span>().<span class="ident">iter</span>() {
-                <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="ident">flag</span>.<span class="ident">into</span>());
+                <span class="ident">cmd</span>.<span class="ident">push_cc_arg</span>(<span class="ident">flag</span>.<span class="ident">into</span>());
             }
         }
 
@@ -3100,7 +3287,7 @@
 
         <span class="kw">for</span> <span class="ident">flag</span> <span class="kw">in</span> <span class="self">self</span>.<span class="ident">flags_supported</span>.<span class="ident">iter</span>() {
             <span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_flag_supported</span>(<span class="ident">flag</span>).<span class="ident">unwrap_or</span>(<span class="bool-val">false</span>) {
-                <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="ident">flag</span>.<span class="ident">into</span>());
+                <span class="ident">cmd</span>.<span class="ident">push_cc_arg</span>(<span class="ident">flag</span>.<span class="ident">into</span>());
             }
         }
 
@@ -3118,7 +3305,8 @@
         }
 
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">warnings_into_errors</span> {
-            <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="ident">cmd</span>.<span class="ident">family</span>.<span class="ident">warnings_to_errors_flag</span>().<span class="ident">into</span>());
+            <span class="kw">let</span> <span class="ident">warnings_to_errors_flag</span> <span class="op">=</span> <span class="ident">cmd</span>.<span class="ident">family</span>.<span class="ident">warnings_to_errors_flag</span>().<span class="ident">into</span>();
+            <span class="ident">cmd</span>.<span class="ident">push_cc_arg</span>(<span class="ident">warnings_to_errors_flag</span>);
         }
 
         <span class="prelude-val">Ok</span>(<span class="ident">cmd</span>)
@@ -3153,11 +3341,12 @@
         <span class="prelude-val">Ok</span>((<span class="ident">cmd</span>, <span class="ident">tool</span>.<span class="ident">to_string</span>()))
     }
 
-    <span class="kw">fn</span> <span class="ident">assemble</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">lib_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">dst</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>, <span class="ident">objects</span>: <span class="kw-2">&amp;</span>[<span class="ident">PathBuf</span>]) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">assemble</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">lib_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">dst</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>, <span class="ident">objs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Object</span>]) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
         <span class="comment">// Delete the destination if it exists as the `ar` tool at least on Unix</span>
         <span class="comment">// appends to it, which we don&#39;t want.</span>
         <span class="kw">let</span> _ <span class="op">=</span> <span class="ident">fs</span>::<span class="ident">remove_file</span>(<span class="kw-2">&amp;</span><span class="ident">dst</span>);
 
+        <span class="kw">let</span> <span class="ident">objects</span>: <span class="ident">Vec</span><span class="op">&lt;</span>_<span class="op">&gt;</span> <span class="op">=</span> <span class="ident">objs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">obj</span><span class="op">|</span> <span class="ident">obj</span>.<span class="ident">dst</span>.<span class="ident">clone</span>()).<span class="ident">collect</span>();
         <span class="kw">let</span> <span class="ident">target</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_target</span>()<span class="question-mark">?</span>;
         <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;msvc&quot;</span>) {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cmd</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">archiver</span> {
@@ -3173,9 +3362,7 @@
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">OsString</span>::<span class="ident">from</span>(<span class="string">&quot;/OUT:&quot;</span>);
             <span class="ident">out</span>.<span class="ident">push</span>(<span class="ident">dst</span>);
             <span class="ident">run</span>(
-                <span class="ident">cmd</span>.<span class="ident">arg</span>(<span class="ident">out</span>).<span class="ident">arg</span>(<span class="string">&quot;/nologo&quot;</span>).<span class="ident">args</span>(<span class="ident">objects</span>).<span class="ident">args</span>(
-                    <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">objects</span>,
-                ),
+                <span class="ident">cmd</span>.<span class="ident">arg</span>(<span class="ident">out</span>).<span class="ident">arg</span>(<span class="string">&quot;/nologo&quot;</span>).<span class="ident">args</span>(<span class="kw-2">&amp;</span><span class="ident">objects</span>).<span class="ident">args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">objects</span>),
                 <span class="string">&quot;lib.exe&quot;</span>,
             )<span class="question-mark">?</span>;
 
@@ -3199,7 +3386,7 @@
         } <span class="kw">else</span> {
             <span class="kw">let</span> (<span class="kw-2">mut</span> <span class="ident">ar</span>, <span class="ident">cmd</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_ar</span>()<span class="question-mark">?</span>;
             <span class="ident">run</span>(
-                <span class="ident">ar</span>.<span class="ident">arg</span>(<span class="string">&quot;crs&quot;</span>).<span class="ident">arg</span>(<span class="ident">dst</span>).<span class="ident">args</span>(<span class="ident">objects</span>).<span class="ident">args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">objects</span>),
+                <span class="ident">ar</span>.<span class="ident">arg</span>(<span class="string">&quot;crs&quot;</span>).<span class="ident">arg</span>(<span class="ident">dst</span>).<span class="ident">args</span>(<span class="kw-2">&amp;</span><span class="ident">objects</span>).<span class="ident">args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">objects</span>),
                 <span class="kw-2">&amp;</span><span class="ident">cmd</span>,
             )<span class="question-mark">?</span>;
         }
@@ -3287,20 +3474,14 @@
         }
         <span class="kw">let</span> <span class="ident">host</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_host</span>()<span class="question-mark">?</span>;
         <span class="kw">let</span> <span class="ident">target</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_target</span>()<span class="question-mark">?</span>;
-        <span class="kw">let</span> (<span class="ident">env</span>, <span class="ident">msvc</span>, <span class="ident">gnu</span>) <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">cpp</span> {
-            (<span class="string">&quot;CXX&quot;</span>, <span class="string">&quot;cl.exe&quot;</span>, <span class="string">&quot;g++&quot;</span>)
+        <span class="kw">let</span> (<span class="ident">env</span>, <span class="ident">msvc</span>, <span class="ident">gnu</span>, <span class="ident">traditional</span>) <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">cpp</span> {
+            (<span class="string">&quot;CXX&quot;</span>, <span class="string">&quot;cl.exe&quot;</span>, <span class="string">&quot;g++&quot;</span>, <span class="string">&quot;c++&quot;</span>)
         } <span class="kw">else</span> {
-            (<span class="string">&quot;CC&quot;</span>, <span class="string">&quot;cl.exe&quot;</span>, <span class="string">&quot;gcc&quot;</span>)
+            (<span class="string">&quot;CC&quot;</span>, <span class="string">&quot;cl.exe&quot;</span>, <span class="string">&quot;gcc&quot;</span>, <span class="string">&quot;cc&quot;</span>)
         };
 
-        <span class="kw">let</span> <span class="ident">default</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">host</span>.<span class="ident">contains</span>(<span class="string">&quot;solaris&quot;</span>) {
-            <span class="comment">// In this case, c++/cc unlikely to exist or be correct.</span>
-            <span class="ident">gnu</span>
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">cpp</span> {
-            <span class="string">&quot;c++&quot;</span>
-        } <span class="kw">else</span> {
-            <span class="string">&quot;cc&quot;</span>
-        };
+        <span class="comment">// On Solaris, c++/cc unlikely to exist or be correct.</span>
+        <span class="kw">let</span> <span class="ident">default</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">host</span>.<span class="ident">contains</span>(<span class="string">&quot;solaris&quot;</span>) { <span class="ident">gnu</span> } <span class="kw">else</span> { <span class="ident">traditional</span> };
 
         <span class="kw">let</span> <span class="ident">tool_opt</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Tool</span><span class="op">&gt;</span> <span class="op">=</span>
             <span class="self">self</span>.<span class="ident">env_tool</span>(<span class="ident">env</span>)
@@ -3343,13 +3524,18 @@
                     }
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;android&quot;</span>) {
                     <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}-{}&quot;</span>, <span class="ident">target</span>.<span class="ident">replace</span>(<span class="string">&quot;armv7&quot;</span>, <span class="string">&quot;arm&quot;</span>), <span class="ident">gnu</span>)
+                } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;cloudabi&quot;</span>) {
+                    <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}-{}&quot;</span>, <span class="ident">target</span>, <span class="ident">traditional</span>)
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">get_host</span>()<span class="question-mark">?</span> <span class="op">!=</span> <span class="ident">target</span> {
                     <span class="comment">// CROSS_COMPILE is of the form: &quot;arm-linux-gnueabi-&quot;</span>
                     <span class="kw">let</span> <span class="ident">cc_env</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">getenv</span>(<span class="string">&quot;CROSS_COMPILE&quot;</span>);
                     <span class="kw">let</span> <span class="ident">cross_compile</span> <span class="op">=</span> <span class="ident">cc_env</span>.<span class="ident">as_ref</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">trim_right_matches</span>(<span class="string">&#39;-&#39;</span>));
                     <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">cross_compile</span>.<span class="ident">or</span>(<span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">target</span>[..] {
                         <span class="string">&quot;aarch64-unknown-linux-gnu&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;aarch64-linux-gnu&quot;</span>),
+                        <span class="string">&quot;aarch64-unknown-linux-musl&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;aarch64-linux-musl&quot;</span>),
                         <span class="string">&quot;arm-unknown-linux-gnueabi&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;arm-linux-gnueabi&quot;</span>),
+                        <span class="string">&quot;armv4t-unknown-linux-gnueabi&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;arm-linux-gnueabi&quot;</span>),
+                        <span class="string">&quot;armv5te-unknown-linux-gnueabi&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;arm-linux-gnueabi&quot;</span>),
                         <span class="string">&quot;arm-frc-linux-gnueabi&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;arm-frc-linux-gnueabi&quot;</span>),
                         <span class="string">&quot;arm-unknown-linux-gnueabihf&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;arm-linux-gnueabihf&quot;</span>),
                         <span class="string">&quot;arm-unknown-linux-musleabi&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;arm-linux-musleabi&quot;</span>),
@@ -3393,6 +3579,20 @@
                 };
                 <span class="ident">Tool</span>::<span class="ident">new</span>(<span class="ident">PathBuf</span>::<span class="ident">from</span>(<span class="ident">compiler</span>))
             }
+        };
+
+        <span class="kw">let</span> <span class="ident">tool</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">cuda</span> {
+            <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">tool</span>.<span class="ident">args</span>.<span class="ident">is_empty</span>(),
+                <span class="string">&quot;CUDA compilation currently assumes empty pre-existing args&quot;</span>);
+            <span class="kw">let</span> <span class="ident">nvcc</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">get_var</span>(<span class="string">&quot;NVCC&quot;</span>) {
+                <span class="prelude-val">Err</span>(_) <span class="op">=&gt;</span> <span class="string">&quot;nvcc&quot;</span>.<span class="ident">into</span>(),
+                <span class="prelude-val">Ok</span>(<span class="ident">nvcc</span>) <span class="op">=&gt;</span> <span class="ident">nvcc</span>,
+            };
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">nvcc_tool</span> <span class="op">=</span> <span class="ident">Tool</span>::<span class="ident">with_features</span>(<span class="ident">PathBuf</span>::<span class="ident">from</span>(<span class="ident">nvcc</span>), <span class="self">self</span>.<span class="ident">cuda</span>);
+            <span class="ident">nvcc_tool</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;-ccbin={}&quot;</span>, <span class="ident">tool</span>.<span class="ident">path</span>.<span class="ident">display</span>()).<span class="ident">into</span>());
+            <span class="ident">nvcc_tool</span>
+        } <span class="kw">else</span> {
+            <span class="ident">tool</span>
         };
 
         <span class="prelude-val">Ok</span>(<span class="ident">tool</span>)
@@ -3458,6 +3658,8 @@
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;darwin&quot;</span>) {
                     <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;c++&quot;</span>.<span class="ident">to_string</span>()))
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;freebsd&quot;</span>) {
+                    <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;c++&quot;</span>.<span class="ident">to_string</span>()))
+                } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;openbsd&quot;</span>) {
                     <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;c++&quot;</span>.<span class="ident">to_string</span>()))
                 } <span class="kw">else</span> {
                     <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;stdc++&quot;</span>.<span class="ident">to_string</span>()))
@@ -3565,11 +3767,16 @@
 
 <span class="kw">impl</span> <span class="ident">Tool</span> {
     <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">path</span>: <span class="ident">PathBuf</span>) <span class="op">-&gt;</span> <span class="ident">Tool</span> {
+        <span class="ident">Tool</span>::<span class="ident">with_features</span>(<span class="ident">path</span>, <span class="bool-val">false</span>)
+    }
+
+    <span class="kw">fn</span> <span class="ident">with_features</span>(<span class="ident">path</span>: <span class="ident">PathBuf</span>, <span class="ident">cuda</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="ident">Tool</span> {
         <span class="comment">// Try to detect family of the tool from its name, falling back to Gnu.</span>
         <span class="kw">let</span> <span class="ident">family</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">fname</span>) <span class="op">=</span> <span class="ident">path</span>.<span class="ident">file_name</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">p</span><span class="op">|</span> <span class="ident">p</span>.<span class="ident">to_str</span>()) {
             <span class="kw">if</span> <span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;clang&quot;</span>) {
                 <span class="ident">ToolFamily</span>::<span class="ident">Clang</span>
-            } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;cl&quot;</span>) <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;uclibc&quot;</span>) {
+            } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;cl&quot;</span>) <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;cloudabi&quot;</span>) <span class="op">&amp;&amp;</span>
+                      <span class="op">!</span><span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;uclibc&quot;</span>) {
                 <span class="ident">ToolFamily</span>::<span class="ident">Msvc</span>
             } <span class="kw">else</span> {
                 <span class="ident">ToolFamily</span>::<span class="ident">Gnu</span>
@@ -3584,7 +3791,20 @@
             <span class="ident">args</span>: <span class="ident">Vec</span>::<span class="ident">new</span>(),
             <span class="ident">env</span>: <span class="ident">Vec</span>::<span class="ident">new</span>(),
             <span class="ident">family</span>: <span class="ident">family</span>,
+            <span class="ident">cuda</span>: <span class="ident">cuda</span>,
         }
+    }
+
+    <span class="doccomment">/// Add a flag, and optionally prepend the NVCC wrapper flag &quot;-Xcompiler&quot;.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Currently this is only used for compiling CUDA sources, since NVCC only</span>
+    <span class="doccomment">/// accepts a limited set of GNU-like flags, and the rest must be prefixed</span>
+    <span class="doccomment">/// with a &quot;-Xcompiler&quot; flag to get passed to the underlying C++ compiler.</span>
+    <span class="kw">fn</span> <span class="ident">push_cc_arg</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">flag</span>: <span class="ident">OsString</span>) {
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">cuda</span> {
+            <span class="self">self</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="self">self</span>.<span class="ident">family</span>.<span class="ident">nvcc_redirect_flag</span>().<span class="ident">into</span>());
+        }
+        <span class="self">self</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="ident">flag</span>);
     }
 
     <span class="doccomment">/// Converts this compiler into a `Command` that&#39;s ready to be run.</span>
@@ -3838,13 +4058,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/schoppmp/.cargo/registry/src/github.com-1ecc6299db9ec823/bindgen-0.31.3/src/codegen/impl_debug.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/bindgen-0.31.3/src/codegen/impl_debug.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>impl_debug.rs.html -- source</title>
@@ -308,11 +308,11 @@
     }
 
     <span class="ident">format_string</span>.<span class="ident">push_str</span>(<span class="string">&quot; }}&quot;</span>);
-    <span class="ident">tokens</span>.<span class="ident">insert</span>(<span class="number">0</span>, <span class="macro">quote</span><span class="macro">!</span> { <span class="attribute">#<span class="ident">format_string</span> });
+    <span class="ident">tokens</span>.<span class="ident">insert</span>(<span class="number">0</span>, <span class="macro">quote</span><span class="macro">!</span> { #<span class="ident">format_string</span> });
 
     <span class="macro">quote</span><span class="macro">!</span> {
         <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
-            <span class="macro">write</span><span class="macro">!</span>(<span class="ident">f</span>, <span class="attribute">#( <span class="attribute">#<span class="ident">tokens</span> ),<span class="kw-2">*</span>)
+            <span class="macro">write</span><span class="macro">!</span>(<span class="ident">f</span>, #( #<span class="ident">tokens</span> ),<span class="kw-2">*</span>)
         }
     }
 }
@@ -357,7 +357,7 @@
         _: <span class="self">Self</span>::<span class="ident">Extra</span>,
     ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span>(<span class="ident">String</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">quote</span>::<span class="ident">Tokens</span><span class="op">&gt;</span>)<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">format_string</span> <span class="op">=</span> <span class="ident">String</span>::<span class="ident">new</span>();
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[]</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
         <span class="kw">for</span> (<span class="ident">i</span>, <span class="ident">bitfield</span>) <span class="kw">in</span> <span class="self">self</span>.<span class="ident">bitfields</span>().<span class="ident">iter</span>().<span class="ident">enumerate</span>() {
             <span class="kw">if</span> <span class="ident">i</span> <span class="op">&gt;</span> <span class="number">0</span> {
                 <span class="ident">format_string</span>.<span class="ident">push_str</span>(<span class="string">&quot;, &quot;</span>);
@@ -368,7 +368,7 @@
                 <span class="kw">let</span> <span class="ident">getter_name</span> <span class="op">=</span> <span class="ident">bitfield</span>.<span class="ident">getter_name</span>();
                 <span class="kw">let</span> <span class="ident">name_ident</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident_raw</span>(<span class="ident">getter_name</span>);
                 <span class="ident">tokens</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="self">self</span>.<span class="attribute">#<span class="ident">name_ident</span> ()
+                    <span class="self">self</span>.#<span class="ident">name_ident</span> ()
                 });
             }
         }
@@ -407,8 +407,8 @@
             <span class="prelude-val">Some</span>((
                 <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}: {{:?}}&quot;</span>, <span class="ident">name</span>),
                 <span class="macro">vec</span><span class="macro">!</span>[<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="self">self</span>.<span class="attribute">#<span class="ident">name_ident</span>
-                }]</span>,
+                    <span class="self">self</span>.#<span class="ident">name_ident</span>
+                }],
             ))
         }
 
@@ -427,19 +427,19 @@
             <span class="ident">TypeKind</span>::<span class="ident">ObjCInterface</span>(..) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">ObjCId</span> <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(..) <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">ObjCSel</span> <span class="op">=&gt;</span> <span class="ident">debug_print</span>(<span class="ident">name</span>, <span class="macro">quote</span><span class="macro">!</span> { <span class="attribute">#<span class="ident">name_ident</span> }),
+            <span class="ident">TypeKind</span>::<span class="ident">ObjCSel</span> <span class="op">=&gt;</span> <span class="ident">debug_print</span>(<span class="ident">name</span>, <span class="macro">quote</span><span class="macro">!</span> { #<span class="ident">name_ident</span> }),
 
             <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">inst</span>) <span class="op">=&gt;</span> {
                 <span class="kw">if</span> <span class="ident">inst</span>.<span class="ident">is_opaque</span>(<span class="ident">ctx</span>, <span class="self">self</span>) {
-                    <span class="prelude-val">Some</span>((<span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}: opaque&quot;</span>, <span class="ident">name</span>), <span class="macro">vec</span><span class="macro">!</span>[]</span>))
+                    <span class="prelude-val">Some</span>((<span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}: opaque&quot;</span>, <span class="ident">name</span>), <span class="macro">vec</span><span class="macro">!</span>[]))
                 } <span class="kw">else</span> {
-                    <span class="ident">debug_print</span>(<span class="ident">name</span>, <span class="macro">quote</span><span class="macro">!</span> { <span class="attribute">#<span class="ident">name_ident</span> })
+                    <span class="ident">debug_print</span>(<span class="ident">name</span>, <span class="macro">quote</span><span class="macro">!</span> { #<span class="ident">name_ident</span> })
                 }
             }
 
             <span class="comment">// The generic is not required to implement Debug, so we can not debug print that type</span>
             <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">=&gt;</span> {
-                <span class="prelude-val">Some</span>((<span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}: Non-debuggable generic&quot;</span>, <span class="ident">name</span>), <span class="macro">vec</span><span class="macro">!</span>[]</span>))
+                <span class="prelude-val">Some</span>((<span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}: Non-debuggable generic&quot;</span>, <span class="ident">name</span>), <span class="macro">vec</span><span class="macro">!</span>[]))
             }
 
             <span class="ident">TypeKind</span>::<span class="ident">Array</span>(_, <span class="ident">len</span>) <span class="op">=&gt;</span> {
@@ -450,18 +450,18 @@
                     )
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">len</span> <span class="op">&lt;</span> <span class="ident">RUST_DERIVE_IN_ARRAY_LIMIT</span> {
                     <span class="comment">// The simple case</span>
-                    <span class="ident">debug_print</span>(<span class="ident">name</span>, <span class="macro">quote</span><span class="macro">!</span> { <span class="attribute">#<span class="ident">name_ident</span> })
+                    <span class="ident">debug_print</span>(<span class="ident">name</span>, <span class="macro">quote</span><span class="macro">!</span> { #<span class="ident">name_ident</span> })
                 } <span class="kw">else</span> {
                     <span class="comment">// Let&#39;s implement our own print function</span>
                     <span class="prelude-val">Some</span>((
                         <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}: [{{}}]&quot;</span>, <span class="ident">name</span>),
                         <span class="macro">vec</span><span class="macro">!</span>[<span class="macro">quote</span><span class="macro">!</span> {
-                            <span class="self">self</span>.<span class="attribute">#<span class="ident">name_ident</span>
+                            <span class="self">self</span>.#<span class="ident">name_ident</span>
                                 .<span class="ident">iter</span>()
                                 .<span class="ident">enumerate</span>()
                                 .<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">i</span>, <span class="ident">v</span>)<span class="op">|</span> <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}{:?}&quot;</span>, <span class="kw">if</span> <span class="ident">i</span> <span class="op">&gt;</span> <span class="number">0</span> { <span class="string">&quot;, &quot;</span> } <span class="kw">else</span> { <span class="string">&quot;&quot;</span> }, <span class="ident">v</span>))
                                 .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>()
-                        }]</span>,
+                        }],
                     ))
                 }
             }
@@ -480,7 +480,7 @@
                         <span class="kw">if</span> <span class="op">!</span><span class="ident">sig</span>.<span class="ident">can_trivially_derive_debug</span>() <span class="op">=&gt;</span> {
                             <span class="prelude-val">Some</span>((<span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}: FunctionPointer&quot;</span>, <span class="ident">name</span>), <span class="macro">vec</span><span class="macro">!</span>[]))
                     }
-                    _ <span class="op">=&gt;</span> <span class="ident">debug_print</span>(<span class="ident">name</span>, <span class="macro">quote</span><span class="macro">!</span> { <span class="attribute">#<span class="ident">name_ident</span> }),
+                    _ <span class="op">=&gt;</span> <span class="ident">debug_print</span>(<span class="ident">name</span>, <span class="macro">quote</span><span class="macro">!</span> { #<span class="ident">name_ident</span> }),
                 }
             }
 
@@ -506,13 +506,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

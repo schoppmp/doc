@@ -29,7 +29,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'>Enum IntKind</p><div class="block items"><ul><li><a href="#variants">Variants</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>bindgen</a>::<wbr><a href='index.html'>callbacks</a></p><script>window.sidebarCurrent = {name: 'IntKind', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Enum IntKind</p><div class="block items"><a class="sidebar-title" href="#variants">Variants</a><div class="sidebar-links"><a href="#variant.Bool">Bool</a><a href="#variant.SChar">SChar</a><a href="#variant.UChar">UChar</a><a href="#variant.Char">Char</a><a href="#variant.Short">Short</a><a href="#variant.UShort">UShort</a><a href="#variant.Int">Int</a><a href="#variant.UInt">UInt</a><a href="#variant.Long">Long</a><a href="#variant.ULong">ULong</a><a href="#variant.LongLong">LongLong</a><a href="#variant.ULongLong">ULongLong</a><a href="#variant.I8">I8</a><a href="#variant.U8">U8</a><a href="#variant.I16">I16</a><a href="#variant.U16">U16</a><a href="#variant.I32">I32</a><a href="#variant.U32">U32</a><a href="#variant.I64">I64</a><a href="#variant.U64">U64</a><a href="#variant.I128">I128</a><a href="#variant.U128">U128</a><a href="#variant.Custom">Custom</a></div><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.is_signed">is_signed</a><a href="#method.known_size">known_size</a><a href="#method.signedness_matches">signedness_matches</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Debug">Debug</a><a href="#impl-Copy">Copy</a><a href="#impl-Clone">Clone</a><a href="#impl-PartialEq">PartialEq</a><a href="#impl-Eq">Eq</a><a href="#impl-Hash">Hash</a><a href="#impl-PartialOrd">PartialOrd</a><a href="#impl-Ord">Ord</a></div></div><p class='location'><a href='../index.html'>bindgen</a>::<wbr><a href='index.html'>callbacks</a></p><script>window.sidebarCurrent = {name: 'IntKind', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -81,32 +81,32 @@
 }</pre><div class='docblock'><p>Which integral type are we dealing with?</p>
 </div><h2 id='variants' class='variants small-section-header'>
                    Variants<a href='#variants' class='anchor'></a></h2>
-<span id='variant.Bool' class='variant'><span id='Bool.v' class='invisible'><code>Bool</code></span></span><div class='docblock'><p>A <code>bool</code>.</p>
-</div><span id='variant.SChar' class='variant'><span id='SChar.v' class='invisible'><code>SChar</code></span></span><div class='docblock'><p>A <code>signed char</code>.</p>
-</div><span id='variant.UChar' class='variant'><span id='UChar.v' class='invisible'><code>UChar</code></span></span><div class='docblock'><p>An <code>unsigned char</code>.</p>
-</div><span id='variant.Char' class='variant'><span id='Char.v' class='invisible'><code>Char</code></span></span><div class='docblock'><p>A platform-dependent <code>char</code> type, with the signedness support.</p>
+<span id="variant.Bool" class="variant small-section-header"><a href="#variant.Bool" class="anchor field"></a><span id='Bool.v' class='invisible'><code>Bool</code></span></span><div class='docblock'><p>A <code>bool</code>.</p>
+</div><span id="variant.SChar" class="variant small-section-header"><a href="#variant.SChar" class="anchor field"></a><span id='SChar.v' class='invisible'><code>SChar</code></span></span><div class='docblock'><p>A <code>signed char</code>.</p>
+</div><span id="variant.UChar" class="variant small-section-header"><a href="#variant.UChar" class="anchor field"></a><span id='UChar.v' class='invisible'><code>UChar</code></span></span><div class='docblock'><p>An <code>unsigned char</code>.</p>
+</div><span id="variant.Char" class="variant small-section-header"><a href="#variant.Char" class="anchor field"></a><span id='Char.v' class='invisible'><code>Char</code></span></span><div class='docblock'><p>A platform-dependent <code>char</code> type, with the signedness support.</p>
 </div><span class='docblock autohide sub-variant' id='variant.Char.fields'><h3 class='fields'>Fields of <code>Char</code></h3>
 
                            <table><tr><td id='variant.Char.field.is_signed'><span id='Char.v.is_signed.v' class='invisible'><code>is_signed:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></td><td><div class='docblock'><p>Whether the char is signed for the target platform.</p>
-</div></td></tr></table></span><span id='variant.Short' class='variant'><span id='Short.v' class='invisible'><code>Short</code></span></span><div class='docblock'><p>A <code>short</code>.</p>
-</div><span id='variant.UShort' class='variant'><span id='UShort.v' class='invisible'><code>UShort</code></span></span><div class='docblock'><p>An <code>unsigned short</code>.</p>
-</div><span id='variant.Int' class='variant'><span id='Int.v' class='invisible'><code>Int</code></span></span><div class='docblock'><p>An <code>int</code>.</p>
-</div><span id='variant.UInt' class='variant'><span id='UInt.v' class='invisible'><code>UInt</code></span></span><div class='docblock'><p>An <code>unsigned int</code>.</p>
-</div><span id='variant.Long' class='variant'><span id='Long.v' class='invisible'><code>Long</code></span></span><div class='docblock'><p>A <code>long</code>.</p>
-</div><span id='variant.ULong' class='variant'><span id='ULong.v' class='invisible'><code>ULong</code></span></span><div class='docblock'><p>An <code>unsigned long</code>.</p>
-</div><span id='variant.LongLong' class='variant'><span id='LongLong.v' class='invisible'><code>LongLong</code></span></span><div class='docblock'><p>A <code>long long</code>.</p>
-</div><span id='variant.ULongLong' class='variant'><span id='ULongLong.v' class='invisible'><code>ULongLong</code></span></span><div class='docblock'><p>An <code>unsigned long long</code>.</p>
-</div><span id='variant.I8' class='variant'><span id='I8.v' class='invisible'><code>I8</code></span></span><div class='docblock'><p>A 8-bit signed integer.</p>
-</div><span id='variant.U8' class='variant'><span id='U8.v' class='invisible'><code>U8</code></span></span><div class='docblock'><p>A 8-bit unsigned integer.</p>
-</div><span id='variant.I16' class='variant'><span id='I16.v' class='invisible'><code>I16</code></span></span><div class='docblock'><p>A 16-bit signed integer.</p>
-</div><span id='variant.U16' class='variant'><span id='U16.v' class='invisible'><code>U16</code></span></span><div class='docblock'><p>Either a <code>char16_t</code> or a <code>wchar_t</code>.</p>
-</div><span id='variant.I32' class='variant'><span id='I32.v' class='invisible'><code>I32</code></span></span><div class='docblock'><p>A 32-bit signed integer.</p>
-</div><span id='variant.U32' class='variant'><span id='U32.v' class='invisible'><code>U32</code></span></span><div class='docblock'><p>A 32-bit unsigned integer.</p>
-</div><span id='variant.I64' class='variant'><span id='I64.v' class='invisible'><code>I64</code></span></span><div class='docblock'><p>A 64-bit signed integer.</p>
-</div><span id='variant.U64' class='variant'><span id='U64.v' class='invisible'><code>U64</code></span></span><div class='docblock'><p>A 64-bit unsigned integer.</p>
-</div><span id='variant.I128' class='variant'><span id='I128.v' class='invisible'><code>I128</code></span></span><div class='docblock'><p>An <code>int128_t</code></p>
-</div><span id='variant.U128' class='variant'><span id='U128.v' class='invisible'><code>U128</code></span></span><div class='docblock'><p>A <code>uint128_t</code>.</p>
-</div><span id='variant.Custom' class='variant'><span id='Custom.v' class='invisible'><code>Custom</code></span></span><div class='docblock'><p>A custom integer type, used to allow custom macro types depending on
+</div></td></tr></table></span><span id="variant.Short" class="variant small-section-header"><a href="#variant.Short" class="anchor field"></a><span id='Short.v' class='invisible'><code>Short</code></span></span><div class='docblock'><p>A <code>short</code>.</p>
+</div><span id="variant.UShort" class="variant small-section-header"><a href="#variant.UShort" class="anchor field"></a><span id='UShort.v' class='invisible'><code>UShort</code></span></span><div class='docblock'><p>An <code>unsigned short</code>.</p>
+</div><span id="variant.Int" class="variant small-section-header"><a href="#variant.Int" class="anchor field"></a><span id='Int.v' class='invisible'><code>Int</code></span></span><div class='docblock'><p>An <code>int</code>.</p>
+</div><span id="variant.UInt" class="variant small-section-header"><a href="#variant.UInt" class="anchor field"></a><span id='UInt.v' class='invisible'><code>UInt</code></span></span><div class='docblock'><p>An <code>unsigned int</code>.</p>
+</div><span id="variant.Long" class="variant small-section-header"><a href="#variant.Long" class="anchor field"></a><span id='Long.v' class='invisible'><code>Long</code></span></span><div class='docblock'><p>A <code>long</code>.</p>
+</div><span id="variant.ULong" class="variant small-section-header"><a href="#variant.ULong" class="anchor field"></a><span id='ULong.v' class='invisible'><code>ULong</code></span></span><div class='docblock'><p>An <code>unsigned long</code>.</p>
+</div><span id="variant.LongLong" class="variant small-section-header"><a href="#variant.LongLong" class="anchor field"></a><span id='LongLong.v' class='invisible'><code>LongLong</code></span></span><div class='docblock'><p>A <code>long long</code>.</p>
+</div><span id="variant.ULongLong" class="variant small-section-header"><a href="#variant.ULongLong" class="anchor field"></a><span id='ULongLong.v' class='invisible'><code>ULongLong</code></span></span><div class='docblock'><p>An <code>unsigned long long</code>.</p>
+</div><span id="variant.I8" class="variant small-section-header"><a href="#variant.I8" class="anchor field"></a><span id='I8.v' class='invisible'><code>I8</code></span></span><div class='docblock'><p>A 8-bit signed integer.</p>
+</div><span id="variant.U8" class="variant small-section-header"><a href="#variant.U8" class="anchor field"></a><span id='U8.v' class='invisible'><code>U8</code></span></span><div class='docblock'><p>A 8-bit unsigned integer.</p>
+</div><span id="variant.I16" class="variant small-section-header"><a href="#variant.I16" class="anchor field"></a><span id='I16.v' class='invisible'><code>I16</code></span></span><div class='docblock'><p>A 16-bit signed integer.</p>
+</div><span id="variant.U16" class="variant small-section-header"><a href="#variant.U16" class="anchor field"></a><span id='U16.v' class='invisible'><code>U16</code></span></span><div class='docblock'><p>Either a <code>char16_t</code> or a <code>wchar_t</code>.</p>
+</div><span id="variant.I32" class="variant small-section-header"><a href="#variant.I32" class="anchor field"></a><span id='I32.v' class='invisible'><code>I32</code></span></span><div class='docblock'><p>A 32-bit signed integer.</p>
+</div><span id="variant.U32" class="variant small-section-header"><a href="#variant.U32" class="anchor field"></a><span id='U32.v' class='invisible'><code>U32</code></span></span><div class='docblock'><p>A 32-bit unsigned integer.</p>
+</div><span id="variant.I64" class="variant small-section-header"><a href="#variant.I64" class="anchor field"></a><span id='I64.v' class='invisible'><code>I64</code></span></span><div class='docblock'><p>A 64-bit signed integer.</p>
+</div><span id="variant.U64" class="variant small-section-header"><a href="#variant.U64" class="anchor field"></a><span id='U64.v' class='invisible'><code>U64</code></span></span><div class='docblock'><p>A 64-bit unsigned integer.</p>
+</div><span id="variant.I128" class="variant small-section-header"><a href="#variant.I128" class="anchor field"></a><span id='I128.v' class='invisible'><code>I128</code></span></span><div class='docblock'><p>An <code>int128_t</code></p>
+</div><span id="variant.U128" class="variant small-section-header"><a href="#variant.U128" class="anchor field"></a><span id='U128.v' class='invisible'><code>U128</code></span></span><div class='docblock'><p>A <code>uint128_t</code>.</p>
+</div><span id="variant.Custom" class="variant small-section-header"><a href="#variant.Custom" class="anchor field"></a><span id='Custom.v' class='invisible'><code>Custom</code></span></span><div class='docblock'><p>A custom integer type, used to allow custom macro types depending on
 range.</p>
 </div><span class='docblock autohide sub-variant' id='variant.Custom.fields'><h3 class='fields'>Fields of <code>Custom</code></h3>
 
@@ -117,13 +117,13 @@ range.</p>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
                 <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="enum" href="../../bindgen/callbacks/enum.IntKind.html" title="enum bindgen::callbacks::IntKind">IntKind</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/bindgen/ir/int.rs.html#85-132' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.is_signed' class="method"><span id='is_signed.v' class='invisible'><code>fn <a href='#method.is_signed' class='fnname'>is_signed</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/bindgen/ir/int.rs.html#87-104' title='goto source code'>[src]</a></span></h4>
+<div class='impl-items'><h4 id='method.is_signed' class="method"><span id='is_signed.v' class='invisible'><code>pub fn <a href='#method.is_signed' class='fnname'>is_signed</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/bindgen/ir/int.rs.html#87-104' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Is this integral type signed?</p>
-</div><h4 id='method.known_size' class="method"><span id='known_size.v' class='invisible'><code>fn <a href='#method.known_size' class='fnname'>known_size</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/bindgen/ir/int.rs.html#109-126' title='goto source code'>[src]</a></span></h4>
+</div><h4 id='method.known_size' class="method"><span id='known_size.v' class='invisible'><code>pub fn <a href='#method.known_size' class='fnname'>known_size</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/bindgen/ir/int.rs.html#109-126' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>If this type has a known size, return it (in bytes). This is to
 alleviate libclang sometimes not giving us a layout (like in the case
 when an enum is defined inside a class with template parameters).</p>
-</div><h4 id='method.signedness_matches' class="method"><span id='signedness_matches.v' class='invisible'><code>fn <a href='#method.signedness_matches' class='fnname'>signedness_matches</a>(&amp;self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/bindgen/ir/int.rs.html#129-131' title='goto source code'>[src]</a></span></h4>
+</div><h4 id='method.signedness_matches' class="method"><span id='signedness_matches.v' class='invisible'><code>pub fn <a href='#method.signedness_matches' class='fnname'>signedness_matches</a>(&amp;self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/bindgen/ir/int.rs.html#129-131' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Whether this type&#39;s signedness matches the value.</p>
 </div></div>
             <h2 id='implementations' class='small-section-header'>
@@ -131,7 +131,7 @@ when an enum is defined inside a class with template parameters).</p>
             </h2>
         <h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="enum" href="../../bindgen/callbacks/enum.IntKind.html" title="enum bindgen::callbacks::IntKind">IntKind</a></code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/bindgen/ir/int.rs.html#4' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/bindgen/ir/int.rs.html#4' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>Formats the value using the given formatter.</p>
+<div class='docblock'><p>Formats the value using the given formatter. <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>
 </div></div><h3 id='impl-Copy' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="../../bindgen/callbacks/enum.IntKind.html" title="enum bindgen::callbacks::IntKind">IntKind</a></code><a href='#impl-Copy' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/bindgen/ir/int.rs.html#4' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'></div><h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="enum" href="../../bindgen/callbacks/enum.IntKind.html" title="enum bindgen::callbacks::IntKind">IntKind</a></code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/bindgen/ir/int.rs.html#4' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="enum" href="../../bindgen/callbacks/enum.IntKind.html" title="enum bindgen::callbacks::IntKind">IntKind</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/bindgen/ir/int.rs.html#4' title='goto source code'>[src]</a></span></h4>
@@ -184,13 +184,15 @@ when an enum is defined inside a class with template parameters).</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

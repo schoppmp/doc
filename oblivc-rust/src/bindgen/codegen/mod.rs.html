@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/schoppmp/.cargo/registry/src/github.com-1ecc6299db9ec823/bindgen-0.31.3/src/codegen/mod.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/bindgen-0.31.3/src/codegen/mod.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>mod.rs.html -- source</title>
@@ -3829,7 +3829,7 @@
 
     <span class="kw">let</span> <span class="ident">root</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">root_module</span>().<span class="ident">canonical_name</span>(<span class="ident">ctx</span>);
     <span class="kw">let</span> <span class="ident">root_ident</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="kw-2">&amp;</span><span class="ident">root</span>);
-    <span class="ident">path</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> { <span class="attribute">#<span class="ident">root_ident</span> });
+    <span class="ident">path</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> { #<span class="ident">root_ident</span> });
 
 
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {};
@@ -3837,7 +3837,7 @@
 
     <span class="macro">quote</span><span class="macro">!</span> {
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_imports</span>)]</span>
-        <span class="kw">use</span> <span class="attribute">#<span class="ident">tokens</span> ;
+        <span class="kw">use</span> #<span class="ident">tokens</span> ;
     }
 }
 
@@ -3889,7 +3889,7 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">CodegenResult</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">codegen_id</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Cell</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
         <span class="ident">CodegenResult</span> {
-            <span class="ident">items</span>: <span class="macro">vec</span><span class="macro">!</span>[]</span>,
+            <span class="ident">items</span>: <span class="macro">vec</span><span class="macro">!</span>[],
             <span class="ident">saw_union</span>: <span class="bool-val">false</span>,
             <span class="ident">saw_bindgen_union</span>: <span class="bool-val">false</span>,
             <span class="ident">saw_incomplete_array</span>: <span class="bool-val">false</span>,
@@ -3992,9 +3992,9 @@
 <span class="kw">impl</span> <span class="ident">ToPtr</span> <span class="kw">for</span> <span class="ident">quote</span>::<span class="ident">Tokens</span> {
     <span class="kw">fn</span> <span class="ident">to_ptr</span>(<span class="self">self</span>, <span class="ident">is_const</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="ident">quote</span>::<span class="ident">Tokens</span> {
         <span class="kw">if</span> <span class="ident">is_const</span> {
-            <span class="macro">quote</span><span class="macro">!</span> { <span class="kw-2">*</span><span class="kw">const</span> <span class="attribute">#<span class="self">self</span> }
+            <span class="macro">quote</span><span class="macro">!</span> { <span class="kw-2">*</span><span class="kw">const</span> #<span class="self">self</span> }
         } <span class="kw">else</span> {
-            <span class="macro">quote</span><span class="macro">!</span> { <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="attribute">#<span class="self">self</span> }
+            <span class="macro">quote</span><span class="macro">!</span> { <span class="kw-2">*</span><span class="kw-2">mut</span> #<span class="self">self</span> }
         }
     }
 }
@@ -4059,7 +4059,7 @@
             });
 
             <span class="self">self</span>.<span class="ident">append</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                <span class="op">&lt;</span> <span class="attribute">#( <span class="attribute">#<span class="ident">params</span> ),<span class="op">*</span> <span class="op">&gt;</span>
+                <span class="op">&lt;</span> #( #<span class="ident">params</span> ),<span class="op">*</span> <span class="op">&gt;</span>
             });
         }
     }
@@ -4187,14 +4187,14 @@
             <span class="macro">quote</span><span class="macro">!</span> {
                 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>, <span class="ident">non_camel_case_types</span>, <span class="ident">non_upper_case_globals</span>)]</span>
                 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">root</span> {
-                    <span class="attribute">#( <span class="attribute">#<span class="ident">inner_items</span> )<span class="op">*</span>
+                    #( #<span class="ident">inner_items</span> )<span class="op">*</span>
                 }
             }
         } <span class="kw">else</span> {
             <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="ident">name</span>);
             <span class="macro">quote</span><span class="macro">!</span> {
-                <span class="kw">pub</span> <span class="kw">mod</span> <span class="attribute">#<span class="ident">ident</span> {
-                    <span class="attribute">#( <span class="attribute">#<span class="ident">inner_items</span> )<span class="op">*</span>
+                <span class="kw">pub</span> <span class="kw">mod</span> #<span class="ident">ident</span> {
+                    #( #<span class="ident">inner_items</span> )<span class="op">*</span>
                 }
             }
         });
@@ -4238,7 +4238,7 @@
             <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">val</span> {
                 <span class="ident">VarType</span>::<span class="ident">Bool</span>(<span class="ident">val</span>) <span class="op">=&gt;</span> {
                     <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                        <span class="kw">pub</span> <span class="kw">const</span> <span class="attribute">#<span class="ident">canonical_ident</span> : <span class="attribute">#<span class="ident">ty</span> <span class="op">=</span> <span class="attribute">#<span class="ident">val</span> ;
+                        <span class="kw">pub</span> <span class="kw">const</span> #<span class="ident">canonical_ident</span> : #<span class="ident">ty</span> <span class="op">=</span> #<span class="ident">val</span> ;
                     });
                 }
                 <span class="ident">VarType</span>::<span class="ident">Int</span>(<span class="ident">val</span>) <span class="op">=&gt;</span> {
@@ -4256,7 +4256,7 @@
                         <span class="ident">helpers</span>::<span class="ident">ast_ty</span>::<span class="ident">uint_expr</span>(<span class="ident">val</span> <span class="kw">as</span> _)
                     };
                     <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                        <span class="kw">pub</span> <span class="kw">const</span> <span class="attribute">#<span class="ident">canonical_ident</span> : <span class="attribute">#<span class="ident">ty</span> <span class="op">=</span> <span class="attribute">#<span class="ident">val</span> ;
+                        <span class="kw">pub</span> <span class="kw">const</span> #<span class="ident">canonical_ident</span> : #<span class="ident">ty</span> <span class="op">=</span> #<span class="ident">val</span> ;
                     });
                 }
                 <span class="ident">VarType</span>::<span class="ident">String</span>(<span class="kw-2">ref</span> <span class="ident">bytes</span>) <span class="op">=&gt;</span> {
@@ -4266,20 +4266,20 @@
                     <span class="comment">// we should refactor how the variable type and ty id work.</span>
                     <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">bytes</span>.<span class="ident">len</span>() <span class="op">+</span> <span class="number">1</span>;
                     <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-                        [<span class="ident">u8</span>; <span class="attribute">#<span class="ident">len</span>]</span>
+                        [<span class="ident">u8</span>; #<span class="ident">len</span>]
                     };
 
                     <span class="kw">match</span> <span class="ident">String</span>::<span class="ident">from_utf8</span>(<span class="ident">bytes</span>.<span class="ident">clone</span>()) {
                         <span class="prelude-val">Ok</span>(<span class="ident">string</span>) <span class="op">=&gt;</span> {
                             <span class="kw">let</span> <span class="ident">cstr</span> <span class="op">=</span> <span class="ident">helpers</span>::<span class="ident">ast_ty</span>::<span class="ident">cstr_expr</span>(<span class="ident">string</span>);
                             <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                                <span class="kw">pub</span> <span class="kw">const</span> <span class="attribute">#<span class="ident">canonical_ident</span> : <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="attribute">#<span class="ident">ty</span> <span class="op">=</span> <span class="attribute">#<span class="ident">cstr</span> ;
+                                <span class="kw">pub</span> <span class="kw">const</span> #<span class="ident">canonical_ident</span> : <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> #<span class="ident">ty</span> <span class="op">=</span> #<span class="ident">cstr</span> ;
                             });
                         }
                         <span class="prelude-val">Err</span>(..) <span class="op">=&gt;</span> {
                             <span class="kw">let</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="ident">helpers</span>::<span class="ident">ast_ty</span>::<span class="ident">byte_array_expr</span>(<span class="ident">bytes</span>);
                             <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                                <span class="kw">pub</span> <span class="kw">const</span> <span class="attribute">#<span class="ident">canonical_ident</span> : <span class="attribute">#<span class="ident">ty</span> <span class="op">=</span> <span class="attribute">#<span class="ident">bytes</span> ;
+                                <span class="kw">pub</span> <span class="kw">const</span> #<span class="ident">canonical_ident</span> : #<span class="ident">ty</span> <span class="op">=</span> #<span class="ident">bytes</span> ;
                             });
                         }
                     }
@@ -4287,19 +4287,19 @@
                 <span class="ident">VarType</span>::<span class="ident">Float</span>(<span class="ident">f</span>) <span class="op">=&gt;</span> {
                     <span class="kw">match</span> <span class="ident">helpers</span>::<span class="ident">ast_ty</span>::<span class="ident">float_expr</span>(<span class="ident">ctx</span>, <span class="ident">f</span>) {
                         <span class="prelude-val">Ok</span>(<span class="ident">expr</span>) <span class="op">=&gt;</span> <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                            <span class="kw">pub</span> <span class="kw">const</span> <span class="attribute">#<span class="ident">canonical_ident</span> : <span class="attribute">#<span class="ident">ty</span> <span class="op">=</span> <span class="attribute">#<span class="ident">expr</span> ;
+                            <span class="kw">pub</span> <span class="kw">const</span> #<span class="ident">canonical_ident</span> : #<span class="ident">ty</span> <span class="op">=</span> #<span class="ident">expr</span> ;
                         }),
                         <span class="prelude-val">Err</span>(..) <span class="op">=&gt;</span> <span class="kw">return</span>,
                     }
                 }
                 <span class="ident">VarType</span>::<span class="ident">Char</span>(<span class="ident">c</span>) <span class="op">=&gt;</span> {
                     <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                        <span class="kw">pub</span> <span class="kw">const</span> <span class="attribute">#<span class="ident">canonical_ident</span> : <span class="attribute">#<span class="ident">ty</span> <span class="op">=</span> <span class="attribute">#<span class="ident">c</span> ;
+                        <span class="kw">pub</span> <span class="kw">const</span> #<span class="ident">canonical_ident</span> : #<span class="ident">ty</span> <span class="op">=</span> #<span class="ident">c</span> ;
                     });
                 }
             }
         } <span class="kw">else</span> {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">attrs</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[]</span>;
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">attrs</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">mangled</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">mangled_name</span>() {
                 <span class="ident">attrs</span>.<span class="ident">push</span>(<span class="ident">attributes</span>::<span class="ident">link_name</span>(<span class="ident">mangled</span>));
             } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">canonical_name</span> <span class="op">!=</span> <span class="self">self</span>.<span class="ident">name</span>() {
@@ -4315,9 +4315,9 @@
                 <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="string">&quot;\n&quot;</span>);
             }
             <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="string">&quot;pub static mut &quot;</span>);
-            <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="macro">quote</span><span class="macro">!</span> { <span class="attribute">#<span class="ident">canonical_ident</span> });
+            <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="macro">quote</span><span class="macro">!</span> { #<span class="ident">canonical_ident</span> });
             <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="string">&quot; : &quot;</span>);
-            <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="macro">quote</span><span class="macro">!</span> { <span class="attribute">#<span class="ident">ty</span> });
+            <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="macro">quote</span><span class="macro">!</span> { #<span class="ident">ty</span> });
             <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="string">&quot;;\n}&quot;</span>);
 
             <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">tokens</span>);
@@ -4455,14 +4455,14 @@
                     <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="ident">top_level_path</span>(<span class="ident">ctx</span>, <span class="ident">item</span>);
                     <span class="ident">tokens</span>.<span class="ident">append_separated</span>(<span class="ident">path</span>, <span class="string">&quot;::&quot;</span>);
                     <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                        :: <span class="attribute">#<span class="ident">inner_rust_type</span>  <span class="kw">as</span> <span class="attribute">#<span class="ident">rust_name</span> ;
+                        :: #<span class="ident">inner_rust_type</span>  <span class="kw">as</span> #<span class="ident">rust_name</span> ;
                     });
                     <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">tokens</span>);
                     <span class="kw">return</span>;
                 }
 
                 <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">pub</span> <span class="kw">type</span> <span class="attribute">#<span class="ident">rust_name</span>
+                    <span class="kw">pub</span> <span class="kw">type</span> #<span class="ident">rust_name</span>
                 });
 
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">params</span>) <span class="op">=</span> <span class="ident">outer_params</span> {
@@ -4485,12 +4485,12 @@
                         });
 
                     <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                        <span class="op">&lt;</span> <span class="attribute">#( <span class="attribute">#<span class="ident">params</span> ),<span class="op">*</span> <span class="op">&gt;</span>
+                        <span class="op">&lt;</span> #( #<span class="ident">params</span> ),<span class="op">*</span> <span class="op">&gt;</span>
                     });
                 }
 
                 <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="op">=</span> <span class="attribute">#<span class="ident">inner_rust_type</span> ;
+                    <span class="op">=</span> #<span class="ident">inner_rust_type</span> ;
                 });
 
                 <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">tokens</span>);
@@ -4549,7 +4549,7 @@
         <span class="kw">let</span> <span class="ident">void</span> <span class="op">=</span> <span class="ident">helpers</span>::<span class="ident">ast_ty</span>::<span class="ident">raw_type</span>(<span class="ident">ctx</span>, <span class="string">&quot;c_void&quot;</span>);
         <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
             <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-            <span class="kw">pub</span> <span class="kw">struct</span> <span class="attribute">#<span class="ident">name</span> ( <span class="attribute">#<span class="ident">void</span> );
+            <span class="kw">pub</span> <span class="kw">struct</span> #<span class="ident">name</span> ( #<span class="ident">void</span> );
         });
     }
 }
@@ -4570,7 +4570,7 @@
     ) <span class="op">-&gt;</span> <span class="ident">error</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">quote</span>::<span class="ident">Tokens</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="self">self</span>.<span class="ident">canonical_name</span>(<span class="ident">ctx</span>));
         <span class="prelude-val">Ok</span>(<span class="macro">quote</span><span class="macro">!</span> {
-            <span class="attribute">#<span class="ident">name</span>
+            #<span class="ident">name</span>
         })
     }
 }
@@ -4622,21 +4622,21 @@
             <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">trait_prefix</span>();
             <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">item</span>.<span class="ident">to_rust_ty_or_opaque</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span>());
             <span class="kw">let</span> <span class="ident">size_of_expr</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-                ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="attribute">#<span class="ident">ident</span><span class="op">&gt;</span>()
+                ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span>#<span class="ident">ident</span><span class="op">&gt;</span>()
             };
             <span class="kw">let</span> <span class="ident">align_of_expr</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-                ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">align_of</span>::<span class="op">&lt;</span><span class="attribute">#<span class="ident">ident</span><span class="op">&gt;</span>()
+                ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">align_of</span>::<span class="op">&lt;</span>#<span class="ident">ident</span><span class="op">&gt;</span>()
             };
 
             <span class="kw">let</span> <span class="ident">item</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
                 <span class="attribute">#[<span class="ident">test</span>]</span>
-                <span class="kw">fn</span> <span class="attribute">#<span class="ident">fn_name</span>() {
-                    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="attribute">#<span class="ident">size_of_expr</span>, <span class="attribute">#<span class="ident">size</span>,
+                <span class="kw">fn</span> #<span class="ident">fn_name</span>() {
+                    <span class="macro">assert_eq</span><span class="macro">!</span>(#<span class="ident">size_of_expr</span>, #<span class="ident">size</span>,
                                <span class="macro">concat</span><span class="macro">!</span>(<span class="string">&quot;Size of template specialization: &quot;</span>,
-                                       <span class="macro">stringify</span><span class="macro">!</span>(<span class="attribute">#<span class="ident">ident</span>)));
-                    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="attribute">#<span class="ident">align_of_expr</span>, <span class="attribute">#<span class="ident">align</span>,
+                                       <span class="macro">stringify</span><span class="macro">!</span>(#<span class="ident">ident</span>)));
+                    <span class="macro">assert_eq</span><span class="macro">!</span>(#<span class="ident">align_of_expr</span>, #<span class="ident">align</span>,
                                <span class="macro">concat</span><span class="macro">!</span>(<span class="string">&quot;Alignment of template specialization: &quot;</span>,
-                                       <span class="macro">stringify</span><span class="macro">!</span>(<span class="attribute">#<span class="ident">ident</span>)));
+                                       <span class="macro">stringify</span><span class="macro">!</span>(#<span class="ident">ident</span>)));
                 }
             };
 
@@ -4749,11 +4749,11 @@
         <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">parent</span>.<span class="ident">is_union</span>() <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">parent</span>.<span class="ident">can_be_rust_union</span>(<span class="ident">ctx</span>) {
             <span class="kw">if</span> <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">enable_cxx_namespaces</span> {
                 <span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="ident">root</span>::<span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="attribute">#<span class="ident">ty</span><span class="op">&gt;</span>
+                    <span class="ident">root</span>::<span class="ident">__BindgenUnionField</span><span class="op">&lt;</span>#<span class="ident">ty</span><span class="op">&gt;</span>
                 }
             } <span class="kw">else</span> {
                 <span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="attribute">#<span class="ident">ty</span><span class="op">&gt;</span>
+                    <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span>#<span class="ident">ty</span><span class="op">&gt;</span>
                 }
             }
         } <span class="kw">else</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">item</span>) <span class="op">=</span> <span class="ident">field_ty</span>.<span class="ident">is_incomplete_array</span>(<span class="ident">ctx</span>) {
@@ -4763,11 +4763,11 @@
 
             <span class="kw">if</span> <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">enable_cxx_namespaces</span> {
                 <span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="ident">root</span>::<span class="ident">__IncompleteArrayField</span><span class="op">&lt;</span><span class="attribute">#<span class="ident">inner</span><span class="op">&gt;</span>
+                    <span class="ident">root</span>::<span class="ident">__IncompleteArrayField</span><span class="op">&lt;</span>#<span class="ident">inner</span><span class="op">&gt;</span>
                 }
             } <span class="kw">else</span> {
                 <span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="ident">__IncompleteArrayField</span><span class="op">&lt;</span><span class="attribute">#<span class="ident">inner</span><span class="op">&gt;</span>
+                    <span class="ident">__IncompleteArrayField</span><span class="op">&lt;</span>#<span class="ident">inner</span><span class="op">&gt;</span>
                 }
             }
         } <span class="kw">else</span> {
@@ -4807,11 +4807,11 @@
 
         <span class="kw">if</span> <span class="ident">is_private</span> {
             <span class="ident">field</span>.<span class="ident">append</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                <span class="attribute">#<span class="ident">field_ident</span> : <span class="attribute">#<span class="ident">ty</span> ,
+                #<span class="ident">field_ident</span> : #<span class="ident">ty</span> ,
             });
         } <span class="kw">else</span> {
             <span class="ident">field</span>.<span class="ident">append</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                <span class="kw">pub</span> <span class="attribute">#<span class="ident">field_ident</span> : <span class="attribute">#<span class="ident">ty</span> ,
+                <span class="kw">pub</span> #<span class="ident">field_ident</span> : #<span class="ident">ty</span> ,
             });
         }
 
@@ -4832,34 +4832,34 @@
             <span class="ident">FieldAccessorKind</span>::<span class="ident">Regular</span> <span class="op">=&gt;</span> {
                 <span class="macro">quote</span><span class="macro">!</span> {
                     <span class="attribute">#[<span class="ident">inline</span>]</span>
-                    <span class="kw">pub</span> <span class="kw">fn</span> <span class="attribute">#<span class="ident">getter_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span> <span class="attribute">#<span class="ident">ty</span> {
-                        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="attribute">#<span class="ident">field_name</span>
+                    <span class="kw">pub</span> <span class="kw">fn</span> #<span class="ident">getter_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span> #<span class="ident">ty</span> {
+                        <span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">field_name</span>
                     }
 
                     <span class="attribute">#[<span class="ident">inline</span>]</span>
-                    <span class="kw">pub</span> <span class="kw">fn</span> <span class="attribute">#<span class="ident">mutable_getter_name</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="attribute">#<span class="ident">ty</span> {
-                        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="attribute">#<span class="ident">field_name</span>
+                    <span class="kw">pub</span> <span class="kw">fn</span> #<span class="ident">mutable_getter_name</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> #<span class="ident">ty</span> {
+                        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.#<span class="ident">field_name</span>
                     }
                 }
             }
             <span class="ident">FieldAccessorKind</span>::<span class="ident">Unsafe</span> <span class="op">=&gt;</span> {
                 <span class="macro">quote</span><span class="macro">!</span> {
                     <span class="attribute">#[<span class="ident">inline</span>]</span>
-                    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="attribute">#<span class="ident">getter_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span> <span class="attribute">#<span class="ident">ty</span> {
-                        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="attribute">#<span class="ident">field_name</span>
+                    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> #<span class="ident">getter_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span> #<span class="ident">ty</span> {
+                        <span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">field_name</span>
                     }
 
                     <span class="attribute">#[<span class="ident">inline</span>]</span>
-                    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="attribute">#<span class="ident">mutable_getter_name</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="attribute">#<span class="ident">ty</span> {
-                        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="attribute">#<span class="ident">field_name</span>
+                    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> #<span class="ident">mutable_getter_name</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> #<span class="ident">ty</span> {
+                        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.#<span class="ident">field_name</span>
                     }
                 }
             }
             <span class="ident">FieldAccessorKind</span>::<span class="ident">Immutable</span> <span class="op">=&gt;</span> {
                 <span class="macro">quote</span><span class="macro">!</span> {
                     <span class="attribute">#[<span class="ident">inline</span>]</span>
-                    <span class="kw">pub</span> <span class="kw">fn</span> <span class="attribute">#<span class="ident">getter_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span> <span class="attribute">#<span class="ident">ty</span> {
-                        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="attribute">#<span class="ident">field_name</span>
+                    <span class="kw">pub</span> <span class="kw">fn</span> #<span class="ident">getter_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span> #<span class="ident">ty</span> {
+                        <span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">field_name</span>
                     }
                 }
             }
@@ -4872,7 +4872,7 @@
     <span class="kw">fn</span> <span class="ident">ctor_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">quote</span>::<span class="ident">Tokens</span> {
         <span class="kw">let</span> <span class="ident">ctor_name</span> <span class="op">=</span> <span class="ident">quote</span>::<span class="ident">Ident</span>::<span class="ident">new</span>(<span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;new_bitfield_{}&quot;</span>, <span class="self">self</span>.<span class="ident">nth</span>()));
         <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="attribute">#<span class="ident">ctor_name</span>
+            #<span class="ident">ctor_name</span>
         }
     }
 }
@@ -4904,9 +4904,9 @@
         <span class="comment">// Don&#39;t use variables or blocks because const functions do not allow</span>
         <span class="comment">// them.</span>
         <span class="macro">quote</span><span class="macro">!</span> {
-            (<span class="attribute">#<span class="ident">ctor_impl</span> <span class="op">|</span>
-             ((<span class="attribute">#<span class="ident">param_name</span> <span class="kw">as</span> <span class="attribute">#<span class="ident">bitfield_int_ty</span> <span class="kw">as</span> <span class="attribute">#<span class="ident">unit_field_int_ty</span>) <span class="op">&lt;&lt;</span> <span class="attribute">#<span class="ident">offset</span>) <span class="op">&amp;</span>
-             (<span class="attribute">#<span class="ident">mask</span> <span class="kw">as</span> <span class="attribute">#<span class="ident">unit_field_int_ty</span>))
+            (#<span class="ident">ctor_impl</span> <span class="op">|</span>
+             ((#<span class="ident">param_name</span> <span class="kw">as</span> #<span class="ident">bitfield_int_ty</span> <span class="kw">as</span> #<span class="ident">unit_field_int_ty</span>) <span class="op">&lt;&lt;</span> #<span class="ident">offset</span>) <span class="op">&amp;</span>
+             (#<span class="ident">mask</span> <span class="kw">as</span> #<span class="ident">unit_field_int_ty</span>))
         }
     }
 }
@@ -4934,11 +4934,11 @@
             <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="ident">helpers</span>::<span class="ident">blob</span>(<span class="self">self</span>.<span class="ident">layout</span>());
             <span class="kw">if</span> <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">enable_cxx_namespaces</span> {
                 <span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="ident">root</span>::<span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="attribute">#<span class="ident">ty</span><span class="op">&gt;</span>
+                    <span class="ident">root</span>::<span class="ident">__BindgenUnionField</span><span class="op">&lt;</span>#<span class="ident">ty</span><span class="op">&gt;</span>
                 }
             } <span class="kw">else</span> {
                 <span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="attribute">#<span class="ident">ty</span><span class="op">&gt;</span>
+                    <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span>#<span class="ident">ty</span><span class="op">&gt;</span>
                 }
             }
         } <span class="kw">else</span> {
@@ -4949,7 +4949,7 @@
         <span class="kw">let</span> <span class="ident">unit_field_ident</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="kw-2">&amp;</span><span class="ident">unit_field_name</span>);
 
         <span class="kw">let</span> <span class="ident">field</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">pub</span> <span class="attribute">#<span class="ident">unit_field_ident</span> : <span class="attribute">#<span class="ident">field_ty</span> ,
+            <span class="kw">pub</span> #<span class="ident">unit_field_ident</span> : #<span class="ident">field_ty</span> ,
         };
         <span class="ident">fields</span>.<span class="ident">extend</span>(<span class="prelude-val">Some</span>(<span class="ident">field</span>));
 
@@ -4973,7 +4973,7 @@
         };
 
         <span class="kw">let</span> <span class="ident">ctor_name</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">ctor_name</span>();
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ctor_params</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[]</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ctor_params</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ctor_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="number">0</span> };
 
         <span class="kw">for</span> <span class="ident">bf</span> <span class="kw">in</span> <span class="self">self</span>.<span class="ident">bitfields</span>() {
@@ -5001,7 +5001,7 @@
                 <span class="ident">bitfield_ty</span>.<span class="ident">to_rust_ty_or_opaque</span>(<span class="ident">ctx</span>, <span class="ident">bitfield_ty_item</span>);
 
             <span class="ident">ctor_params</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                <span class="attribute">#<span class="ident">param_name</span> : <span class="attribute">#<span class="ident">bitfield_ty</span>
+                #<span class="ident">param_name</span> : #<span class="ident">bitfield_ty</span>
             });
             <span class="ident">ctor_impl</span> <span class="op">=</span> <span class="ident">bf</span>.<span class="ident">extend_ctor_impl</span>(
                 <span class="ident">ctx</span>,
@@ -5019,8 +5019,8 @@
 
         <span class="ident">methods</span>.<span class="ident">extend</span>(<span class="prelude-val">Some</span>(<span class="macro">quote</span><span class="macro">!</span> {
             <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">pub</span> <span class="attribute">#<span class="ident">const_</span> <span class="kw">fn</span> <span class="attribute">#<span class="ident">ctor_name</span> ( <span class="attribute">#( <span class="attribute">#<span class="ident">ctor_params</span> ),<span class="op">*</span> ) <span class="op">-&gt;</span> <span class="attribute">#<span class="ident">unit_field_int_ty</span> {
-                <span class="attribute">#<span class="ident">ctor_impl</span>
+            <span class="kw">pub</span> #<span class="ident">const_</span> <span class="kw">fn</span> #<span class="ident">ctor_name</span> ( #( #<span class="ident">ctor_params</span> ),<span class="op">*</span> ) <span class="op">-&gt;</span> #<span class="ident">unit_field_int_ty</span> {
+                #<span class="ident">ctor_impl</span>
             }
         }));
 
@@ -5034,7 +5034,7 @@
 ) <span class="op">-&gt;</span> <span class="ident">quote</span>::<span class="ident">Tokens</span> {
     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">bitfield</span>.<span class="ident">getter_name</span>();
     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident_raw</span>(<span class="ident">name</span>);
-    <span class="macro">quote</span><span class="macro">!</span> { <span class="attribute">#<span class="ident">name</span> }
+    <span class="macro">quote</span><span class="macro">!</span> { #<span class="ident">name</span> }
 }
 
 <span class="kw">fn</span> <span class="ident">bitfield_setter_name</span>(
@@ -5043,7 +5043,7 @@
 ) <span class="op">-&gt;</span> <span class="ident">quote</span>::<span class="ident">Tokens</span> {
     <span class="kw">let</span> <span class="ident">setter</span> <span class="op">=</span> <span class="ident">bitfield</span>.<span class="ident">setter_name</span>();
     <span class="kw">let</span> <span class="ident">setter</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident_raw</span>(<span class="ident">setter</span>);
-    <span class="macro">quote</span><span class="macro">!</span> { <span class="attribute">#<span class="ident">setter</span> }
+    <span class="macro">quote</span><span class="macro">!</span> { #<span class="ident">setter</span> }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">FieldCodegen</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Bitfield</span> {
@@ -5086,51 +5086,51 @@
 
         <span class="ident">methods</span>.<span class="ident">extend</span>(<span class="prelude-val">Some</span>(<span class="macro">quote</span><span class="macro">!</span> {
             <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">pub</span> <span class="kw">fn</span> <span class="attribute">#<span class="ident">getter_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="attribute">#<span class="ident">bitfield_ty</span> {
-                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">unit_field_val</span>: <span class="attribute">#<span class="ident">unit_field_int_ty</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-                    ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">uninitialized</span>()
+            <span class="kw">pub</span> <span class="kw">fn</span> #<span class="ident">getter_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> #<span class="ident">bitfield_ty</span> {
+                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">unit_field_val</span>: #<span class="ident">unit_field_int_ty</span> <span class="op">=</span> <span class="kw">unsafe</span> {
+                    ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">uninitialized</span>()
                 };
 
                 <span class="kw">unsafe</span> {
-                    ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">ptr</span>::<span class="ident">copy_nonoverlapping</span>(
-                        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="attribute">#<span class="ident">unit_field_ident</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> _ <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
-                        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">unit_field_val</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="attribute">#<span class="ident">unit_field_int_ty</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u8</span>,
-                        ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="attribute">#<span class="ident">unit_field_int_ty</span><span class="op">&gt;</span>(),
+                    ::#<span class="ident">prefix</span>::<span class="ident">ptr</span>::<span class="ident">copy_nonoverlapping</span>(
+                        <span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">unit_field_ident</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> _ <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+                        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">unit_field_val</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> #<span class="ident">unit_field_int_ty</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u8</span>,
+                        ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span>#<span class="ident">unit_field_int_ty</span><span class="op">&gt;</span>(),
                     )
                 };
 
-                <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> <span class="attribute">#<span class="ident">mask</span> <span class="kw">as</span> <span class="attribute">#<span class="ident">unit_field_int_ty</span>;
-                <span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> (<span class="ident">unit_field_val</span> <span class="op">&amp;</span> <span class="ident">mask</span>) <span class="op">&gt;&gt;</span> <span class="attribute">#<span class="ident">offset</span>;
+                <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> #<span class="ident">mask</span> <span class="kw">as</span> #<span class="ident">unit_field_int_ty</span>;
+                <span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> (<span class="ident">unit_field_val</span> <span class="op">&amp;</span> <span class="ident">mask</span>) <span class="op">&gt;&gt;</span> #<span class="ident">offset</span>;
                 <span class="kw">unsafe</span> {
-                    ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="ident">val</span> <span class="kw">as</span> <span class="attribute">#<span class="ident">bitfield_int_ty</span>)
+                    ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="ident">val</span> <span class="kw">as</span> #<span class="ident">bitfield_int_ty</span>)
                 }
             }
 
             <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">pub</span> <span class="kw">fn</span> <span class="attribute">#<span class="ident">setter_name</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">val</span>: <span class="attribute">#<span class="ident">bitfield_ty</span>) {
-                <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> <span class="attribute">#<span class="ident">mask</span> <span class="kw">as</span> <span class="attribute">#<span class="ident">unit_field_int_ty</span>;
-                <span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">val</span> <span class="kw">as</span> <span class="attribute">#<span class="ident">bitfield_int_ty</span> <span class="kw">as</span> <span class="attribute">#<span class="ident">unit_field_int_ty</span>;
+            <span class="kw">pub</span> <span class="kw">fn</span> #<span class="ident">setter_name</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">val</span>: #<span class="ident">bitfield_ty</span>) {
+                <span class="kw">let</span> <span class="ident">mask</span> <span class="op">=</span> #<span class="ident">mask</span> <span class="kw">as</span> #<span class="ident">unit_field_int_ty</span>;
+                <span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">val</span> <span class="kw">as</span> #<span class="ident">bitfield_int_ty</span> <span class="kw">as</span> #<span class="ident">unit_field_int_ty</span>;
 
-                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">unit_field_val</span>: <span class="attribute">#<span class="ident">unit_field_int_ty</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-                    ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">uninitialized</span>()
+                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">unit_field_val</span>: #<span class="ident">unit_field_int_ty</span> <span class="op">=</span> <span class="kw">unsafe</span> {
+                    ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">uninitialized</span>()
                 };
 
                 <span class="kw">unsafe</span> {
-                    ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">ptr</span>::<span class="ident">copy_nonoverlapping</span>(
-                        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="attribute">#<span class="ident">unit_field_ident</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> _ <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
-                        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">unit_field_val</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="attribute">#<span class="ident">unit_field_int_ty</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u8</span>,
-                        ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span> <span class="attribute">#<span class="ident">unit_field_int_ty</span> <span class="op">&gt;</span>(),
+                    ::#<span class="ident">prefix</span>::<span class="ident">ptr</span>::<span class="ident">copy_nonoverlapping</span>(
+                        <span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">unit_field_ident</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> _ <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
+                        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">unit_field_val</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> #<span class="ident">unit_field_int_ty</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u8</span>,
+                        ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span> #<span class="ident">unit_field_int_ty</span> <span class="op">&gt;</span>(),
                     )
                 };
 
                 <span class="ident">unit_field_val</span> <span class="op">&amp;=</span> <span class="op">!</span><span class="ident">mask</span>;
-                <span class="ident">unit_field_val</span> <span class="op">|=</span> (<span class="ident">val</span> <span class="op">&lt;&lt;</span> <span class="attribute">#<span class="ident">offset</span>) <span class="op">&amp;</span> <span class="ident">mask</span>;
+                <span class="ident">unit_field_val</span> <span class="op">|=</span> (<span class="ident">val</span> <span class="op">&lt;&lt;</span> #<span class="ident">offset</span>) <span class="op">&amp;</span> <span class="ident">mask</span>;
 
                 <span class="kw">unsafe</span> {
-                    ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">ptr</span>::<span class="ident">copy_nonoverlapping</span>(
+                    ::#<span class="ident">prefix</span>::<span class="ident">ptr</span>::<span class="ident">copy_nonoverlapping</span>(
                         <span class="kw-2">&amp;</span><span class="ident">unit_field_val</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> _ <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>,
-                        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="attribute">#<span class="ident">unit_field_ident</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> _ <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u8</span>,
-                        ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span> <span class="attribute">#<span class="ident">unit_field_int_ty</span> <span class="op">&gt;</span>(),
+                        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.#<span class="ident">unit_field_ident</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> _ <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u8</span>,
+                        ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span> #<span class="ident">unit_field_int_ty</span> <span class="op">&gt;</span>(),
                     );
                 }
             }
@@ -5171,7 +5171,7 @@
             <span class="kw">let</span> <span class="ident">tuple_struct</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
                 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
                 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
-                <span class="kw">pub</span> <span class="kw">struct</span> <span class="attribute">#<span class="ident">struct_name</span> { <span class="ident">_unused</span>: [<span class="ident">u8</span>; <span class="number">0</span>]</span> }
+                <span class="kw">pub</span> <span class="kw">struct</span> #<span class="ident">struct_name</span> { <span class="ident">_unused</span>: [<span class="ident">u8</span>; <span class="number">0</span>] }
             };
             <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">tuple_struct</span>);
             <span class="kw">return</span>;
@@ -5209,7 +5209,7 @@
                     .<span class="ident">to_ptr</span>(<span class="bool-val">true</span>);
 
                 <span class="ident">fields</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">pub</span> <span class="ident">vtable_</span>: <span class="attribute">#<span class="ident">vtable_type</span> ,
+                    <span class="kw">pub</span> <span class="ident">vtable_</span>: #<span class="ident">vtable_type</span> ,
                 });
 
                 <span class="ident">struct_layout</span>.<span class="ident">saw_vtable</span>();
@@ -5227,7 +5227,7 @@
                 <span class="ident">struct_layout</span>.<span class="ident">saw_base</span>(<span class="ident">base_ty</span>);
 
                 <span class="ident">fields</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">pub</span> <span class="attribute">#<span class="ident">field_name</span> : <span class="attribute">#<span class="ident">inner</span> ,
+                    <span class="kw">pub</span> #<span class="ident">field_name</span> : #<span class="ident">inner</span> ,
                 });
             }
         }
@@ -5240,7 +5240,7 @@
             }
         }
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">methods</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[]</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">methods</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
         <span class="kw">if</span> <span class="op">!</span><span class="ident">is_opaque</span> {
             <span class="kw">let</span> <span class="ident">codegen_depth</span> <span class="op">=</span> <span class="ident">item</span>.<span class="ident">codegen_depth</span>(<span class="ident">ctx</span>);
             <span class="kw">let</span> <span class="ident">fields_should_be_private</span> <span class="op">=</span>
@@ -5271,13 +5271,13 @@
 
             <span class="ident">fields</span>.<span class="ident">push</span>(<span class="kw">if</span> <span class="self">self</span>.<span class="ident">can_be_rust_union</span>(<span class="ident">ctx</span>) {
                 <span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="ident">_bindgen_union_align</span>: <span class="attribute">#<span class="ident">ty</span> ,
+                    <span class="ident">_bindgen_union_align</span>: #<span class="ident">ty</span> ,
                 }
             } <span class="kw">else</span> {
                 <span class="ident">struct_layout</span>.<span class="ident">saw_union</span>(<span class="ident">layout</span>);
 
                 <span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">pub</span> <span class="ident">bindgen_union_field</span>: <span class="attribute">#<span class="ident">ty</span> ,
+                    <span class="kw">pub</span> <span class="ident">bindgen_union_field</span>: #<span class="ident">ty</span> ,
                 }
             });
         }
@@ -5291,7 +5291,7 @@
                 <span class="prelude-val">Some</span>(<span class="ident">l</span>) <span class="op">=&gt;</span> {
                     <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="ident">helpers</span>::<span class="ident">blob</span>(<span class="ident">l</span>);
                     <span class="ident">fields</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                        <span class="kw">pub</span> <span class="ident">_bindgen_opaque_blob</span>: <span class="attribute">#<span class="ident">ty</span> ,
+                        <span class="kw">pub</span> <span class="ident">_bindgen_opaque_blob</span>: #<span class="ident">ty</span> ,
                     });
                 }
                 <span class="prelude-val">None</span> <span class="op">=&gt;</span> {
@@ -5312,7 +5312,7 @@
                     } <span class="kw">else</span> {
                         <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="ident">helpers</span>::<span class="ident">blob</span>(<span class="ident">Layout</span>::<span class="ident">new</span>(<span class="number">0</span>, <span class="ident">layout</span>.<span class="ident">align</span>));
                         <span class="ident">fields</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                            <span class="kw">pub</span> <span class="ident">__bindgen_align</span>: <span class="attribute">#<span class="ident">ty</span> ,
+                            <span class="kw">pub</span> <span class="ident">__bindgen_align</span>: #<span class="ident">ty</span> ,
                         });
                     }
                 }
@@ -5341,12 +5341,12 @@
             <span class="kw">if</span> <span class="ident">has_address</span> {
                 <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="ident">helpers</span>::<span class="ident">blob</span>(<span class="ident">Layout</span>::<span class="ident">new</span>(<span class="number">1</span>, <span class="number">1</span>));
                 <span class="ident">fields</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">pub</span> <span class="ident">_address</span>: <span class="attribute">#<span class="ident">ty</span>,
+                    <span class="kw">pub</span> <span class="ident">_address</span>: #<span class="ident">ty</span>,
                 });
             }
         }
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">generic_param_names</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[]</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">generic_param_names</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">params</span>) <span class="op">=</span> <span class="ident">used_template_params</span> {
             <span class="kw">for</span> (<span class="ident">idx</span>, <span class="ident">ty</span>) <span class="kw">in</span> <span class="ident">params</span>.<span class="ident">iter</span>().<span class="ident">enumerate</span>() {
@@ -5358,8 +5358,8 @@
                 <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">trait_prefix</span>();
                 <span class="kw">let</span> <span class="ident">field_name</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;_phantom_{}&quot;</span>, <span class="ident">idx</span>));
                 <span class="ident">fields</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">pub</span> <span class="attribute">#<span class="ident">field_name</span> : ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">PhantomData</span><span class="op">&lt;</span>
-                        ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">cell</span>::<span class="ident">UnsafeCell</span><span class="op">&lt;</span><span class="attribute">#<span class="ident">ident</span><span class="op">&gt;</span>
+                    <span class="kw">pub</span> #<span class="ident">field_name</span> : ::#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">PhantomData</span><span class="op">&lt;</span>
+                        ::#<span class="ident">prefix</span>::<span class="ident">cell</span>::<span class="ident">UnsafeCell</span><span class="op">&lt;</span>#<span class="ident">ident</span><span class="op">&gt;</span>
                     <span class="op">&gt;</span> ,
                 });
             }
@@ -5368,13 +5368,13 @@
         <span class="kw">let</span> <span class="ident">generics</span> <span class="op">=</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">generic_param_names</span>.<span class="ident">is_empty</span>() {
             <span class="kw">let</span> <span class="ident">generic_param_names</span> <span class="op">=</span> <span class="ident">generic_param_names</span>.<span class="ident">clone</span>();
             <span class="macro">quote</span><span class="macro">!</span> {
-                <span class="op">&lt;</span> <span class="attribute">#( <span class="attribute">#<span class="ident">generic_param_names</span> ),<span class="op">*</span> <span class="op">&gt;</span>
+                <span class="op">&lt;</span> #( #<span class="ident">generic_param_names</span> ),<span class="op">*</span> <span class="op">&gt;</span>
             }
         } <span class="kw">else</span> {
             <span class="macro">quote</span><span class="macro">!</span> { }
         };
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">attributes</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[]</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">attributes</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">needs_clone_impl</span> <span class="op">=</span> <span class="bool-val">false</span>;
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">needs_default_impl</span> <span class="op">=</span> <span class="bool-val">false</span>;
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">needs_debug_impl</span> <span class="op">=</span> <span class="bool-val">false</span>;
@@ -5453,19 +5453,19 @@
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">is_union</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">can_be_rust_union</span>(<span class="ident">ctx</span>) {
             <span class="macro">quote</span><span class="macro">!</span> {
-                <span class="attribute">#( <span class="attribute">#<span class="ident">attributes</span> )<span class="op">*</span>
-                <span class="kw">pub</span> <span class="ident">union</span> <span class="attribute">#<span class="ident">canonical_ident</span>
+                #( #<span class="ident">attributes</span> )<span class="op">*</span>
+                <span class="kw">pub</span> <span class="ident">union</span> #<span class="ident">canonical_ident</span>
             }
         } <span class="kw">else</span> {
             <span class="macro">quote</span><span class="macro">!</span> {
-                <span class="attribute">#( <span class="attribute">#<span class="ident">attributes</span> )<span class="op">*</span>
-                <span class="kw">pub</span> <span class="kw">struct</span> <span class="attribute">#<span class="ident">canonical_ident</span>
+                #( #<span class="ident">attributes</span> )<span class="op">*</span>
+                <span class="kw">pub</span> <span class="kw">struct</span> #<span class="ident">canonical_ident</span>
             }
         };
 
         <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="macro">quote</span><span class="macro">!</span> {
-            <span class="attribute">#<span class="ident">generics</span> {
-                <span class="attribute">#( <span class="attribute">#<span class="ident">fields</span> )<span class="op">*</span>
+            #<span class="ident">generics</span> {
+                #( #<span class="ident">fields</span> )<span class="op">*</span>
             }
         });
         <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">tokens</span>);
@@ -5504,10 +5504,10 @@
                     <span class="kw">let</span> <span class="ident">fn_name</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident_raw</span>(<span class="ident">fn_name</span>);
                     <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">trait_prefix</span>();
                     <span class="kw">let</span> <span class="ident">size_of_expr</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-                        ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="attribute">#<span class="ident">canonical_ident</span><span class="op">&gt;</span>()
+                        ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span>#<span class="ident">canonical_ident</span><span class="op">&gt;</span>()
                     };
                     <span class="kw">let</span> <span class="ident">align_of_expr</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-                        ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">align_of</span>::<span class="op">&lt;</span><span class="attribute">#<span class="ident">canonical_ident</span><span class="op">&gt;</span>()
+                        ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">align_of</span>::<span class="op">&lt;</span>#<span class="ident">canonical_ident</span><span class="op">&gt;</span>()
                     };
                     <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">layout</span>.<span class="ident">size</span>;
                     <span class="kw">let</span> <span class="ident">align</span> <span class="op">=</span> <span class="ident">layout</span>.<span class="ident">align</span>;
@@ -5518,9 +5518,9 @@
                             <span class="prelude-val">None</span>
                         } <span class="kw">else</span> {
                             <span class="prelude-val">Some</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                                <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="attribute">#<span class="ident">align_of_expr</span>,
-                                       <span class="attribute">#<span class="ident">align</span>,
-                                       <span class="macro">concat</span><span class="macro">!</span>(<span class="string">&quot;Alignment of &quot;</span>, <span class="macro">stringify</span><span class="macro">!</span>(<span class="attribute">#<span class="ident">canonical_ident</span>)));
+                                <span class="macro">assert_eq</span><span class="macro">!</span>(#<span class="ident">align_of_expr</span>,
+                                       #<span class="ident">align</span>,
+                                       <span class="macro">concat</span><span class="macro">!</span>(<span class="string">&quot;Alignment of &quot;</span>, <span class="macro">stringify</span><span class="macro">!</span>(#<span class="ident">canonical_ident</span>)));
 
                             })
                         };
@@ -5536,7 +5536,7 @@
 
                     <span class="kw">let</span> <span class="ident">check_field_offset</span> <span class="op">=</span>
                         <span class="kw">if</span> <span class="ident">should_skip_field_offset_checks</span> {
-                            <span class="macro">vec</span><span class="macro">!</span>[]</span>
+                            <span class="macro">vec</span><span class="macro">!</span>[]
                         } <span class="kw">else</span> {
                             <span class="kw">let</span> <span class="ident">asserts</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">fields</span>()
                                 .<span class="ident">iter</span>()
@@ -5551,9 +5551,9 @@
                                         <span class="kw">let</span> <span class="ident">field_name</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="ident">name</span>);
 
                                         <span class="prelude-val">Some</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                                            <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="kw">unsafe</span> { <span class="kw-2">&amp;</span>(<span class="kw-2">*</span>(<span class="number">0</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="attribute">#<span class="ident">canonical_ident</span>)).<span class="attribute">#<span class="ident">field_name</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> _ <span class="kw">as</span> <span class="ident">usize</span> },
-                                                       <span class="attribute">#<span class="ident">field_offset</span>,
-                                                       <span class="macro">concat</span><span class="macro">!</span>(<span class="string">&quot;Alignment of field: &quot;</span>, <span class="macro">stringify</span><span class="macro">!</span>(<span class="attribute">#<span class="ident">canonical_ident</span>), <span class="string">&quot;::&quot;</span>, <span class="macro">stringify</span><span class="macro">!</span>(<span class="attribute">#<span class="ident">field_name</span>)));
+                                            <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="kw">unsafe</span> { <span class="kw-2">&amp;</span>(<span class="kw-2">*</span>(<span class="number">0</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> #<span class="ident">canonical_ident</span>)).#<span class="ident">field_name</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> _ <span class="kw">as</span> <span class="ident">usize</span> },
+                                                       #<span class="ident">field_offset</span>,
+                                                       <span class="macro">concat</span><span class="macro">!</span>(<span class="string">&quot;Alignment of field: &quot;</span>, <span class="macro">stringify</span><span class="macro">!</span>(#<span class="ident">canonical_ident</span>), <span class="string">&quot;::&quot;</span>, <span class="macro">stringify</span><span class="macro">!</span>(#<span class="ident">field_name</span>)));
                                         })
                                     })
                                 })
@@ -5564,13 +5564,13 @@
 
                     <span class="kw">let</span> <span class="ident">item</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
                         <span class="attribute">#[<span class="ident">test</span>]</span>
-                        <span class="kw">fn</span> <span class="attribute">#<span class="ident">fn_name</span>() {
-                            <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="attribute">#<span class="ident">size_of_expr</span>,
-                                       <span class="attribute">#<span class="ident">size</span>,
-                                       <span class="macro">concat</span><span class="macro">!</span>(<span class="string">&quot;Size of: &quot;</span>, <span class="macro">stringify</span><span class="macro">!</span>(<span class="attribute">#<span class="ident">canonical_ident</span>)));
+                        <span class="kw">fn</span> #<span class="ident">fn_name</span>() {
+                            <span class="macro">assert_eq</span><span class="macro">!</span>(#<span class="ident">size_of_expr</span>,
+                                       #<span class="ident">size</span>,
+                                       <span class="macro">concat</span><span class="macro">!</span>(<span class="string">&quot;Size of: &quot;</span>, <span class="macro">stringify</span><span class="macro">!</span>(#<span class="ident">canonical_ident</span>)));
 
-                            <span class="attribute">#<span class="ident">check_struct_align</span>
-                            <span class="attribute">#( <span class="attribute">#<span class="ident">check_field_offset</span> )<span class="op">*</span>
+                            #<span class="ident">check_struct_align</span>
+                            #( #<span class="ident">check_field_offset</span> )<span class="op">*</span>
                         }
                     };
                     <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">item</span>);
@@ -5630,12 +5630,12 @@
         <span class="comment">// NB: We can&#39;t use to_rust_ty here since for opaque types this tries to</span>
         <span class="comment">// use the specialization knowledge to generate a blob field.</span>
         <span class="kw">let</span> <span class="ident">ty_for_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="attribute">#<span class="ident">canonical_ident</span> <span class="attribute">#<span class="ident">generics</span>
+            #<span class="ident">canonical_ident</span> #<span class="ident">generics</span>
         };
 
         <span class="kw">if</span> <span class="ident">needs_clone_impl</span> {
             <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                <span class="kw">impl</span> <span class="attribute">#<span class="ident">generics</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="attribute">#<span class="ident">ty_for_impl</span> {
+                <span class="kw">impl</span> #<span class="ident">generics</span> <span class="ident">Clone</span> <span class="kw">for</span> #<span class="ident">ty_for_impl</span> {
                     <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> { <span class="kw-2">*</span><span class="self">self</span> }
                 }
             });
@@ -5644,8 +5644,8 @@
         <span class="kw">if</span> <span class="ident">needs_default_impl</span> {
             <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">trait_prefix</span>();
             <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                <span class="kw">impl</span> <span class="attribute">#<span class="ident">generics</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="attribute">#<span class="ident">ty_for_impl</span> {
-                    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="self">Self</span> { <span class="kw">unsafe</span> { ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">zeroed</span>() } }
+                <span class="kw">impl</span> #<span class="ident">generics</span> <span class="ident">Default</span> <span class="kw">for</span> #<span class="ident">ty_for_impl</span> {
+                    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="self">Self</span> { <span class="kw">unsafe</span> { ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">zeroed</span>() } }
                 }
             });
         }
@@ -5659,8 +5659,8 @@
             );
 
             <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                <span class="kw">impl</span> <span class="attribute">#<span class="ident">generics</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="attribute">#<span class="ident">ty_for_impl</span> {
-                    <span class="attribute">#<span class="ident">impl_</span>
+                <span class="kw">impl</span> #<span class="ident">generics</span> ::<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> #<span class="ident">ty_for_impl</span> {
+                    #<span class="ident">impl_</span>
                 }
             });
         }
@@ -5670,17 +5670,17 @@
 
                 <span class="kw">let</span> <span class="ident">partialeq_bounds</span> <span class="op">=</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">generic_param_names</span>.<span class="ident">is_empty</span>() {
                     <span class="kw">let</span> <span class="ident">bounds</span> <span class="op">=</span> <span class="ident">generic_param_names</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">t</span><span class="op">|</span> {
-                        <span class="macro">quote</span><span class="macro">!</span> { <span class="attribute">#<span class="ident">t</span>: <span class="ident">PartialEq</span> }
+                        <span class="macro">quote</span><span class="macro">!</span> { #<span class="ident">t</span>: <span class="ident">PartialEq</span> }
                     });
-                    <span class="macro">quote</span><span class="macro">!</span> { <span class="kw">where</span> <span class="attribute">#( <span class="attribute">#<span class="ident">bounds</span> ),<span class="op">*</span> }
+                    <span class="macro">quote</span><span class="macro">!</span> { <span class="kw">where</span> #( #<span class="ident">bounds</span> ),<span class="op">*</span> }
                 } <span class="kw">else</span> {
                     <span class="macro">quote</span><span class="macro">!</span> { }
                 };
 
                 <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">trait_prefix</span>();
                 <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">impl</span> <span class="attribute">#<span class="ident">generics</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">cmp</span>::<span class="ident">PartialEq</span> <span class="kw">for</span> <span class="attribute">#<span class="ident">ty_for_impl</span> <span class="attribute">#<span class="ident">partialeq_bounds</span> {
-                        <span class="attribute">#<span class="ident">impl_</span>
+                    <span class="kw">impl</span> #<span class="ident">generics</span> ::#<span class="ident">prefix</span>::<span class="ident">cmp</span>::<span class="ident">PartialEq</span> <span class="kw">for</span> #<span class="ident">ty_for_impl</span> #<span class="ident">partialeq_bounds</span> {
+                        #<span class="ident">impl_</span>
                     }
                 });
             }
@@ -5688,8 +5688,8 @@
 
         <span class="kw">if</span> <span class="op">!</span><span class="ident">methods</span>.<span class="ident">is_empty</span>() {
             <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                <span class="kw">impl</span> <span class="attribute">#<span class="ident">generics</span> <span class="attribute">#<span class="ident">ty_for_impl</span> {
-                    <span class="attribute">#( <span class="attribute">#<span class="ident">methods</span> )<span class="op">*</span>
+                <span class="kw">impl</span> #<span class="ident">generics</span> #<span class="ident">ty_for_impl</span> {
+                    #( #<span class="ident">methods</span> )<span class="op">*</span>
                 }
             });
         }
@@ -5773,7 +5773,7 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">utils</span>::<span class="ident">fnsig_return_ty</span>(<span class="ident">ctx</span>, <span class="ident">signature</span>);
 
         <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">is_static</span>() <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">is_constructor</span>() {
-            <span class="ident">args</span>[<span class="number">0</span>]</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_const</span>() {
+            <span class="ident">args</span>[<span class="number">0</span>] <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_const</span>() {
                 <span class="macro">quote</span><span class="macro">!</span> { <span class="kw-2">&amp;</span><span class="self">self</span> }
             } <span class="kw">else</span> {
                 <span class="macro">quote</span><span class="macro">!</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span> }
@@ -5801,10 +5801,10 @@
             <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">trait_prefix</span>();
             <span class="kw">let</span> <span class="ident">tmp_variable_decl</span> <span class="op">=</span>
                 <span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">__bindgen_tmp</span> <span class="op">=</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">uninitialized</span>()
+                    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">__bindgen_tmp</span> <span class="op">=</span> ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">uninitialized</span>()
                 };
             <span class="ident">stmts</span>.<span class="ident">push</span>(<span class="ident">tmp_variable_decl</span>);
-            <span class="ident">exprs</span>[<span class="number">0</span>]</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
+            <span class="ident">exprs</span>[<span class="number">0</span>] <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">__bindgen_tmp</span>
             };
         } <span class="kw">else</span> <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">is_static</span>() {
@@ -5815,7 +5815,7 @@
         };
 
         <span class="kw">let</span> <span class="ident">call</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="attribute">#<span class="ident">function_name</span> (<span class="attribute">#( <span class="attribute">#<span class="ident">exprs</span> ),<span class="op">*</span> )
+            #<span class="ident">function_name</span> (#( #<span class="ident">exprs</span> ),<span class="op">*</span> )
         };
 
         <span class="ident">stmts</span>.<span class="ident">push</span>(<span class="ident">call</span>);
@@ -5827,17 +5827,17 @@
         }
 
         <span class="kw">let</span> <span class="ident">block</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="attribute">#( <span class="attribute">#<span class="ident">stmts</span> );<span class="op">*</span>
+            #( #<span class="ident">stmts</span> );<span class="op">*</span>
         };
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">attrs</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[]</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">attrs</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
         <span class="ident">attrs</span>.<span class="ident">push</span>(<span class="ident">attributes</span>::<span class="ident">inline</span>());
 
         <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="kw-2">&amp;</span><span class="ident">name</span>);
         <span class="ident">methods</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
             <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="attribute">#<span class="ident">name</span> ( <span class="attribute">#( <span class="attribute">#<span class="ident">args</span> ),<span class="op">*</span> ) <span class="attribute">#<span class="ident">ret</span> {
-                <span class="attribute">#<span class="ident">block</span>
+            <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> #<span class="ident">name</span> ( #( #<span class="ident">args</span> ),<span class="op">*</span> ) #<span class="ident">ret</span> {
+                #<span class="ident">block</span>
             }
         });
     }
@@ -5907,16 +5907,16 @@
                 <span class="ident">EnumBuilder</span>::<span class="ident">Bitfield</span> {
                     <span class="ident">canonical_name</span>: <span class="ident">name</span>,
                     <span class="ident">tokens</span>: <span class="macro">quote</span><span class="macro">!</span> {
-                        <span class="attribute">#( <span class="attribute">#<span class="ident">attrs</span> )<span class="op">*</span>
-                        <span class="kw">pub</span> <span class="kw">struct</span> <span class="attribute">#<span class="ident">ident</span> (<span class="kw">pub</span> <span class="attribute">#<span class="ident">repr</span>);
+                        #( #<span class="ident">attrs</span> )<span class="op">*</span>
+                        <span class="kw">pub</span> <span class="kw">struct</span> #<span class="ident">ident</span> (<span class="kw">pub</span> #<span class="ident">repr</span>);
                     },
                 }
             }
 
             <span class="ident">EnumVariation</span>::<span class="ident">Rust</span> <span class="op">=&gt;</span> {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="attribute">#( <span class="attribute">#<span class="ident">attrs</span> )<span class="op">*</span>
-                    <span class="kw">pub</span> <span class="kw">enum</span> <span class="attribute">#<span class="ident">ident</span>
+                    #( #<span class="ident">attrs</span> )<span class="op">*</span>
+                    <span class="kw">pub</span> <span class="kw">enum</span> #<span class="ident">ident</span>
                 };
                 <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="string">&quot;{&quot;</span>);
                 <span class="ident">EnumBuilder</span>::<span class="ident">Rust</span>(<span class="ident">tokens</span>)
@@ -5925,20 +5925,20 @@
             <span class="ident">EnumVariation</span>::<span class="ident">Consts</span> <span class="op">=&gt;</span> {
                 <span class="ident">EnumBuilder</span>::<span class="ident">Consts</span>(<span class="macro">vec</span><span class="macro">!</span>[
                     <span class="macro">quote</span><span class="macro">!</span> {
-                        <span class="kw">pub</span> <span class="kw">type</span> <span class="attribute">#<span class="ident">ident</span> <span class="op">=</span> <span class="attribute">#<span class="ident">repr</span>;
+                        <span class="kw">pub</span> <span class="kw">type</span> #<span class="ident">ident</span> <span class="op">=</span> #<span class="ident">repr</span>;
                     }
-                ]</span>)
+                ])
             }
 
             <span class="ident">EnumVariation</span>::<span class="ident">ModuleConsts</span> <span class="op">=&gt;</span> {
                 <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">quote</span>::<span class="ident">Ident</span>::<span class="ident">new</span>(<span class="ident">CONSTIFIED_ENUM_MODULE_REPR_NAME</span>);
                 <span class="kw">let</span> <span class="ident">type_definition</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">pub</span> <span class="kw">type</span> <span class="attribute">#<span class="ident">ident</span> <span class="op">=</span> <span class="attribute">#<span class="ident">repr</span>;
+                    <span class="kw">pub</span> <span class="kw">type</span> #<span class="ident">ident</span> <span class="op">=</span> #<span class="ident">repr</span>;
                 };
 
                 <span class="ident">EnumBuilder</span>::<span class="ident">ModuleConsts</span> {
                     <span class="ident">module_name</span>: <span class="ident">name</span>,
-                    <span class="ident">module_items</span>: <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">type_definition</span>]</span>,
+                    <span class="ident">module_items</span>: <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">type_definition</span>],
                 }
             }
         }
@@ -5963,8 +5963,8 @@
             <span class="ident">EnumBuilder</span>::<span class="ident">Rust</span>(<span class="ident">tokens</span>) <span class="op">=&gt;</span> {
                 <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="ident">variant_name</span>);
                 <span class="ident">EnumBuilder</span>::<span class="ident">Rust</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="attribute">#<span class="ident">tokens</span>
-                    <span class="attribute">#<span class="ident">name</span> <span class="op">=</span> <span class="attribute">#<span class="ident">expr</span>,
+                    #<span class="ident">tokens</span>
+                    #<span class="ident">name</span> <span class="op">=</span> #<span class="ident">expr</span>,
                 })
             }
 
@@ -5978,7 +5978,7 @@
 
                 <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="ident">constant_name</span>);
                 <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">pub</span> <span class="kw">const</span> <span class="attribute">#<span class="ident">ident</span> : <span class="attribute">#<span class="ident">rust_ty</span> <span class="op">=</span> <span class="attribute">#<span class="ident">rust_ty</span> ( <span class="attribute">#<span class="ident">expr</span> );
+                    <span class="kw">pub</span> <span class="kw">const</span> #<span class="ident">ident</span> : #<span class="ident">rust_ty</span> <span class="op">=</span> #<span class="ident">rust_ty</span> ( #<span class="ident">expr</span> );
                 });
 
                 <span class="self">self</span>
@@ -5996,7 +5996,7 @@
 
                 <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="ident">constant_name</span>);
                 <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">pub</span> <span class="kw">const</span> <span class="attribute">#<span class="ident">ident</span> : <span class="attribute">#<span class="ident">rust_ty</span> <span class="op">=</span> <span class="attribute">#<span class="ident">expr</span> ;
+                    <span class="kw">pub</span> <span class="kw">const</span> #<span class="ident">ident</span> : #<span class="ident">rust_ty</span> <span class="op">=</span> #<span class="ident">expr</span> ;
                 });
 
                 <span class="self">self</span>
@@ -6008,7 +6008,7 @@
                 <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="ident">variant_name</span>);
                 <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="ident">CONSTIFIED_ENUM_MODULE_REPR_NAME</span>);
                 <span class="ident">module_items</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">pub</span> <span class="kw">const</span> <span class="attribute">#<span class="ident">name</span> : <span class="attribute">#<span class="ident">ty</span> <span class="op">=</span> <span class="attribute">#<span class="ident">expr</span> ;
+                    <span class="kw">pub</span> <span class="kw">const</span> #<span class="ident">name</span> : #<span class="ident">ty</span> <span class="op">=</span> #<span class="ident">expr</span> ;
                 });
 
                 <span class="ident">EnumBuilder</span>::<span class="ident">ModuleConsts</span> {
@@ -6038,40 +6038,40 @@
                 <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">trait_prefix</span>();
 
                 <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">impl</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">ops</span>::<span class="ident">BitOr</span><span class="op">&lt;</span><span class="attribute">#<span class="ident">rust_ty</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="attribute">#<span class="ident">rust_ty</span> {
+                    <span class="kw">impl</span> ::#<span class="ident">prefix</span>::<span class="ident">ops</span>::<span class="ident">BitOr</span><span class="op">&lt;</span>#<span class="ident">rust_ty</span><span class="op">&gt;</span> <span class="kw">for</span> #<span class="ident">rust_ty</span> {
                         <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
                         <span class="attribute">#[<span class="ident">inline</span>]</span>
                         <span class="kw">fn</span> <span class="ident">bitor</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
-                            <span class="attribute">#<span class="ident">rust_ty_name</span>(<span class="self">self</span>.<span class="number">0</span> <span class="op">|</span> <span class="ident">other</span>.<span class="number">0</span>)
+                            #<span class="ident">rust_ty_name</span>(<span class="self">self</span>.<span class="number">0</span> <span class="op">|</span> <span class="ident">other</span>.<span class="number">0</span>)
                         }
                     }
                 });
 
                 <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">impl</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">ops</span>::<span class="ident">BitOrAssign</span> <span class="kw">for</span> <span class="attribute">#<span class="ident">rust_ty</span> {
+                    <span class="kw">impl</span> ::#<span class="ident">prefix</span>::<span class="ident">ops</span>::<span class="ident">BitOrAssign</span> <span class="kw">for</span> #<span class="ident">rust_ty</span> {
                         <span class="attribute">#[<span class="ident">inline</span>]</span>
-                        <span class="kw">fn</span> <span class="ident">bitor_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rhs</span>: <span class="attribute">#<span class="ident">rust_ty</span>) {
+                        <span class="kw">fn</span> <span class="ident">bitor_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rhs</span>: #<span class="ident">rust_ty</span>) {
                             <span class="self">self</span>.<span class="number">0</span> <span class="op">|=</span> <span class="ident">rhs</span>.<span class="number">0</span>;
                         }
                     }
                 });
 
                 <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">impl</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">ops</span>::<span class="ident">BitAnd</span><span class="op">&lt;</span><span class="attribute">#<span class="ident">rust_ty</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="attribute">#<span class="ident">rust_ty</span> {
+                    <span class="kw">impl</span> ::#<span class="ident">prefix</span>::<span class="ident">ops</span>::<span class="ident">BitAnd</span><span class="op">&lt;</span>#<span class="ident">rust_ty</span><span class="op">&gt;</span> <span class="kw">for</span> #<span class="ident">rust_ty</span> {
                         <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
                         <span class="attribute">#[<span class="ident">inline</span>]</span>
                         <span class="kw">fn</span> <span class="ident">bitand</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
-                            <span class="attribute">#<span class="ident">rust_ty_name</span>(<span class="self">self</span>.<span class="number">0</span> <span class="op">&amp;</span> <span class="ident">other</span>.<span class="number">0</span>)
+                            #<span class="ident">rust_ty_name</span>(<span class="self">self</span>.<span class="number">0</span> <span class="op">&amp;</span> <span class="ident">other</span>.<span class="number">0</span>)
                         }
                     }
                 });
 
                 <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">impl</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">ops</span>::<span class="ident">BitAndAssign</span> <span class="kw">for</span> <span class="attribute">#<span class="ident">rust_ty</span> {
+                    <span class="kw">impl</span> ::#<span class="ident">prefix</span>::<span class="ident">ops</span>::<span class="ident">BitAndAssign</span> <span class="kw">for</span> #<span class="ident">rust_ty</span> {
                         <span class="attribute">#[<span class="ident">inline</span>]</span>
-                        <span class="kw">fn</span> <span class="ident">bitand_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rhs</span>: <span class="attribute">#<span class="ident">rust_ty</span>) {
+                        <span class="kw">fn</span> <span class="ident">bitand_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rhs</span>: #<span class="ident">rust_ty</span>) {
                             <span class="self">self</span>.<span class="number">0</span> <span class="op">&amp;=</span> <span class="ident">rhs</span>.<span class="number">0</span>;
                         }
                     }
@@ -6079,15 +6079,15 @@
 
                 <span class="ident">tokens</span>
             }
-            <span class="ident">EnumBuilder</span>::<span class="ident">Consts</span>(<span class="ident">tokens</span>) <span class="op">=&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="attribute">#( <span class="attribute">#<span class="ident">tokens</span> )<span class="op">*</span> },
+            <span class="ident">EnumBuilder</span>::<span class="ident">Consts</span>(<span class="ident">tokens</span>) <span class="op">=&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { #( #<span class="ident">tokens</span> )<span class="op">*</span> },
             <span class="ident">EnumBuilder</span>::<span class="ident">ModuleConsts</span> {
                 <span class="ident">module_items</span>,
                 <span class="ident">module_name</span>,
             } <span class="op">=&gt;</span> {
                 <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="ident">module_name</span>);
                 <span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">pub</span> <span class="kw">mod</span> <span class="attribute">#<span class="ident">ident</span> {
-                        <span class="attribute">#( <span class="attribute">#<span class="ident">module_items</span> )<span class="op">*</span>
+                    <span class="kw">pub</span> <span class="kw">mod</span> #<span class="ident">ident</span> {
+                        #( #<span class="ident">module_items</span> )<span class="op">*</span>
                     }
                 }
             }
@@ -6163,7 +6163,7 @@
             <span class="ident">EnumVariation</span>::<span class="ident">Consts</span>
         };
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">attrs</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[]</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">attrs</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
 
         <span class="comment">// FIXME: Rust forbids repr with empty enums. Remove this condition when</span>
         <span class="comment">// this is allowed.</span>
@@ -6212,8 +6212,8 @@
             <span class="kw">let</span> <span class="ident">constant_name</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="ident">constant_name</span>);
 
             <span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                <span class="kw">pub</span> <span class="kw">const</span> <span class="attribute">#<span class="ident">constant_name</span> : <span class="attribute">#<span class="ident">enum_rust_ty</span> <span class="op">=</span>
-                    <span class="attribute">#<span class="ident">enum_canonical_name</span> :: <span class="attribute">#<span class="ident">referenced_name</span> ;
+                <span class="kw">pub</span> <span class="kw">const</span> #<span class="ident">constant_name</span> : #<span class="ident">enum_rust_ty</span> <span class="op">=</span>
+                    #<span class="ident">enum_canonical_name</span> :: #<span class="ident">referenced_name</span> ;
             });
         }
 
@@ -6222,7 +6222,7 @@
                 .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">repr</span><span class="op">|</span> <span class="ident">repr</span>.<span class="ident">try_to_rust_ty_or_opaque</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span>()).<span class="ident">ok</span>())
                 .<span class="ident">unwrap_or_else</span>(<span class="op">||</span> {
                     <span class="kw">let</span> <span class="ident">repr_name</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident_raw</span>(<span class="ident">repr_name</span>);
-                    <span class="macro">quote</span><span class="macro">!</span> { <span class="attribute">#<span class="ident">repr_name</span> }
+                    <span class="macro">quote</span><span class="macro">!</span> { #<span class="ident">repr_name</span> }
                 });
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">builder</span> <span class="op">=</span> <span class="ident">EnumBuilder</span>::<span class="ident">new</span>(
@@ -6635,14 +6635,14 @@
                     } <span class="op">=&gt;</span> {
                         <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident_raw</span>(<span class="ident">name</span>);
                         <span class="prelude-val">Ok</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                            <span class="attribute">#<span class="ident">ident</span>
+                            #<span class="ident">ident</span>
                         })
                     }
                     <span class="comment">// FIXME: This doesn&#39;t generate the proper alignment, but we</span>
                     <span class="comment">// can&#39;t do better right now. We should be able to use</span>
                     <span class="comment">// i128/u128 when they&#39;re available.</span>
                     <span class="ident">IntKind</span>::<span class="ident">U128</span> <span class="op">|</span> <span class="ident">IntKind</span>::<span class="ident">I128</span> <span class="op">=&gt;</span> {
-                        <span class="prelude-val">Ok</span>(<span class="macro">quote</span><span class="macro">!</span> { [<span class="ident">u64</span>; <span class="number">2</span>]</span> })
+                        <span class="prelude-val">Ok</span>(<span class="macro">quote</span><span class="macro">!</span> { [<span class="ident">u64</span>; <span class="number">2</span>] })
                     }
                 }
             }
@@ -6653,11 +6653,11 @@
                 <span class="ident">ctx</span>.<span class="ident">generated_bindegen_complex</span>();
                 <span class="prelude-val">Ok</span>(<span class="kw">if</span> <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">enable_cxx_namespaces</span> {
                     <span class="macro">quote</span><span class="macro">!</span> {
-                        <span class="ident">root</span>::<span class="ident">__BindgenComplex</span><span class="op">&lt;</span><span class="attribute">#<span class="ident">float_path</span><span class="op">&gt;</span>
+                        <span class="ident">root</span>::<span class="ident">__BindgenComplex</span><span class="op">&lt;</span>#<span class="ident">float_path</span><span class="op">&gt;</span>
                     }
                 } <span class="kw">else</span> {
                     <span class="macro">quote</span><span class="macro">!</span> {
-                        <span class="ident">__BindgenComplex</span><span class="op">&lt;</span><span class="attribute">#<span class="ident">float_path</span><span class="op">&gt;</span>
+                        <span class="ident">__BindgenComplex</span><span class="op">&lt;</span>#<span class="ident">float_path</span><span class="op">&gt;</span>
                     }
                 })
             }
@@ -6670,13 +6670,13 @@
 
                 <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">trait_prefix</span>();
                 <span class="prelude-val">Ok</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">option</span>::<span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="attribute">#<span class="ident">ty</span><span class="op">&gt;</span>
+                    ::#<span class="ident">prefix</span>::<span class="ident">option</span>::<span class="prelude-ty">Option</span><span class="op">&lt;</span>#<span class="ident">ty</span><span class="op">&gt;</span>
                 })
             }
             <span class="ident">TypeKind</span>::<span class="ident">Array</span>(<span class="ident">item</span>, <span class="ident">len</span>) <span class="op">=&gt;</span> {
                 <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="ident">item</span>.<span class="ident">try_to_rust_ty</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span>())<span class="question-mark">?</span>;
                 <span class="prelude-val">Ok</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    [ <span class="attribute">#<span class="ident">ty</span> ; <span class="attribute">#<span class="ident">len</span> ]</span>
+                    [ #<span class="ident">ty</span> ; #<span class="ident">len</span> ]
                 })
             }
             <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(..) <span class="op">=&gt;</span> {
@@ -6753,7 +6753,7 @@
                 <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">item</span>.<span class="ident">canonical_name</span>(<span class="ident">ctx</span>);
                 <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="kw-2">&amp;</span><span class="ident">name</span>);
                 <span class="prelude-val">Ok</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="attribute">#<span class="ident">ident</span>
+                    #<span class="ident">ident</span>
                 })
             }
             <span class="ident">TypeKind</span>::<span class="ident">ObjCSel</span> <span class="op">=&gt;</span> {
@@ -6847,7 +6847,7 @@
         }
 
         <span class="prelude-val">Ok</span>(<span class="macro">quote</span><span class="macro">!</span> {
-            <span class="attribute">#<span class="ident">ty</span> <span class="op">&lt;</span> <span class="attribute">#( <span class="attribute">#<span class="ident">template_args</span> ),<span class="op">*</span> <span class="op">&gt;</span>
+            #<span class="ident">ty</span> <span class="op">&lt;</span> #( #<span class="ident">template_args</span> ),<span class="op">*</span> <span class="op">&gt;</span>
         })
     }
 }
@@ -6872,7 +6872,7 @@
             }
             _ <span class="op">=&gt;</span> {
                 <span class="prelude-val">Ok</span>(<span class="macro">quote</span><span class="macro">!</span> {
-                    <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="attribute">#<span class="ident">abi</span> <span class="kw">fn</span> ( <span class="attribute">#( <span class="attribute">#<span class="ident">arguments</span> ),<span class="op">*</span> ) <span class="attribute">#<span class="ident">ret</span>
+                    <span class="kw">unsafe</span> <span class="kw">extern</span> #<span class="ident">abi</span> <span class="kw">fn</span> ( #( #<span class="ident">arguments</span> ),<span class="op">*</span> ) #<span class="ident">ret</span>
                 })
             }
         }
@@ -6934,7 +6934,7 @@
         <span class="kw">let</span> <span class="ident">args</span> <span class="op">=</span> <span class="ident">utils</span>::<span class="ident">fnsig_arguments</span>(<span class="ident">ctx</span>, <span class="ident">signature</span>);
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">utils</span>::<span class="ident">fnsig_return_ty</span>(<span class="ident">ctx</span>, <span class="ident">signature</span>);
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">attributes</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[]</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">attributes</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">comment</span>) <span class="op">=</span> <span class="ident">item</span>.<span class="ident">comment</span>(<span class="ident">ctx</span>) {
             <span class="ident">attributes</span>.<span class="ident">push</span>(<span class="ident">attributes</span>::<span class="ident">doc</span>(<span class="ident">comment</span>));
@@ -6976,7 +6976,7 @@
         };
 
         <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="ident">canonical_name</span>);
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="kw">extern</span> <span class="attribute">#<span class="ident">abi</span> };
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="kw">extern</span> #<span class="ident">abi</span> };
         <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="string">&quot;{\n&quot;</span>);
         <span class="kw">if</span> <span class="op">!</span><span class="ident">attributes</span>.<span class="ident">is_empty</span>() {
             <span class="ident">tokens</span>.<span class="ident">append_separated</span>(<span class="ident">attributes</span>, <span class="string">&quot;\n&quot;</span>);
@@ -6985,7 +6985,7 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">args</span> <span class="op">=</span> <span class="ident">args</span>;
         <span class="ident">args</span>.<span class="ident">push</span>(<span class="ident">variadic</span>);
         <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">pub</span> <span class="kw">fn</span> <span class="attribute">#<span class="ident">ident</span> ( <span class="attribute">#( <span class="attribute">#<span class="ident">args</span> ),<span class="op">*</span> ) <span class="attribute">#<span class="ident">ret</span>;
+            <span class="kw">pub</span> <span class="kw">fn</span> #<span class="ident">ident</span> ( #( #<span class="ident">args</span> ),<span class="op">*</span> ) #<span class="ident">ret</span>;
         });
         <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="string">&quot;\n}&quot;</span>);
         <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">tokens</span>);
@@ -7006,14 +7006,14 @@
     <span class="kw">let</span> <span class="ident">sig</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">method</span>.<span class="ident">is_class_method</span>() {
         <span class="kw">let</span> <span class="ident">fn_args</span> <span class="op">=</span> <span class="ident">fn_args</span>.<span class="ident">clone</span>();
         <span class="macro">quote</span><span class="macro">!</span> {
-            ( <span class="attribute">#( <span class="attribute">#<span class="ident">fn_args</span> ),<span class="op">*</span> ) <span class="attribute">#<span class="ident">fn_ret</span>
+            ( #( #<span class="ident">fn_args</span> ),<span class="op">*</span> ) #<span class="ident">fn_ret</span>
         }
     } <span class="kw">else</span> {
         <span class="kw">let</span> <span class="ident">fn_args</span> <span class="op">=</span> <span class="ident">fn_args</span>.<span class="ident">clone</span>();
         <span class="kw">let</span> <span class="ident">args</span> <span class="op">=</span> <span class="ident">iter</span>::<span class="ident">once</span>(<span class="macro">quote</span><span class="macro">!</span> { <span class="self">self</span> })
             .<span class="ident">chain</span>(<span class="ident">fn_args</span>.<span class="ident">into_iter</span>());
         <span class="macro">quote</span><span class="macro">!</span> {
-            ( <span class="attribute">#( <span class="attribute">#<span class="ident">args</span> ),<span class="op">*</span> ) <span class="attribute">#<span class="ident">fn_ret</span>
+            ( #( #<span class="ident">args</span> ),<span class="op">*</span> ) #<span class="ident">fn_ret</span>
         }
     };
 
@@ -7025,11 +7025,11 @@
             .<span class="ident">to_owned</span>();
         <span class="kw">let</span> <span class="ident">expect_msg</span> <span class="op">=</span> <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;Couldn&#39;t find {}&quot;</span>, <span class="ident">class_name</span>);
         <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="macro">msg_send</span><span class="macro">!</span>(<span class="ident">objc</span>::<span class="ident">runtime</span>::<span class="ident">Class</span>::<span class="ident">get</span>(<span class="attribute">#<span class="ident">class_name</span>).<span class="ident">expect</span>(<span class="attribute">#<span class="ident">expect_msg</span>), <span class="attribute">#<span class="ident">methods_and_args</span>)
+            <span class="macro">msg_send</span><span class="macro">!</span>(<span class="ident">objc</span>::<span class="ident">runtime</span>::<span class="ident">Class</span>::<span class="ident">get</span>(#<span class="ident">class_name</span>).<span class="ident">expect</span>(#<span class="ident">expect_msg</span>), #<span class="ident">methods_and_args</span>)
         }
     } <span class="kw">else</span> {
         <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="macro">msg_send</span><span class="macro">!</span>(<span class="self">self</span>, <span class="attribute">#<span class="ident">methods_and_args</span>)
+            <span class="macro">msg_send</span><span class="macro">!</span>(<span class="self">self</span>, #<span class="ident">methods_and_args</span>)
         }
     };
 
@@ -7037,12 +7037,12 @@
 
     (
         <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="attribute">#<span class="ident">method_name</span> <span class="attribute">#<span class="ident">sig</span> {
-                <span class="attribute">#<span class="ident">body</span>
+            <span class="kw">unsafe</span> <span class="kw">fn</span> #<span class="ident">method_name</span> #<span class="ident">sig</span> {
+                #<span class="ident">body</span>
             }
         },
         <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="attribute">#<span class="ident">method_name</span> <span class="attribute">#<span class="ident">sig</span> ;
+            <span class="kw">unsafe</span> <span class="kw">fn</span> #<span class="ident">method_name</span> #<span class="ident">sig</span> ;
         }
     )
 }
@@ -7058,7 +7058,7 @@
     ) {
         <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="ident">item</span>.<span class="ident">is_enabled_for_codegen</span>(<span class="ident">ctx</span>));
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">impl_items</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[]</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">impl_items</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">trait_items</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
 
         <span class="kw">for</span> <span class="ident">method</span> <span class="kw">in</span> <span class="self">self</span>.<span class="ident">methods</span>() {
@@ -7092,8 +7092,8 @@
         <span class="kw">let</span> <span class="ident">trait_name</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="self">self</span>.<span class="ident">rust_name</span>());
 
         <span class="kw">let</span> <span class="ident">trait_block</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">pub</span> <span class="kw">trait</span> <span class="attribute">#<span class="ident">trait_name</span> {
-                <span class="attribute">#( <span class="attribute">#<span class="ident">trait_items</span> )<span class="op">*</span>
+            <span class="kw">pub</span> <span class="kw">trait</span> #<span class="ident">trait_name</span> {
+                #( #<span class="ident">trait_items</span> )<span class="op">*</span>
             }
         };
 
@@ -7101,8 +7101,8 @@
             <span class="ident">id</span>
         };
         <span class="kw">let</span> <span class="ident">impl_block</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span> <span class="attribute">#<span class="ident">trait_name</span> <span class="kw">for</span> <span class="attribute">#<span class="ident">ty_for_impl</span> {
-                <span class="attribute">#( <span class="attribute">#<span class="ident">impl_items</span> )<span class="op">*</span>
+            <span class="kw">impl</span> #<span class="ident">trait_name</span> <span class="kw">for</span> #<span class="ident">ty_for_impl</span> {
+                #( #<span class="ident">impl_items</span> )<span class="op">*</span>
             }
         };
 
@@ -7186,30 +7186,30 @@
         <span class="comment">// std::intrinsics::type_name, but...</span>
         <span class="kw">let</span> <span class="ident">union_field_decl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
             <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-            <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">PhantomData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
+            <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(::#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">PhantomData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
         };
 
         <span class="kw">let</span> <span class="ident">union_field_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
             <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
                 <span class="attribute">#[<span class="ident">inline</span>]</span>
                 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
-                    <span class="ident">__BindgenUnionField</span>(::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">PhantomData</span>)
+                    <span class="ident">__BindgenUnionField</span>(::#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">PhantomData</span>)
                 }
 
                 <span class="attribute">#[<span class="ident">inline</span>]</span>
                 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">T</span> {
-                    ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="self">self</span>)
+                    ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="self">self</span>)
                 }
 
                 <span class="attribute">#[<span class="ident">inline</span>]</span>
                 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">as_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span> {
-                    ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="self">self</span>)
+                    ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="self">self</span>)
                 }
             }
         };
 
         <span class="kw">let</span> <span class="ident">union_field_default_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">default</span>::<span class="ident">Default</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::#<span class="ident">prefix</span>::<span class="ident">default</span>::<span class="ident">Default</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
                 <span class="attribute">#[<span class="ident">inline</span>]</span>
                 <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
                     <span class="self">Self</span>::<span class="ident">new</span>()
@@ -7218,7 +7218,7 @@
         };
 
         <span class="kw">let</span> <span class="ident">union_field_clone_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">clone</span>::<span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::#<span class="ident">prefix</span>::<span class="ident">clone</span>::<span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
                 <span class="attribute">#[<span class="ident">inline</span>]</span>
                 <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
                     <span class="self">Self</span>::<span class="ident">new</span>()
@@ -7227,13 +7227,13 @@
         };
 
         <span class="kw">let</span> <span class="ident">union_field_copy_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">Copy</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
+            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">Copy</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
         };
 
         <span class="kw">let</span> <span class="ident">union_field_debug_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-                <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">fmt</span>::<span class="ident">Formatter</span>)
-                       <span class="op">-&gt;</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::#<span class="ident">prefix</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+                <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> ::#<span class="ident">prefix</span>::<span class="ident">fmt</span>::<span class="ident">Formatter</span>)
+                       <span class="op">-&gt;</span> ::#<span class="ident">prefix</span>::<span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
                     <span class="ident">fmt</span>.<span class="ident">write_str</span>(<span class="string">&quot;__BindgenUnionField&quot;</span>)
                 }
             }
@@ -7242,14 +7242,14 @@
         <span class="comment">// The actual memory of the filed will be hashed, so that&#39;s why these</span>
         <span class="comment">// field doesn&#39;t do anything with the hash.</span>
         <span class="kw">let</span> <span class="ident">union_field_hash_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">hash</span>::<span class="ident">Hash</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-                <span class="kw">fn</span> <span class="ident">hash</span><span class="op">&lt;</span><span class="ident">H</span>: ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">hash</span>::<span class="ident">Hasher</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">H</span>) {
+            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::#<span class="ident">prefix</span>::<span class="ident">hash</span>::<span class="ident">Hash</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+                <span class="kw">fn</span> <span class="ident">hash</span><span class="op">&lt;</span><span class="ident">H</span>: ::#<span class="ident">prefix</span>::<span class="ident">hash</span>::<span class="ident">Hasher</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">H</span>) {
                 }
             }
         };
 
         <span class="kw">let</span> <span class="ident">union_field_partialeq_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">cmp</span>::<span class="ident">PartialEq</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::#<span class="ident">prefix</span>::<span class="ident">cmp</span>::<span class="ident">PartialEq</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
                <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_other</span>: <span class="kw-2">&amp;</span><span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
                    <span class="bool-val">true</span>
                }
@@ -7257,7 +7257,7 @@
         };
 
         <span class="kw">let</span> <span class="ident">union_field_eq_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-           <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">cmp</span>::<span class="ident">Eq</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+           <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::#<span class="ident">prefix</span>::<span class="ident">cmp</span>::<span class="ident">Eq</span> <span class="kw">for</span> <span class="ident">__BindgenUnionField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
            }
         };
 
@@ -7269,7 +7269,7 @@
                          <span class="ident">union_field_debug_impl</span>,
                          <span class="ident">union_field_hash_impl</span>,
                          <span class="ident">union_field_partialeq_impl</span>,
-                         <span class="ident">union_field_eq_impl</span>]</span>;
+                         <span class="ident">union_field_eq_impl</span>];
 
         <span class="kw">let</span> <span class="ident">old_items</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">replace</span>(<span class="ident">result</span>, <span class="ident">items</span>);
         <span class="ident">result</span>.<span class="ident">extend</span>(<span class="ident">old_items</span>.<span class="ident">into_iter</span>());
@@ -7285,49 +7285,49 @@
             <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
             <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Default</span>)]</span>
             <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">__IncompleteArrayField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(
-                ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">PhantomData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
+                ::#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">PhantomData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
         };
 
         <span class="kw">let</span> <span class="ident">incomplete_array_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
             <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">__IncompleteArrayField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
                 <span class="attribute">#[<span class="ident">inline</span>]</span>
                 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
-                    <span class="ident">__IncompleteArrayField</span>(::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">PhantomData</span>)
+                    <span class="ident">__IncompleteArrayField</span>(::#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">PhantomData</span>)
                 }
 
                 <span class="attribute">#[<span class="ident">inline</span>]</span>
                 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">as_ptr</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">T</span> {
-                    ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="self">self</span>)
+                    ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="self">self</span>)
                 }
 
                 <span class="attribute">#[<span class="ident">inline</span>]</span>
                 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">as_mut_ptr</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">T</span> {
-                    ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="self">self</span>)
+                    ::#<span class="ident">prefix</span>::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="self">self</span>)
                 }
 
                 <span class="attribute">#[<span class="ident">inline</span>]</span>
                 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">as_slice</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">len</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">T</span>] {
-                    ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">slice</span>::<span class="ident">from_raw_parts</span>(<span class="self">self</span>.<span class="ident">as_ptr</span>(), <span class="ident">len</span>)
+                    ::#<span class="ident">prefix</span>::<span class="ident">slice</span>::<span class="ident">from_raw_parts</span>(<span class="self">self</span>.<span class="ident">as_ptr</span>(), <span class="ident">len</span>)
                 }
 
                 <span class="attribute">#[<span class="ident">inline</span>]</span>
                 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">as_mut_slice</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">len</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">T</span>] {
-                    ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">slice</span>::<span class="ident">from_raw_parts_mut</span>(<span class="self">self</span>.<span class="ident">as_mut_ptr</span>(), <span class="ident">len</span>)
+                    ::#<span class="ident">prefix</span>::<span class="ident">slice</span>::<span class="ident">from_raw_parts_mut</span>(<span class="self">self</span>.<span class="ident">as_mut_ptr</span>(), <span class="ident">len</span>)
                 }
             }
         };
 
         <span class="kw">let</span> <span class="ident">incomplete_array_debug_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">__IncompleteArrayField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-                <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">fmt</span>::<span class="ident">Formatter</span>)
-                       <span class="op">-&gt;</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::#<span class="ident">prefix</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">__IncompleteArrayField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+                <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> ::#<span class="ident">prefix</span>::<span class="ident">fmt</span>::<span class="ident">Formatter</span>)
+                       <span class="op">-&gt;</span> ::#<span class="ident">prefix</span>::<span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
                     <span class="ident">fmt</span>.<span class="ident">write_str</span>(<span class="string">&quot;__IncompleteArrayField&quot;</span>)
                 }
             }
         };
 
         <span class="kw">let</span> <span class="ident">incomplete_array_clone_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">clone</span>::<span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">__IncompleteArrayField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::#<span class="ident">prefix</span>::<span class="ident">clone</span>::<span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">__IncompleteArrayField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
                 <span class="attribute">#[<span class="ident">inline</span>]</span>
                 <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
                     <span class="self">Self</span>::<span class="ident">new</span>()
@@ -7336,14 +7336,14 @@
         };
 
         <span class="kw">let</span> <span class="ident">incomplete_array_copy_impl</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::<span class="attribute">#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">Copy</span> <span class="kw">for</span> <span class="ident">__IncompleteArrayField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
+            <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> ::#<span class="ident">prefix</span>::<span class="ident">marker</span>::<span class="ident">Copy</span> <span class="kw">for</span> <span class="ident">__IncompleteArrayField</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
         };
 
         <span class="kw">let</span> <span class="ident">items</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">incomplete_array_decl</span>,
                          <span class="ident">incomplete_array_impl</span>,
                          <span class="ident">incomplete_array_debug_impl</span>,
                          <span class="ident">incomplete_array_clone_impl</span>,
-                         <span class="ident">incomplete_array_copy_impl</span>]</span>;
+                         <span class="ident">incomplete_array_copy_impl</span>];
 
         <span class="kw">let</span> <span class="ident">old_items</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">replace</span>(<span class="ident">result</span>, <span class="ident">items</span>);
         <span class="ident">result</span>.<span class="ident">extend</span>(<span class="ident">old_items</span>.<span class="ident">into_iter</span>());
@@ -7381,7 +7381,7 @@
     <span class="kw">fn</span> <span class="ident">primitive_ty</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="ident">quote</span>::<span class="ident">Tokens</span> {
         <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident_raw</span>(<span class="ident">name</span>);
         <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="attribute">#<span class="ident">ident</span>
+            #<span class="ident">ident</span>
         }
     }
 
@@ -7418,7 +7418,7 @@
         } <span class="kw">else</span> {
             <span class="kw">let</span> <span class="ident">ret_ty</span> <span class="op">=</span> <span class="ident">return_item</span>.<span class="ident">to_rust_ty_or_opaque</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span>());
             <span class="macro">quote</span><span class="macro">!</span> {
-                <span class="op">-&gt;</span> <span class="attribute">#<span class="ident">ret_ty</span>
+                <span class="op">-&gt;</span> #<span class="ident">ret_ty</span>
             }
         }
     }
@@ -7475,7 +7475,7 @@
             <span class="kw">let</span> <span class="ident">arg_name</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">rust_ident</span>(<span class="ident">arg_name</span>);
 
             <span class="macro">quote</span><span class="macro">!</span> {
-                <span class="attribute">#<span class="ident">arg_name</span> : <span class="attribute">#<span class="ident">arg_ty</span>
+                #<span class="ident">arg_name</span> : #<span class="ident">arg_ty</span>
             }
         }).<span class="ident">collect</span>()
     }
@@ -7498,13 +7498,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

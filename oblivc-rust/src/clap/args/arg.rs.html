@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/schoppmp/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-2.28.0/src/args/arg.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-2.29.1/src/args/arg.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>arg.rs.html -- source</title>
@@ -3714,6 +3714,15 @@
 <span id="3669">3669</span>
 <span id="3670">3670</span>
 <span id="3671">3671</span>
+<span id="3672">3672</span>
+<span id="3673">3673</span>
+<span id="3674">3674</span>
+<span id="3675">3675</span>
+<span id="3676">3676</span>
+<span id="3677">3677</span>
+<span id="3678">3678</span>
+<span id="3679">3679</span>
+<span id="3680">3680</span>
 </pre><pre class="rust ">
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;yaml&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">collections</span>::<span class="ident">BTreeMap</span>;
@@ -7232,6 +7241,15 @@
         <span class="self">self</span>
     }
 
+    <span class="doccomment">/// @TODO @p2 @docs @release: write docs</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hide_env_values</span>(<span class="self">self</span>, <span class="ident">hide</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> { 
+        <span class="kw">if</span> <span class="ident">hide</span> {
+            <span class="self">self</span>.<span class="ident">set</span>(<span class="ident">ArgSettings</span>::<span class="ident">HideEnvValues</span>)
+        } <span class="kw">else</span> {
+            <span class="self">self</span>.<span class="ident">unset</span>(<span class="ident">ArgSettings</span>::<span class="ident">HideEnvValues</span>)
+        }
+    }
+
     <span class="doccomment">/// When set to `true` the help string will be displayed on the line after the argument and</span>
     <span class="doccomment">/// indented once. This can be helpful for arguments with very long or complex help messages.</span>
     <span class="doccomment">/// This can also be helpful for arguments with very long flag names, or many/long value names.</span>
@@ -7404,13 +7422,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
