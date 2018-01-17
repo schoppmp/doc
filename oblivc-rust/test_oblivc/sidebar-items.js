@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["millionaire","The Obliv-C function that gets passed to [`oblivc::ProtocolDesc::exec_yao_protocol`][1]."]],"struct":[["millionaire_args","Arguments to the Obliv-C function [`millionnaire`][1]."]]});
