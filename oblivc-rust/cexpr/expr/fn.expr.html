@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         <p class='location'><a href='../index.html'>cexpr</a>::<wbr><a href='index.html'>expr</a></p><script>window.sidebarCurrent = {name: 'expr', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
@@ -48,7 +49,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/cexpr/expr.rs.html#512-514' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../../src/cexpr/expr.rs.html#513-515' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn expr&lt;'a&gt;(input: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'a [</a><a class="struct" href="../../cexpr/token/struct.Token.html" title="struct cexpr::token::Token">Token</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="type" href="../../cexpr/expr/type.CResult.html" title="type cexpr::expr::CResult">CResult</a>&lt;'a, <a class="enum" href="../../cexpr/expr/enum.EvalResult.html" title="enum cexpr::expr::EvalResult">EvalResult</a>&gt;</pre><div class='docblock'><p>Parse and evalute an expression of a list of tokens.</p>
 
 <p>Returns an error if the input is not a valid expression or if the token

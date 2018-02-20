@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/which-1.0.3/src/lib.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/which-1.0.5/src/lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         
     </nav>
@@ -488,6 +489,13 @@
 <span id="443">443</span>
 <span id="444">444</span>
 <span id="445">445</span>
+<span id="446">446</span>
+<span id="447">447</span>
+<span id="448">448</span>
+<span id="449">449</span>
+<span id="450">450</span>
+<span id="451">451</span>
+<span id="452">452</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! which</span>
 <span class="doccomment">//!</span>
@@ -508,9 +516,14 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">tempdir</span>;
 
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ascii</span>::<span class="ident">AsciiExt</span>;
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">path</span>::{<span class="ident">Path</span>,<span class="ident">PathBuf</span>};
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">path</span>::{<span class="ident">Path</span>, <span class="ident">PathBuf</span>};
 <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">env</span>, <span class="ident">fs</span>};
+
+<span class="comment">// Remove the `AsciiExt` will make `which-rs` build failed in older versions of Rust.</span>
+<span class="comment">// Please Keep it here though we don&#39;t need it in the latest Rust version.</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused</span>)]</span>
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ascii</span>::<span class="ident">AsciiExt</span>;
+
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>::<span class="ident">CString</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>::<span class="ident">OsStr</span>;
@@ -523,7 +536,10 @@
         <span class="comment">// Nothing to do.</span>
         <span class="ident">path</span>.<span class="ident">as_ref</span>().<span class="ident">to_path_buf</span>()
     } <span class="kw">else</span> {
-        <span class="kw">match</span> <span class="ident">path</span>.<span class="ident">as_ref</span>().<span class="ident">extension</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">e</span>.<span class="ident">to_str</span>()).<span class="ident">map</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">e</span>.<span class="ident">eq_ignore_ascii_case</span>(<span class="ident">env</span>::<span class="ident">consts</span>::<span class="ident">EXE_EXTENSION</span>)) {
+        <span class="kw">match</span> <span class="ident">path</span>.<span class="ident">as_ref</span>()
+            .<span class="ident">extension</span>()
+            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">e</span>.<span class="ident">to_str</span>())
+            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">e</span>.<span class="ident">eq_ignore_ascii_case</span>(<span class="ident">env</span>::<span class="ident">consts</span>::<span class="ident">EXE_EXTENSION</span>)) {
             <span class="comment">// Already has the right extension.</span>
             <span class="prelude-val">Some</span>(<span class="bool-val">true</span>) <span class="op">=&gt;</span> <span class="ident">path</span>.<span class="ident">as_ref</span>().<span class="ident">to_path_buf</span>(),
             _ <span class="op">=&gt;</span> {
@@ -559,19 +575,18 @@
 <span class="doccomment">/// assert_eq!(result, PathBuf::from(&quot;/usr/bin/rustc&quot;));</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">which</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;&gt;</span>(<span class="ident">binary_name</span>: <span class="ident">T</span>)
-             <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PathBuf</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">which</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;&gt;</span>(<span class="ident">binary_name</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PathBuf</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span> {
     <span class="ident">env</span>::<span class="ident">current_dir</span>()
         .<span class="ident">or_else</span>(<span class="op">|</span>_<span class="op">|</span> <span class="prelude-val">Err</span>(<span class="string">&quot;Couldn&#39;t get current directory&quot;</span>))
         .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">cwd</span><span class="op">|</span> <span class="ident">which_in</span>(<span class="ident">binary_name</span>, <span class="ident">env</span>::<span class="ident">var_os</span>(<span class="string">&quot;PATH&quot;</span>), <span class="kw-2">&amp;</span><span class="ident">cwd</span>))
 }
 
 <span class="doccomment">/// Find `binary_name` in the path list `paths`, using `cwd` to resolve relative paths.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">which_in</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span>, <span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">binary_name</span>: <span class="ident">T</span>, <span class="ident">paths</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">U</span><span class="op">&gt;</span>, <span class="ident">cwd</span>: <span class="ident">V</span>)
-             <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PathBuf</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span>
-                <span class="kw">where</span> <span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>,
-                      <span class="ident">U</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>,
-                      <span class="ident">V</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">which_in</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span>, <span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">binary_name</span>: <span class="ident">T</span>, <span class="ident">paths</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">U</span><span class="op">&gt;</span>, <span class="ident">cwd</span>: <span class="ident">V</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PathBuf</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span>
+    <span class="kw">where</span> <span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>,
+          <span class="ident">U</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>,
+          <span class="ident">V</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;</span>
+{
     <span class="kw">let</span> <span class="ident">binary_checker</span> <span class="op">=</span> <span class="ident">CompositeChecker</span>::<span class="ident">new</span>()
         .<span class="ident">add_checker</span>(<span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">ExistedChecker</span>::<span class="ident">new</span>()))
         .<span class="ident">add_checker</span>(<span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">ExecutableChecker</span>::<span class="ident">new</span>()));
@@ -588,12 +603,16 @@
         <span class="ident">Finder</span>
     }
 
-    <span class="kw">fn</span> <span class="ident">find</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span>, <span class="ident">V</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">binary_name</span>: <span class="ident">T</span>, <span class="ident">paths</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">U</span><span class="op">&gt;</span>, <span class="ident">cwd</span>: <span class="ident">V</span>,
+    <span class="kw">fn</span> <span class="ident">find</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span>, <span class="ident">V</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>,
+                     <span class="ident">binary_name</span>: <span class="ident">T</span>,
+                     <span class="ident">paths</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">U</span><span class="op">&gt;</span>,
+                     <span class="ident">cwd</span>: <span class="ident">V</span>,
                      <span class="ident">binary_checker</span>: <span class="kw-2">&amp;</span><span class="ident">Checker</span>)
                      <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PathBuf</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span><span class="op">&gt;</span>
         <span class="kw">where</span> <span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>,
               <span class="ident">U</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>,
-              <span class="ident">V</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;</span> {
+              <span class="ident">V</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;</span>
+    {
 
         <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="ident">ensure_exe_extension</span>(<span class="ident">binary_name</span>.<span class="ident">as_ref</span>());
 
@@ -621,12 +640,12 @@
             }
         } <span class="kw">else</span> {
             <span class="comment">// No separator, look it up in `paths`.</span>
-            <span class="ident">paths</span>.<span class="ident">and_then</span>(
-                <span class="op">|</span><span class="ident">paths</span><span class="op">|</span>
-                <span class="ident">env</span>::<span class="ident">split_paths</span>(<span class="ident">paths</span>.<span class="ident">as_ref</span>())
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">p</span><span class="op">|</span> <span class="ident">ensure_exe_extension</span>(<span class="ident">p</span>.<span class="ident">join</span>(<span class="ident">binary_name</span>.<span class="ident">as_ref</span>())))
-                    .<span class="ident">skip_while</span>(<span class="op">|</span><span class="ident">p</span><span class="op">|</span> <span class="op">!</span>(<span class="ident">binary_checker</span>.<span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="ident">p</span>)))
-                    .<span class="ident">next</span>())
+            <span class="ident">paths</span>.<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">paths</span><span class="op">|</span> {
+                    <span class="ident">env</span>::<span class="ident">split_paths</span>(<span class="ident">paths</span>.<span class="ident">as_ref</span>())
+                        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">p</span><span class="op">|</span> <span class="ident">ensure_exe_extension</span>(<span class="ident">p</span>.<span class="ident">join</span>(<span class="ident">binary_name</span>.<span class="ident">as_ref</span>())))
+                        .<span class="ident">skip_while</span>(<span class="op">|</span><span class="ident">p</span><span class="op">|</span> <span class="op">!</span>(<span class="ident">binary_checker</span>.<span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="ident">p</span>)))
+                        .<span class="ident">next</span>()
+                })
                 .<span class="ident">ok_or</span>(<span class="string">&quot;Cannot find binary path&quot;</span>)
         }
     }
@@ -649,14 +668,14 @@
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>
     <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
         <span class="ident">CString</span>::<span class="ident">new</span>(<span class="ident">path</span>.<span class="ident">as_os_str</span>().<span class="ident">as_bytes</span>())
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> {
-                <span class="prelude-val">Ok</span>(<span class="kw">unsafe</span> { <span class="ident">libc</span>::<span class="ident">access</span>(<span class="ident">c</span>.<span class="ident">as_ptr</span>(), <span class="ident">libc</span>::<span class="ident">X_OK</span>) <span class="op">==</span> <span class="number">0</span> })
-            })
+            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="kw">unsafe</span> { <span class="ident">libc</span>::<span class="ident">access</span>(<span class="ident">c</span>.<span class="ident">as_ptr</span>(), <span class="ident">libc</span>::<span class="ident">X_OK</span>) <span class="op">==</span> <span class="number">0</span> }))
             .<span class="ident">unwrap_or</span>(<span class="bool-val">false</span>)
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">unix</span>))]</span>
-    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> { <span class="bool-val">true</span> }
+    <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+        <span class="bool-val">true</span>
+    }
 }
 
 <span class="kw">struct</span> <span class="ident">ExistedChecker</span>;
@@ -669,21 +688,19 @@
 
 <span class="kw">impl</span> <span class="ident">Checker</span> <span class="kw">for</span> <span class="ident">ExistedChecker</span> {
     <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="ident">fs</span>::<span class="ident">metadata</span>(<span class="ident">path</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">metadata</span><span class="op">|</span>{
-            <span class="ident">metadata</span>.<span class="ident">is_file</span>()
-        }).<span class="ident">unwrap_or</span>(<span class="bool-val">false</span>)
+        <span class="ident">fs</span>::<span class="ident">metadata</span>(<span class="ident">path</span>)
+            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">metadata</span><span class="op">|</span> <span class="ident">metadata</span>.<span class="ident">is_file</span>())
+            .<span class="ident">unwrap_or</span>(<span class="bool-val">false</span>)
     }
 }
 
 <span class="kw">struct</span> <span class="ident">CompositeChecker</span> {
-    <span class="ident">checkers</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Checker</span><span class="op">&gt;&gt;</span>
+    <span class="ident">checkers</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Checker</span><span class="op">&gt;&gt;</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">CompositeChecker</span> {
     <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-&gt;</span> <span class="ident">CompositeChecker</span> {
-        <span class="ident">CompositeChecker</span> {
-            <span class="ident">checkers</span>: <span class="ident">Vec</span>::<span class="ident">new</span>()
-        }
+        <span class="ident">CompositeChecker</span> { <span class="ident">checkers</span>: <span class="ident">Vec</span>::<span class="ident">new</span>() }
     }
 
     <span class="kw">fn</span> <span class="ident">add_checker</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">checker</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Checker</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">CompositeChecker</span> {
@@ -694,7 +711,8 @@
 
 <span class="kw">impl</span> <span class="ident">Checker</span> <span class="kw">for</span> <span class="ident">CompositeChecker</span> {
     <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">checkers</span>.<span class="ident">iter</span>()
+        <span class="self">self</span>.<span class="ident">checkers</span>
+            .<span class="ident">iter</span>()
             .<span class="ident">all</span>(<span class="op">|</span><span class="ident">checker</span><span class="op">|</span> <span class="ident">checker</span>.<span class="ident">is_valid</span>(<span class="ident">path</span>))
     }
 }
@@ -717,8 +735,7 @@
 <span class="attribute">#[<span class="ident">test</span>]</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
 <span class="kw">fn</span> <span class="ident">test_exe_extension_existing_extension_uppercase</span>() {
-    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">PathBuf</span>::<span class="ident">from</span>(<span class="string">&quot;foo.EXE&quot;</span>),
-               <span class="ident">ensure_exe_extension</span>(<span class="string">&quot;foo.EXE&quot;</span>));
+    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">PathBuf</span>::<span class="ident">from</span>(<span class="string">&quot;foo.EXE&quot;</span>), <span class="ident">ensure_exe_extension</span>(<span class="string">&quot;foo.EXE&quot;</span>));
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
@@ -726,10 +743,10 @@
     <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
 
     <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">env</span>;
-    <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>::{<span class="ident">OsStr</span>,<span class="ident">OsString</span>};
+    <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>::{<span class="ident">OsStr</span>, <span class="ident">OsString</span>};
     <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fs</span>;
     <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>;
-    <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">path</span>::{<span class="ident">Path</span>,<span class="ident">PathBuf</span>};
+    <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">path</span>::{<span class="ident">Path</span>, <span class="ident">PathBuf</span>};
     <span class="kw">use</span> <span class="ident">tempdir</span>::<span class="ident">TempDir</span>;
 
     <span class="kw">struct</span> <span class="ident">TestFixture</span> {
@@ -759,8 +776,7 @@
 
     <span class="kw">fn</span> <span class="ident">touch</span>(<span class="ident">dir</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">b</span> <span class="op">=</span> <span class="ident">dir</span>.<span class="ident">join</span>(<span class="ident">path</span>).<span class="ident">with_extension</span>(<span class="ident">env</span>::<span class="ident">consts</span>::<span class="ident">EXE_EXTENSION</span>);
-        <span class="ident">fs</span>::<span class="ident">File</span>::<span class="ident">create</span>(<span class="kw-2">&amp;</span><span class="ident">b</span>)
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">_f</span><span class="op">|</span> <span class="ident">b</span>.<span class="ident">canonicalize</span>())
+        <span class="ident">fs</span>::<span class="ident">File</span>::<span class="ident">create</span>(<span class="kw-2">&amp;</span><span class="ident">b</span>).<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">_f</span><span class="op">|</span> <span class="ident">b</span>.<span class="ident">canonicalize</span>())
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">unix</span>))]</span>
@@ -773,8 +789,8 @@
             <span class="kw">let</span> <span class="ident">tempdir</span> <span class="op">=</span> <span class="ident">TempDir</span>::<span class="ident">new</span>(<span class="string">&quot;which_tests&quot;</span>).<span class="ident">unwrap</span>();
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">builder</span> <span class="op">=</span> <span class="ident">fs</span>::<span class="ident">DirBuilder</span>::<span class="ident">new</span>();
             <span class="ident">builder</span>.<span class="ident">recursive</span>(<span class="bool-val">true</span>);
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">paths</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>();
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">bins</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>();
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">paths</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">bins</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
             <span class="kw">for</span> <span class="ident">d</span> <span class="kw">in</span> <span class="ident">SUBDIRS</span>.<span class="ident">iter</span>() {
                 <span class="kw">let</span> <span class="ident">p</span> <span class="op">=</span> <span class="ident">tempdir</span>.<span class="ident">path</span>().<span class="ident">join</span>(<span class="ident">d</span>);
                 <span class="ident">builder</span>.<span class="ident">create</span>(<span class="kw-2">&amp;</span><span class="ident">p</span>).<span class="ident">unwrap</span>();
@@ -828,8 +844,7 @@
     <span class="kw">fn</span> <span class="ident">test_which_extension</span>() {
         <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">TestFixture</span>::<span class="ident">new</span>();
         <span class="kw">let</span> <span class="ident">b</span> <span class="op">=</span> <span class="ident">Path</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">BIN_NAME</span>).<span class="ident">with_extension</span>(<span class="ident">env</span>::<span class="ident">consts</span>::<span class="ident">EXE_EXTENSION</span>);
-        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">_which</span>(<span class="kw-2">&amp;</span><span class="ident">f</span>, <span class="kw-2">&amp;</span><span class="ident">b</span>).<span class="ident">unwrap</span>().<span class="ident">canonicalize</span>().<span class="ident">unwrap</span>(),
-                   <span class="ident">f</span>.<span class="ident">bins</span>[<span class="number">0</span>])
+        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">_which</span>(<span class="kw-2">&amp;</span><span class="ident">f</span>, <span class="kw-2">&amp;</span><span class="ident">b</span>).<span class="ident">unwrap</span>().<span class="ident">canonicalize</span>().<span class="ident">unwrap</span>(), <span class="ident">f</span>.<span class="ident">bins</span>[<span class="number">0</span>])
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/cexpr-0.2.2/src/expr.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/cexpr-0.2.3/src/expr.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>expr.rs.html -- source</title>
@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         
     </nav>
@@ -620,6 +621,7 @@
 <span id="575">575</span>
 <span id="576">576</span>
 <span id="577">577</span>
+<span id="578">578</span>
 </pre><pre class="rust ">
 <span class="comment">// (C) Copyright 2016 Jethro G. Beekman</span>
 <span class="comment">//</span>
@@ -737,6 +739,7 @@
 	});
 );
 
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_macros</span>)]</span>
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">any_token</span> (
 	(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">i</span>:<span class="ident">expr</span>,) <span class="op">=&gt;</span> ({
 		<span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">i</span>.<span class="ident">is_empty</span>() {
