@@ -185,6 +185,10 @@
 <span id="185">185</span>
 <span id="186">186</span>
 <span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! # Example Usage of the `oblivc` crate</span>
 <span class="doccomment">//! This crate uses the [`oblivc`][1] crate to solve [Yao&#39;s Millionaire&#39;s Problem][2].</span>
@@ -271,7 +275,7 @@
 <span class="doccomment">//! # };</span>
 <span class="doccomment">//! # let pd = oblivc::protocol_desc()</span>
 <span class="doccomment">//! #     .party(1)</span>
-<span class="doccomment">//! #     .accept(&quot;56734&quot;).unwrap();</span>
+<span class="doccomment">//! #     .accept(&quot;67845&quot;).unwrap();</span>
 <span class="doccomment">//! #    unsafe { pd.exec_yao_protocol(millionaire, &amp;mut args); }</span>
 <span class="doccomment">//! # });</span>
 <span class="doccomment">//! let mut args = millionaire_args {</span>
@@ -280,7 +284,7 @@
 <span class="doccomment">//! };</span>
 <span class="doccomment">//! let pd = oblivc::protocol_desc()</span>
 <span class="doccomment">//!     .party(2)</span>
-<span class="doccomment">//!     .connect(&quot;localhost&quot;, &quot;56734&quot;).unwrap();</span>
+<span class="doccomment">//!     .connect(&quot;localhost&quot;, &quot;67845&quot;).unwrap();</span>
 <span class="doccomment">//! # unsafe { pd.exec_yao_protocol(millionaire, &amp;mut args); }</span>
 <span class="doccomment">//! # server.join().unwrap();</span>
 <span class="doccomment">//! # assert!(args.output == -1);</span>
@@ -300,7 +304,7 @@
 <span class="doccomment">//! # };</span>
 <span class="doccomment">//! # let pd = oblivc::protocol_desc()</span>
 <span class="doccomment">//! #     .party(1)</span>
-<span class="doccomment">//! #     .accept(&quot;56734&quot;).unwrap();</span>
+<span class="doccomment">//! #     .accept(&quot;78956&quot;).unwrap();</span>
 <span class="doccomment">//! #    unsafe { pd.exec_yao_protocol(millionaire, &amp;mut args); }</span>
 <span class="doccomment">//! # });</span>
 <span class="doccomment">//! # let mut args = millionaire_args {</span>
@@ -309,7 +313,7 @@
 <span class="doccomment">//! # };</span>
 <span class="doccomment">//! # let pd = oblivc::protocol_desc()</span>
 <span class="doccomment">//! #     .party(2)</span>
-<span class="doccomment">//! #     .connect(&quot;localhost&quot;, &quot;56734&quot;).unwrap();</span>
+<span class="doccomment">//! #     .connect(&quot;localhost&quot;, &quot;78956&quot;).unwrap();</span>
 <span class="doccomment">//! unsafe { pd.exec_yao_protocol(millionaire, &amp;mut args); }</span>
 <span class="doccomment">//! # server.join().unwrap();</span>
 <span class="doccomment">//! # assert!(args.output == -1);</span>
@@ -359,7 +363,9 @@
             <span class="ident">output</span>: <span class="number">0</span>,
         };
         <span class="kw">let</span> <span class="ident">pd</span> <span class="op">=</span> <span class="ident">oblivc</span>::<span class="ident">protocol_desc</span>();
-        <span class="kw">unsafe</span> { <span class="ident">pd</span>.<span class="ident">exec_yao_protocol</span>(<span class="ident">millionaire</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">args</span>); }
+        <span class="kw">unsafe</span> {
+            <span class="ident">pd</span>.<span class="ident">exec_yao_protocol</span>(<span class="ident">millionaire</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">args</span>);
+        }
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
@@ -370,7 +376,9 @@
             <span class="ident">output</span>: <span class="number">0</span>,
         };
         <span class="kw">let</span> <span class="ident">pd</span> <span class="op">=</span> <span class="ident">oblivc</span>::<span class="ident">protocol_desc</span>().<span class="ident">party</span>(<span class="number">1</span>);
-        <span class="kw">unsafe</span> { <span class="ident">pd</span>.<span class="ident">exec_yao_protocol</span>(<span class="ident">millionaire</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">args</span>); }
+        <span class="kw">unsafe</span> {
+            <span class="ident">pd</span>.<span class="ident">exec_yao_protocol</span>(<span class="ident">millionaire</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">args</span>);
+        }
     }
 }
 </pre></div>
