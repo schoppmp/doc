@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.31/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.35/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../cc/index.html'><img src='../../rust-logo.png' alt='logo' width='100'></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -2380,6 +2380,37 @@
 <span id="2380">2380</span>
 <span id="2381">2381</span>
 <span id="2382">2382</span>
+<span id="2383">2383</span>
+<span id="2384">2384</span>
+<span id="2385">2385</span>
+<span id="2386">2386</span>
+<span id="2387">2387</span>
+<span id="2388">2388</span>
+<span id="2389">2389</span>
+<span id="2390">2390</span>
+<span id="2391">2391</span>
+<span id="2392">2392</span>
+<span id="2393">2393</span>
+<span id="2394">2394</span>
+<span id="2395">2395</span>
+<span id="2396">2396</span>
+<span id="2397">2397</span>
+<span id="2398">2398</span>
+<span id="2399">2399</span>
+<span id="2400">2400</span>
+<span id="2401">2401</span>
+<span id="2402">2402</span>
+<span id="2403">2403</span>
+<span id="2404">2404</span>
+<span id="2405">2405</span>
+<span id="2406">2406</span>
+<span id="2407">2407</span>
+<span id="2408">2408</span>
+<span id="2409">2409</span>
+<span id="2410">2410</span>
+<span id="2411">2411</span>
+<span id="2412">2412</span>
+<span id="2413">2413</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! A library for build scripts to compile custom C code</span>
 <span class="doccomment">//!</span>
@@ -2444,15 +2475,15 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;parallel&quot;</span>)]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">rayon</span>;
 
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">collections</span>::<span class="ident">HashMap</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">env</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>::{<span class="ident">OsStr</span>, <span class="ident">OsString</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fs</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>::{<span class="self">self</span>, <span class="ident">BufRead</span>, <span class="ident">BufReader</span>, <span class="ident">Read</span>, <span class="ident">Write</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">path</span>::{<span class="ident">Path</span>, <span class="ident">PathBuf</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">process</span>::{<span class="ident">Child</span>, <span class="ident">Command</span>, <span class="ident">Stdio</span>};
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>::{<span class="self">self</span>, <span class="ident">BufRead</span>, <span class="ident">BufReader</span>, <span class="ident">Read</span>, <span class="ident">Write</span>};
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">thread</span>::{<span class="self">self</span>, <span class="ident">JoinHandle</span>};
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">collections</span>::<span class="ident">HashMap</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">sync</span>::{<span class="ident">Arc</span>, <span class="ident">Mutex</span>};
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">thread</span>::{<span class="self">self</span>, <span class="ident">JoinHandle</span>};
 
 <span class="comment">// These modules are all glue to support reading the MSVC version from</span>
 <span class="comment">// the registry and from COM interfaces</span>
@@ -3274,7 +3305,7 @@
                     <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error</span>::<span class="ident">new</span>(
                         <span class="ident">ErrorKind</span>::<span class="ident">IOError</span>,
                         <span class="string">&quot;Getting object file details failed.&quot;</span>,
-                    ))
+                    ));
                 }
             };
 
@@ -3502,12 +3533,18 @@
         <span class="comment">// CFLAGS/CXXFLAGS, since those variables presumably already contain</span>
         <span class="comment">// the desired set of warnings flags.</span>
 
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">warnings</span>.<span class="ident">unwrap_or</span>(<span class="kw">if</span> <span class="self">self</span>.<span class="ident">has_flags</span>() { <span class="bool-val">false</span> } <span class="kw">else</span> { <span class="bool-val">true</span> }) {
+        <span class="kw">if</span> <span class="self">self</span>
+            .<span class="ident">warnings</span>
+            .<span class="ident">unwrap_or</span>(<span class="kw">if</span> <span class="self">self</span>.<span class="ident">has_flags</span>() { <span class="bool-val">false</span> } <span class="kw">else</span> { <span class="bool-val">true</span> })
+        {
             <span class="kw">let</span> <span class="ident">wflags</span> <span class="op">=</span> <span class="ident">cmd</span>.<span class="ident">family</span>.<span class="ident">warnings_flags</span>().<span class="ident">into</span>();
             <span class="ident">cmd</span>.<span class="ident">push_cc_arg</span>(<span class="ident">wflags</span>);
         }
 
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">extra_warnings</span>.<span class="ident">unwrap_or</span>(<span class="kw">if</span> <span class="self">self</span>.<span class="ident">has_flags</span>() { <span class="bool-val">false</span> } <span class="kw">else</span> { <span class="bool-val">true</span> }) {
+        <span class="kw">if</span> <span class="self">self</span>
+            .<span class="ident">extra_warnings</span>
+            .<span class="ident">unwrap_or</span>(<span class="kw">if</span> <span class="self">self</span>.<span class="ident">has_flags</span>() { <span class="bool-val">false</span> } <span class="kw">else</span> { <span class="bool-val">true</span> })
+        {
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">wflags</span>) <span class="op">=</span> <span class="ident">cmd</span>.<span class="ident">family</span>.<span class="ident">extra_warnings_flags</span>() {
                 <span class="ident">cmd</span>.<span class="ident">push_cc_arg</span>(<span class="ident">wflags</span>.<span class="ident">into</span>());
             }
@@ -3544,7 +3581,12 @@
         <span class="prelude-val">Ok</span>(<span class="ident">cmd</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">add_default_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">cmd</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Tool</span>, <span class="ident">target</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">opt_level</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">add_default_flags</span>(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        <span class="ident">cmd</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Tool</span>,
+        <span class="ident">target</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">opt_level</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
         <span class="comment">// Non-target flags</span>
         <span class="comment">// If the flag is not conditioned on target variable, it belongs here :)</span>
         <span class="kw">match</span> <span class="ident">cmd</span>.<span class="ident">family</span> {
@@ -3558,8 +3600,9 @@
                     <span class="prelude-val">Some</span>(<span class="bool-val">true</span>) <span class="op">=&gt;</span> <span class="string">&quot;/MT&quot;</span>,
                     <span class="prelude-val">Some</span>(<span class="bool-val">false</span>) <span class="op">=&gt;</span> <span class="string">&quot;/MD&quot;</span>,
                     <span class="prelude-val">None</span> <span class="op">=&gt;</span> {
-                        <span class="kw">let</span> <span class="ident">features</span> <span class="op">=</span>
-                            <span class="self">self</span>.<span class="ident">getenv</span>(<span class="string">&quot;CARGO_CFG_TARGET_FEATURE&quot;</span>).<span class="ident">unwrap_or</span>(<span class="ident">String</span>::<span class="ident">new</span>());
+                        <span class="kw">let</span> <span class="ident">features</span> <span class="op">=</span> <span class="self">self</span>
+                            .<span class="ident">getenv</span>(<span class="string">&quot;CARGO_CFG_TARGET_FEATURE&quot;</span>)
+                            .<span class="ident">unwrap_or</span>(<span class="ident">String</span>::<span class="ident">new</span>());
                         <span class="kw">if</span> <span class="ident">features</span>.<span class="ident">contains</span>(<span class="string">&quot;crt-static&quot;</span>) {
                             <span class="string">&quot;/MT&quot;</span>
                         } <span class="kw">else</span> {
@@ -3641,7 +3684,8 @@
                 <span class="comment">// the SDK, but for all released versions of the</span>
                 <span class="comment">// Windows SDK it is required.</span>
                 <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;arm&quot;</span>) <span class="op">||</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;thumb&quot;</span>) {
-                    <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;/D_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1&quot;</span>.<span class="ident">into</span>());
+                    <span class="ident">cmd</span>.<span class="ident">args</span>
+                        .<span class="ident">push</span>(<span class="string">&quot;/D_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1&quot;</span>.<span class="ident">into</span>());
                 }
             }
             <span class="ident">ToolFamily</span>::<span class="ident">Gnu</span> <span class="op">=&gt;</span> {
@@ -3654,14 +3698,18 @@
                 }
 
                 <span class="kw">if</span> <span class="self">self</span>.<span class="ident">static_flag</span>.<span class="ident">is_none</span>() {
-                    <span class="kw">let</span> <span class="ident">features</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">getenv</span>(<span class="string">&quot;CARGO_CFG_TARGET_FEATURE&quot;</span>).<span class="ident">unwrap_or</span>(<span class="ident">String</span>::<span class="ident">new</span>());
+                    <span class="kw">let</span> <span class="ident">features</span> <span class="op">=</span> <span class="self">self</span>
+                        .<span class="ident">getenv</span>(<span class="string">&quot;CARGO_CFG_TARGET_FEATURE&quot;</span>)
+                        .<span class="ident">unwrap_or</span>(<span class="ident">String</span>::<span class="ident">new</span>());
                     <span class="kw">if</span> <span class="ident">features</span>.<span class="ident">contains</span>(<span class="string">&quot;crt-static&quot;</span>) {
                         <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-static&quot;</span>.<span class="ident">into</span>());
                     }
                 }
 
                 <span class="comment">// armv7 targets get to use armv7 instructions</span>
-                <span class="kw">if</span> (<span class="ident">target</span>.<span class="ident">starts_with</span>(<span class="string">&quot;armv7&quot;</span>) <span class="op">||</span> <span class="ident">target</span>.<span class="ident">starts_with</span>(<span class="string">&quot;thumbv7&quot;</span>)) <span class="op">&amp;&amp;</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;-linux-&quot;</span>) {
+                <span class="kw">if</span> (<span class="ident">target</span>.<span class="ident">starts_with</span>(<span class="string">&quot;armv7&quot;</span>) <span class="op">||</span> <span class="ident">target</span>.<span class="ident">starts_with</span>(<span class="string">&quot;thumbv7&quot;</span>))
+                    <span class="op">&amp;&amp;</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;-linux-&quot;</span>)
+                {
                     <span class="ident">cmd</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="string">&quot;-march=armv7-a&quot;</span>.<span class="ident">into</span>());
                 }
 
@@ -3826,7 +3874,11 @@
     <span class="kw">fn</span> <span class="ident">has_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
         <span class="kw">let</span> <span class="ident">flags_env_var_name</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">cpp</span> { <span class="string">&quot;CXXFLAGS&quot;</span> } <span class="kw">else</span> { <span class="string">&quot;CFLAGS&quot;</span> };
         <span class="kw">let</span> <span class="ident">flags_env_var_value</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_var</span>(<span class="ident">flags_env_var_name</span>);
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=</span> <span class="ident">flags_env_var_value</span> { <span class="bool-val">true</span> } <span class="kw">else</span> { <span class="bool-val">false</span> }
+        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=</span> <span class="ident">flags_env_var_value</span> {
+            <span class="bool-val">true</span>
+        } <span class="kw">else</span> {
+            <span class="bool-val">false</span>
+        }
     }
 
     <span class="kw">fn</span> <span class="ident">msvc_macro_assembler</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">Command</span>, <span class="ident">String</span>), <span class="ident">Error</span><span class="op">&gt;</span> {
@@ -3870,12 +3922,7 @@
         <span class="kw">let</span> <span class="ident">objects</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">objs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">obj</span><span class="op">|</span> <span class="ident">obj</span>.<span class="ident">dst</span>.<span class="ident">clone</span>()).<span class="ident">collect</span>();
         <span class="kw">let</span> <span class="ident">target</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_target</span>()<span class="question-mark">?</span>;
         <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;msvc&quot;</span>) {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cmd</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">archiver</span> {
-                <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">s</span>) <span class="op">=&gt;</span> <span class="self">self</span>.<span class="ident">cmd</span>(<span class="ident">s</span>),
-                <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="ident">windows_registry</span>::<span class="ident">find</span>(<span class="kw-2">&amp;</span><span class="ident">target</span>, <span class="string">&quot;lib.exe&quot;</span>)
-                    .<span class="ident">unwrap_or_else</span>(<span class="op">||</span> <span class="self">self</span>.<span class="ident">cmd</span>(<span class="string">&quot;lib.exe&quot;</span>)),
-            };
-
+            <span class="kw">let</span> (<span class="kw-2">mut</span> <span class="ident">cmd</span>, <span class="ident">program</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_ar</span>()<span class="question-mark">?</span>;
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out</span> <span class="op">=</span> <span class="ident">OsString</span>::<span class="ident">from</span>(<span class="string">&quot;/OUT:&quot;</span>);
             <span class="ident">out</span>.<span class="ident">push</span>(<span class="ident">dst</span>);
             <span class="ident">cmd</span>.<span class="ident">arg</span>(<span class="ident">out</span>).<span class="ident">arg</span>(<span class="string">&quot;/nologo&quot;</span>);
@@ -3920,7 +3967,7 @@
             } <span class="kw">else</span> {
                 <span class="ident">cmd</span>.<span class="ident">args</span>(<span class="kw-2">&amp;</span><span class="ident">objects</span>).<span class="ident">args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">objects</span>);
             }
-            <span class="ident">run</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">cmd</span>, <span class="string">&quot;lib.exe&quot;</span>)<span class="question-mark">?</span>;
+            <span class="ident">run</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">cmd</span>, <span class="kw-2">&amp;</span><span class="ident">program</span>)<span class="question-mark">?</span>;
 
             <span class="comment">// The Rust compiler will look for libfoo.a and foo.lib, but the</span>
             <span class="comment">// MSVC linker will also be passed foo.lib, so be sure that both</span>
@@ -3936,7 +3983,7 @@
                     <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error</span>::<span class="ident">new</span>(
                         <span class="ident">ErrorKind</span>::<span class="ident">IOError</span>,
                         <span class="string">&quot;Could not copy or create a hard-link to the generated lib file.&quot;</span>,
-                    ))
+                    ));
                 }
             };
         } <span class="kw">else</span> {
@@ -3973,7 +4020,7 @@
                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error</span>::<span class="ident">new</span>(
                     <span class="ident">ErrorKind</span>::<span class="ident">ArchitectureInvalid</span>,
                     <span class="string">&quot;Unknown architecture for iOS target.&quot;</span>,
-                ))
+                ));
             }
         };
 
@@ -3992,7 +4039,8 @@
         };
 
         <span class="self">self</span>.<span class="ident">print</span>(<span class="kw-2">&amp;</span><span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;Detecting iOS SDK path for {}&quot;</span>, <span class="ident">sdk</span>));
-        <span class="kw">let</span> <span class="ident">sdk_path</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">cmd</span>(<span class="string">&quot;xcrun&quot;</span>)
+        <span class="kw">let</span> <span class="ident">sdk_path</span> <span class="op">=</span> <span class="self">self</span>
+            .<span class="ident">cmd</span>(<span class="string">&quot;xcrun&quot;</span>)
             .<span class="ident">arg</span>(<span class="string">&quot;--show-sdk-path&quot;</span>)
             .<span class="ident">arg</span>(<span class="string">&quot;--sdk&quot;</span>)
             .<span class="ident">arg</span>(<span class="ident">sdk</span>)
@@ -4006,7 +4054,7 @@
                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error</span>::<span class="ident">new</span>(
                     <span class="ident">ErrorKind</span>::<span class="ident">IOError</span>,
                     <span class="string">&quot;Unable to determine iOS SDK path.&quot;</span>,
-                ))
+                ));
             }
         };
 
@@ -4057,7 +4105,8 @@
 
         <span class="kw">let</span> <span class="ident">cl_exe</span> <span class="op">=</span> <span class="ident">windows_registry</span>::<span class="ident">find_tool</span>(<span class="kw-2">&amp;</span><span class="ident">target</span>, <span class="string">&quot;cl.exe&quot;</span>);
 
-        <span class="kw">let</span> <span class="ident">tool_opt</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Tool</span><span class="op">&gt;</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">env_tool</span>(<span class="ident">env</span>)
+        <span class="kw">let</span> <span class="ident">tool_opt</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Tool</span><span class="op">&gt;</span> <span class="op">=</span> <span class="self">self</span>
+            .<span class="ident">env_tool</span>(<span class="ident">env</span>)
             .<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">tool</span>, <span class="ident">cc</span>, <span class="ident">args</span>)<span class="op">|</span> {
                 <span class="comment">// chop off leading/trailing whitespace to work around</span>
                 <span class="comment">// semi-buggy build scripts which are shared in</span>
@@ -4116,7 +4165,7 @@
                     }
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;cloudabi&quot;</span>) {
                     <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}-{}&quot;</span>, <span class="ident">target</span>, <span class="ident">traditional</span>)
-                } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">target</span> <span class="op">==</span> <span class="string">&quot;wasm32-unknown-wasi&quot;</span> {
+                } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">target</span> <span class="op">==</span> <span class="string">&quot;wasm32-unknown-wasi&quot;</span> <span class="op">||</span> <span class="ident">target</span> <span class="op">==</span> <span class="string">&quot;wasm32-unknown-unknown&quot;</span> {
                     <span class="string">&quot;clang&quot;</span>.<span class="ident">to_string</span>()
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">get_host</span>()<span class="question-mark">?</span> <span class="op">!=</span> <span class="ident">target</span> {
                     <span class="comment">// CROSS_COMPILE is of the form: &quot;arm-linux-gnueabi-&quot;</span>
@@ -4219,9 +4268,9 @@
         <span class="comment">// configure for invocations like `clang-cl` we still get a &quot;works out</span>
         <span class="comment">// of the box&quot; experience.</span>
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">cl_exe</span>) <span class="op">=</span> <span class="ident">cl_exe</span> {
-            <span class="kw">if</span> <span class="ident">tool</span>.<span class="ident">family</span> <span class="op">==</span> (<span class="ident">ToolFamily</span>::<span class="ident">Msvc</span> { <span class="ident">clang_cl</span>: <span class="bool-val">true</span> }) <span class="op">&amp;&amp;</span>
-                <span class="ident">tool</span>.<span class="ident">env</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span> <span class="op">&amp;&amp;</span>
-                <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;msvc&quot;</span>)
+            <span class="kw">if</span> <span class="ident">tool</span>.<span class="ident">family</span> <span class="op">==</span> (<span class="ident">ToolFamily</span>::<span class="ident">Msvc</span> { <span class="ident">clang_cl</span>: <span class="bool-val">true</span> })
+                <span class="op">&amp;&amp;</span> <span class="ident">tool</span>.<span class="ident">env</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>
+                <span class="op">&amp;&amp;</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;msvc&quot;</span>)
             {
                 <span class="kw">for</span> <span class="kw-2">&amp;</span>(<span class="kw-2">ref</span> <span class="ident">k</span>, <span class="kw-2">ref</span> <span class="ident">v</span>) <span class="kw">in</span> <span class="ident">cl_exe</span>.<span class="ident">env</span>.<span class="ident">iter</span>() {
                     <span class="ident">tool</span>.<span class="ident">env</span>.<span class="ident">push</span>((<span class="ident">k</span>.<span class="ident">to_owned</span>(), <span class="ident">v</span>.<span class="ident">to_owned</span>()));
@@ -4237,7 +4286,8 @@
         <span class="kw">let</span> <span class="ident">host</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_host</span>()<span class="question-mark">?</span>;
         <span class="kw">let</span> <span class="ident">kind</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">host</span> <span class="op">==</span> <span class="ident">target</span> { <span class="string">&quot;HOST&quot;</span> } <span class="kw">else</span> { <span class="string">&quot;TARGET&quot;</span> };
         <span class="kw">let</span> <span class="ident">target_u</span> <span class="op">=</span> <span class="ident">target</span>.<span class="ident">replace</span>(<span class="string">&quot;-&quot;</span>, <span class="string">&quot;_&quot;</span>);
-        <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">getenv</span>(<span class="kw-2">&amp;</span><span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}_{}&quot;</span>, <span class="ident">var_base</span>, <span class="ident">target</span>))
+        <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="self">self</span>
+            .<span class="ident">getenv</span>(<span class="kw-2">&amp;</span><span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}_{}&quot;</span>, <span class="ident">var_base</span>, <span class="ident">target</span>))
             .<span class="ident">or_else</span>(<span class="op">||</span> <span class="self">self</span>.<span class="ident">getenv</span>(<span class="kw-2">&amp;</span><span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}_{}&quot;</span>, <span class="ident">var_base</span>, <span class="ident">target_u</span>)))
             .<span class="ident">or_else</span>(<span class="op">||</span> <span class="self">self</span>.<span class="ident">getenv</span>(<span class="kw-2">&amp;</span><span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}_{}&quot;</span>, <span class="ident">kind</span>, <span class="ident">var_base</span>)))
             .<span class="ident">or_else</span>(<span class="op">||</span> <span class="self">self</span>.<span class="ident">getenv</span>(<span class="ident">var_base</span>));
@@ -4362,9 +4412,10 @@
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Ok</span>(<span class="ident">p</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_var</span>(<span class="string">&quot;AR&quot;</span>) {
             <span class="kw">return</span> <span class="prelude-val">Ok</span>((<span class="self">self</span>.<span class="ident">cmd</span>(<span class="kw-2">&amp;</span><span class="ident">p</span>), <span class="ident">p</span>));
         }
-        <span class="kw">let</span> <span class="ident">program</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">get_target</span>()<span class="question-mark">?</span>.<span class="ident">contains</span>(<span class="string">&quot;android&quot;</span>) {
-            <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}-ar&quot;</span>, <span class="self">self</span>.<span class="ident">get_target</span>()<span class="question-mark">?</span>.<span class="ident">replace</span>(<span class="string">&quot;armv7&quot;</span>, <span class="string">&quot;arm&quot;</span>))
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">get_target</span>()<span class="question-mark">?</span>.<span class="ident">contains</span>(<span class="string">&quot;emscripten&quot;</span>) {
+        <span class="kw">let</span> <span class="ident">target</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_target</span>()<span class="question-mark">?</span>;
+        <span class="kw">let</span> <span class="ident">program</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;android&quot;</span>) {
+            <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}-ar&quot;</span>, <span class="ident">target</span>.<span class="ident">replace</span>(<span class="string">&quot;armv7&quot;</span>, <span class="string">&quot;arm&quot;</span>))
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;emscripten&quot;</span>) {
             <span class="comment">// Windows use bat files so we have to be a bit more specific</span>
             <span class="kw">if</span> <span class="macro">cfg</span><span class="macro">!</span>(<span class="ident">windows</span>) {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cmd</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">cmd</span>(<span class="string">&quot;cmd&quot;</span>);
@@ -4373,6 +4424,11 @@
             }
 
             <span class="string">&quot;emar&quot;</span>.<span class="ident">to_string</span>()
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">target</span>.<span class="ident">contains</span>(<span class="string">&quot;msvc&quot;</span>) {
+            <span class="kw">match</span> <span class="ident">windows_registry</span>::<span class="ident">find</span>(<span class="kw-2">&amp;</span><span class="ident">target</span>, <span class="string">&quot;lib.exe&quot;</span>) {
+                <span class="prelude-val">Some</span>(<span class="ident">t</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">Ok</span>((<span class="ident">t</span>, <span class="string">&quot;lib.exe&quot;</span>.<span class="ident">to_string</span>())),
+                <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="string">&quot;lib.exe&quot;</span>.<span class="ident">to_string</span>(),
+            }
         } <span class="kw">else</span> {
             <span class="string">&quot;ar&quot;</span>.<span class="ident">to_string</span>()
         };
@@ -4422,7 +4478,7 @@
     <span class="kw">fn</span> <span class="ident">getenv</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cache</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">env_cache</span>.<span class="ident">lock</span>().<span class="ident">unwrap</span>();
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">val</span>) <span class="op">=</span> <span class="ident">cache</span>.<span class="ident">get</span>(<span class="ident">v</span>) {
-            <span class="kw">return</span> <span class="ident">val</span>.<span class="ident">clone</span>()
+            <span class="kw">return</span> <span class="ident">val</span>.<span class="ident">clone</span>();
         }
         <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">env</span>::<span class="ident">var</span>(<span class="ident">v</span>).<span class="ident">ok</span>();
         <span class="self">self</span>.<span class="ident">print</span>(<span class="kw-2">&amp;</span><span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{} = {:?}&quot;</span>, <span class="ident">v</span>, <span class="ident">r</span>));
@@ -4463,10 +4519,11 @@
         <span class="kw">let</span> <span class="ident">family</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">fname</span>) <span class="op">=</span> <span class="ident">path</span>.<span class="ident">file_name</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">p</span><span class="op">|</span> <span class="ident">p</span>.<span class="ident">to_str</span>()) {
             <span class="kw">if</span> <span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;clang-cl&quot;</span>) {
                 <span class="ident">ToolFamily</span>::<span class="ident">Msvc</span> { <span class="ident">clang_cl</span>: <span class="bool-val">true</span> }
-            } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;cl&quot;</span>) <span class="op">&amp;&amp;</span>
-                <span class="op">!</span><span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;cloudabi&quot;</span>) <span class="op">&amp;&amp;</span>
-                <span class="op">!</span><span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;uclibc&quot;</span>) <span class="op">&amp;&amp;</span>
-                <span class="op">!</span><span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;clang&quot;</span>) {
+            } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;cl&quot;</span>)
+                <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;cloudabi&quot;</span>)
+                <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;uclibc&quot;</span>)
+                <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;clang&quot;</span>)
+            {
                 <span class="ident">ToolFamily</span>::<span class="ident">Msvc</span> { <span class="ident">clang_cl</span>: <span class="bool-val">false</span> }
             } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">fname</span>.<span class="ident">contains</span>(<span class="string">&quot;clang&quot;</span>) {
                 <span class="ident">ToolFamily</span>::<span class="ident">Clang</span>
@@ -4522,9 +4579,10 @@
 
         <span class="comment">// Check for existing optimization flags (-O, /O)</span>
         <span class="kw">if</span> <span class="ident">chars</span>.<span class="ident">next</span>() <span class="op">==</span> <span class="prelude-val">Some</span>(<span class="string">&#39;O&#39;</span>) {
-            <span class="kw">return</span> <span class="self">self</span>.<span class="ident">args</span>().<span class="ident">iter</span>().<span class="ident">any</span>(<span class="op">|</span><span class="kw-2">ref</span> <span class="ident">a</span><span class="op">|</span>
-                <span class="ident">a</span>.<span class="ident">to_str</span>().<span class="ident">unwrap_or</span>(<span class="string">&quot;&quot;</span>).<span class="ident">chars</span>().<span class="ident">nth</span>(<span class="number">1</span>) <span class="op">==</span> <span class="prelude-val">Some</span>(<span class="string">&#39;O&#39;</span>)
-            );
+            <span class="kw">return</span> <span class="self">self</span>
+                .<span class="ident">args</span>()
+                .<span class="ident">iter</span>()
+                .<span class="ident">any</span>(<span class="op">|</span><span class="kw-2">ref</span> <span class="ident">a</span><span class="op">|</span> <span class="ident">a</span>.<span class="ident">to_str</span>().<span class="ident">unwrap_or</span>(<span class="string">&quot;&quot;</span>).<span class="ident">chars</span>().<span class="ident">nth</span>(<span class="number">1</span>) <span class="op">==</span> <span class="prelude-val">Some</span>(<span class="string">&#39;O&#39;</span>));
         }
 
         <span class="comment">// TODO Check for existing -m..., -m...=..., /arch:... flags</span>
@@ -4556,7 +4614,11 @@
         };
         <span class="ident">cmd</span>.<span class="ident">args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">cc_wrapper_args</span>);
 
-        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">args</span>.<span class="ident">iter</span>().<span class="ident">filter</span>(<span class="op">|</span><span class="ident">a</span><span class="op">|</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">removed_args</span>.<span class="ident">contains</span>(<span class="ident">a</span>)).<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;&gt;</span>();
+        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="self">self</span>
+            .<span class="ident">args</span>
+            .<span class="ident">iter</span>()
+            .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">a</span><span class="op">|</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">removed_args</span>.<span class="ident">contains</span>(<span class="ident">a</span>))
+            .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;&gt;</span>();
         <span class="ident">cmd</span>.<span class="ident">args</span>(<span class="kw-2">&amp;</span><span class="ident">value</span>);
 
         <span class="kw">for</span> <span class="kw-2">&amp;</span>(<span class="kw-2">ref</span> <span class="ident">k</span>, <span class="kw-2">ref</span> <span class="ident">v</span>) <span class="kw">in</span> <span class="self">self</span>.<span class="ident">env</span>.<span class="ident">iter</span>() {
@@ -4651,7 +4713,7 @@
                     <span class="string">&quot;Failed to wait on spawned child process, command {:?} with args {:?}.&quot;</span>,
                     <span class="ident">cmd</span>, <span class="ident">program</span>
                 ),
-            ))
+            ));
         }
     };
     <span class="ident">print</span>.<span class="ident">join</span>().<span class="ident">unwrap</span>();
@@ -4689,7 +4751,7 @@
                     <span class="string">&quot;Failed to wait on spawned child process, command {:?} with args {:?}.&quot;</span>,
                     <span class="ident">cmd</span>, <span class="ident">program</span>
                 ),
-            ))
+            ));
         }
     };
     <span class="ident">print</span>.<span class="ident">join</span>().<span class="ident">unwrap</span>();
