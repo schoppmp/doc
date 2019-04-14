@@ -27,10 +27,11 @@ sourcesIndex["regex"] = {"name":"","dirs":[{"name":"literal","dirs":[{"name":"te
 sourcesIndex["regex_syntax"] = {"name":"","dirs":[{"name":"ast","dirs":[],"files":["mod.rs","parse.rs","print.rs","visitor.rs"]},{"name":"hir","dirs":[{"name":"literal","dirs":[],"files":["mod.rs"]}],"files":["interval.rs","mod.rs","print.rs","translate.rs","visitor.rs"]},{"name":"unicode_tables","dirs":[],"files":["age.rs","case_folding_simple.rs","general_category.rs","mod.rs","perl_word.rs","property_bool.rs","property_names.rs","property_values.rs","script.rs","script_extension.rs"]}],"files":["either.rs","error.rs","lib.rs","parser.rs","unicode.rs"]};
 sourcesIndex["strsim"] = {"name":"","dirs":[],"files":["lib.rs"]};
 sourcesIndex["test_oblivc"] = {"name":"","dirs":[],"files":["lib.rs"]};
-sourcesIndex["textwrap"] = {"name":"","dirs":[],"files":["lib.rs"]};
+sourcesIndex["textwrap"] = {"name":"","dirs":[],"files":["indentation.rs","lib.rs","splitting.rs"]};
 sourcesIndex["thread_local"] = {"name":"","dirs":[],"files":["lib.rs","thread_id.rs","unreachable.rs"]};
 sourcesIndex["ucd_util"] = {"name":"","dirs":[{"name":"unicode_tables","dirs":[],"files":["jamo_short_name.rs","mod.rs"]}],"files":["hangul.rs","ideograph.rs","lib.rs","name.rs","property.rs"]};
 sourcesIndex["unicode_width"] = {"name":"","dirs":[],"files":["lib.rs","tables.rs"]};
 sourcesIndex["utf8_ranges"] = {"name":"","dirs":[],"files":["char_utf8.rs","lib.rs"]};
 sourcesIndex["vec_map"] = {"name":"","dirs":[],"files":["lib.rs"]};
 sourcesIndex["which"] = {"name":"","dirs":[],"files":["lib.rs"]};
+createSourceSidebar();
