@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.35/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../cc/index.html'><img src='../../rust-logo.png' alt='logo' width='100'></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.36/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../cc/index.html'><img src='../../rust-logo.png' alt='logo' width='100'></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -2411,6 +2411,13 @@
 <span id="2411">2411</span>
 <span id="2412">2412</span>
 <span id="2413">2413</span>
+<span id="2414">2414</span>
+<span id="2415">2415</span>
+<span id="2416">2416</span>
+<span id="2417">2417</span>
+<span id="2418">2418</span>
+<span id="2419">2419</span>
+<span id="2420">2420</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! A library for build scripts to compile custom C code</span>
 <span class="doccomment">//!</span>
@@ -4201,6 +4208,12 @@
                         <span class="string">&quot;mipsel-unknown-linux-gnu&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;mipsel-linux-gnu&quot;</span>),
                         <span class="string">&quot;mips64-unknown-linux-gnuabi64&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;mips64-linux-gnuabi64&quot;</span>),
                         <span class="string">&quot;mips64el-unknown-linux-gnuabi64&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;mips64el-linux-gnuabi64&quot;</span>),
+                        <span class="string">&quot;mipsisa32r6-unknown-linux-gnu&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;mipsisa32r6-linux-gnu&quot;</span>),
+                        <span class="string">&quot;mipsisa32r6el-unknown-linux-gnu&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;mipsisa32r6el-linux-gnu&quot;</span>),
+                        <span class="string">&quot;mipsisa64r6-unknown-linux-gnuabi64&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;mipsisa64r6-linux-gnuabi64&quot;</span>),
+                        <span class="string">&quot;mipsisa64r6el-unknown-linux-gnuabi64&quot;</span> <span class="op">=&gt;</span> {
+                            <span class="prelude-val">Some</span>(<span class="string">&quot;mipsisa64r6el-linux-gnuabi64&quot;</span>)
+                        }
                         <span class="string">&quot;powerpc-unknown-linux-gnu&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;powerpc-linux-gnu&quot;</span>),
                         <span class="string">&quot;powerpc-unknown-linux-gnuspe&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;powerpc-linux-gnuspe&quot;</span>),
                         <span class="string">&quot;powerpc-unknown-netbsd&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;powerpc--netbsd&quot;</span>),
@@ -4809,7 +4822,8 @@
 }
 
 <span class="kw">fn</span> <span class="ident">fail</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="op">!</span> {
-    <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;\n\nInternal error occurred: {}\n\n&quot;</span>, <span class="ident">s</span>)
+    <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="macro">writeln</span><span class="macro">!</span>(<span class="ident">io</span>::<span class="ident">stderr</span>(), <span class="string">&quot;\n\nerror occurred: {}\n\n&quot;</span>, <span class="ident">s</span>);
+    <span class="ident">std</span>::<span class="ident">process</span>::<span class="ident">exit</span>(<span class="number">1</span>);
 }
 
 <span class="kw">fn</span> <span class="ident">command_add_output_file</span>(<span class="ident">cmd</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Command</span>, <span class="ident">dst</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>, <span class="ident">msvc</span>: <span class="ident">bool</span>, <span class="ident">is_asm</span>: <span class="ident">bool</span>, <span class="ident">is_arm</span>: <span class="ident">bool</span>) {
