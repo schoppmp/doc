@@ -6,5 +6,4 @@ implementors["cexpr"] = [{text:"impl&lt;'a&gt; <a class=\"trait\" href=\"https:/
             } else {
                 window.pending_implementors = implementors;
             }
-        
-})()
+        })()

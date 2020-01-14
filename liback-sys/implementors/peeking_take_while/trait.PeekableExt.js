@@ -6,5 +6,4 @@ implementors["peeking_take_while"] = [];
             } else {
                 window.pending_implementors = implementors;
             }
-        
-})()
+        })()

@@ -447,11 +447,11 @@
     <span class="comment">// This is a subset of the natural IR graph with reversed edges, where we</span>
     <span class="comment">// only include the edges from the IR graph that can affect whether a type</span>
     <span class="comment">// can derive default or not.</span>
-    <span class="ident">dependencies</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">ItemId</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;&gt;</span>,
+    <span class="ident">dependencies</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">ItemId</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> <span class="ident">CannotDeriveDefault</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">consider_edge</span>(<span class="ident">kind</span>: <span class="ident">EdgeKind</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">consider_edge</span>(<span class="ident">kind</span>: <span class="ident">EdgeKind</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="ident">kind</span> {
             <span class="comment">// These are the only edges that can affect whether a type can derive</span>
             <span class="comment">// default or not.</span>
@@ -461,7 +461,7 @@
             <span class="ident">EdgeKind</span>::<span class="ident">VarType</span> <span class="op">|</span>
             <span class="ident">EdgeKind</span>::<span class="ident">TemplateArgument</span> <span class="op">|</span>
             <span class="ident">EdgeKind</span>::<span class="ident">TemplateDeclaration</span> <span class="op">|</span>
-            <span class="ident">EdgeKind</span>::<span class="ident">TemplateParameterDefinition</span> <span class="op">=&gt;</span> <span class="bool-val">true</span>,
+            <span class="ident">EdgeKind</span>::<span class="ident">TemplateParameterDefinition</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
 
             <span class="ident">EdgeKind</span>::<span class="ident">Constructor</span> <span class="op">|</span>
             <span class="ident">EdgeKind</span>::<span class="ident">Destructor</span> <span class="op">|</span>
@@ -469,12 +469,12 @@
             <span class="ident">EdgeKind</span>::<span class="ident">FunctionParameter</span> <span class="op">|</span>
             <span class="ident">EdgeKind</span>::<span class="ident">InnerType</span> <span class="op">|</span>
             <span class="ident">EdgeKind</span>::<span class="ident">InnerVar</span> <span class="op">|</span>
-            <span class="ident">EdgeKind</span>::<span class="ident">Method</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
-            <span class="ident">EdgeKind</span>::<span class="ident">Generic</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">EdgeKind</span>::<span class="ident">Method</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">EdgeKind</span>::<span class="ident">Generic</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">insert</span><span class="op">&lt;</span><span class="ident">Id</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">Id</span>) <span class="op">-&gt;</span> <span class="ident">ConstrainResult</span> {
+    <span class="kw">fn</span> <span class="ident">insert</span><span class="op">&lt;</span><span class="ident">Id</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">Id</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ConstrainResult</span> {
         <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">id</span>.<span class="ident">into</span>();
         <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;inserting {:?} into the cannot_derive_default set&quot;</span>, <span class="ident">id</span>);
 
@@ -489,9 +489,9 @@
         <span class="ident">ConstrainResult</span>::<span class="ident">Changed</span>
     }
 
-    <span class="kw">fn</span> <span class="ident">is_not_default</span><span class="op">&lt;</span><span class="ident">Id</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">id</span>: <span class="ident">Id</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">is_not_default</span><span class="op">&lt;</span><span class="ident">Id</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">id</span>: <span class="ident">Id</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">id</span>.<span class="ident">into</span>();
-        <span class="self">self</span>.<span class="ident">cannot_derive_default</span>.<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">id</span>) <span class="op">||</span>
+        <span class="self">self</span>.<span class="ident">cannot_derive_default</span>.<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">id</span>) <span class="op">|</span><span class="op">|</span>
             <span class="op">!</span><span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">whitelisted_items</span>().<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">id</span>)
     }
 }
@@ -501,7 +501,7 @@
     <span class="kw">type</span> <span class="ident">Extra</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;ctx</span> <span class="ident">BindgenContext</span>;
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">HashSet</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>;
 
-    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ctx</span> <span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">CannotDeriveDefault</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ctx</span> <span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CannotDeriveDefault</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">dependencies</span> <span class="op">=</span> <span class="ident">HashMap</span>::<span class="ident">new</span>();
         <span class="kw">let</span> <span class="ident">cannot_derive_default</span> <span class="op">=</span> <span class="ident">HashSet</span>::<span class="ident">new</span>();
 
@@ -527,7 +527,7 @@
                 <span class="ident">item</span>.<span class="ident">trace</span>(
                     <span class="ident">ctx</span>,
                     <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="op">|</span><span class="ident">sub_item</span>: <span class="ident">ItemId</span>, <span class="ident">edge_kind</span><span class="op">|</span> {
-                        <span class="kw">if</span> <span class="ident">ctx</span>.<span class="ident">whitelisted_items</span>().<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">sub_item</span>) <span class="op">&amp;&amp;</span>
+                        <span class="kw">if</span> <span class="ident">ctx</span>.<span class="ident">whitelisted_items</span>().<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">sub_item</span>) <span class="kw-2">&amp;</span><span class="op">&amp;</span>
                             <span class="self">Self</span>::<span class="ident">consider_edge</span>(<span class="ident">edge_kind</span>)
                         {
                             <span class="ident">dependencies</span>
@@ -548,11 +548,11 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">initial_worklist</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">initial_worklist</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">whitelisted_items</span>().<span class="ident">iter</span>().<span class="ident">cloned</span>().<span class="ident">collect</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">constrain</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">ItemId</span>) <span class="op">-&gt;</span> <span class="ident">ConstrainResult</span> {
+    <span class="kw">fn</span> <span class="ident">constrain</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">ItemId</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ConstrainResult</span> {
         <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;constrain: {:?}&quot;</span>, <span class="ident">id</span>);
 
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">cannot_derive_default</span>.<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">id</span>) {
@@ -567,8 +567,8 @@
 
         <span class="kw">let</span> <span class="ident">item</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="ident">id</span>);
         <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">item</span>.<span class="ident">as_type</span>() {
-            <span class="prelude-val">Some</span>(<span class="ident">ty</span>) <span class="op">=&gt;</span> <span class="ident">ty</span>,
-            <span class="prelude-val">None</span> <span class="op">=&gt;</span> {
+            <span class="prelude-val">Some</span>(<span class="ident">ty</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ty</span>,
+            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;    not a type; ignoring&quot;</span>);
                 <span class="kw">return</span> <span class="ident">ConstrainResult</span>::<span class="ident">Same</span>;
             }
@@ -578,8 +578,8 @@
             <span class="kw">let</span> <span class="ident">layout_can_derive</span> <span class="op">=</span> <span class="ident">ty</span>.<span class="ident">layout</span>(<span class="self">self</span>.<span class="ident">ctx</span>).<span class="ident">map_or</span>(<span class="bool-val">true</span>, <span class="op">|</span><span class="ident">l</span><span class="op">|</span> {
                 <span class="ident">l</span>.<span class="ident">opaque</span>().<span class="ident">can_trivially_derive_default</span>()
             });
-            <span class="kw">return</span> <span class="kw">if</span> <span class="ident">layout_can_derive</span> <span class="op">&amp;&amp;</span>
-                      <span class="op">!</span>(<span class="ident">ty</span>.<span class="ident">is_union</span>() <span class="op">&amp;&amp;</span>
+            <span class="kw">return</span> <span class="kw">if</span> <span class="ident">layout_can_derive</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span>
+                      <span class="op">!</span>(<span class="ident">ty</span>.<span class="ident">is_union</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span>
                         <span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">rust_features</span>().<span class="ident">untagged_union</span>()) {
                 <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;    we can trivially derive Default for the layout&quot;</span>);
                 <span class="ident">ConstrainResult</span>::<span class="ident">Same</span>
@@ -607,7 +607,7 @@
             <span class="ident">TypeKind</span>::<span class="ident">Function</span>(..) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">Int</span>(..) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">Float</span>(..) <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">Complex</span>(..) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Complex</span>(..) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;    simple type that can always derive Default&quot;</span>);
                 <span class="ident">ConstrainResult</span>::<span class="ident">Same</span>
             }
@@ -621,12 +621,12 @@
             <span class="ident">TypeKind</span>::<span class="ident">ObjCId</span> <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">ObjCSel</span> <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">ObjCInterface</span>(..) <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(..) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(..) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;    types that always cannot derive Default&quot;</span>);
                 <span class="self">self</span>.<span class="ident">insert</span>(<span class="ident">id</span>)
             }
 
-            <span class="ident">TypeKind</span>::<span class="ident">Array</span>(<span class="ident">t</span>, <span class="ident">len</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Array</span>(<span class="ident">t</span>, <span class="ident">len</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_not_default</span>(<span class="ident">t</span>) {
                     <span class="macro">trace</span><span class="macro">!</span>(
                         <span class="string">&quot;    arrays of T for which we cannot derive Default \
@@ -635,7 +635,7 @@
                     <span class="kw">return</span> <span class="self">self</span>.<span class="ident">insert</span>(<span class="ident">id</span>);
                 }
 
-                <span class="kw">if</span> <span class="ident">len</span> <span class="op">&lt;=</span> <span class="ident">RUST_DERIVE_IN_ARRAY_LIMIT</span> {
+                <span class="kw">if</span> <span class="ident">len</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">RUST_DERIVE_IN_ARRAY_LIMIT</span> {
                     <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;    array is small enough to derive Default&quot;</span>);
                     <span class="ident">ConstrainResult</span>::<span class="ident">Same</span>
                 } <span class="kw">else</span> {
@@ -646,7 +646,7 @@
 
             <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">t</span>) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">TemplateAlias</span>(<span class="ident">t</span>, <span class="kw">_</span>) <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">Alias</span>(<span class="ident">t</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Alias</span>(<span class="ident">t</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_not_default</span>(<span class="ident">t</span>) {
                     <span class="macro">trace</span><span class="macro">!</span>(
                         <span class="string">&quot;    aliases and type refs to T which cannot derive \
@@ -662,13 +662,13 @@
                 }
             }
 
-            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">info</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">info</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">assert</span><span class="macro">!</span>(
                     <span class="op">!</span><span class="ident">info</span>.<span class="ident">has_non_type_template_params</span>(),
                     <span class="string">&quot;The early ty.is_opaque check should have handled this case&quot;</span>
                 );
 
-                <span class="kw">if</span> <span class="ident">info</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CompKind</span>::<span class="ident">Union</span> {
+                <span class="kw">if</span> <span class="ident">info</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CompKind</span>::<span class="ident">Union</span> {
                     <span class="kw">if</span> <span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">rust_features</span>().<span class="ident">untagged_union</span>() {
                         <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;    cannot derive Default for Rust unions&quot;</span>);
                         <span class="kw">return</span> <span class="self">self</span>.<span class="ident">insert</span>(<span class="ident">id</span>);
@@ -693,7 +693,7 @@
 
                 <span class="kw">let</span> <span class="ident">bases_cannot_derive</span> <span class="op">=</span>
                     <span class="ident">info</span>.<span class="ident">base_members</span>().<span class="ident">iter</span>().<span class="ident">any</span>(<span class="op">|</span><span class="ident">base</span><span class="op">|</span> {
-                        <span class="op">!</span><span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">whitelisted_items</span>().<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">base</span>.<span class="ident">ty</span>.<span class="ident">into</span>()) <span class="op">||</span>
+                        <span class="op">!</span><span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">whitelisted_items</span>().<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">base</span>.<span class="ident">ty</span>.<span class="ident">into</span>()) <span class="op">|</span><span class="op">|</span>
                             <span class="self">self</span>.<span class="ident">is_not_default</span>(<span class="ident">base</span>.<span class="ident">ty</span>)
                     });
                 <span class="kw">if</span> <span class="ident">bases_cannot_derive</span> {
@@ -706,13 +706,13 @@
 
                 <span class="kw">let</span> <span class="ident">fields_cannot_derive</span> <span class="op">=</span>
                     <span class="ident">info</span>.<span class="ident">fields</span>().<span class="ident">iter</span>().<span class="ident">any</span>(<span class="op">|</span><span class="ident">f</span><span class="op">|</span> <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">f</span> {
-                        <span class="ident">Field</span>::<span class="ident">DataMember</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) <span class="op">=&gt;</span> {
+                        <span class="ident">Field</span>::<span class="ident">DataMember</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) <span class="op">=</span><span class="op">&gt;</span> {
                             <span class="op">!</span><span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">whitelisted_items</span>().<span class="ident">contains</span>(
                                 <span class="kw-2">&amp;</span><span class="ident">data</span>.<span class="ident">ty</span>().<span class="ident">into</span>(),
-                            ) <span class="op">||</span>
+                            ) <span class="op">|</span><span class="op">|</span>
                                 <span class="self">self</span>.<span class="ident">is_not_default</span>(<span class="ident">data</span>.<span class="ident">ty</span>())
                         }
-                        <span class="ident">Field</span>::<span class="ident">Bitfields</span>(<span class="kw-2">ref</span> <span class="ident">bfu</span>) <span class="op">=&gt;</span> {
+                        <span class="ident">Field</span>::<span class="ident">Bitfields</span>(<span class="kw-2">ref</span> <span class="ident">bfu</span>) <span class="op">=</span><span class="op">&gt;</span> {
                             <span class="kw">if</span> <span class="ident">bfu</span>.<span class="ident">layout</span>().<span class="ident">align</span> <span class="op">&gt;</span> <span class="ident">RUST_DERIVE_IN_ARRAY_LIMIT</span> {
                                 <span class="macro">trace</span><span class="macro">!</span>(
                                     <span class="string">&quot;   we cannot derive Default for a bitfield larger then \
@@ -724,7 +724,7 @@
                             <span class="ident">bfu</span>.<span class="ident">bitfields</span>().<span class="ident">iter</span>().<span class="ident">any</span>(<span class="op">|</span><span class="ident">b</span><span class="op">|</span> {
                                 <span class="op">!</span><span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">whitelisted_items</span>().<span class="ident">contains</span>(
                                     <span class="kw-2">&amp;</span><span class="ident">b</span>.<span class="ident">ty</span>().<span class="ident">into</span>(),
-                                ) <span class="op">||</span>
+                                ) <span class="op">|</span><span class="op">|</span>
                                     <span class="self">self</span>.<span class="ident">is_not_default</span>(<span class="ident">b</span>.<span class="ident">ty</span>())
                             })
                         }
@@ -740,7 +740,7 @@
                 <span class="ident">ConstrainResult</span>::<span class="ident">Same</span>
             }
 
-            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">template</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">template</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">let</span> <span class="ident">args_cannot_derive</span> <span class="op">=</span>
                     <span class="ident">template</span>.<span class="ident">template_arguments</span>().<span class="ident">iter</span>().<span class="ident">any</span>(<span class="op">|</span><span class="ident">arg</span><span class="op">|</span> {
                         <span class="self">self</span>.<span class="ident">is_not_default</span>(<span class="kw-2">*</span><span class="ident">arg</span>)
@@ -771,13 +771,13 @@
                 <span class="ident">ConstrainResult</span>::<span class="ident">Same</span>
             }
 
-            <span class="ident">TypeKind</span>::<span class="ident">Opaque</span> <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Opaque</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">unreachable</span><span class="macro">!</span>(
                     <span class="string">&quot;The early ty.is_opaque check should have handled this case&quot;</span>
                 )
             }
 
-            <span class="ident">TypeKind</span>::<span class="ident">UnresolvedTypeRef</span>(..) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">UnresolvedTypeRef</span>(..) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">unreachable</span><span class="macro">!</span>(
                     <span class="string">&quot;Type with unresolved type ref can&#39;t reach derive default&quot;</span>
                 )
@@ -798,10 +798,10 @@
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">CannotDeriveDefault</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;&gt;</span> <span class="kw">for</span> <span class="ident">HashSet</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">analysis</span>: <span class="ident">CannotDeriveDefault</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">CannotDeriveDefault</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">HashSet</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">analysis</span>: <span class="ident">CannotDeriveDefault</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">analysis</span>.<span class="ident">cannot_derive_default</span>
     }
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../../../";window.currentCrate = "bindgen";</script><script src="../../../../aliases.js"></script><script src="../../../../main.js"></script><script src="../../../../source-script.js"></script><script src="../../../../source-files.js"></script><script defer src="../../../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../../";window.currentCrate = "bindgen";</script><script src="../../../../aliases.js"></script><script src="../../../../main.js"></script><script src="../../../../source-script.js"></script><script src="../../../../source-files.js"></script><script defer src="../../../../search-index.js"></script></body></html>

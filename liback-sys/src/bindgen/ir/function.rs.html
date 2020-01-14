@@ -604,16 +604,16 @@
 }
 
 <span class="kw">impl</span> <span class="ident">FunctionKind</span> {
-    <span class="kw">fn</span> <span class="ident">from_cursor</span>(<span class="ident">cursor</span>: <span class="kw-2">&amp;</span><span class="ident">clang</span>::<span class="ident">Cursor</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">FunctionKind</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from_cursor</span>(<span class="ident">cursor</span>: <span class="kw-2">&amp;</span><span class="ident">clang</span>::<span class="ident">Cursor</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">FunctionKind</span><span class="op">&gt;</span> {
         <span class="prelude-val">Some</span>(<span class="kw">match</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() {
-            <span class="ident">clang_sys</span>::<span class="ident">CXCursor_FunctionDecl</span> <span class="op">=&gt;</span> <span class="ident">FunctionKind</span>::<span class="ident">Function</span>,
-            <span class="ident">clang_sys</span>::<span class="ident">CXCursor_Constructor</span> <span class="op">=&gt;</span> <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(
+            <span class="ident">clang_sys</span>::<span class="ident">CXCursor_FunctionDecl</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">FunctionKind</span>::<span class="ident">Function</span>,
+            <span class="ident">clang_sys</span>::<span class="ident">CXCursor_Constructor</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(
                 <span class="ident">MethodKind</span>::<span class="ident">Constructor</span>,
             ),
-            <span class="ident">clang_sys</span>::<span class="ident">CXCursor_Destructor</span> <span class="op">=&gt;</span> <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(
+            <span class="ident">clang_sys</span>::<span class="ident">CXCursor_Destructor</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(
                 <span class="ident">MethodKind</span>::<span class="ident">Destructor</span>,
             ),
-            <span class="ident">clang_sys</span>::<span class="ident">CXCursor_CXXMethod</span> <span class="op">=&gt;</span> {
+            <span class="ident">clang_sys</span>::<span class="ident">CXCursor_CXXMethod</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">method_is_virtual</span>() {
                     <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(<span class="ident">MethodKind</span>::<span class="ident">Virtual</span>)
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">method_is_static</span>() {
@@ -622,7 +622,7 @@
                     <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(<span class="ident">MethodKind</span>::<span class="ident">Normal</span>)
                 }
             }
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
         })
     }
 }
@@ -670,7 +670,7 @@
         <span class="ident">comment</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
         <span class="ident">kind</span>: <span class="ident">FunctionKind</span>,
         <span class="ident">linkage</span>: <span class="ident">Linkage</span>
-    ) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">Function</span> {
             <span class="ident">name</span>,
             <span class="ident">mangled_name</span>,
@@ -682,27 +682,27 @@
     }
 
     <span class="doccomment">/// Get this function&#39;s name.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">name</span>
     }
 
     <span class="doccomment">/// Get this function&#39;s name.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mangled_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mangled_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">mangled_name</span>.<span class="ident">as_ref</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">n</span><span class="op">|</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="kw-2">*</span><span class="ident">n</span>)
     }
 
     <span class="doccomment">/// Get this function&#39;s signature type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">signature</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">TypeId</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">signature</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TypeId</span> {
         <span class="self">self</span>.<span class="ident">signature</span>
     }
 
     <span class="doccomment">/// Get this function&#39;s kind.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">FunctionKind</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">FunctionKind</span> {
         <span class="self">self</span>.<span class="ident">kind</span>
     }
 
     <span class="doccomment">/// Get this function&#39;s linkage.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">linkage</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Linkage</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">linkage</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Linkage</span> {
         <span class="self">self</span>.<span class="ident">linkage</span>
     }
 
@@ -713,7 +713,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">_ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
         <span class="ident">out</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">W</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">W</span>: <span class="ident">io</span>::<span class="ident">Write</span>,
     {
@@ -752,10 +752,10 @@
 
 <span class="kw">impl</span> <span class="ident">Abi</span> {
     <span class="doccomment">/// Returns whether this Abi is known or not.</span>
-    <span class="kw">fn</span> <span class="ident">is_unknown</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">is_unknown</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Abi</span>::<span class="ident">Unknown</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">Abi</span>::<span class="ident">Unknown</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 }
@@ -763,13 +763,13 @@
 <span class="kw">impl</span> <span class="ident">quote</span>::<span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">Abi</span> {
     <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">quote</span>::<span class="ident">Tokens</span>) {
         <span class="ident">tokens</span>.<span class="ident">append</span>(<span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Abi</span>::<span class="ident">C</span> <span class="op">=&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="string">&quot;C&quot;</span> },
-            <span class="ident">Abi</span>::<span class="ident">Stdcall</span> <span class="op">=&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="string">&quot;stdcall&quot;</span> },
-            <span class="ident">Abi</span>::<span class="ident">Fastcall</span> <span class="op">=&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="string">&quot;fastcall&quot;</span> },
-            <span class="ident">Abi</span>::<span class="ident">ThisCall</span> <span class="op">=&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="string">&quot;thiscall&quot;</span> },
-            <span class="ident">Abi</span>::<span class="ident">Aapcs</span> <span class="op">=&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="string">&quot;aapcs&quot;</span> },
-            <span class="ident">Abi</span>::<span class="ident">Win64</span> <span class="op">=&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="string">&quot;win64&quot;</span> },
-            <span class="ident">Abi</span>::<span class="ident">Unknown</span>(<span class="ident">cc</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(
+            <span class="ident">Abi</span>::<span class="ident">C</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="string">&quot;C&quot;</span> },
+            <span class="ident">Abi</span>::<span class="ident">Stdcall</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="string">&quot;stdcall&quot;</span> },
+            <span class="ident">Abi</span>::<span class="ident">Fastcall</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="string">&quot;fastcall&quot;</span> },
+            <span class="ident">Abi</span>::<span class="ident">ThisCall</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="string">&quot;thiscall&quot;</span> },
+            <span class="ident">Abi</span>::<span class="ident">Aapcs</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="string">&quot;aapcs&quot;</span> },
+            <span class="ident">Abi</span>::<span class="ident">Win64</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">quote</span><span class="macro">!</span> { <span class="string">&quot;win64&quot;</span> },
+            <span class="ident">Abi</span>::<span class="ident">Unknown</span>(<span class="ident">cc</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(
                 <span class="string">&quot;Cannot turn unknown calling convention to tokens: {:?}&quot;</span>,
                 <span class="ident">cc</span>
             ),
@@ -794,17 +794,17 @@
     <span class="ident">abi</span>: <span class="ident">Abi</span>,
 }
 
-<span class="kw">fn</span> <span class="ident">get_abi</span>(<span class="ident">cc</span>: <span class="ident">CXCallingConv</span>) <span class="op">-&gt;</span> <span class="ident">Abi</span> {
+<span class="kw">fn</span> <span class="ident">get_abi</span>(<span class="ident">cc</span>: <span class="ident">CXCallingConv</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Abi</span> {
     <span class="kw">use</span> <span class="ident">clang_sys</span>::<span class="kw-2">*</span>;
     <span class="kw">match</span> <span class="ident">cc</span> {
-        <span class="ident">CXCallingConv_Default</span> <span class="op">=&gt;</span> <span class="ident">Abi</span>::<span class="ident">C</span>,
-        <span class="ident">CXCallingConv_C</span> <span class="op">=&gt;</span> <span class="ident">Abi</span>::<span class="ident">C</span>,
-        <span class="ident">CXCallingConv_X86StdCall</span> <span class="op">=&gt;</span> <span class="ident">Abi</span>::<span class="ident">Stdcall</span>,
-        <span class="ident">CXCallingConv_X86FastCall</span> <span class="op">=&gt;</span> <span class="ident">Abi</span>::<span class="ident">Fastcall</span>,
-        <span class="ident">CXCallingConv_X86ThisCall</span> <span class="op">=&gt;</span> <span class="ident">Abi</span>::<span class="ident">ThisCall</span>,
-        <span class="ident">CXCallingConv_AAPCS</span> <span class="op">=&gt;</span> <span class="ident">Abi</span>::<span class="ident">Aapcs</span>,
-        <span class="ident">CXCallingConv_X86_64Win64</span> <span class="op">=&gt;</span> <span class="ident">Abi</span>::<span class="ident">Win64</span>,
-        <span class="ident">other</span> <span class="op">=&gt;</span> <span class="ident">Abi</span>::<span class="ident">Unknown</span>(<span class="ident">other</span>),
+        <span class="ident">CXCallingConv_Default</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Abi</span>::<span class="ident">C</span>,
+        <span class="ident">CXCallingConv_C</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Abi</span>::<span class="ident">C</span>,
+        <span class="ident">CXCallingConv_X86StdCall</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Abi</span>::<span class="ident">Stdcall</span>,
+        <span class="ident">CXCallingConv_X86FastCall</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Abi</span>::<span class="ident">Fastcall</span>,
+        <span class="ident">CXCallingConv_X86ThisCall</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Abi</span>::<span class="ident">ThisCall</span>,
+        <span class="ident">CXCallingConv_AAPCS</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Abi</span>::<span class="ident">Aapcs</span>,
+        <span class="ident">CXCallingConv_X86_64Win64</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Abi</span>::<span class="ident">Win64</span>,
+        <span class="ident">other</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Abi</span>::<span class="ident">Unknown</span>(<span class="ident">other</span>),
     }
 }
 
@@ -812,7 +812,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cursor_mangling</span>(
     <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
     <span class="ident">cursor</span>: <span class="kw-2">&amp;</span><span class="ident">clang</span>::<span class="ident">Cursor</span>,
-) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
     <span class="kw">use</span> <span class="ident">clang_sys</span>;
     <span class="kw">if</span> <span class="op">!</span><span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">enable_mangling</span> {
         <span class="kw">return</span> <span class="prelude-val">None</span>;
@@ -836,7 +836,7 @@
         <span class="kw">return</span> <span class="prelude-val">None</span>;
     }
 
-    <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">clang_sys</span>::<span class="ident">CXCursor_Destructor</span> {
+    <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">clang_sys</span>::<span class="ident">CXCursor_Destructor</span> {
         <span class="comment">// With old (3.8-) libclang versions, and the Itanium ABI, clang returns</span>
         <span class="comment">// the &quot;destructor group 0&quot; symbol, which means that it&#39;ll try to free</span>
         <span class="comment">// memory, which definitely isn&#39;t what we want.</span>
@@ -873,7 +873,7 @@
         <span class="ident">arguments</span>: <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">TypeId</span>)<span class="op">&gt;</span>,
         <span class="ident">is_variadic</span>: <span class="ident">bool</span>,
         <span class="ident">abi</span>: <span class="ident">Abi</span>,
-    ) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">FunctionSig</span> {
             <span class="ident">return_type</span>: <span class="ident">return_type</span>,
             <span class="ident">argument_types</span>: <span class="ident">arguments</span>,
@@ -887,12 +887,12 @@
         <span class="ident">ty</span>: <span class="kw-2">&amp;</span><span class="ident">clang</span>::<span class="ident">Type</span>,
         <span class="ident">cursor</span>: <span class="kw-2">&amp;</span><span class="ident">clang</span>::<span class="ident">Cursor</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">clang_sys</span>::<span class="kw-2">*</span>;
         <span class="macro">debug</span><span class="macro">!</span>(<span class="string">&quot;FunctionSig::from_ty {:?} {:?}&quot;</span>, <span class="ident">ty</span>, <span class="ident">cursor</span>);
 
         <span class="comment">// Skip function templates</span>
-        <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_FunctionTemplate</span> {
+        <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_FunctionTemplate</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>);
         }
 
@@ -913,7 +913,7 @@
             <span class="ident">CXCursor_Constructor</span> <span class="op">|</span>
             <span class="ident">CXCursor_CXXMethod</span> <span class="op">|</span>
             <span class="ident">CXCursor_ObjCInstanceMethodDecl</span> <span class="op">|</span>
-            <span class="ident">CXCursor_ObjCClassMethodDecl</span> <span class="op">=&gt;</span> {
+            <span class="ident">CXCursor_ObjCClassMethodDecl</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="comment">// For CXCursor_FunctionDecl, cursor.args() is the reliable way</span>
                 <span class="comment">// to get parameter names and types.</span>
                 <span class="ident">cursor</span>
@@ -930,12 +930,12 @@
                     })
                     .<span class="ident">collect</span>()
             }
-            <span class="kw">_</span> <span class="op">=&gt;</span> {
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="comment">// For non-CXCursor_FunctionDecl, visiting the cursor&#39;s children</span>
                 <span class="comment">// is the only reliable way to get parameter names.</span>
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">args</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
                 <span class="ident">cursor</span>.<span class="ident">visit</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> {
-                    <span class="kw">if</span> <span class="ident">c</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_ParmDecl</span> {
+                    <span class="kw">if</span> <span class="ident">c</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_ParmDecl</span> {
                         <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span>
                             <span class="ident">Item</span>::<span class="ident">from_ty_or_ref</span>(<span class="ident">c</span>.<span class="ident">cur_type</span>(), <span class="ident">c</span>, <span class="prelude-val">None</span>, <span class="ident">ctx</span>);
                         <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">c</span>.<span class="ident">spelling</span>();
@@ -949,21 +949,21 @@
             }
         };
 
-        <span class="kw">let</span> <span class="ident">is_method</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_CXXMethod</span>;
-        <span class="kw">let</span> <span class="ident">is_constructor</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_Constructor</span>;
-        <span class="kw">let</span> <span class="ident">is_destructor</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_Destructor</span>;
-        <span class="kw">if</span> (<span class="ident">is_constructor</span> <span class="op">||</span> <span class="ident">is_destructor</span> <span class="op">||</span> <span class="ident">is_method</span>) <span class="op">&amp;&amp;</span>
-            <span class="ident">cursor</span>.<span class="ident">lexical_parent</span>() <span class="op">!=</span> <span class="ident">cursor</span>.<span class="ident">semantic_parent</span>()
+        <span class="kw">let</span> <span class="ident">is_method</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_CXXMethod</span>;
+        <span class="kw">let</span> <span class="ident">is_constructor</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_Constructor</span>;
+        <span class="kw">let</span> <span class="ident">is_destructor</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_Destructor</span>;
+        <span class="kw">if</span> (<span class="ident">is_constructor</span> <span class="op">|</span><span class="op">|</span> <span class="ident">is_destructor</span> <span class="op">|</span><span class="op">|</span> <span class="ident">is_method</span>) <span class="kw-2">&amp;</span><span class="op">&amp;</span>
+            <span class="ident">cursor</span>.<span class="ident">lexical_parent</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">semantic_parent</span>()
         {
             <span class="comment">// Only parse constructors once.</span>
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>);
         }
 
-        <span class="kw">if</span> <span class="ident">is_method</span> <span class="op">||</span> <span class="ident">is_constructor</span> <span class="op">||</span> <span class="ident">is_destructor</span> {
-            <span class="kw">let</span> <span class="ident">is_const</span> <span class="op">=</span> <span class="ident">is_method</span> <span class="op">&amp;&amp;</span> <span class="ident">cursor</span>.<span class="ident">method_is_const</span>();
-            <span class="kw">let</span> <span class="ident">is_virtual</span> <span class="op">=</span> <span class="ident">is_method</span> <span class="op">&amp;&amp;</span> <span class="ident">cursor</span>.<span class="ident">method_is_virtual</span>();
-            <span class="kw">let</span> <span class="ident">is_static</span> <span class="op">=</span> <span class="ident">is_method</span> <span class="op">&amp;&amp;</span> <span class="ident">cursor</span>.<span class="ident">method_is_static</span>();
-            <span class="kw">if</span> <span class="op">!</span><span class="ident">is_static</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">is_virtual</span> {
+        <span class="kw">if</span> <span class="ident">is_method</span> <span class="op">|</span><span class="op">|</span> <span class="ident">is_constructor</span> <span class="op">|</span><span class="op">|</span> <span class="ident">is_destructor</span> {
+            <span class="kw">let</span> <span class="ident">is_const</span> <span class="op">=</span> <span class="ident">is_method</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">cursor</span>.<span class="ident">method_is_const</span>();
+            <span class="kw">let</span> <span class="ident">is_virtual</span> <span class="op">=</span> <span class="ident">is_method</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">cursor</span>.<span class="ident">method_is_virtual</span>();
+            <span class="kw">let</span> <span class="ident">is_static</span> <span class="op">=</span> <span class="ident">is_method</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">cursor</span>.<span class="ident">method_is_static</span>();
+            <span class="kw">if</span> <span class="op">!</span><span class="ident">is_static</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="op">!</span><span class="ident">is_virtual</span> {
                 <span class="kw">let</span> <span class="ident">class</span> <span class="op">=</span> <span class="ident">Item</span>::<span class="ident">parse</span>(<span class="ident">cursor</span>.<span class="ident">semantic_parent</span>(), <span class="prelude-val">None</span>, <span class="ident">ctx</span>)
                     .<span class="ident">expect</span>(<span class="string">&quot;Expected to parse the class&quot;</span>);
                 <span class="comment">// The `class` most likely is not finished parsing yet, so use</span>
@@ -981,10 +981,10 @@
             }
         }
 
-        <span class="kw">let</span> <span class="ident">ty_ret_type</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_ObjCInstanceMethodDecl</span> <span class="op">||</span>
-            <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_ObjCClassMethodDecl</span>
+        <span class="kw">let</span> <span class="ident">ty_ret_type</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_ObjCInstanceMethodDecl</span> <span class="op">|</span><span class="op">|</span>
+            <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_ObjCClassMethodDecl</span>
         {
-            <span class="macro">try</span><span class="macro">!</span>(<span class="ident">ty</span>.<span class="ident">ret_type</span>().<span class="ident">or_else</span>(<span class="op">||</span> <span class="ident">cursor</span>.<span class="ident">ret_type</span>()).<span class="ident">ok_or</span>(
+            <span class="macro">try</span><span class="macro">!</span>(<span class="ident">ty</span>.<span class="ident">ret_type</span>().<span class="ident">or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">cursor</span>.<span class="ident">ret_type</span>()).<span class="ident">ok_or</span>(
                 <span class="ident">ParseError</span>::<span class="ident">Continue</span>,
             ))
         } <span class="kw">else</span> {
@@ -1002,26 +1002,26 @@
     }
 
     <span class="doccomment">/// Get this function signature&#39;s return type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">return_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">TypeId</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">return_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TypeId</span> {
         <span class="self">self</span>.<span class="ident">return_type</span>
     }
 
     <span class="doccomment">/// Get this function signature&#39;s argument (name, type) pairs.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">argument_types</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span>[(<span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">TypeId</span>)] {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">argument_types</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span>[(<span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, <span class="ident">TypeId</span>)] {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">argument_types</span>
     }
 
     <span class="doccomment">/// Get this function signature&#39;s ABI.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">abi</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Abi</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">abi</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Abi</span> {
         <span class="self">self</span>.<span class="ident">abi</span>
     }
 
     <span class="doccomment">/// Is this function signature variadic?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_variadic</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_variadic</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="comment">// Clang reports some functions as variadic when they *might* be</span>
         <span class="comment">// variadic. We do the argument check because rust doesn&#39;t codegen well</span>
         <span class="comment">// variadic functions without an initial argument.</span>
-        <span class="self">self</span>.<span class="ident">is_variadic</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">argument_types</span>.<span class="ident">is_empty</span>()
+        <span class="self">self</span>.<span class="ident">is_variadic</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">argument_types</span>.<span class="ident">is_empty</span>()
     }
 
     <span class="doccomment">/// Are function pointers with this signature able to derive Rust traits?</span>
@@ -1033,14 +1033,14 @@
     <span class="doccomment">/// * https://github.com/rust-lang-nursery/rust-bindgen/issues/547,</span>
     <span class="doccomment">/// * https://github.com/rust-lang/rust/issues/38848,</span>
     <span class="doccomment">/// * and https://github.com/rust-lang/rust/issues/40158</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">function_pointers_can_derive</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">function_pointers_can_derive</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">argument_types</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">RUST_DERIVE_FUNPTR_LIMIT</span> {
             <span class="kw">return</span> <span class="bool-val">false</span>;
         }
 
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">abi</span> {
-            <span class="ident">Abi</span>::<span class="ident">C</span> <span class="op">|</span> <span class="ident">Abi</span>::<span class="ident">Unknown</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">Abi</span>::<span class="ident">C</span> <span class="op">|</span> <span class="ident">Abi</span>::<span class="ident">Unknown</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 }
@@ -1049,26 +1049,26 @@
     <span class="kw">fn</span> <span class="ident">parse</span>(
         <span class="ident">cursor</span>: <span class="ident">clang</span>::<span class="ident">Cursor</span>,
         <span class="ident">context</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ParseResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ParseResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">clang_sys</span>::<span class="kw-2">*</span>;
 
         <span class="kw">let</span> <span class="ident">kind</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">FunctionKind</span>::<span class="ident">from_cursor</span>(<span class="kw-2">&amp;</span><span class="ident">cursor</span>) {
-            <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>),
-            <span class="prelude-val">Some</span>(<span class="ident">k</span>) <span class="op">=&gt;</span> <span class="ident">k</span>,
+            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>),
+            <span class="prelude-val">Some</span>(<span class="ident">k</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">k</span>,
         };
 
         <span class="macro">debug</span><span class="macro">!</span>(<span class="string">&quot;Function::parse({:?}, {:?})&quot;</span>, <span class="ident">cursor</span>, <span class="ident">cursor</span>.<span class="ident">cur_type</span>());
 
         <span class="kw">let</span> <span class="ident">visibility</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">visibility</span>();
-        <span class="kw">if</span> <span class="ident">visibility</span> <span class="op">!=</span> <span class="ident">CXVisibility_Default</span> {
+        <span class="kw">if</span> <span class="ident">visibility</span> <span class="op">!</span><span class="op">=</span> <span class="ident">CXVisibility_Default</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>);
         }
 
-        <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">access_specifier</span>() <span class="op">==</span> <span class="ident">CX_CXXPrivate</span> {
+        <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">access_specifier</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CX_CXXPrivate</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>);
         }
 
-        <span class="kw">if</span> <span class="op">!</span><span class="ident">context</span>.<span class="ident">options</span>().<span class="ident">generate_inline_functions</span> <span class="op">&amp;&amp;</span>
+        <span class="kw">if</span> <span class="op">!</span><span class="ident">context</span>.<span class="ident">options</span>().<span class="ident">generate_inline_functions</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span>
             <span class="ident">cursor</span>.<span class="ident">is_inlined_function</span>()
         {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>);
@@ -1076,9 +1076,9 @@
 
         <span class="kw">let</span> <span class="ident">linkage</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">linkage</span>();
         <span class="kw">let</span> <span class="ident">linkage</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">linkage</span> {
-            <span class="ident">CXLinkage_External</span> <span class="op">|</span> <span class="ident">CXLinkage_UniqueExternal</span> <span class="op">=&gt;</span> <span class="ident">Linkage</span>::<span class="ident">External</span>,
-            <span class="ident">CXLinkage_Internal</span> <span class="op">=&gt;</span> <span class="ident">Linkage</span>::<span class="ident">Internal</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>)
+            <span class="ident">CXLinkage_External</span> <span class="op">|</span> <span class="ident">CXLinkage_UniqueExternal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Linkage</span>::<span class="ident">External</span>,
+            <span class="ident">CXLinkage_Internal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Linkage</span>::<span class="ident">Internal</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>)
         };
 
         <span class="comment">// Grab the signature using Item::from_ty.</span>
@@ -1088,7 +1088,7 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">spelling</span>();
         <span class="macro">assert</span><span class="macro">!</span>(<span class="op">!</span><span class="ident">name</span>.<span class="ident">is_empty</span>(), <span class="string">&quot;Empty function name?&quot;</span>);
 
-        <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_Destructor</span> {
+        <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_Destructor</span> {
             <span class="comment">// Remove the leading `~`. The alternative to this is special-casing</span>
             <span class="comment">// code-generation for destructor functions, which seems less than</span>
             <span class="comment">// ideal.</span>
@@ -1103,7 +1103,7 @@
         }
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mangled_name</span> <span class="op">=</span> <span class="ident">cursor_mangling</span>(<span class="ident">context</span>, <span class="kw-2">&amp;</span><span class="ident">cursor</span>);
-        <span class="kw">if</span> <span class="ident">mangled_name</span>.<span class="ident">as_ref</span>() <span class="op">==</span> <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">name</span>) {
+        <span class="kw">if</span> <span class="ident">mangled_name</span>.<span class="ident">as_ref</span>() <span class="op">=</span><span class="op">=</span> <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">name</span>) {
             <span class="ident">mangled_name</span> <span class="op">=</span> <span class="prelude-val">None</span>;
         }
 
@@ -1130,28 +1130,28 @@
 }
 
 <span class="kw">impl</span> <span class="ident">CanTriviallyDeriveDebug</span> <span class="kw">for</span> <span class="ident">FunctionSig</span> {
-    <span class="kw">fn</span> <span class="ident">can_trivially_derive_debug</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">can_trivially_derive_debug</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">function_pointers_can_derive</span>()
     }
 }
 
 <span class="kw">impl</span> <span class="ident">CanTriviallyDeriveHash</span> <span class="kw">for</span> <span class="ident">FunctionSig</span> {
-    <span class="kw">fn</span> <span class="ident">can_trivially_derive_hash</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">can_trivially_derive_hash</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">function_pointers_can_derive</span>()
     }
 }
 
 <span class="kw">impl</span> <span class="ident">CanTriviallyDerivePartialEqOrPartialOrd</span> <span class="kw">for</span> <span class="ident">FunctionSig</span> {
-    <span class="kw">fn</span> <span class="ident">can_trivially_derive_partialeq_or_partialord</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CanDerive</span> {
+    <span class="kw">fn</span> <span class="ident">can_trivially_derive_partialeq_or_partialord</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CanDerive</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">argument_types</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">RUST_DERIVE_FUNPTR_LIMIT</span> {
             <span class="kw">return</span> <span class="ident">CanDerive</span>::<span class="ident">No</span>;
         }
 
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">abi</span> {
-            <span class="ident">Abi</span>::<span class="ident">C</span> <span class="op">|</span> <span class="ident">Abi</span>::<span class="ident">Unknown</span>(..) <span class="op">=&gt;</span> <span class="ident">CanDerive</span>::<span class="ident">Yes</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="ident">CanDerive</span>::<span class="ident">No</span>,
+            <span class="ident">Abi</span>::<span class="ident">C</span> <span class="op">|</span> <span class="ident">Abi</span>::<span class="ident">Unknown</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">CanDerive</span>::<span class="ident">Yes</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">CanDerive</span>::<span class="ident">No</span>,
         }
     }
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../../";window.currentCrate = "bindgen";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../";window.currentCrate = "bindgen";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>
