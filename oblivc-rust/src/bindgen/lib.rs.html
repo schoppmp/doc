@@ -1979,7 +1979,7 @@
 <span class="comment">// undocumented. Normal builds, however, will leave the module private, so that</span>
 <span class="comment">// we don&#39;t expose internals to library consumers.</span>
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">doc_mod</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">m</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">doc_mod_name</span>:<span class="ident">ident</span>) <span class="op">=&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">m</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">doc_mod_name</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> {
         <span class="macro">cfg_if</span><span class="macro">!</span> {
             <span class="kw">if</span> <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;testing_only_docs&quot;</span>)]</span> {
                 <span class="kw">pub</span> <span class="kw">mod</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">doc_mod_name</span> {
@@ -2044,7 +2044,7 @@
 
 <span class="kw">impl</span> <span class="ident">CodegenConfig</span> {
     <span class="doccomment">/// Generate all kinds of items.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">all</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">all</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">CodegenConfig</span> {
             <span class="ident">functions</span>: <span class="bool-val">true</span>,
             <span class="ident">types</span>: <span class="bool-val">true</span>,
@@ -2056,7 +2056,7 @@
     }
 
     <span class="doccomment">/// Generate nothing.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">nothing</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">nothing</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">CodegenConfig</span> {
             <span class="ident">functions</span>: <span class="bool-val">false</span>,
             <span class="ident">types</span>: <span class="bool-val">false</span>,
@@ -2069,7 +2069,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">CodegenConfig</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">CodegenConfig</span>::<span class="ident">all</span>()
     }
 }
@@ -2099,13 +2099,13 @@
 }
 
 <span class="doccomment">/// Construct a new [`Builder`](./struct.Builder.html).</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">builder</span>() <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">builder</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
     <span class="ident">Default</span>::<span class="ident">default</span>()
 }
 
 <span class="kw">impl</span> <span class="ident">Builder</span> {
     <span class="doccomment">/// Generates the command line flags use for creating `Builder`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">command_line_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">command_line_flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">output_vector</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">header</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">input_headers</span>.<span class="ident">last</span>().<span class="ident">cloned</span>() {
@@ -2511,7 +2511,7 @@
     <span class="doccomment">///     .generate()</span>
     <span class="doccomment">///     .unwrap();</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">header</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">header</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">header</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">header</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">input_headers</span>.<span class="ident">push</span>(<span class="ident">header</span>.<span class="ident">into</span>());
         <span class="self">self</span>
     }
@@ -2519,7 +2519,7 @@
     <span class="doccomment">/// Add `contents` as an input C/C++ header named `name`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The file `name` will be added to the clang arguments.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">header_contents</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">contents</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">header_contents</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">contents</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">input_header_contents</span>.<span class="ident">push</span>(
             (<span class="ident">name</span>.<span class="ident">into</span>(), <span class="ident">contents</span>.<span class="ident">into</span>()),
         );
@@ -2529,13 +2529,13 @@
     <span class="doccomment">/// Specify the rust target</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The default is the latest stable Rust version</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rust_target</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rust_target</span>: <span class="ident">RustTarget</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rust_target</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rust_target</span>: <span class="ident">RustTarget</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">set_rust_target</span>(<span class="ident">rust_target</span>);
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Set the output graphviz file.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">emit_ir_graphviz</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">path</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">emit_ir_graphviz</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">path</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="ident">path</span>.<span class="ident">into</span>();
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">emit_ir_graphviz</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">path</span>);
         <span class="self">self</span>
@@ -2549,7 +2549,7 @@
     <span class="doccomment">/// in:</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// https://github.com/rust-lang-nursery/rust-bindgen/issues/426</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">generate_comments</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">generate_comments</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">generate_comments</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
@@ -2581,14 +2581,14 @@
     <span class="doccomment">/// definitions is by using the [`Builder::raw_line`](#method.raw_line)</span>
     <span class="doccomment">/// method, another would be to define them in Rust and then `include!(...)`</span>
     <span class="doccomment">/// the bindings immediately afterwards.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelist_recursively</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelist_recursively</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">whitelist_recursively</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Generate `#[macro_use] extern crate objc;` instead of `use objc;`</span>
     <span class="doccomment">/// in the prologue of the files generated from objective-c files</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">objc_extern_crate</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">objc_extern_crate</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">objc_extern_crate</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
@@ -2600,7 +2600,7 @@
     <span class="doccomment">/// some cases for non-mangled functions, see [1], so we allow disabling it.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [1]: https://github.com/rust-lang-nursery/rust-bindgen/issues/528</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">trust_clang_mangling</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">trust_clang_mangling</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">enable_mangling</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
@@ -2608,20 +2608,20 @@
     <span class="doccomment">/// Hide the given type from the generated bindings. Regular expressions are</span>
     <span class="doccomment">/// supported.</span>
     <span class="attribute">#[<span class="ident">deprecated</span> <span class="op">=</span> <span class="string">&quot;Use blacklist_type instead&quot;</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hide_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hide_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">blacklist_type</span>(<span class="ident">arg</span>)
     }
 
     <span class="doccomment">/// Hide the given type from the generated bindings. Regular expressions are</span>
     <span class="doccomment">/// supported.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">blacklist_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">blacklist_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">blacklisted_types</span>.<span class="ident">insert</span>(<span class="ident">arg</span>);
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Treat the given type as opaque in the generated bindings. Regular</span>
     <span class="doccomment">/// expressions are supported.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">opaque_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">opaque_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">opaque_types</span>.<span class="ident">insert</span>(<span class="ident">arg</span>);
         <span class="self">self</span>
     }
@@ -2630,14 +2630,14 @@
     <span class="doccomment">/// refers to) appears in the generated bindings. Regular expressions are</span>
     <span class="doccomment">/// supported.</span>
     <span class="attribute">#[<span class="ident">deprecated</span> <span class="op">=</span> <span class="string">&quot;use whitelist_type instead&quot;</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelisted_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelisted_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">whitelist_type</span>(<span class="ident">arg</span>)
     }
 
     <span class="doccomment">/// Whitelist the given type so that it (and all types that it transitively</span>
     <span class="doccomment">/// refers to) appears in the generated bindings. Regular expressions are</span>
     <span class="doccomment">/// supported.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelist_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelist_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">whitelisted_types</span>.<span class="ident">insert</span>(<span class="ident">arg</span>);
         <span class="self">self</span>
     }
@@ -2645,7 +2645,7 @@
     <span class="doccomment">/// Whitelist the given function so that it (and all types that it</span>
     <span class="doccomment">/// transitively refers to) appears in the generated bindings. Regular</span>
     <span class="doccomment">/// expressions are supported.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelist_function</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelist_function</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">whitelisted_functions</span>.<span class="ident">insert</span>(<span class="ident">arg</span>);
         <span class="self">self</span>
     }
@@ -2654,14 +2654,14 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Deprecated: use whitelist_function instead.</span>
     <span class="attribute">#[<span class="ident">deprecated</span> <span class="op">=</span> <span class="string">&quot;use whitelist_function instead&quot;</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelisted_function</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelisted_function</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">whitelist_function</span>(<span class="ident">arg</span>)
     }
 
     <span class="doccomment">/// Whitelist the given variable so that it (and all types that it</span>
     <span class="doccomment">/// transitively refers to) appears in the generated bindings. Regular</span>
     <span class="doccomment">/// expressions are supported.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelist_var</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelist_var</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">whitelisted_vars</span>.<span class="ident">insert</span>(<span class="ident">arg</span>);
         <span class="self">self</span>
     }
@@ -2670,7 +2670,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Deprecated: use whitelist_var instead.</span>
     <span class="attribute">#[<span class="ident">deprecated</span> <span class="op">=</span> <span class="string">&quot;use whitelist_var instead&quot;</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelisted_var</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">whitelisted_var</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">whitelist_var</span>(<span class="ident">arg</span>)
     }
 
@@ -2680,7 +2680,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This makes bindgen generate a type that isn&#39;t a rust `enum`. Regular</span>
     <span class="doccomment">/// expressions are supported.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bitfield_enum</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bitfield_enum</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">bitfield_enums</span>.<span class="ident">insert</span>(<span class="ident">arg</span>);
         <span class="self">self</span>
     }
@@ -2695,7 +2695,7 @@
     <span class="doccomment">/// you have complete control of the C/C++ code that you&#39;re binding to.</span>
     <span class="doccomment">/// Take a look at https://github.com/rust-lang/rust/issues/36927 for</span>
     <span class="doccomment">/// more information.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rustified_enum</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rustified_enum</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">rustified_enums</span>.<span class="ident">insert</span>(<span class="ident">arg</span>);
         <span class="self">self</span>
     }
@@ -2705,26 +2705,26 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This makes bindgen generate modules containing constants instead of</span>
     <span class="doccomment">/// just constants. Regular expressions are supported.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">constified_enum_module</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">constified_enum_module</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">constified_enum_modules</span>.<span class="ident">insert</span>(<span class="ident">arg</span>);
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Add a string to prepend to the generated bindings. The string is passed</span>
     <span class="doccomment">/// through without any modification.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">raw_line</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">raw_line</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">raw_lines</span>.<span class="ident">push</span>(<span class="ident">arg</span>.<span class="ident">into</span>());
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Add an argument to be passed straight through to clang.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clang_arg</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clang_arg</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">clang_args</span>.<span class="ident">push</span>(<span class="ident">arg</span>.<span class="ident">into</span>());
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Add arguments to be passed straight through to clang.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clang_args</span><span class="op">&lt;</span><span class="ident">I</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">iter</span>: <span class="ident">I</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clang_args</span><span class="op">&lt;</span><span class="ident">I</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">iter</span>: <span class="ident">I</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span>
     <span class="kw">where</span>
         <span class="ident">I</span>: <span class="ident">IntoIterator</span>,
         <span class="ident">I</span>::<span class="ident">Item</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>,
@@ -2736,19 +2736,19 @@
     }
 
     <span class="doccomment">/// Make the generated bindings link the given shared library.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">link</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">library</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">link</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">library</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">links</span>.<span class="ident">push</span>((<span class="ident">library</span>.<span class="ident">into</span>(), <span class="ident">LinkType</span>::<span class="ident">Default</span>));
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Make the generated bindings link the given static library.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">link_static</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">library</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">link_static</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">library</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">links</span>.<span class="ident">push</span>((<span class="ident">library</span>.<span class="ident">into</span>(), <span class="ident">LinkType</span>::<span class="ident">Static</span>));
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Make the generated bindings link the given framework.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">link_framework</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">library</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">link_framework</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">library</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">links</span>.<span class="ident">push</span>(
             (<span class="ident">library</span>.<span class="ident">into</span>(), <span class="ident">LinkType</span>::<span class="ident">Framework</span>),
         );
@@ -2757,55 +2757,55 @@
 
     <span class="doccomment">/// Emit bindings for builtin definitions (for example `__builtin_va_list`)</span>
     <span class="doccomment">/// in the generated Rust.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">emit_builtins</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">emit_builtins</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">builtins</span> <span class="op">=</span> <span class="bool-val">true</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Avoid converting floats to `f32`/`f64` by default.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_convert_floats</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_convert_floats</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">convert_floats</span> <span class="op">=</span> <span class="bool-val">false</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Set whether layout tests should be generated.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">layout_tests</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">layout_tests</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">layout_tests</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Set whether `Debug` should be implemented, if it can not be derived automatically.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">impl_debug</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">impl_debug</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">impl_debug</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Set whether `PartialEq` should be implemented, if it can not be derived automatically.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">impl_partialeq</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">impl_partialeq</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">impl_partialeq</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Set whether `Copy` should be derived by default.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_copy</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_copy</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">derive_copy</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Set whether `Debug` should be derived by default.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_debug</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_debug</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">derive_debug</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Set whether `Default` should be derived by default.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_default</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_default</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">derive_default</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Set whether `Hash` should be derived by default.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_hash</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_hash</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">derive_hash</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
@@ -2813,7 +2813,7 @@
     <span class="doccomment">/// Set whether `PartialOrd` should be derived by default.</span>
     <span class="doccomment">/// If we don&#39;t compute partialord, we also cannot compute</span>
     <span class="doccomment">/// ord. Set the derive_ord to `false` when doit is `false`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_partialord</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_partialord</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">derive_partialord</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="kw">if</span> <span class="op">!</span><span class="ident">doit</span> {
             <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">derive_ord</span> <span class="op">=</span> <span class="bool-val">false</span>;
@@ -2824,7 +2824,7 @@
     <span class="doccomment">/// Set whether `Ord` should be derived by default.</span>
     <span class="doccomment">/// We can&#39;t compute `Ord` without computing `PartialOrd`,</span>
     <span class="doccomment">/// so we set the same option to derive_partialord.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_ord</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_ord</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">derive_ord</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">derive_partialord</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
@@ -2834,7 +2834,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// If we don&#39;t derive `PartialEq`, we also cannot derive `Eq`, so deriving</span>
     <span class="doccomment">/// `Eq` is also disabled when `doit` is `false`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_partialeq</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_partialeq</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">derive_partialeq</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="kw">if</span> <span class="op">!</span><span class="ident">doit</span> {
             <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">derive_eq</span> <span class="op">=</span> <span class="bool-val">false</span>;
@@ -2846,7 +2846,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// We can&#39;t derive `Eq` without also deriving `PartialEq`, so we also</span>
     <span class="doccomment">/// enable deriving `PartialEq` when `doit` is `true`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_eq</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_eq</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">derive_eq</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="kw">if</span> <span class="ident">doit</span> {
             <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">derive_partialeq</span> <span class="op">=</span> <span class="ident">doit</span>;
@@ -2856,25 +2856,25 @@
 
     <span class="doccomment">/// Set whether or not to time bindgen phases, and print information to</span>
     <span class="doccomment">/// stderr.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">time_phases</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">time_phases</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">time_phases</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Emit Clang AST.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">emit_clang_ast</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">emit_clang_ast</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">emit_ast</span> <span class="op">=</span> <span class="bool-val">true</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Emit IR.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">emit_ir</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">emit_ir</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">emit_ir</span> <span class="op">=</span> <span class="bool-val">true</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Enable C++ namespaces.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enable_cxx_namespaces</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enable_cxx_namespaces</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">enable_cxx_namespaces</span> <span class="op">=</span> <span class="bool-val">true</span>;
         <span class="self">self</span>
     }
@@ -2892,7 +2892,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note, also, that this option may cause bindgen to generate duplicate</span>
     <span class="doccomment">/// names.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">disable_name_namespacing</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">disable_name_namespacing</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">disable_name_namespacing</span> <span class="op">=</span> <span class="bool-val">true</span>;
         <span class="self">self</span>
     }
@@ -2925,7 +2925,7 @@
     <span class="doccomment">/// That&#39;s probably something we can do if we see this option is needed in a</span>
     <span class="doccomment">/// lot of cases, to improve it&#39;s usability, but my guess is that this is</span>
     <span class="doccomment">/// not going to be too useful.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">conservative_inline_namespaces</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">conservative_inline_namespaces</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">conservative_inline_namespaces</span> <span class="op">=</span> <span class="bool-val">true</span>;
         <span class="self">self</span>
     }
@@ -2935,26 +2935,26 @@
     <span class="doccomment">/// Note that they will usually not work. However you can use</span>
     <span class="doccomment">/// `-fkeep-inline-functions` or `-fno-inline-functions` if you are</span>
     <span class="doccomment">/// responsible of compiling the library to make them callable.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">generate_inline_functions</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">generate_inline_functions</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">generate_inline_functions</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Ignore functions.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ignore_functions</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ignore_functions</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">codegen_config</span>.<span class="ident">functions</span> <span class="op">=</span> <span class="bool-val">false</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Ignore methods.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ignore_methods</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ignore_methods</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">codegen_config</span>.<span class="ident">methods</span> <span class="op">=</span> <span class="bool-val">false</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Avoid generating any unstable Rust, such as Rust unions, in the generated bindings.</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;please use `rust_target` instead&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unstable_rust</span>(<span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unstable_rust</span>(<span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">rust_target</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">doit</span> {
             <span class="ident">RustTarget</span>::<span class="ident">Nightly</span>
         } <span class="kw">else</span> {
@@ -2964,13 +2964,13 @@
     }
 
     <span class="doccomment">/// Use core instead of libstd in the generated bindings.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">use_core</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">use_core</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">use_core</span> <span class="op">=</span> <span class="bool-val">true</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Use the given prefix for the raw types instead of `::std::os::raw`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ctypes_prefix</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">prefix</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ctypes_prefix</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">prefix</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">ctypes_prefix</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">prefix</span>.<span class="ident">into</span>());
         <span class="self">self</span>
     }
@@ -2980,40 +2980,40 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_callbacks</span>(
         <span class="kw-2">mut</span> <span class="self">self</span>,
         <span class="ident">cb</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">callbacks</span>::<span class="ident">ParseCallbacks</span><span class="op">&gt;</span>,
-    ) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">parse_callbacks</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">cb</span>);
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Choose what to generate using a</span>
     <span class="doccomment">/// [`CodegenConfig`](./struct.CodegenConfig.html).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_codegen_config</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">config</span>: <span class="ident">CodegenConfig</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_codegen_config</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">config</span>: <span class="ident">CodegenConfig</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">codegen_config</span> <span class="op">=</span> <span class="ident">config</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Prepend the enum name to constant or bitfield variants.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">prepend_enum_name</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">prepend_enum_name</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">prepend_enum_name</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Set whether rustfmt should format the generated bindings.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rustfmt_bindings</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rustfmt_bindings</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">doit</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">rustfmt_bindings</span> <span class="op">=</span> <span class="ident">doit</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Set the absolute path to the rustfmt configuration file, if None, the standard rustfmt</span>
     <span class="doccomment">/// options are used.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rustfmt_configuration_file</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">path</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rustfmt_configuration_file</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">path</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">rustfmt_bindings</span>(<span class="bool-val">true</span>);
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">rustfmt_configuration_file</span> <span class="op">=</span> <span class="ident">path</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Generate the Rust bindings using the options built up thus far.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">generate</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Bindings</span>, ()<span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">generate</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Bindings</span>, ()<span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">input_header</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">input_headers</span>.<span class="ident">pop</span>();
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">clang_args</span>.<span class="ident">extend</span>(
             <span class="self">self</span>.<span class="ident">input_headers</span>
@@ -3037,8 +3037,8 @@
     <span class="doccomment">/// This is useful when debugging bindgen, using C-Reduce, or when filing</span>
     <span class="doccomment">/// issues. The resulting file will be named something like `__bindgen.i` or</span>
     <span class="doccomment">/// `__bindgen.ii`</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dump_preprocessed_input</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">clang</span> <span class="op">=</span> <span class="ident">clang_sys</span>::<span class="ident">support</span>::<span class="ident">Clang</span>::<span class="ident">find</span>(<span class="prelude-val">None</span>, <span class="kw-2">&amp;</span>[]).<span class="ident">ok_or_else</span>(<span class="op">||</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dump_preprocessed_input</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+        <span class="kw">let</span> <span class="ident">clang</span> <span class="op">=</span> <span class="ident">clang_sys</span>::<span class="ident">support</span>::<span class="ident">Clang</span>::<span class="ident">find</span>(<span class="prelude-val">None</span>, <span class="kw-2">&amp;</span>[]).<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> {
             <span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(<span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">Other</span>, <span class="string">&quot;Cannot find clang executable&quot;</span>)
         })<span class="question-mark">?</span>;
 
@@ -3051,7 +3051,7 @@
 
         <span class="comment">// For each input header, add `#include &quot;$header&quot;`.</span>
         <span class="kw">for</span> <span class="ident">header</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">input_headers</span> {
-            <span class="ident">is_cpp</span> <span class="op">|=</span> <span class="ident">header</span>.<span class="ident">ends_with</span>(<span class="string">&quot;.hpp&quot;</span>);
+            <span class="ident">is_cpp</span> <span class="op">|</span><span class="op">=</span> <span class="ident">header</span>.<span class="ident">ends_with</span>(<span class="string">&quot;.hpp&quot;</span>);
 
             <span class="ident">wrapper_contents</span>.<span class="ident">push_str</span>(<span class="string">&quot;#include \&quot;&quot;</span>);
             <span class="ident">wrapper_contents</span>.<span class="ident">push_str</span>(<span class="ident">header</span>);
@@ -3061,7 +3061,7 @@
         <span class="comment">// For each input header content, add a prefix line of `#line 0 &quot;$name&quot;`</span>
         <span class="comment">// followed by the contents.</span>
         <span class="kw">for</span> <span class="kw-2">&amp;</span>(<span class="kw-2">ref</span> <span class="ident">name</span>, <span class="kw-2">ref</span> <span class="ident">contents</span>) <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">input_header_contents</span> {
-            <span class="ident">is_cpp</span> <span class="op">|=</span> <span class="ident">name</span>.<span class="ident">ends_with</span>(<span class="string">&quot;.hpp&quot;</span>);
+            <span class="ident">is_cpp</span> <span class="op">|</span><span class="op">=</span> <span class="ident">name</span>.<span class="ident">ends_with</span>(<span class="string">&quot;.hpp&quot;</span>);
 
             <span class="ident">wrapper_contents</span>.<span class="ident">push_str</span>(<span class="string">&quot;#line 0 \&quot;&quot;</span>);
             <span class="ident">wrapper_contents</span>.<span class="ident">push_str</span>(<span class="ident">name</span>);
@@ -3069,8 +3069,8 @@
             <span class="ident">wrapper_contents</span>.<span class="ident">push_str</span>(<span class="ident">contents</span>);
         }
 
-        <span class="ident">is_cpp</span> <span class="op">|=</span> <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">clang_args</span>.<span class="ident">windows</span>(<span class="number">2</span>).<span class="ident">any</span>(<span class="op">|</span><span class="ident">w</span><span class="op">|</span> {
-            <span class="ident">w</span>[<span class="number">0</span>] <span class="op">==</span> <span class="string">&quot;-x=c++&quot;</span> <span class="op">||</span> <span class="ident">w</span>[<span class="number">1</span>] <span class="op">==</span> <span class="string">&quot;-x=c++&quot;</span> <span class="op">||</span> <span class="ident">w</span> <span class="op">==</span> <span class="kw-2">&amp;</span>[<span class="string">&quot;-x&quot;</span>, <span class="string">&quot;c++&quot;</span>]
+        <span class="ident">is_cpp</span> <span class="op">|</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">clang_args</span>.<span class="ident">windows</span>(<span class="number">2</span>).<span class="ident">any</span>(<span class="op">|</span><span class="ident">w</span><span class="op">|</span> {
+            <span class="ident">w</span>[<span class="number">0</span>] <span class="op">=</span><span class="op">=</span> <span class="string">&quot;-x=c++&quot;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">w</span>[<span class="number">1</span>] <span class="op">=</span><span class="op">=</span> <span class="string">&quot;-x=c++&quot;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">w</span> <span class="op">=</span><span class="op">=</span> <span class="kw-2">&amp;</span>[<span class="string">&quot;-x&quot;</span>, <span class="string">&quot;c++&quot;</span>]
         });
 
         <span class="kw">let</span> <span class="ident">wrapper_path</span> <span class="op">=</span> <span class="ident">PathBuf</span>::<span class="ident">from</span>(<span class="kw">if</span> <span class="ident">is_cpp</span> {
@@ -3118,21 +3118,21 @@
 
     <span class="doccomment">/// Don&#39;t derive `PartialEq` for a given type. Regular</span>
     <span class="doccomment">/// expressions are supported.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_partialeq</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">String</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_partialeq</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">String</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">no_partialeq_types</span>.<span class="ident">insert</span>(<span class="ident">arg</span>);
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Don&#39;t derive `Copy` for a given type. Regular</span>
     <span class="doccomment">/// expressions are supported.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_copy</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">String</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_copy</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">String</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">no_copy_types</span>.<span class="ident">insert</span>(<span class="ident">arg</span>);
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Don&#39;t derive `Hash` for a given type. Regular</span>
     <span class="doccomment">/// expressions are supported.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_hash</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">String</span>) <span class="op">-&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_hash</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">arg</span>: <span class="ident">String</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
         <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">no_hash_types</span>.<span class="ident">insert</span>(<span class="ident">arg</span>);
         <span class="self">self</span>
     }
@@ -3270,7 +3270,7 @@
 
     <span class="doccomment">/// A user-provided visitor to allow customizing different kinds of</span>
     <span class="doccomment">/// situations.</span>
-    <span class="ident">parse_callbacks</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">callbacks</span>::<span class="ident">ParseCallbacks</span><span class="op">&gt;&gt;</span>,
+    <span class="ident">parse_callbacks</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">callbacks</span>::<span class="ident">ParseCallbacks</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// Which kind of items should we generate? By default, we&#39;ll generate all</span>
     <span class="doccomment">/// of them.</span>
@@ -3360,13 +3360,13 @@
     }
 
     <span class="doccomment">/// Get features supported by target Rust version</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rust_features</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">RustFeatures</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rust_features</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RustFeatures</span> {
         <span class="self">self</span>.<span class="ident">rust_features</span>
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">BindgenOptions</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="ident">BindgenOptions</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">BindgenOptions</span> {
         <span class="kw">let</span> <span class="ident">rust_target</span> <span class="op">=</span> <span class="ident">RustTarget</span>::<span class="ident">default</span>();
 
         <span class="ident">BindgenOptions</span> {
@@ -3471,7 +3471,7 @@
     <span class="doccomment">/// Generate bindings for the given options.</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">generate</span>(
         <span class="kw-2">mut</span> <span class="ident">options</span>: <span class="ident">BindgenOptions</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Bindings</span>, ()<span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Bindings</span>, ()<span class="op">&gt;</span> {
         <span class="ident">ensure_libclang_is_loaded</span>();
 
         <span class="ident">options</span>.<span class="ident">build</span>();
@@ -3490,17 +3490,17 @@
 
                 <span class="comment">// https://clang.llvm.org/docs/ClangCommandLineReference.html</span>
                 <span class="comment">// -isystem and -isystem-after are harmless.</span>
-                <span class="kw">if</span> <span class="ident">arg</span> <span class="op">==</span> <span class="string">&quot;-I&quot;</span> <span class="op">||</span> <span class="ident">arg</span> <span class="op">==</span> <span class="string">&quot;--include-directory&quot;</span> {
+                <span class="kw">if</span> <span class="ident">arg</span> <span class="op">=</span><span class="op">=</span> <span class="string">&quot;-I&quot;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">arg</span> <span class="op">=</span><span class="op">=</span> <span class="string">&quot;--include-directory&quot;</span> {
                     <span class="ident">last_was_include_prefix</span> <span class="op">=</span> <span class="bool-val">true</span>;
                     <span class="kw">return</span> <span class="bool-val">false</span>;
                 }
 
-                <span class="kw">if</span> <span class="ident">arg</span>.<span class="ident">starts_with</span>(<span class="string">&quot;-I&quot;</span>) <span class="op">||</span> <span class="ident">arg</span>.<span class="ident">starts_with</span>(<span class="string">&quot;--include-directory=&quot;</span>) {
+                <span class="kw">if</span> <span class="ident">arg</span>.<span class="ident">starts_with</span>(<span class="string">&quot;-I&quot;</span>) <span class="op">|</span><span class="op">|</span> <span class="ident">arg</span>.<span class="ident">starts_with</span>(<span class="string">&quot;--include-directory=&quot;</span>) {
                     <span class="kw">return</span> <span class="bool-val">false</span>;
                 }
 
                 <span class="bool-val">true</span>
-            }).<span class="ident">cloned</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;&gt;</span>()
+            }).<span class="ident">cloned</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()
         };
 
         <span class="comment">// TODO: Make this path fixup configurable?</span>
@@ -3531,13 +3531,13 @@
         }
 
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>
-        <span class="kw">fn</span> <span class="ident">can_read</span>(<span class="ident">perms</span>: <span class="kw-2">&amp;</span><span class="ident">std</span>::<span class="ident">fs</span>::<span class="ident">Permissions</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">fn</span> <span class="ident">can_read</span>(<span class="ident">perms</span>: <span class="kw-2">&amp;</span><span class="ident">std</span>::<span class="ident">fs</span>::<span class="ident">Permissions</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
             <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">unix</span>::<span class="ident">fs</span>::<span class="ident">PermissionsExt</span>;
             <span class="ident">perms</span>.<span class="ident">mode</span>() <span class="op">&amp;</span> <span class="number">0o444</span> <span class="op">&gt;</span> <span class="number">0</span>
         }
 
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">unix</span>))]</span>
-        <span class="kw">fn</span> <span class="ident">can_read</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">std</span>::<span class="ident">fs</span>::<span class="ident">Permissions</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">fn</span> <span class="ident">can_read</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">std</span>::<span class="ident">fs</span>::<span class="ident">Permissions</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
             <span class="bool-val">true</span>
         }
 
@@ -3578,7 +3578,7 @@
     }
 
     <span class="doccomment">/// Convert these bindings into source text (with raw lines prepended).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_string</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_string</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
         <span class="self">self</span>.<span class="ident">write</span>(<span class="ident">Box</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">bytes</span>) <span class="kw">as</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Write</span><span class="op">&gt;</span>)
             .<span class="ident">expect</span>(<span class="string">&quot;writing to a vec cannot fail&quot;</span>);
@@ -3587,7 +3587,7 @@
     }
 
     <span class="doccomment">/// Write these bindings as source text to a file.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">write_to_file</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="ident">P</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">write_to_file</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">path</span>: <span class="ident">P</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">file</span> <span class="op">=</span> <span class="ident">OpenOptions</span>::<span class="ident">new</span>()
             .<span class="ident">write</span>(<span class="bool-val">true</span>)
             .<span class="ident">truncate</span>(<span class="bool-val">true</span>)
@@ -3598,7 +3598,7 @@
     }
 
     <span class="doccomment">/// Write these bindings as source text to the given `Write`able.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">write</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">writer</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Write</span> <span class="op">+</span> <span class="lifetime">&#39;a</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">write</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">writer</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Write</span> <span class="op">+</span> <span class="lifetime">&#39;a</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="ident">writer</span>.<span class="ident">write</span>(
             <span class="string">&quot;/* automatically generated by rust-bindgen */\n\n&quot;</span>.<span class="ident">as_bytes</span>(),
         )<span class="question-mark">?</span>;
@@ -3615,10 +3615,10 @@
         <span class="kw">let</span> <span class="ident">bindings</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">module</span>.<span class="ident">as_str</span>().<span class="ident">to_string</span>();
 
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">rustfmt_generated_string</span>(<span class="kw-2">&amp;</span><span class="ident">bindings</span>) {
-            <span class="prelude-val">Ok</span>(<span class="ident">rustfmt_bindings</span>) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Ok</span>(<span class="ident">rustfmt_bindings</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">writer</span>.<span class="ident">write</span>(<span class="ident">rustfmt_bindings</span>.<span class="ident">as_bytes</span>())<span class="question-mark">?</span>;
             },
-            <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">eprintln</span><span class="macro">!</span>(<span class="string">&quot;{:?}&quot;</span>, <span class="ident">err</span>);
                 <span class="ident">writer</span>.<span class="ident">write</span>(<span class="ident">bindings</span>.<span class="ident">as_str</span>().<span class="ident">as_bytes</span>())<span class="question-mark">?</span>;
             },
@@ -3630,7 +3630,7 @@
     <span class="kw">fn</span> <span class="ident">rustfmt_generated_string</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">source</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">_t</span> <span class="op">=</span> <span class="ident">time</span>::<span class="ident">Timer</span>::<span class="ident">new</span>(<span class="string">&quot;rustfmt_generated_string&quot;</span>)
             .<span class="ident">with_output</span>(<span class="self">self</span>.<span class="ident">options</span>.<span class="ident">time_phases</span>);
 
@@ -3673,7 +3673,7 @@
         <span class="comment">// Write to stdin in a new thread, so that we can read from stdout on this</span>
         <span class="comment">// thread. This keeps the child from blocking on writing to its stdout which</span>
         <span class="comment">// might block us from writing to its stdin.</span>
-        <span class="kw">let</span> <span class="ident">stdin_handle</span> <span class="op">=</span> ::<span class="ident">std</span>::<span class="ident">thread</span>::<span class="ident">spawn</span>(<span class="kw">move</span> <span class="op">||</span> {
+        <span class="kw">let</span> <span class="ident">stdin_handle</span> <span class="op">=</span> ::<span class="ident">std</span>::<span class="ident">thread</span>::<span class="ident">spawn</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
             <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">child_stdin</span>.<span class="ident">write_all</span>(<span class="ident">source</span>.<span class="ident">as_bytes</span>());
             <span class="ident">source</span>
         });
@@ -3687,32 +3687,32 @@
                      anything that could panic&quot;</span>);
 
         <span class="kw">match</span> <span class="ident">String</span>::<span class="ident">from_utf8</span>(<span class="ident">output</span>) {
-            <span class="prelude-val">Ok</span>(<span class="ident">bindings</span>) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Ok</span>(<span class="ident">bindings</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">match</span> <span class="ident">status</span>.<span class="ident">code</span>() {
-                    <span class="prelude-val">Some</span>(<span class="number">0</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Cow</span>::<span class="ident">Owned</span>(<span class="ident">bindings</span>)),
-                    <span class="prelude-val">Some</span>(<span class="number">2</span>) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(
+                    <span class="prelude-val">Some</span>(<span class="number">0</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Cow</span>::<span class="ident">Owned</span>(<span class="ident">bindings</span>)),
+                    <span class="prelude-val">Some</span>(<span class="number">2</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(
                         <span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">Other</span>,
                         <span class="string">&quot;Rustfmt parsing errors.&quot;</span>.<span class="ident">to_string</span>(),
                     )),
-                    <span class="prelude-val">Some</span>(<span class="number">3</span>) <span class="op">=&gt;</span> {
+                    <span class="prelude-val">Some</span>(<span class="number">3</span>) <span class="op">=</span><span class="op">&gt;</span> {
                         <span class="macro">warn</span><span class="macro">!</span>(<span class="string">&quot;Rustfmt could not format some lines.&quot;</span>);
                         <span class="prelude-val">Ok</span>(<span class="ident">Cow</span>::<span class="ident">Owned</span>(<span class="ident">bindings</span>))
                     }
-                    <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(
+                    <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(
                         <span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">Other</span>,
                         <span class="string">&quot;Internal rustfmt error&quot;</span>.<span class="ident">to_string</span>(),
                     )),
                 }
             },
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Cow</span>::<span class="ident">Owned</span>(<span class="ident">source</span>))
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Cow</span>::<span class="ident">Owned</span>(<span class="ident">source</span>))
         }
     }
 }
 
 <span class="doccomment">/// Determines whether the given cursor is in any of the files matched by the</span>
 <span class="doccomment">/// options.</span>
-<span class="kw">fn</span> <span class="ident">filter_builtins</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="ident">cursor</span>: <span class="kw-2">&amp;</span><span class="ident">clang</span>::<span class="ident">Cursor</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-    <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">builtins</span> <span class="op">||</span> <span class="op">!</span><span class="ident">cursor</span>.<span class="ident">is_builtin</span>()
+<span class="kw">fn</span> <span class="ident">filter_builtins</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="ident">cursor</span>: <span class="kw-2">&amp;</span><span class="ident">clang</span>::<span class="ident">Cursor</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">builtins</span> <span class="op">|</span><span class="op">|</span> <span class="op">!</span><span class="ident">cursor</span>.<span class="ident">is_builtin</span>()
 }
 
 <span class="doccomment">/// Parse one `Item` from the Clang cursor.</span>
@@ -3720,16 +3720,16 @@
     <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>,
     <span class="ident">cursor</span>: <span class="ident">clang</span>::<span class="ident">Cursor</span>,
     <span class="ident">parent</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>,
-) <span class="op">-&gt;</span> <span class="ident">clang_sys</span>::<span class="ident">CXChildVisitResult</span> {
+) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">clang_sys</span>::<span class="ident">CXChildVisitResult</span> {
     <span class="kw">if</span> <span class="op">!</span><span class="ident">filter_builtins</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span><span class="ident">cursor</span>) {
         <span class="kw">return</span> <span class="ident">CXChildVisit_Continue</span>;
     }
 
     <span class="kw">use</span> <span class="ident">clang_sys</span>::<span class="ident">CXChildVisit_Continue</span>;
     <span class="kw">match</span> <span class="ident">Item</span>::<span class="ident">parse</span>(<span class="ident">cursor</span>, <span class="ident">parent</span>, <span class="ident">ctx</span>) {
-        <span class="prelude-val">Ok</span>(..) <span class="op">=&gt;</span> {}
-        <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>) <span class="op">=&gt;</span> {}
-        <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>) <span class="op">=&gt;</span> {
+        <span class="prelude-val">Ok</span>(..) <span class="op">=</span><span class="op">&gt;</span> {}
+        <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>) <span class="op">=</span><span class="op">&gt;</span> {}
+        <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>) <span class="op">=</span><span class="op">&gt;</span> {
             <span class="ident">cursor</span>.<span class="ident">visit</span>(<span class="op">|</span><span class="ident">child</span><span class="op">|</span> <span class="ident">parse_one</span>(<span class="ident">ctx</span>, <span class="ident">child</span>, <span class="ident">parent</span>));
         }
     }
@@ -3737,15 +3737,15 @@
 }
 
 <span class="doccomment">/// Parse the Clang AST into our `Item` internal representation.</span>
-<span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">context</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), ()<span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">context</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), ()<span class="op">&gt;</span> {
     <span class="kw">use</span> <span class="ident">clang_sys</span>::<span class="kw-2">*</span>;
 
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">any_error</span> <span class="op">=</span> <span class="bool-val">false</span>;
     <span class="kw">for</span> <span class="ident">d</span> <span class="kw">in</span> <span class="ident">context</span>.<span class="ident">translation_unit</span>().<span class="ident">diags</span>().<span class="ident">iter</span>() {
         <span class="kw">let</span> <span class="ident">msg</span> <span class="op">=</span> <span class="ident">d</span>.<span class="ident">format</span>();
-        <span class="kw">let</span> <span class="ident">is_err</span> <span class="op">=</span> <span class="ident">d</span>.<span class="ident">severity</span>() <span class="op">&gt;=</span> <span class="ident">CXDiagnostic_Error</span>;
+        <span class="kw">let</span> <span class="ident">is_err</span> <span class="op">=</span> <span class="ident">d</span>.<span class="ident">severity</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="ident">CXDiagnostic_Error</span>;
         <span class="macro">eprintln</span><span class="macro">!</span>(<span class="string">&quot;{}, err: {}&quot;</span>, <span class="ident">msg</span>, <span class="ident">is_err</span>);
-        <span class="ident">any_error</span> <span class="op">|=</span> <span class="ident">is_err</span>;
+        <span class="ident">any_error</span> <span class="op">|</span><span class="op">=</span> <span class="ident">is_err</span>;
     }
 
     <span class="kw">if</span> <span class="ident">any_error</span> {
@@ -3756,7 +3756,7 @@
 
     <span class="kw">if</span> <span class="ident">context</span>.<span class="ident">options</span>().<span class="ident">emit_ast</span> {
 
-        <span class="kw">fn</span> <span class="ident">dump_if_not_builtin</span>(<span class="ident">cur</span>: <span class="kw-2">&amp;</span><span class="ident">clang</span>::<span class="ident">Cursor</span>) <span class="op">-&gt;</span> <span class="ident">CXChildVisitResult</span> {
+        <span class="kw">fn</span> <span class="ident">dump_if_not_builtin</span>(<span class="ident">cur</span>: <span class="kw-2">&amp;</span><span class="ident">clang</span>::<span class="ident">Cursor</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXChildVisitResult</span> {
             <span class="kw">if</span> <span class="op">!</span><span class="ident">cur</span>.<span class="ident">is_builtin</span>() {
                 <span class="ident">clang</span>::<span class="ident">ast_dump</span>(<span class="kw-2">&amp;</span><span class="ident">cur</span>, <span class="number">0</span>)
             } <span class="kw">else</span> {
@@ -3772,7 +3772,7 @@
     });
 
     <span class="macro">assert</span><span class="macro">!</span>(
-        <span class="ident">context</span>.<span class="ident">current_module</span>() <span class="op">==</span> <span class="ident">context</span>.<span class="ident">root_module</span>(),
+        <span class="ident">context</span>.<span class="ident">current_module</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">context</span>.<span class="ident">root_module</span>(),
         <span class="string">&quot;How did this happen?&quot;</span>
     );
     <span class="prelude-val">Ok</span>(())
@@ -3788,33 +3788,33 @@
 }
 
 <span class="doccomment">/// Get the major and the minor semvar numbers of Clang&#39;s version</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clang_version</span>() <span class="op">-&gt;</span> <span class="ident">ClangVersion</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clang_version</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ClangVersion</span> {
     <span class="kw">if</span> <span class="op">!</span><span class="ident">clang_sys</span>::<span class="ident">is_loaded</span>() {
         <span class="comment">// TODO(emilio): Return meaningful error (breaking).</span>
         <span class="ident">clang_sys</span>::<span class="ident">load</span>().<span class="ident">expect</span>(<span class="string">&quot;Unable to find libclang&quot;</span>);
     }
 
     <span class="kw">let</span> <span class="ident">raw_v</span>: <span class="ident">String</span> <span class="op">=</span> <span class="ident">clang</span>::<span class="ident">extract_clang_version</span>();
-    <span class="kw">let</span> <span class="ident">split_v</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;&gt;</span> <span class="op">=</span> <span class="ident">raw_v</span>.<span class="ident">split_whitespace</span>().<span class="ident">nth</span>(<span class="number">2</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> {
+    <span class="kw">let</span> <span class="ident">split_v</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">raw_v</span>.<span class="ident">split_whitespace</span>().<span class="ident">nth</span>(<span class="number">2</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> {
         <span class="ident">v</span>.<span class="ident">split</span>(<span class="string">&#39;.&#39;</span>).<span class="ident">collect</span>()
     });
     <span class="kw">match</span> <span class="ident">split_v</span> {
-        <span class="prelude-val">Some</span>(<span class="ident">v</span>) <span class="op">=&gt;</span> {
-            <span class="kw">if</span> <span class="ident">v</span>.<span class="ident">len</span>() <span class="op">&gt;=</span> <span class="number">2</span> {
+        <span class="prelude-val">Some</span>(<span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="kw">if</span> <span class="ident">v</span>.<span class="ident">len</span>() <span class="op">&gt;</span><span class="op">=</span> <span class="number">2</span> {
                 <span class="kw">let</span> <span class="ident">maybe_major</span> <span class="op">=</span> <span class="ident">v</span>[<span class="number">0</span>].<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>();
                 <span class="kw">let</span> <span class="ident">maybe_minor</span> <span class="op">=</span> <span class="ident">v</span>[<span class="number">1</span>].<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>();
                 <span class="kw">match</span> (<span class="ident">maybe_major</span>, <span class="ident">maybe_minor</span>) {
-                    (<span class="prelude-val">Ok</span>(<span class="ident">major</span>), <span class="prelude-val">Ok</span>(<span class="ident">minor</span>)) <span class="op">=&gt;</span> {
+                    (<span class="prelude-val">Ok</span>(<span class="ident">major</span>), <span class="prelude-val">Ok</span>(<span class="ident">minor</span>)) <span class="op">=</span><span class="op">&gt;</span> {
                         <span class="kw">return</span> <span class="ident">ClangVersion</span> {
                             <span class="ident">parsed</span>: <span class="prelude-val">Some</span>((<span class="ident">major</span>, <span class="ident">minor</span>)),
                             <span class="ident">full</span>: <span class="ident">raw_v</span>.<span class="ident">clone</span>(),
                         }
                     }
-                    <span class="kw">_</span> <span class="op">=&gt;</span> {}
+                    <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {}
                 }
             }
         }
-        <span class="prelude-val">None</span> <span class="op">=&gt;</span> {}
+        <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {}
     };
     <span class="ident">ClangVersion</span> {
         <span class="ident">parsed</span>: <span class="prelude-val">None</span>,
@@ -3835,7 +3835,7 @@
         <span class="string">&quot;function,types,vars,methods,constructors,destructors&quot;</span>,
     ].<span class="ident">iter</span>()
         .<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>.<span class="ident">into</span>())
-        .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;&gt;</span>();
+        .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>();
 
     <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">test_cases</span>.<span class="ident">iter</span>().<span class="ident">all</span>(
         <span class="op">|</span><span class="kw-2">ref</span> <span class="ident">x</span><span class="op">|</span> <span class="ident">command_line_flags</span>.<span class="ident">contains</span>(<span class="ident">x</span>),
@@ -3859,7 +3859,7 @@
         <span class="string">&quot;safe_function&quot;</span>,
     ].<span class="ident">iter</span>()
         .<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>.<span class="ident">into</span>())
-        .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;&gt;</span>();
+        .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>();
     <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{:?}&quot;</span>, <span class="ident">command_line_flags</span>);
 
     <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">test_cases</span>.<span class="ident">iter</span>().<span class="ident">all</span>(
@@ -3868,4 +3868,4 @@
 
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "bindgen";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "bindgen";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>

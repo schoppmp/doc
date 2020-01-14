@@ -1321,19 +1321,19 @@
 <span class="kw">impl</span> <span class="ident">Type</span> {
     <span class="doccomment">/// Get the underlying `CompInfo` for this type, or `None` if this is some</span>
     <span class="doccomment">/// other kind of type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_comp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">CompInfo</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_comp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">CompInfo</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">ci</span>) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">ci</span>),
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">ci</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">ci</span>),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 
     <span class="doccomment">/// Get the underlying `CompInfo` for this type as a mutable reference, or</span>
     <span class="doccomment">/// `None` if this is some other kind of type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_comp_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">CompInfo</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_comp_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">CompInfo</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">ci</span>) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">ci</span>),
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">ci</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">ci</span>),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 
@@ -1343,7 +1343,7 @@
         <span class="ident">layout</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Layout</span><span class="op">&gt;</span>,
         <span class="ident">kind</span>: <span class="ident">TypeKind</span>,
         <span class="ident">is_const</span>: <span class="ident">bool</span>,
-    ) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">Type</span> {
             <span class="ident">name</span>,
             <span class="ident">layout</span>,
@@ -1353,78 +1353,78 @@
     }
 
     <span class="doccomment">/// Which kind of type is this?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">TypeKind</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">TypeKind</span> {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">kind</span>
     }
 
     <span class="doccomment">/// Get a mutable reference to this type&#39;s kind.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TypeKind</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TypeKind</span> {
         <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">kind</span>
     }
 
     <span class="doccomment">/// Get this type&#39;s name.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">name</span>.<span class="ident">as_ref</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">name</span><span class="op">|</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="kw-2">*</span><span class="ident">name</span>)
     }
 
     <span class="doccomment">/// Is this a compound type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_comp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_comp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Is this a union?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_union</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_union</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">comp</span>) <span class="op">=&gt;</span> <span class="ident">comp</span>.<span class="ident">is_union</span>(),
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">comp</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">comp</span>.<span class="ident">is_union</span>(),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Is this type of kind `TypeKind::TypeParam`?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_type_param</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_type_param</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Is this a template instantiation type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_template_instantiation</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_template_instantiation</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Is this a template alias type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_template_alias</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_template_alias</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">TemplateAlias</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">TemplateAlias</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Is this a function type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_function</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_function</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">Function</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Function</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Is this an enum type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_enum</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_enum</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Is this either a builtin or named type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_builtin_or_type_param</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_builtin_or_type_param</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
             <span class="ident">TypeKind</span>::<span class="ident">Void</span> <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">NullPtr</span> <span class="op">|</span>
@@ -1435,97 +1435,97 @@
             <span class="ident">TypeKind</span>::<span class="ident">BlockPointer</span> <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">Int</span>(..) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">Float</span>(..) <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Creates a new named type, with name `name`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">named</span>(<span class="ident">name</span>: <span class="ident">String</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">named</span>(<span class="ident">name</span>: <span class="ident">String</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">name</span>.<span class="ident">is_empty</span>() { <span class="prelude-val">None</span> } <span class="kw">else</span> { <span class="prelude-val">Some</span>(<span class="ident">name</span>) };
         <span class="self">Self</span>::<span class="ident">new</span>(<span class="ident">name</span>, <span class="prelude-val">None</span>, <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span>, <span class="bool-val">false</span>)
     }
 
     <span class="doccomment">/// Is this a floating point type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_float</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_float</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">Float</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Float</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Is this a boolean type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_bool</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_bool</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">Int</span>(<span class="ident">IntKind</span>::<span class="ident">Bool</span>) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Int</span>(<span class="ident">IntKind</span>::<span class="ident">Bool</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Is this an integer type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_integer</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_integer</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">Int</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Int</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Cast this type to an integer kind, or `None` if it is not an integer</span>
     <span class="doccomment">/// type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_integer</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">IntKind</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_integer</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">IntKind</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">Int</span>(<span class="ident">int_kind</span>) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">int_kind</span>),
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Int</span>(<span class="ident">int_kind</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">int_kind</span>),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 
     <span class="doccomment">/// Is this a `const` qualified type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_const</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_const</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">is_const</span>
     }
 
     <span class="doccomment">/// Is this a reference to another type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_type_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_type_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
             <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="kw">_</span>) <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">UnresolvedTypeRef</span>(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">UnresolvedTypeRef</span>(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Is this a incomplete array type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_incomplete_array</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_incomplete_array</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">Array</span>(<span class="ident">item</span>, <span class="ident">len</span>) <span class="op">=&gt;</span> {
-                <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> { <span class="prelude-val">Some</span>(<span class="ident">item</span>.<span class="ident">into</span>()) } <span class="kw">else</span> { <span class="prelude-val">None</span> }
+            <span class="ident">TypeKind</span>::<span class="ident">Array</span>(<span class="ident">item</span>, <span class="ident">len</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="kw">if</span> <span class="ident">len</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> { <span class="prelude-val">Some</span>(<span class="ident">item</span>.<span class="ident">into</span>()) } <span class="kw">else</span> { <span class="prelude-val">None</span> }
             }
-            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">inner</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">inner</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">ctx</span>.<span class="ident">resolve_type</span>(<span class="ident">inner</span>).<span class="ident">is_incomplete_array</span>(<span class="ident">ctx</span>)
             }
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 
     <span class="doccomment">/// What is the layout of this type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">layout</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Layout</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">layout</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Layout</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">mem</span>;
 
-        <span class="self">self</span>.<span class="ident">layout</span>.<span class="ident">or_else</span>(<span class="op">||</span> {
+        <span class="self">self</span>.<span class="ident">layout</span>.<span class="ident">or_else</span>(<span class="op">|</span><span class="op">|</span> {
             <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-                <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">ci</span>) <span class="op">=&gt;</span> <span class="ident">ci</span>.<span class="ident">layout</span>(<span class="ident">ctx</span>),
+                <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">ci</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ci</span>.<span class="ident">layout</span>(<span class="ident">ctx</span>),
                 <span class="comment">// FIXME(emilio): This is a hack for anonymous union templates.</span>
                 <span class="comment">// Use the actual pointer size!</span>
                 <span class="ident">TypeKind</span>::<span class="ident">Pointer</span>(..) <span class="op">|</span>
-                <span class="ident">TypeKind</span>::<span class="ident">BlockPointer</span> <span class="op">=&gt;</span> {
+                <span class="ident">TypeKind</span>::<span class="ident">BlockPointer</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="prelude-val">Some</span>(<span class="ident">Layout</span>::<span class="ident">new</span>(
                         <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="kw-2">*</span><span class="kw-2">mut</span> ()<span class="op">&gt;</span>(),
                         <span class="ident">mem</span>::<span class="ident">align_of</span>::<span class="op">&lt;</span><span class="kw-2">*</span><span class="kw-2">mut</span> ()<span class="op">&gt;</span>(),
                     ))
                 }
-                <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">inner</span>) <span class="op">=&gt;</span> {
+                <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">inner</span>) <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="ident">ctx</span>.<span class="ident">resolve_type</span>(<span class="ident">inner</span>).<span class="ident">layout</span>(<span class="ident">ctx</span>)
                 }
-                <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
             }
         })
     }
@@ -1534,23 +1534,23 @@
     <span class="doccomment">/// avoid generating invalid code with some cases we can&#39;t handle, see:</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// tests/headers/381-decltype-alias.hpp</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_invalid_type_param</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_invalid_type_param</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">name</span>().<span class="ident">expect</span>(<span class="string">&quot;Unnamed named type?&quot;</span>);
                 <span class="op">!</span><span class="ident">clang</span>::<span class="ident">is_valid_identifier</span>(<span class="kw-2">&amp;</span><span class="ident">name</span>)
             }
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Takes `name`, and returns a suitable identifier representation for it.</span>
-    <span class="kw">fn</span> <span class="ident">sanitize_name</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>) <span class="op">-&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">sanitize_name</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="ident">clang</span>::<span class="ident">is_valid_identifier</span>(<span class="ident">name</span>) {
             <span class="kw">return</span> <span class="ident">Cow</span>::<span class="ident">Borrowed</span>(<span class="ident">name</span>);
         }
 
-        <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">name</span>.<span class="ident">replace</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39; &#39;</span> <span class="op">||</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;:&#39;</span> <span class="op">||</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;.&#39;</span>, <span class="string">&quot;_&quot;</span>);
+        <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">name</span>.<span class="ident">replace</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span> <span class="op">=</span><span class="op">=</span> <span class="string">&#39; &#39;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">=</span><span class="op">=</span> <span class="string">&#39;:&#39;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">=</span><span class="op">=</span> <span class="string">&#39;.&#39;</span>, <span class="string">&quot;_&quot;</span>);
         <span class="ident">Cow</span>::<span class="ident">Owned</span>(<span class="ident">name</span>)
     }
 
@@ -1558,14 +1558,14 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sanitized_name</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">name_info</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">kind</span>() {
-            <span class="ident">TypeKind</span>::<span class="ident">Pointer</span>(<span class="ident">inner</span>) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>((<span class="ident">inner</span>.<span class="ident">into</span>(), <span class="ident">Cow</span>::<span class="ident">Borrowed</span>(<span class="string">&quot;ptr&quot;</span>))),
-            <span class="ident">TypeKind</span>::<span class="ident">Reference</span>(<span class="ident">inner</span>) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>((<span class="ident">inner</span>.<span class="ident">into</span>(), <span class="ident">Cow</span>::<span class="ident">Borrowed</span>(<span class="string">&quot;ref&quot;</span>))),
-            <span class="ident">TypeKind</span>::<span class="ident">Array</span>(<span class="ident">inner</span>, <span class="ident">length</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Pointer</span>(<span class="ident">inner</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>((<span class="ident">inner</span>.<span class="ident">into</span>(), <span class="ident">Cow</span>::<span class="ident">Borrowed</span>(<span class="string">&quot;ptr&quot;</span>))),
+            <span class="ident">TypeKind</span>::<span class="ident">Reference</span>(<span class="ident">inner</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>((<span class="ident">inner</span>.<span class="ident">into</span>(), <span class="ident">Cow</span>::<span class="ident">Borrowed</span>(<span class="string">&quot;ref&quot;</span>))),
+            <span class="ident">TypeKind</span>::<span class="ident">Array</span>(<span class="ident">inner</span>, <span class="ident">length</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="prelude-val">Some</span>((<span class="ident">inner</span>, <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;array{}&quot;</span>, <span class="ident">length</span>).<span class="ident">into</span>()))
             }
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         };
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>((<span class="ident">inner</span>, <span class="ident">prefix</span>)) <span class="op">=</span> <span class="ident">name_info</span> {
             <span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="ident">inner</span>)
@@ -1581,7 +1581,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">canonical_type</span><span class="op">&lt;</span><span class="lifetime">&#39;tr</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="lifetime">&#39;tr</span> <span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;tr</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;tr</span> <span class="ident">Type</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;tr</span> <span class="ident">Type</span> {
         <span class="self">self</span>.<span class="ident">safe_canonical_type</span>(<span class="ident">ctx</span>).<span class="ident">expect</span>(
             <span class="string">&quot;Should have been resolved after parsing!&quot;</span>,
         )
@@ -1595,7 +1595,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">safe_canonical_type</span><span class="op">&lt;</span><span class="lifetime">&#39;tr</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="lifetime">&#39;tr</span> <span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;tr</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;tr</span> <span class="ident">Type</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;tr</span> <span class="ident">Type</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
             <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">Array</span>(..) <span class="op">|</span>
@@ -1613,25 +1613,25 @@
             <span class="ident">TypeKind</span>::<span class="ident">Pointer</span>(..) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">ObjCId</span> <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">ObjCSel</span> <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">ObjCInterface</span>(..) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="self">self</span>),
+            <span class="ident">TypeKind</span>::<span class="ident">ObjCInterface</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="self">self</span>),
 
             <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">inner</span>) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">Alias</span>(<span class="ident">inner</span>) <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">TemplateAlias</span>(<span class="ident">inner</span>, <span class="kw">_</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">TemplateAlias</span>(<span class="ident">inner</span>, <span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">ctx</span>.<span class="ident">resolve_type</span>(<span class="ident">inner</span>).<span class="ident">safe_canonical_type</span>(<span class="ident">ctx</span>)
             }
-            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">inst</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">inst</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">ctx</span>.<span class="ident">resolve_type</span>(<span class="ident">inst</span>.<span class="ident">template_definition</span>())
                     .<span class="ident">safe_canonical_type</span>(<span class="ident">ctx</span>)
             }
 
-            <span class="ident">TypeKind</span>::<span class="ident">UnresolvedTypeRef</span>(..) <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">UnresolvedTypeRef</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 
     <span class="doccomment">/// There are some types we don&#39;t want to stop at when finding an opaque</span>
     <span class="doccomment">/// item, so we can arrive to the proper item that needs to be generated.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">should_be_traced_unconditionally</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">should_be_traced_unconditionally</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
             <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(..) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">Function</span>(..) <span class="op">|</span>
@@ -1639,8 +1639,8 @@
             <span class="ident">TypeKind</span>::<span class="ident">Array</span>(..) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">Reference</span>(..) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(..) <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 }
@@ -1648,15 +1648,15 @@
 <span class="kw">impl</span> <span class="ident">IsOpaque</span> <span class="kw">for</span> <span class="ident">Type</span> {
     <span class="kw">type</span> <span class="ident">Extra</span> <span class="op">=</span> <span class="ident">Item</span>;
 
-    <span class="kw">fn</span> <span class="ident">is_opaque</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="ident">item</span>: <span class="kw-2">&amp;</span><span class="ident">Item</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">is_opaque</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="ident">item</span>: <span class="kw-2">&amp;</span><span class="ident">Item</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">Opaque</span> <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">inst</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Opaque</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">inst</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">inst</span>.<span class="ident">is_opaque</span>(<span class="ident">ctx</span>, <span class="ident">item</span>)
             }
-            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">comp</span>) <span class="op">=&gt;</span> <span class="ident">comp</span>.<span class="ident">is_opaque</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span>()),
-            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">to</span>) <span class="op">=&gt;</span> <span class="ident">to</span>.<span class="ident">is_opaque</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span>()),
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">comp</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">comp</span>.<span class="ident">is_opaque</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span>()),
+            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">to</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">to</span>.<span class="ident">is_opaque</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span>()),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 }
@@ -1668,7 +1668,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
         <span class="ident">item</span>: <span class="kw-2">&amp;</span><span class="ident">Item</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">kind</span>.<span class="ident">as_template_param</span>(<span class="ident">ctx</span>, <span class="ident">item</span>)
     }
 }
@@ -1680,11 +1680,11 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
         <span class="ident">item</span>: <span class="kw-2">&amp;</span><span class="ident">Item</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">item</span>.<span class="ident">id</span>().<span class="ident">expect_type_id</span>(<span class="ident">ctx</span>)),
-            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">id</span>) <span class="op">=&gt;</span> <span class="ident">id</span>.<span class="ident">as_template_param</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span>()),
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">item</span>.<span class="ident">id</span>().<span class="ident">expect_type_id</span>(<span class="ident">ctx</span>)),
+            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">id</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">id</span>.<span class="ident">as_template_param</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span>()),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 }
@@ -1694,7 +1694,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
         <span class="ident">out</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">W</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">W</span>: <span class="ident">io</span>::<span class="ident">Write</span>,
     {
@@ -1724,7 +1724,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
         <span class="ident">out</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">W</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">W</span>: <span class="ident">io</span>::<span class="ident">Write</span>,
     {
@@ -1739,30 +1739,30 @@
 }
 
 <span class="kw">impl</span> <span class="ident">TypeKind</span> {
-    <span class="kw">fn</span> <span class="ident">kind_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> {
+    <span class="kw">fn</span> <span class="ident">kind_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">Void</span> <span class="op">=&gt;</span> <span class="string">&quot;Void&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">NullPtr</span> <span class="op">=&gt;</span> <span class="string">&quot;NullPtr&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;Comp&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">Opaque</span> <span class="op">=&gt;</span> <span class="string">&quot;Opaque&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">Int</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;Int&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">Float</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;Float&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">Complex</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;Complex&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">Alias</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;Alias&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">TemplateAlias</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;TemplateAlias&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">Array</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;Array&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">Function</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;Function&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;Enum&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">Pointer</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;Pointer&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">BlockPointer</span> <span class="op">=&gt;</span> <span class="string">&quot;BlockPointer&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">Reference</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;Reference&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;TemplateInstantiation&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">UnresolvedTypeRef</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;UnresolvedTypeRef&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;ResolvedTypeRef&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">=&gt;</span> <span class="string">&quot;TypeParam&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">ObjCInterface</span>(..) <span class="op">=&gt;</span> <span class="string">&quot;ObjCInterface&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">ObjCId</span> <span class="op">=&gt;</span> <span class="string">&quot;ObjCId&quot;</span>,
-            <span class="ident">TypeKind</span>::<span class="ident">ObjCSel</span> <span class="op">=&gt;</span> <span class="string">&quot;ObjCSel&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Void</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Void&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">NullPtr</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;NullPtr&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Comp&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Opaque</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Opaque&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Int</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Int&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Float</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Float&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Complex</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Complex&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Alias</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Alias&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">TemplateAlias</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;TemplateAlias&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Array</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Array&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Function</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Function&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Enum&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Pointer</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Pointer&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">BlockPointer</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;BlockPointer&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">Reference</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Reference&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;TemplateInstantiation&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">UnresolvedTypeRef</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;UnresolvedTypeRef&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;ResolvedTypeRef&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;TypeParam&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">ObjCInterface</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;ObjCInterface&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">ObjCId</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;ObjCId&quot;</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">ObjCSel</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;ObjCSel&quot;</span>,
         }
     }
 }
@@ -1819,7 +1819,7 @@
     <span class="kw">fn</span> <span class="ident">self_template_params</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">kind</span>.<span class="ident">self_template_params</span>(<span class="ident">ctx</span>)
     }
 }
@@ -1828,13 +1828,13 @@
     <span class="kw">fn</span> <span class="ident">self_template_params</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">id</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">id</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">ctx</span>.<span class="ident">resolve_type</span>(<span class="ident">id</span>).<span class="ident">self_template_params</span>(<span class="ident">ctx</span>)
             }
-            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">comp</span>) <span class="op">=&gt;</span> <span class="ident">comp</span>.<span class="ident">self_template_params</span>(<span class="ident">ctx</span>),
-            <span class="ident">TypeKind</span>::<span class="ident">TemplateAlias</span>(<span class="kw">_</span>, <span class="kw-2">ref</span> <span class="ident">args</span>) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">args</span>.<span class="ident">clone</span>()),
+            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">comp</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">comp</span>.<span class="ident">self_template_params</span>(<span class="ident">ctx</span>),
+            <span class="ident">TypeKind</span>::<span class="ident">TemplateAlias</span>(<span class="kw">_</span>, <span class="kw-2">ref</span> <span class="ident">args</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">args</span>.<span class="ident">clone</span>()),
 
             <span class="ident">TypeKind</span>::<span class="ident">Opaque</span> <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(..) <span class="op">|</span>
@@ -1854,7 +1854,7 @@
             <span class="ident">TypeKind</span>::<span class="ident">Alias</span>(<span class="kw">_</span>) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">ObjCId</span> <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">ObjCSel</span> <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">ObjCInterface</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">TypeKind</span>::<span class="ident">ObjCInterface</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 }
@@ -1874,11 +1874,11 @@
 
 <span class="kw">impl</span> <span class="ident">FloatKind</span> {
     <span class="doccomment">/// If this type has a known size, return it (in bytes).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">known_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">known_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">FloatKind</span>::<span class="ident">Float</span> <span class="op">=&gt;</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>(),
-            <span class="ident">FloatKind</span>::<span class="ident">Double</span> <span class="op">|</span> <span class="ident">FloatKind</span>::<span class="ident">LongDouble</span> <span class="op">=&gt;</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span>(),
-            <span class="ident">FloatKind</span>::<span class="ident">Float128</span> <span class="op">=&gt;</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span>() <span class="op">*</span> <span class="number">2</span>,
+            <span class="ident">FloatKind</span>::<span class="ident">Float</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>(),
+            <span class="ident">FloatKind</span>::<span class="ident">Double</span> <span class="op">|</span> <span class="ident">FloatKind</span>::<span class="ident">LongDouble</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span>(),
+            <span class="ident">FloatKind</span>::<span class="ident">Float128</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span>() <span class="op">*</span> <span class="number">2</span>,
         }
     }
 }
@@ -1985,7 +1985,7 @@
         <span class="ident">location</span>: <span class="ident">Cursor</span>,
         <span class="ident">parent_id</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ParseResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ParseResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">clang_sys</span>::<span class="kw-2">*</span>;
         {
             <span class="kw">let</span> <span class="ident">already_resolved</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">builtin_or_resolved_ty</span>(
@@ -2018,8 +2018,8 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ty_kind</span> <span class="op">=</span> <span class="ident">ty</span>.<span class="ident">kind</span>();
         <span class="kw">match</span> <span class="ident">location</span>.<span class="ident">kind</span>() {
             <span class="ident">CXCursor_ObjCProtocolDecl</span> <span class="op">|</span>
-            <span class="ident">CXCursor_ObjCCategoryDecl</span> <span class="op">=&gt;</span> <span class="ident">ty_kind</span> <span class="op">=</span> <span class="ident">CXType_ObjCInterface</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> {}
+            <span class="ident">CXCursor_ObjCCategoryDecl</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ty_kind</span> <span class="op">=</span> <span class="ident">CXType_ObjCInterface</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {}
         }
 
         <span class="comment">// Objective C template type parameter</span>
@@ -2027,14 +2027,14 @@
         <span class="comment">//        objc template params, which seem to manifest as a typedef.</span>
         <span class="comment">//        We are rewriting them as id to suppress multiple conflicting</span>
         <span class="comment">//        typedefs at root level</span>
-        <span class="kw">if</span> <span class="ident">ty_kind</span> <span class="op">==</span> <span class="ident">CXType_Typedef</span> {
-            <span class="kw">let</span> <span class="ident">is_template_type_param</span> <span class="op">=</span> <span class="ident">ty</span>.<span class="ident">declaration</span>().<span class="ident">kind</span>() <span class="op">==</span>
+        <span class="kw">if</span> <span class="ident">ty_kind</span> <span class="op">=</span><span class="op">=</span> <span class="ident">CXType_Typedef</span> {
+            <span class="kw">let</span> <span class="ident">is_template_type_param</span> <span class="op">=</span> <span class="ident">ty</span>.<span class="ident">declaration</span>().<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span>
                 <span class="ident">CXCursor_TemplateTypeParameter</span>;
-            <span class="kw">let</span> <span class="ident">is_canonical_objcpointer</span> <span class="op">=</span> <span class="ident">canonical_ty</span>.<span class="ident">kind</span>() <span class="op">==</span>
+            <span class="kw">let</span> <span class="ident">is_canonical_objcpointer</span> <span class="op">=</span> <span class="ident">canonical_ty</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span>
                 <span class="ident">CXType_ObjCObjectPointer</span>;
 
             <span class="comment">// We have found a template type for objc interface</span>
-            <span class="kw">if</span> <span class="ident">is_canonical_objcpointer</span> <span class="op">&amp;&amp;</span> <span class="ident">is_template_type_param</span> {
+            <span class="kw">if</span> <span class="ident">is_canonical_objcpointer</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">is_template_type_param</span> {
                 <span class="comment">// Objective-C generics are just ids with fancy name.</span>
                 <span class="comment">// To keep it simple, just name them ids</span>
                 <span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;id&quot;</span>.<span class="ident">to_owned</span>();
@@ -2042,7 +2042,7 @@
 
         }
 
-        <span class="kw">if</span> <span class="ident">location</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_ClassTemplatePartialSpecialization</span> {
+        <span class="kw">if</span> <span class="ident">location</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_ClassTemplatePartialSpecialization</span> {
             <span class="comment">// Sorry! (Not sorry)</span>
             <span class="macro">warn</span><span class="macro">!</span>(
                 <span class="string">&quot;Found a partial template specialization; bindgen does not \
@@ -2054,19 +2054,19 @@
             );
         }
 
-        <span class="kw">let</span> <span class="ident">kind</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">location</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_TemplateRef</span> <span class="op">||</span>
-            (<span class="ident">ty</span>.<span class="ident">template_args</span>().<span class="ident">is_some</span>() <span class="op">&amp;&amp;</span> <span class="ident">ty_kind</span> <span class="op">!=</span> <span class="ident">CXType_Typedef</span>)
+        <span class="kw">let</span> <span class="ident">kind</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">location</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_TemplateRef</span> <span class="op">|</span><span class="op">|</span>
+            (<span class="ident">ty</span>.<span class="ident">template_args</span>().<span class="ident">is_some</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">ty_kind</span> <span class="op">!</span><span class="op">=</span> <span class="ident">CXType_Typedef</span>)
         {
             <span class="comment">// This is a template instantiation.</span>
             <span class="kw">match</span> <span class="ident">TemplateInstantiation</span>::<span class="ident">from_ty</span>(<span class="kw-2">&amp;</span><span class="ident">ty</span>, <span class="ident">ctx</span>) {
-                <span class="prelude-val">Some</span>(<span class="ident">inst</span>) <span class="op">=&gt;</span> <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="ident">inst</span>),
-                <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="ident">TypeKind</span>::<span class="ident">Opaque</span>,
+                <span class="prelude-val">Some</span>(<span class="ident">inst</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="ident">inst</span>),
+                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">TypeKind</span>::<span class="ident">Opaque</span>,
             }
         } <span class="kw">else</span> {
             <span class="kw">match</span> <span class="ident">ty_kind</span> {
-                <span class="ident">CXType_Unexposed</span> <span class="kw">if</span> <span class="kw-2">*</span><span class="ident">ty</span> <span class="op">!=</span> <span class="ident">canonical_ty</span> <span class="op">&amp;&amp;</span>
-                                    <span class="ident">canonical_ty</span>.<span class="ident">kind</span>() <span class="op">!=</span> <span class="ident">CXType_Invalid</span> <span class="op">&amp;&amp;</span>
-                                    <span class="ident">ty</span>.<span class="ident">ret_type</span>().<span class="ident">is_none</span>() <span class="op">&amp;&amp;</span>
+                <span class="ident">CXType_Unexposed</span> <span class="kw">if</span> <span class="kw-2">*</span><span class="ident">ty</span> <span class="op">!</span><span class="op">=</span> <span class="ident">canonical_ty</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span>
+                                    <span class="ident">canonical_ty</span>.<span class="ident">kind</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">CXType_Invalid</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span>
+                                    <span class="ident">ty</span>.<span class="ident">ret_type</span>().<span class="ident">is_none</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span>
                                     <span class="comment">// Sometime clang desugars some types more than</span>
                                     <span class="comment">// what we need, specially with function</span>
                                     <span class="comment">// pointers.</span>
@@ -2079,7 +2079,7 @@
                                     <span class="comment">//   =&gt; { ... }</span>
                                     <span class="comment">//</span>
                                     <span class="comment">// etc.</span>
-                                    <span class="op">!</span><span class="ident">canonical_ty</span>.<span class="ident">spelling</span>().<span class="ident">contains</span>(<span class="string">&quot;type-parameter&quot;</span>) <span class="op">=&gt;</span> {
+                                    <span class="op">!</span><span class="ident">canonical_ty</span>.<span class="ident">spelling</span>().<span class="ident">contains</span>(<span class="string">&quot;type-parameter&quot;</span>) <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="macro">debug</span><span class="macro">!</span>(<span class="string">&quot;Looking for canonical type: {:?}&quot;</span>, <span class="ident">canonical_ty</span>);
                     <span class="kw">return</span> <span class="self">Self</span>::<span class="ident">from_clang_ty</span>(<span class="ident">potential_id</span>,
                                                <span class="kw-2">&amp;</span><span class="ident">canonical_ty</span>,
@@ -2087,7 +2087,7 @@
                                                <span class="ident">parent_id</span>,
                                                <span class="ident">ctx</span>);
                 }
-                <span class="ident">CXType_Unexposed</span> <span class="op">|</span> <span class="ident">CXType_Invalid</span> <span class="op">=&gt;</span> {
+                <span class="ident">CXType_Unexposed</span> <span class="op">|</span> <span class="ident">CXType_Invalid</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="comment">// For some reason Clang doesn&#39;t give us any hint in some</span>
                     <span class="comment">// situations where we should generate a function pointer (see</span>
                     <span class="comment">// tests/headers/func_ptr_in_struct.h), so we do a guess here</span>
@@ -2115,8 +2115,8 @@
                     } <span class="kw">else</span> {
                         <span class="kw">match</span> <span class="ident">location</span>.<span class="ident">kind</span>() {
                             <span class="ident">CXCursor_CXXBaseSpecifier</span> <span class="op">|</span>
-                            <span class="ident">CXCursor_ClassTemplate</span> <span class="op">=&gt;</span> {
-                                <span class="kw">if</span> <span class="ident">location</span>.<span class="ident">kind</span>() <span class="op">==</span>
+                            <span class="ident">CXCursor_ClassTemplate</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                <span class="kw">if</span> <span class="ident">location</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span>
                                     <span class="ident">CXCursor_CXXBaseSpecifier</span>
                                 {
                                     <span class="comment">// In the case we&#39;re parsing a base specifier</span>
@@ -2159,7 +2159,7 @@
                                     <span class="comment">// [3]: forward-inherit-struct.hpp</span>
                                     <span class="comment">// [4]: inherit-namespaced.hpp</span>
                                     <span class="kw">if</span> <span class="ident">location</span>.<span class="ident">spelling</span>().<span class="ident">chars</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> {
-                                        <span class="ident">c</span>.<span class="ident">is_alphanumeric</span>() <span class="op">||</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;_&#39;</span>
+                                        <span class="ident">c</span>.<span class="ident">is_alphanumeric</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">=</span><span class="op">=</span> <span class="string">&#39;_&#39;</span>
                                     })
                                     {
                                         <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>);
@@ -2175,8 +2175,8 @@
                                     <span class="ident">ctx</span>,
                                 );
                                 <span class="kw">match</span> <span class="ident">complex</span> {
-                                    <span class="prelude-val">Ok</span>(<span class="ident">complex</span>) <span class="op">=&gt;</span> <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="ident">complex</span>),
-                                    <span class="prelude-val">Err</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> {
+                                    <span class="prelude-val">Ok</span>(<span class="ident">complex</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="ident">complex</span>),
+                                    <span class="prelude-val">Err</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> {
                                         <span class="macro">warn</span><span class="macro">!</span>(
                                             <span class="string">&quot;Could not create complex type \
                                                from class template or base \
@@ -2189,7 +2189,7 @@
                                     }
                                 }
                             }
-                            <span class="ident">CXCursor_TypeAliasTemplateDecl</span> <span class="op">=&gt;</span> {
+                            <span class="ident">CXCursor_TypeAliasTemplateDecl</span> <span class="op">=</span><span class="op">&gt;</span> {
                                 <span class="macro">debug</span><span class="macro">!</span>(<span class="string">&quot;TypeAliasTemplateDecl&quot;</span>);
 
                                 <span class="comment">// We need to manually unwind this one.</span>
@@ -2198,7 +2198,7 @@
 
                                 <span class="ident">location</span>.<span class="ident">visit</span>(<span class="op">|</span><span class="ident">cur</span><span class="op">|</span> {
                                     <span class="kw">match</span> <span class="ident">cur</span>.<span class="ident">kind</span>() {
-                                        <span class="ident">CXCursor_TypeAliasDecl</span> <span class="op">=&gt;</span> {
+                                        <span class="ident">CXCursor_TypeAliasDecl</span> <span class="op">=</span><span class="op">&gt;</span> {
                                             <span class="kw">let</span> <span class="ident">current</span> <span class="op">=</span> <span class="ident">cur</span>.<span class="ident">cur_type</span>();
 
                                             <span class="macro">debug_assert_eq</span><span class="macro">!</span>(
@@ -2217,7 +2217,7 @@
                                                 <span class="ident">ctx</span>,
                                             ));
                                         }
-                                        <span class="ident">CXCursor_TemplateTypeParameter</span> <span class="op">=&gt;</span> {
+                                        <span class="ident">CXCursor_TemplateTypeParameter</span> <span class="op">=</span><span class="op">&gt;</span> {
                                             <span class="kw">let</span> <span class="ident">param</span> <span class="op">=</span>
                                                 <span class="ident">Item</span>::<span class="ident">type_param</span>(<span class="prelude-val">None</span>,
                                                                  <span class="ident">cur</span>,
@@ -2227,14 +2227,14 @@
                                                          at a TemplateTypeParameter&quot;</span>);
                                             <span class="ident">args</span>.<span class="ident">push</span>(<span class="ident">param</span>);
                                         }
-                                        <span class="kw">_</span> <span class="op">=&gt;</span> {}
+                                        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {}
                                     }
                                     <span class="ident">CXChildVisit_Continue</span>
                                 });
 
                                 <span class="kw">let</span> <span class="ident">inner_type</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">inner</span> {
-                                    <span class="prelude-val">Ok</span>(<span class="ident">inner</span>) <span class="op">=&gt;</span> <span class="ident">inner</span>,
-                                    <span class="prelude-val">Err</span>(..) <span class="op">=&gt;</span> {
+                                    <span class="prelude-val">Ok</span>(<span class="ident">inner</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">inner</span>,
+                                    <span class="prelude-val">Err</span>(..) <span class="op">=</span><span class="op">&gt;</span> {
                                         <span class="macro">error</span><span class="macro">!</span>(
                                             <span class="string">&quot;Failed to parse template alias \
                                                {:?}&quot;</span>,
@@ -2246,7 +2246,7 @@
 
                                 <span class="ident">TypeKind</span>::<span class="ident">TemplateAlias</span>(<span class="ident">inner_type</span>, <span class="ident">args</span>)
                             }
-                            <span class="ident">CXCursor_TemplateRef</span> <span class="op">=&gt;</span> {
+                            <span class="ident">CXCursor_TemplateRef</span> <span class="op">=</span><span class="op">&gt;</span> {
                                 <span class="kw">let</span> <span class="ident">referenced</span> <span class="op">=</span> <span class="ident">location</span>.<span class="ident">referenced</span>().<span class="ident">unwrap</span>();
                                 <span class="kw">let</span> <span class="ident">referenced_ty</span> <span class="op">=</span> <span class="ident">referenced</span>.<span class="ident">cur_type</span>();
 
@@ -2266,7 +2266,7 @@
                                     <span class="ident">ctx</span>,
                                 );
                             }
-                            <span class="ident">CXCursor_TypeRef</span> <span class="op">=&gt;</span> {
+                            <span class="ident">CXCursor_TypeRef</span> <span class="op">=</span><span class="op">&gt;</span> {
                                 <span class="kw">let</span> <span class="ident">referenced</span> <span class="op">=</span> <span class="ident">location</span>.<span class="ident">referenced</span>().<span class="ident">unwrap</span>();
                                 <span class="kw">let</span> <span class="ident">referenced_ty</span> <span class="op">=</span> <span class="ident">referenced</span>.<span class="ident">cur_type</span>();
                                 <span class="kw">let</span> <span class="ident">declaration</span> <span class="op">=</span> <span class="ident">referenced_ty</span>.<span class="ident">declaration</span>();
@@ -2288,11 +2288,11 @@
                                 );
                                 <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">ParseResult</span>::<span class="ident">AlreadyResolved</span>(<span class="ident">id</span>.<span class="ident">into</span>()));
                             }
-                            <span class="ident">CXCursor_NamespaceRef</span> <span class="op">=&gt;</span> {
+                            <span class="ident">CXCursor_NamespaceRef</span> <span class="op">=</span><span class="op">&gt;</span> {
                                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>);
                             }
-                            <span class="kw">_</span> <span class="op">=&gt;</span> {
-                                <span class="kw">if</span> <span class="ident">ty</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXType_Unexposed</span> {
+                            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                <span class="kw">if</span> <span class="ident">ty</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXType_Unexposed</span> {
                                     <span class="macro">warn</span><span class="macro">!</span>(
                                         <span class="string">&quot;Unexposed type {:?}, recursing inside, \
                                           loc: {:?}&quot;</span>,
@@ -2308,8 +2308,8 @@
                         }
                     }
                 }
-                <span class="ident">CXType_Auto</span> <span class="op">=&gt;</span> {
-                    <span class="kw">if</span> <span class="ident">canonical_ty</span> <span class="op">==</span> <span class="kw-2">*</span><span class="ident">ty</span> {
+                <span class="ident">CXType_Auto</span> <span class="op">=</span><span class="op">&gt;</span> {
+                    <span class="kw">if</span> <span class="ident">canonical_ty</span> <span class="op">=</span><span class="op">=</span> <span class="kw-2">*</span><span class="ident">ty</span> {
                         <span class="macro">debug</span><span class="macro">!</span>(<span class="string">&quot;Couldn&#39;t find deduced type: {:?}&quot;</span>, <span class="ident">ty</span>);
                         <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>);
                     }
@@ -2331,7 +2331,7 @@
                 <span class="comment">// process of resolving them.</span>
                 <span class="ident">CXType_ObjCObjectPointer</span> <span class="op">|</span>
                 <span class="ident">CXType_MemberPointer</span> <span class="op">|</span>
-                <span class="ident">CXType_Pointer</span> <span class="op">=&gt;</span> {
+                <span class="ident">CXType_Pointer</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="comment">// Fun fact: the canonical type of a pointer type may sometimes</span>
                     <span class="comment">// contain information we need but isn&#39;t present in the concrete</span>
                     <span class="comment">// type (yeah, I&#39;m equally wat&#39;d).</span>
@@ -2355,18 +2355,18 @@
                     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">pointee</span> <span class="op">=</span> <span class="ident">ty</span>.<span class="ident">pointee_type</span>().<span class="ident">unwrap</span>();
                     <span class="kw">let</span> <span class="ident">canonical_pointee</span> <span class="op">=</span>
                         <span class="ident">canonical_ty</span>.<span class="ident">pointee_type</span>().<span class="ident">unwrap</span>();
-                    <span class="kw">if</span> <span class="ident">pointee</span>.<span class="ident">call_conv</span>() <span class="op">!=</span> <span class="ident">canonical_pointee</span>.<span class="ident">call_conv</span>() {
+                    <span class="kw">if</span> <span class="ident">pointee</span>.<span class="ident">call_conv</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">canonical_pointee</span>.<span class="ident">call_conv</span>() {
                         <span class="ident">pointee</span> <span class="op">=</span> <span class="ident">canonical_pointee</span>;
                     }
                     <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span>
                         <span class="ident">Item</span>::<span class="ident">from_ty_or_ref</span>(<span class="ident">pointee</span>, <span class="ident">location</span>, <span class="prelude-val">None</span>, <span class="ident">ctx</span>);
                     <span class="ident">TypeKind</span>::<span class="ident">Pointer</span>(<span class="ident">inner</span>)
                 }
-                <span class="ident">CXType_BlockPointer</span> <span class="op">=&gt;</span> <span class="ident">TypeKind</span>::<span class="ident">BlockPointer</span>,
+                <span class="ident">CXType_BlockPointer</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">TypeKind</span>::<span class="ident">BlockPointer</span>,
                 <span class="comment">// XXX: RValueReference is most likely wrong, but I don&#39;t think we</span>
                 <span class="comment">// can even add bindings for that, so huh.</span>
                 <span class="ident">CXType_RValueReference</span> <span class="op">|</span>
-                <span class="ident">CXType_LValueReference</span> <span class="op">=&gt;</span> {
+                <span class="ident">CXType_LValueReference</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="ident">Item</span>::<span class="ident">from_ty_or_ref</span>(
                         <span class="ident">ty</span>.<span class="ident">pointee_type</span>().<span class="ident">unwrap</span>(),
                         <span class="ident">location</span>,
@@ -2377,7 +2377,7 @@
                 }
                 <span class="comment">// XXX DependentSizedArray is wrong</span>
                 <span class="ident">CXType_VariableArray</span> <span class="op">|</span>
-                <span class="ident">CXType_DependentSizedArray</span> <span class="op">=&gt;</span> {
+                <span class="ident">CXType_DependentSizedArray</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="ident">Item</span>::<span class="ident">from_ty</span>(
                         <span class="ident">ty</span>.<span class="ident">elem_type</span>().<span class="ident">as_ref</span>().<span class="ident">unwrap</span>(),
                         <span class="ident">location</span>,
@@ -2386,7 +2386,7 @@
                     ).<span class="ident">expect</span>(<span class="string">&quot;Not able to resolve array element?&quot;</span>);
                     <span class="ident">TypeKind</span>::<span class="ident">Pointer</span>(<span class="ident">inner</span>)
                 }
-                <span class="ident">CXType_IncompleteArray</span> <span class="op">=&gt;</span> {
+                <span class="ident">CXType_IncompleteArray</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="ident">Item</span>::<span class="ident">from_ty</span>(
                         <span class="ident">ty</span>.<span class="ident">elem_type</span>().<span class="ident">as_ref</span>().<span class="ident">unwrap</span>(),
                         <span class="ident">location</span>,
@@ -2396,18 +2396,18 @@
                     <span class="ident">TypeKind</span>::<span class="ident">Array</span>(<span class="ident">inner</span>, <span class="number">0</span>)
                 }
                 <span class="ident">CXType_FunctionNoProto</span> <span class="op">|</span>
-                <span class="ident">CXType_FunctionProto</span> <span class="op">=&gt;</span> {
+                <span class="ident">CXType_FunctionProto</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">let</span> <span class="ident">signature</span> <span class="op">=</span>
                         <span class="macro">try</span><span class="macro">!</span>(<span class="ident">FunctionSig</span>::<span class="ident">from_ty</span>(<span class="ident">ty</span>, <span class="kw-2">&amp;</span><span class="ident">location</span>, <span class="ident">ctx</span>));
                     <span class="ident">TypeKind</span>::<span class="ident">Function</span>(<span class="ident">signature</span>)
                 }
-                <span class="ident">CXType_Typedef</span> <span class="op">=&gt;</span> {
+                <span class="ident">CXType_Typedef</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">typedef_type</span>().<span class="ident">expect</span>(<span class="string">&quot;Not valid Type?&quot;</span>);
                     <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span>
                         <span class="ident">Item</span>::<span class="ident">from_ty_or_ref</span>(<span class="ident">inner</span>, <span class="ident">location</span>, <span class="prelude-val">None</span>, <span class="ident">ctx</span>);
                     <span class="ident">TypeKind</span>::<span class="ident">Alias</span>(<span class="ident">inner</span>)
                 }
-                <span class="ident">CXType_Enum</span> <span class="op">=&gt;</span> {
+                <span class="ident">CXType_Enum</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">let</span> <span class="ident">enum_</span> <span class="op">=</span> <span class="ident">Enum</span>::<span class="ident">from_ty</span>(<span class="ident">ty</span>, <span class="ident">ctx</span>).<span class="ident">expect</span>(<span class="string">&quot;Not an enum?&quot;</span>);
 
                     <span class="kw">if</span> <span class="ident">name</span>.<span class="ident">is_empty</span>() {
@@ -2419,7 +2419,7 @@
 
                     <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(<span class="ident">enum_</span>)
                 }
-                <span class="ident">CXType_Record</span> <span class="op">=&gt;</span> {
+                <span class="ident">CXType_Record</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">let</span> <span class="ident">complex</span> <span class="op">=</span> <span class="ident">CompInfo</span>::<span class="ident">from_ty</span>(
                         <span class="ident">potential_id</span>,
                         <span class="ident">ty</span>,
@@ -2444,7 +2444,7 @@
                 <span class="comment">//</span>
                 <span class="comment">// That being said, that should be fixed eventually.</span>
                 <span class="ident">CXType_Vector</span> <span class="op">|</span>
-                <span class="ident">CXType_ConstantArray</span> <span class="op">=&gt;</span> {
+                <span class="ident">CXType_ConstantArray</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="ident">Item</span>::<span class="ident">from_ty</span>(
                         <span class="ident">ty</span>.<span class="ident">elem_type</span>().<span class="ident">as_ref</span>().<span class="ident">unwrap</span>(),
                         <span class="ident">location</span>,
@@ -2453,7 +2453,7 @@
                     ).<span class="ident">expect</span>(<span class="string">&quot;Not able to resolve array element?&quot;</span>);
                     <span class="ident">TypeKind</span>::<span class="ident">Array</span>(<span class="ident">inner</span>, <span class="ident">ty</span>.<span class="ident">num_elements</span>().<span class="ident">unwrap</span>())
                 }
-                <span class="ident">CXType_Elaborated</span> <span class="op">=&gt;</span> {
+                <span class="ident">CXType_Elaborated</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">return</span> <span class="self">Self</span>::<span class="ident">from_clang_ty</span>(
                         <span class="ident">potential_id</span>,
                         <span class="kw-2">&amp;</span><span class="ident">ty</span>.<span class="ident">named</span>(),
@@ -2462,16 +2462,16 @@
                         <span class="ident">ctx</span>,
                     );
                 }
-                <span class="ident">CXType_ObjCId</span> <span class="op">=&gt;</span> <span class="ident">TypeKind</span>::<span class="ident">ObjCId</span>,
-                <span class="ident">CXType_ObjCSel</span> <span class="op">=&gt;</span> <span class="ident">TypeKind</span>::<span class="ident">ObjCSel</span>,
+                <span class="ident">CXType_ObjCId</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">TypeKind</span>::<span class="ident">ObjCId</span>,
+                <span class="ident">CXType_ObjCSel</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">TypeKind</span>::<span class="ident">ObjCSel</span>,
                 <span class="ident">CXType_ObjCClass</span> <span class="op">|</span>
-                <span class="ident">CXType_ObjCInterface</span> <span class="op">=&gt;</span> {
+                <span class="ident">CXType_ObjCInterface</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">let</span> <span class="ident">interface</span> <span class="op">=</span> <span class="ident">ObjCInterface</span>::<span class="ident">from_ty</span>(<span class="kw-2">&amp;</span><span class="ident">location</span>, <span class="ident">ctx</span>)
                         .<span class="ident">expect</span>(<span class="string">&quot;Not a valid objc interface?&quot;</span>);
                     <span class="ident">name</span> <span class="op">=</span> <span class="ident">interface</span>.<span class="ident">rust_name</span>();
                     <span class="ident">TypeKind</span>::<span class="ident">ObjCInterface</span>(<span class="ident">interface</span>)
                 }
-                <span class="kw">_</span> <span class="op">=&gt;</span> {
+                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="macro">error</span><span class="macro">!</span>(
                         <span class="string">&quot;unsupported type: kind = {:?}; ty = {:?}; at {:?}&quot;</span>,
                         <span class="ident">ty</span>.<span class="ident">kind</span>(),
@@ -2504,10 +2504,10 @@
             <span class="ident">TypeKind</span>::<span class="ident">Reference</span>(<span class="ident">inner</span>) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">Array</span>(<span class="ident">inner</span>, <span class="kw">_</span>) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">Alias</span>(<span class="ident">inner</span>) <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">inner</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">inner</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">tracer</span>.<span class="ident">visit_kind</span>(<span class="ident">inner</span>.<span class="ident">into</span>(), <span class="ident">EdgeKind</span>::<span class="ident">TypeReference</span>);
             }
-            <span class="ident">TypeKind</span>::<span class="ident">TemplateAlias</span>(<span class="ident">inner</span>, <span class="kw-2">ref</span> <span class="ident">template_params</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">TemplateAlias</span>(<span class="ident">inner</span>, <span class="kw-2">ref</span> <span class="ident">template_params</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">tracer</span>.<span class="ident">visit_kind</span>(<span class="ident">inner</span>.<span class="ident">into</span>(), <span class="ident">EdgeKind</span>::<span class="ident">TypeReference</span>);
                 <span class="kw">for</span> <span class="ident">param</span> <span class="kw">in</span> <span class="ident">template_params</span> {
                     <span class="ident">tracer</span>.<span class="ident">visit_kind</span>(
@@ -2516,21 +2516,21 @@
                     );
                 }
             }
-            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">inst</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">inst</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">inst</span>.<span class="ident">trace</span>(<span class="ident">context</span>, <span class="ident">tracer</span>, <span class="kw-2">&amp;</span>());
             }
-            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">ci</span>) <span class="op">=&gt;</span> <span class="ident">ci</span>.<span class="ident">trace</span>(<span class="ident">context</span>, <span class="ident">tracer</span>, <span class="ident">item</span>),
-            <span class="ident">TypeKind</span>::<span class="ident">Function</span>(<span class="kw-2">ref</span> <span class="ident">sig</span>) <span class="op">=&gt;</span> <span class="ident">sig</span>.<span class="ident">trace</span>(<span class="ident">context</span>, <span class="ident">tracer</span>, <span class="kw-2">&amp;</span>()),
-            <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(<span class="kw-2">ref</span> <span class="ident">en</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">ci</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ci</span>.<span class="ident">trace</span>(<span class="ident">context</span>, <span class="ident">tracer</span>, <span class="ident">item</span>),
+            <span class="ident">TypeKind</span>::<span class="ident">Function</span>(<span class="kw-2">ref</span> <span class="ident">sig</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">sig</span>.<span class="ident">trace</span>(<span class="ident">context</span>, <span class="ident">tracer</span>, <span class="kw-2">&amp;</span>()),
+            <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(<span class="kw-2">ref</span> <span class="ident">en</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">repr</span>) <span class="op">=</span> <span class="ident">en</span>.<span class="ident">repr</span>() {
                     <span class="ident">tracer</span>.<span class="ident">visit</span>(<span class="ident">repr</span>.<span class="ident">into</span>());
                 }
             }
-            <span class="ident">TypeKind</span>::<span class="ident">UnresolvedTypeRef</span>(<span class="kw">_</span>, <span class="kw">_</span>, <span class="prelude-val">Some</span>(<span class="ident">id</span>)) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">UnresolvedTypeRef</span>(<span class="kw">_</span>, <span class="kw">_</span>, <span class="prelude-val">Some</span>(<span class="ident">id</span>)) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">tracer</span>.<span class="ident">visit</span>(<span class="ident">id</span>);
             }
 
-            <span class="ident">TypeKind</span>::<span class="ident">ObjCInterface</span>(<span class="kw-2">ref</span> <span class="ident">interface</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">ObjCInterface</span>(<span class="kw-2">ref</span> <span class="ident">interface</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">interface</span>.<span class="ident">trace</span>(<span class="ident">context</span>, <span class="ident">tracer</span>, <span class="kw-2">&amp;</span>());
             }
 
@@ -2545,9 +2545,9 @@
             <span class="ident">TypeKind</span>::<span class="ident">Complex</span>(<span class="kw">_</span>) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">ObjCId</span> <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">ObjCSel</span> <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">BlockPointer</span> <span class="op">=&gt;</span> {}
+            <span class="ident">TypeKind</span>::<span class="ident">BlockPointer</span> <span class="op">=</span><span class="op">&gt;</span> {}
         }
     }
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../../";window.currentCrate = "bindgen";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../";window.currentCrate = "bindgen";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>

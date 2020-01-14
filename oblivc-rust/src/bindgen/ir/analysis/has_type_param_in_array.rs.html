@@ -292,11 +292,11 @@
     <span class="comment">// This is a subset of the natural IR graph with reversed edges, where we</span>
     <span class="comment">// only include the edges from the IR graph that can affect whether a type</span>
     <span class="comment">// has array or not.</span>
-    <span class="ident">dependencies</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">ItemId</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;&gt;</span>,
+    <span class="ident">dependencies</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">ItemId</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> <span class="ident">HasTypeParameterInArray</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">consider_edge</span>(<span class="ident">kind</span>: <span class="ident">EdgeKind</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">consider_edge</span>(<span class="ident">kind</span>: <span class="ident">EdgeKind</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="ident">kind</span> {
             <span class="comment">// These are the only edges that can affect whether a type has type parameter</span>
             <span class="comment">// in array or not.</span>
@@ -306,7 +306,7 @@
             <span class="ident">EdgeKind</span>::<span class="ident">VarType</span> <span class="op">|</span>
             <span class="ident">EdgeKind</span>::<span class="ident">TemplateArgument</span> <span class="op">|</span>
             <span class="ident">EdgeKind</span>::<span class="ident">TemplateDeclaration</span> <span class="op">|</span>
-            <span class="ident">EdgeKind</span>::<span class="ident">TemplateParameterDefinition</span> <span class="op">=&gt;</span> <span class="bool-val">true</span>,
+            <span class="ident">EdgeKind</span>::<span class="ident">TemplateParameterDefinition</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
 
             <span class="ident">EdgeKind</span>::<span class="ident">Constructor</span> <span class="op">|</span>
             <span class="ident">EdgeKind</span>::<span class="ident">Destructor</span> <span class="op">|</span>
@@ -314,12 +314,12 @@
             <span class="ident">EdgeKind</span>::<span class="ident">FunctionParameter</span> <span class="op">|</span>
             <span class="ident">EdgeKind</span>::<span class="ident">InnerType</span> <span class="op">|</span>
             <span class="ident">EdgeKind</span>::<span class="ident">InnerVar</span> <span class="op">|</span>
-            <span class="ident">EdgeKind</span>::<span class="ident">Method</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
-            <span class="ident">EdgeKind</span>::<span class="ident">Generic</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">EdgeKind</span>::<span class="ident">Method</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">EdgeKind</span>::<span class="ident">Generic</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">insert</span><span class="op">&lt;</span><span class="ident">Id</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">Id</span>) <span class="op">-&gt;</span> <span class="ident">ConstrainResult</span> {
+    <span class="kw">fn</span> <span class="ident">insert</span><span class="op">&lt;</span><span class="ident">Id</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">Id</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ConstrainResult</span> {
         <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">id</span>.<span class="ident">into</span>();
         <span class="macro">trace</span><span class="macro">!</span>(
             <span class="string">&quot;inserting {:?} into the has_type_parameter_in_array set&quot;</span>,
@@ -346,7 +346,7 @@
 
     <span class="kw">fn</span> <span class="ident">new</span>(
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ctx</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">HasTypeParameterInArray</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">HasTypeParameterInArray</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">has_type_parameter_in_array</span> <span class="op">=</span> <span class="ident">HashSet</span>::<span class="ident">new</span>();
         <span class="kw">let</span> <span class="ident">dependencies</span> <span class="op">=</span> <span class="ident">generate_dependencies</span>(<span class="ident">ctx</span>, <span class="self">Self</span>::<span class="ident">consider_edge</span>);
 
@@ -357,11 +357,11 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">initial_worklist</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">initial_worklist</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">whitelisted_items</span>().<span class="ident">iter</span>().<span class="ident">cloned</span>().<span class="ident">collect</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">constrain</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">ItemId</span>) <span class="op">-&gt;</span> <span class="ident">ConstrainResult</span> {
+    <span class="kw">fn</span> <span class="ident">constrain</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">ItemId</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ConstrainResult</span> {
         <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;constrain: {:?}&quot;</span>, <span class="ident">id</span>);
 
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">has_type_parameter_in_array</span>.<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">id</span>) {
@@ -371,8 +371,8 @@
 
         <span class="kw">let</span> <span class="ident">item</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="ident">id</span>);
         <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">item</span>.<span class="ident">as_type</span>() {
-            <span class="prelude-val">Some</span>(<span class="ident">ty</span>) <span class="op">=&gt;</span> <span class="ident">ty</span>,
-            <span class="prelude-val">None</span> <span class="op">=&gt;</span> {
+            <span class="prelude-val">Some</span>(<span class="ident">ty</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ty</span>,
+            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;    not a type; ignoring&quot;</span>);
                 <span class="kw">return</span> <span class="ident">ConstrainResult</span>::<span class="ident">Same</span>;
             }
@@ -396,20 +396,20 @@
             <span class="ident">TypeKind</span>::<span class="ident">UnresolvedTypeRef</span>(..) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">ObjCInterface</span>(..) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">ObjCId</span> <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">ObjCSel</span> <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">ObjCSel</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;    simple type that do not have array&quot;</span>);
                 <span class="ident">ConstrainResult</span>::<span class="ident">Same</span>
             }
 
-            <span class="ident">TypeKind</span>::<span class="ident">Array</span>(<span class="ident">t</span>, <span class="kw">_</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Array</span>(<span class="ident">t</span>, <span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">let</span> <span class="ident">inner_ty</span> <span class="op">=</span>
                     <span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">resolve_type</span>(<span class="ident">t</span>).<span class="ident">canonical_type</span>(<span class="self">self</span>.<span class="ident">ctx</span>);
                 <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">inner_ty</span>.<span class="ident">kind</span>() {
-                    <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">=&gt;</span> {
+                    <span class="ident">TypeKind</span>::<span class="ident">TypeParam</span> <span class="op">=</span><span class="op">&gt;</span> {
                         <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;    Array with Named type has type parameter&quot;</span>);
                         <span class="self">self</span>.<span class="ident">insert</span>(<span class="ident">id</span>)
                     }
-                    <span class="kw">_</span> <span class="op">=&gt;</span> {
+                    <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {
                         <span class="macro">trace</span><span class="macro">!</span>(
                             <span class="string">&quot;    Array without Named type does have type parameter&quot;</span>
                         );
@@ -420,7 +420,7 @@
 
             <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">t</span>) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">TemplateAlias</span>(<span class="ident">t</span>, <span class="kw">_</span>) <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">Alias</span>(<span class="ident">t</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Alias</span>(<span class="ident">t</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">if</span> <span class="self">self</span>.<span class="ident">has_type_parameter_in_array</span>.<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">t</span>.<span class="ident">into</span>()) {
                     <span class="macro">trace</span><span class="macro">!</span>(
                         <span class="string">&quot;    aliases and type refs to T which have array \
@@ -436,7 +436,7 @@
                 }
             }
 
-            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">info</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(<span class="kw-2">ref</span> <span class="ident">info</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">let</span> <span class="ident">bases_have</span> <span class="op">=</span> <span class="ident">info</span>.<span class="ident">base_members</span>().<span class="ident">iter</span>().<span class="ident">any</span>(<span class="op">|</span><span class="ident">base</span><span class="op">|</span> {
                     <span class="self">self</span>.<span class="ident">has_type_parameter_in_array</span>.<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">base</span>.<span class="ident">ty</span>.<span class="ident">into</span>())
                 });
@@ -445,10 +445,10 @@
                     <span class="kw">return</span> <span class="self">self</span>.<span class="ident">insert</span>(<span class="ident">id</span>);
                 }
                 <span class="kw">let</span> <span class="ident">fields_have</span> <span class="op">=</span> <span class="ident">info</span>.<span class="ident">fields</span>().<span class="ident">iter</span>().<span class="ident">any</span>(<span class="op">|</span><span class="ident">f</span><span class="op">|</span> <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">f</span> {
-                    <span class="ident">Field</span>::<span class="ident">DataMember</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) <span class="op">=&gt;</span> {
+                    <span class="ident">Field</span>::<span class="ident">DataMember</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) <span class="op">=</span><span class="op">&gt;</span> {
                         <span class="self">self</span>.<span class="ident">has_type_parameter_in_array</span>.<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">data</span>.<span class="ident">ty</span>().<span class="ident">into</span>())
                     }
-                    <span class="ident">Field</span>::<span class="ident">Bitfields</span>(..) <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+                    <span class="ident">Field</span>::<span class="ident">Bitfields</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
                 });
                 <span class="kw">if</span> <span class="ident">fields_have</span> {
                     <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;    fields have array, so we also have&quot;</span>);
@@ -459,7 +459,7 @@
                 <span class="ident">ConstrainResult</span>::<span class="ident">Same</span>
             }
 
-            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">template</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">template</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">let</span> <span class="ident">args_have</span> <span class="op">=</span>
                     <span class="ident">template</span>.<span class="ident">template_arguments</span>().<span class="ident">iter</span>().<span class="ident">any</span>(<span class="op">|</span><span class="ident">arg</span><span class="op">|</span> {
                         <span class="self">self</span>.<span class="ident">has_type_parameter_in_array</span>.<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">arg</span>.<span class="ident">into</span>())
@@ -502,10 +502,10 @@
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">HasTypeParameterInArray</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;&gt;</span> <span class="kw">for</span> <span class="ident">HashSet</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">analysis</span>: <span class="ident">HasTypeParameterInArray</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">HasTypeParameterInArray</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">HashSet</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">analysis</span>: <span class="ident">HasTypeParameterInArray</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">analysis</span>.<span class="ident">has_type_parameter_in_array</span>
     }
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../../../";window.currentCrate = "bindgen";</script><script src="../../../../aliases.js"></script><script src="../../../../main.js"></script><script src="../../../../source-script.js"></script><script src="../../../../source-files.js"></script><script defer src="../../../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../../";window.currentCrate = "bindgen";</script><script src="../../../../aliases.js"></script><script src="../../../../main.js"></script><script src="../../../../source-script.js"></script><script src="../../../../source-files.js"></script><script defer src="../../../../search-index.js"></script></body></html>

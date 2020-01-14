@@ -537,7 +537,7 @@
 
 <span class="kw">impl</span> <span class="ident">Edge</span> {
     <span class="doccomment">/// Construct a new edge whose referent is `to` and is of the given `kind`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">to</span>: <span class="ident">ItemId</span>, <span class="ident">kind</span>: <span class="ident">EdgeKind</span>) <span class="op">-&gt;</span> <span class="ident">Edge</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">to</span>: <span class="ident">ItemId</span>, <span class="ident">kind</span>: <span class="ident">EdgeKind</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Edge</span> {
         <span class="ident">Edge</span> {
             <span class="ident">to</span>,
             <span class="ident">kind</span>,
@@ -546,7 +546,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Edge</span> {
-    <span class="kw">fn</span> <span class="ident">into</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">ItemId</span> {
+    <span class="kw">fn</span> <span class="ident">into</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ItemId</span> {
         <span class="self">self</span>.<span class="ident">to</span>
     }
 }
@@ -703,11 +703,11 @@
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">TraversalPredicate</span> {
     <span class="doccomment">/// Should the traversal follow this edge, and visit everything that is</span>
     <span class="doccomment">/// reachable through it?</span>
-    <span class="kw">fn</span> <span class="ident">should_follow</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="ident">edge</span>: <span class="ident">Edge</span>) <span class="op">-&gt;</span> <span class="ident">bool</span>;
+    <span class="kw">fn</span> <span class="ident">should_follow</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="ident">edge</span>: <span class="ident">Edge</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>;
 }
 
-<span class="kw">impl</span> <span class="ident">TraversalPredicate</span> <span class="kw">for</span> <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">fn</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BindgenContext</span>, <span class="ident">Edge</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-    <span class="kw">fn</span> <span class="ident">should_follow</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="ident">edge</span>: <span class="ident">Edge</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+<span class="kw">impl</span> <span class="ident">TraversalPredicate</span> <span class="kw">for</span> <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">fn</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BindgenContext</span>, <span class="ident">Edge</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">should_follow</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="ident">edge</span>: <span class="ident">Edge</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         (<span class="kw-2">*</span><span class="self">self</span>)(<span class="ident">ctx</span>, <span class="ident">edge</span>)
     }
 }
@@ -715,24 +715,24 @@
 <span class="doccomment">/// A `TraversalPredicate` implementation that follows all edges, and therefore</span>
 <span class="doccomment">/// traversals using this predicate will see the whole IR graph reachable from</span>
 <span class="doccomment">/// the traversal&#39;s roots.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">all_edges</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="kw">_</span>: <span class="ident">Edge</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">all_edges</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="kw">_</span>: <span class="ident">Edge</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
     <span class="bool-val">true</span>
 }
 
 <span class="doccomment">/// A `TraversalPredicate` implementation that never follows any edges, and</span>
 <span class="doccomment">/// therefore traversals using this predicate will only visit the traversal&#39;s</span>
 <span class="doccomment">/// roots.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_edges</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="kw">_</span>: <span class="ident">Edge</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">no_edges</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="kw">_</span>: <span class="ident">Edge</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
     <span class="bool-val">false</span>
 }
 
 <span class="doccomment">/// A `TraversalPredicate` implementation that only follows edges to items that</span>
 <span class="doccomment">/// are enabled for code generation. This lets us skip considering items for</span>
 <span class="doccomment">/// which are not reachable from code generation.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">codegen_edges</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="ident">edge</span>: <span class="ident">Edge</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">codegen_edges</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="ident">edge</span>: <span class="ident">Edge</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
     <span class="kw">let</span> <span class="ident">cc</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">codegen_config</span>;
     <span class="kw">match</span> <span class="ident">edge</span>.<span class="ident">kind</span> {
-        <span class="ident">EdgeKind</span>::<span class="ident">Generic</span> <span class="op">=&gt;</span> {
+        <span class="ident">EdgeKind</span>::<span class="ident">Generic</span> <span class="op">=</span><span class="op">&gt;</span> {
             <span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="ident">edge</span>.<span class="ident">to</span>).<span class="ident">is_enabled_for_codegen</span>(<span class="ident">ctx</span>)
         }
 
@@ -748,11 +748,11 @@
         <span class="ident">EdgeKind</span>::<span class="ident">FunctionReturn</span> <span class="op">|</span>
         <span class="ident">EdgeKind</span>::<span class="ident">FunctionParameter</span> <span class="op">|</span>
         <span class="ident">EdgeKind</span>::<span class="ident">VarType</span> <span class="op">|</span>
-        <span class="ident">EdgeKind</span>::<span class="ident">TypeReference</span> <span class="op">=&gt;</span> <span class="ident">cc</span>.<span class="ident">types</span>,
-        <span class="ident">EdgeKind</span>::<span class="ident">InnerVar</span> <span class="op">=&gt;</span> <span class="ident">cc</span>.<span class="ident">vars</span>,
-        <span class="ident">EdgeKind</span>::<span class="ident">Method</span> <span class="op">=&gt;</span> <span class="ident">cc</span>.<span class="ident">methods</span>,
-        <span class="ident">EdgeKind</span>::<span class="ident">Constructor</span> <span class="op">=&gt;</span> <span class="ident">cc</span>.<span class="ident">constructors</span>,
-        <span class="ident">EdgeKind</span>::<span class="ident">Destructor</span> <span class="op">=&gt;</span> <span class="ident">cc</span>.<span class="ident">destructors</span>,
+        <span class="ident">EdgeKind</span>::<span class="ident">TypeReference</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">cc</span>.<span class="ident">types</span>,
+        <span class="ident">EdgeKind</span>::<span class="ident">InnerVar</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">cc</span>.<span class="ident">vars</span>,
+        <span class="ident">EdgeKind</span>::<span class="ident">Method</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">cc</span>.<span class="ident">methods</span>,
+        <span class="ident">EdgeKind</span>::<span class="ident">Constructor</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">cc</span>.<span class="ident">constructors</span>,
+        <span class="ident">EdgeKind</span>::<span class="ident">Destructor</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">cc</span>.<span class="ident">destructors</span>,
     }
 }
 
@@ -761,22 +761,22 @@
 <span class="doccomment">/// traversal.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">TraversalStorage</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Construct a new instance of this TraversalStorage, for a new traversal.</span>
-    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ctx</span> <span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="self">Self</span>;
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ctx</span> <span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>;
 
     <span class="doccomment">/// Add the given item to the storage. If the item has never been seen</span>
     <span class="doccomment">/// before, return `true`. Otherwise, return `false`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The `from` item is the item from which we discovered this item, or is</span>
     <span class="doccomment">/// `None` if this item is a root.</span>
-    <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">from</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>, <span class="ident">item</span>: <span class="ident">ItemId</span>) <span class="op">-&gt;</span> <span class="ident">bool</span>;
+    <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">from</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>, <span class="ident">item</span>: <span class="ident">ItemId</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>;
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> <span class="ident">TraversalStorage</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ItemSet</span> {
-    <span class="kw">fn</span> <span class="ident">new</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ctx</span> <span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ctx</span> <span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">ItemSet</span>::<span class="ident">new</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>, <span class="ident">item</span>: <span class="ident">ItemId</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>, <span class="ident">item</span>: <span class="ident">ItemId</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">insert</span>(<span class="ident">item</span>)
     }
 }
@@ -791,11 +791,11 @@
 );
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> <span class="ident">TraversalStorage</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Paths</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ctx</span> <span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ctx</span> <span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">Paths</span>(<span class="ident">BTreeMap</span>::<span class="ident">new</span>(), <span class="ident">ctx</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">from</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>, <span class="ident">item</span>: <span class="ident">ItemId</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">from</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>, <span class="ident">item</span>: <span class="ident">ItemId</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">let</span> <span class="ident">newly_discovered</span> <span class="op">=</span>
             <span class="self">self</span>.<span class="number">0</span>.<span class="ident">insert</span>(<span class="ident">item</span>, <span class="ident">from</span>.<span class="ident">unwrap_or</span>(<span class="ident">item</span>)).<span class="ident">is_none</span>();
 
@@ -807,7 +807,7 @@
                     <span class="string">&quot;We know we found this item id, so it must have a \
                             predecessor&quot;</span>,
                 );
-                <span class="kw">if</span> <span class="ident">predecessor</span> <span class="op">==</span> <span class="ident">current</span> {
+                <span class="kw">if</span> <span class="ident">predecessor</span> <span class="op">=</span><span class="op">=</span> <span class="ident">current</span> {
                     <span class="kw">break</span>;
                 }
                 <span class="ident">path</span>.<span class="ident">push</span>(<span class="ident">predecessor</span>);
@@ -835,7 +835,7 @@
     <span class="kw">fn</span> <span class="ident">push</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">item</span>: <span class="ident">ItemId</span>);
 
     <span class="doccomment">/// Pop the next item to traverse, if any.</span>
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>;
 }
 
 <span class="kw">impl</span> <span class="ident">TraversalQueue</span> <span class="kw">for</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
@@ -843,7 +843,7 @@
         <span class="self">self</span>.<span class="ident">push</span>(<span class="ident">item</span>);
     }
 
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">pop</span>()
     }
 }
@@ -853,7 +853,7 @@
         <span class="self">self</span>.<span class="ident">push_back</span>(<span class="ident">item</span>);
     }
 
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">pop_front</span>()
     }
 }
@@ -934,7 +934,7 @@
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ctx</span> <span class="ident">BindgenContext</span>,
         <span class="ident">roots</span>: <span class="ident">R</span>,
         <span class="ident">predicate</span>: <span class="ident">Predicate</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">ItemTraversal</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span>, <span class="ident">Storage</span>, <span class="ident">Queue</span>, <span class="ident">Predicate</span><span class="op">&gt;</span>
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ItemTraversal</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span>, <span class="ident">Storage</span>, <span class="ident">Queue</span>, <span class="ident">Predicate</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">R</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">ItemId</span><span class="op">&gt;</span>,
     {
@@ -986,10 +986,10 @@
 {
     <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">ItemId</span>;
 
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span>::<span class="ident">Item</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span>::<span class="ident">Item</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">queue</span>.<span class="ident">next</span>() {
-            <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">id</span>) <span class="op">=&gt;</span> <span class="ident">id</span>,
+            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">id</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">id</span>,
         };
 
         <span class="kw">let</span> <span class="ident">newly_discovered</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">seen</span>.<span class="ident">add</span>(<span class="prelude-val">None</span>, <span class="ident">id</span>);
@@ -1019,7 +1019,7 @@
         <span class="lifetime">&#39;ctx</span>,
         <span class="ident">Paths</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span>,
         <span class="ident">VecDeque</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>,
-        <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">fn</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BindgenContext</span>, <span class="ident">Edge</span>) <span class="op">-&gt;</span> <span class="ident">bool</span>,
+        <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">fn</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BindgenContext</span>, <span class="ident">Edge</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>,
     <span class="op">&gt;</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
@@ -1034,4 +1034,4 @@
     }
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../../";window.currentCrate = "bindgen";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../";window.currentCrate = "bindgen";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>

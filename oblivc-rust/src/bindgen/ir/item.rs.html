@@ -1906,7 +1906,7 @@
 <span class="doccomment">/// return any rust keyword from here.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ItemCanonicalName</span> {
     <span class="doccomment">/// Get the canonical name for this item.</span>
-    <span class="kw">fn</span> <span class="ident">canonical_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">String</span>;
+    <span class="kw">fn</span> <span class="ident">canonical_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span>;
 }
 
 <span class="doccomment">/// The same, but specifies the path that needs to be followed to reach an item.</span>
@@ -1928,10 +1928,10 @@
     <span class="kw">fn</span> <span class="ident">namespace_aware_canonical_path</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>;
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Get the canonical path for this item.</span>
-    <span class="kw">fn</span> <span class="ident">canonical_path</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">canonical_path</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>;
 }
 
 <span class="doccomment">/// A trait for determining if some IR thing is opaque or not.</span>
@@ -1942,19 +1942,19 @@
     <span class="doccomment">/// Returns `true` if the thing is opaque, and `false` otherwise.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// May only be called when `ctx` is in the codegen phase.</span>
-    <span class="kw">fn</span> <span class="ident">is_opaque</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="ident">extra</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>::<span class="ident">Extra</span>) <span class="op">-&gt;</span> <span class="ident">bool</span>;
+    <span class="kw">fn</span> <span class="ident">is_opaque</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="ident">extra</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>::<span class="ident">Extra</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>;
 }
 
 <span class="doccomment">/// A trait for determining if some IR thing has type parameter in array or not.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">HasTypeParamInArray</span> {
     <span class="doccomment">/// Returns `true` if the thing has Array, and `false` otherwise.</span>
-    <span class="kw">fn</span> <span class="ident">has_type_param_in_array</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span>;
+    <span class="kw">fn</span> <span class="ident">has_type_param_in_array</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>;
 }
 
 <span class="doccomment">/// A trait for determining if some IR thing has float or not.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">HasFloat</span> {
     <span class="doccomment">/// Returns `true` if the thing has float, and `false` otherwise.</span>
-    <span class="kw">fn</span> <span class="ident">has_float</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span>;
+    <span class="kw">fn</span> <span class="ident">has_float</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>;
 }
 
 <span class="doccomment">/// A trait for iterating over an item and its parents and up its ancestor chain</span>
@@ -1964,7 +1964,7 @@
     <span class="kw">fn</span> <span class="ident">ancestors</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">ItemAncestorsIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>;
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ItemAncestorsIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>;
 }
 
 <span class="macro">cfg_if</span><span class="macro">!</span> {
@@ -1974,11 +1974,11 @@
         <span class="kw">struct</span> <span class="ident">DebugOnlyItemSet</span>;
 
         <span class="kw">impl</span> <span class="ident">DebugOnlyItemSet</span> {
-            <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
+            <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
                 <span class="ident">DebugOnlyItemSet</span>
             }
 
-            <span class="kw">fn</span> <span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_id</span>: <span class="kw-2">&amp;</span><span class="ident">ItemId</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+            <span class="kw">fn</span> <span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_id</span>: <span class="kw-2">&amp;</span><span class="ident">ItemId</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
                 <span class="bool-val">false</span>
             }
 
@@ -1995,7 +1995,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">ItemAncestorsIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">Id</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;&gt;</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BindgenContext</span>, <span class="ident">id</span>: <span class="ident">Id</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">Id</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BindgenContext</span>, <span class="ident">id</span>: <span class="ident">Id</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">ItemAncestorsIter</span> {
             <span class="ident">item</span>: <span class="ident">id</span>.<span class="ident">into</span>(),
             <span class="ident">ctx</span>: <span class="ident">ctx</span>,
@@ -2007,10 +2007,10 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Iterator</span> <span class="kw">for</span> <span class="ident">ItemAncestorsIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">ItemId</span>;
 
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span>::<span class="ident">Item</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span>::<span class="ident">Item</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">item</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="self">self</span>.<span class="ident">item</span>);
 
-        <span class="kw">if</span> <span class="ident">item</span>.<span class="ident">parent_id</span>() <span class="op">==</span> <span class="self">self</span>.<span class="ident">item</span> {
+        <span class="kw">if</span> <span class="ident">item</span>.<span class="ident">parent_id</span>() <span class="op">=</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">item</span> {
             <span class="prelude-val">None</span>
         } <span class="kw">else</span> {
             <span class="self">self</span>.<span class="ident">item</span> <span class="op">=</span> <span class="ident">item</span>.<span class="ident">parent_id</span>();
@@ -2032,7 +2032,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
         <span class="kw">_</span>: <span class="kw-2">&amp;</span>(),
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span> {
         <span class="ident">ctx</span>.<span class="ident">resolve_item</span>((<span class="kw-2">*</span><span class="self">self</span>).<span class="ident">into</span>()).<span class="ident">as_template_param</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span>())
     }
 }
@@ -2044,7 +2044,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
         <span class="kw">_</span>: <span class="kw-2">&amp;</span>(),
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">kind</span>.<span class="ident">as_template_param</span>(<span class="ident">ctx</span>, <span class="self">self</span>)
     }
 }
@@ -2056,12 +2056,12 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
         <span class="ident">item</span>: <span class="kw-2">&amp;</span><span class="ident">Item</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw-2">ref</span> <span class="ident">ty</span>) <span class="op">=&gt;</span> <span class="ident">ty</span>.<span class="ident">as_template_param</span>(<span class="ident">ctx</span>, <span class="ident">item</span>),
+            <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw-2">ref</span> <span class="ident">ty</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ty</span>.<span class="ident">as_template_param</span>(<span class="ident">ctx</span>, <span class="ident">item</span>),
             <span class="ident">ItemKind</span>::<span class="ident">Module</span>(..) <span class="op">|</span>
             <span class="ident">ItemKind</span>::<span class="ident">Function</span>(..) <span class="op">|</span>
-            <span class="ident">ItemKind</span>::<span class="ident">Var</span>(..) <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">ItemKind</span>::<span class="ident">Var</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 }
@@ -2070,7 +2070,7 @@
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>
 {
-    <span class="kw">fn</span> <span class="ident">canonical_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">fn</span> <span class="ident">canonical_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="macro">debug_assert</span><span class="macro">!</span>(
             <span class="ident">ctx</span>.<span class="ident">in_codegen_phase</span>(),
             <span class="string">&quot;You&#39;re not supposed to call this yet&quot;</span>
@@ -2086,7 +2086,7 @@
     <span class="kw">fn</span> <span class="ident">namespace_aware_canonical_path</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="macro">debug_assert</span><span class="macro">!</span>(
             <span class="ident">ctx</span>.<span class="ident">in_codegen_phase</span>(),
             <span class="string">&quot;You&#39;re not supposed to call this yet&quot;</span>
@@ -2094,7 +2094,7 @@
         <span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="kw-2">*</span><span class="self">self</span>).<span class="ident">namespace_aware_canonical_path</span>(<span class="ident">ctx</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">canonical_path</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">canonical_path</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="macro">debug_assert</span><span class="macro">!</span>(
             <span class="ident">ctx</span>.<span class="ident">in_codegen_phase</span>(),
             <span class="string">&quot;You&#39;re not supposed to call this yet&quot;</span>
@@ -2110,7 +2110,7 @@
     <span class="kw">fn</span> <span class="ident">ancestors</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">ItemAncestorsIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ItemAncestorsIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
         <span class="ident">ItemAncestorsIter</span>::<span class="ident">new</span>(<span class="ident">ctx</span>, <span class="kw-2">*</span><span class="self">self</span>)
     }
 }
@@ -2119,7 +2119,7 @@
     <span class="kw">fn</span> <span class="ident">ancestors</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">ItemAncestorsIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ItemAncestorsIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">id</span>().<span class="ident">ancestors</span>(<span class="ident">ctx</span>)
     }
 }
@@ -2153,25 +2153,25 @@
         <span class="comment">// function correctly.</span>
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">kind</span>() {
-            <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw-2">ref</span> <span class="ident">ty</span>) <span class="op">=&gt;</span> {
+            <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw-2">ref</span> <span class="ident">ty</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="comment">// There are some types, like resolved type references, where we</span>
                 <span class="comment">// don&#39;t want to stop collecting types even though they may be</span>
                 <span class="comment">// opaque.</span>
-                <span class="kw">if</span> <span class="ident">ty</span>.<span class="ident">should_be_traced_unconditionally</span>() <span class="op">||</span>
+                <span class="kw">if</span> <span class="ident">ty</span>.<span class="ident">should_be_traced_unconditionally</span>() <span class="op">|</span><span class="op">|</span>
                     <span class="op">!</span><span class="self">self</span>.<span class="ident">is_opaque</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span>())
                 {
                     <span class="ident">ty</span>.<span class="ident">trace</span>(<span class="ident">ctx</span>, <span class="ident">tracer</span>, <span class="self">self</span>);
                 }
             }
-            <span class="ident">ItemKind</span>::<span class="ident">Function</span>(<span class="kw-2">ref</span> <span class="ident">fun</span>) <span class="op">=&gt;</span> {
+            <span class="ident">ItemKind</span>::<span class="ident">Function</span>(<span class="kw-2">ref</span> <span class="ident">fun</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="comment">// Just the same way, it has not real meaning for a function to</span>
                 <span class="comment">// be opaque, so we trace across it.</span>
                 <span class="ident">tracer</span>.<span class="ident">visit</span>(<span class="ident">fun</span>.<span class="ident">signature</span>().<span class="ident">into</span>());
             }
-            <span class="ident">ItemKind</span>::<span class="ident">Var</span>(<span class="kw-2">ref</span> <span class="ident">var</span>) <span class="op">=&gt;</span> {
+            <span class="ident">ItemKind</span>::<span class="ident">Var</span>(<span class="kw-2">ref</span> <span class="ident">var</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">tracer</span>.<span class="ident">visit_kind</span>(<span class="ident">var</span>.<span class="ident">ty</span>().<span class="ident">into</span>(), <span class="ident">EdgeKind</span>::<span class="ident">VarType</span>);
             }
-            <span class="ident">ItemKind</span>::<span class="ident">Module</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> {
+            <span class="ident">ItemKind</span>::<span class="ident">Module</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="comment">// Module -&gt; children edges are &quot;weak&quot;, and we do not want to</span>
                 <span class="comment">// trace them. If we did, then whitelisting wouldn&#39;t work as</span>
                 <span class="comment">// expected: everything in every module would end up</span>
@@ -2185,49 +2185,49 @@
 }
 
 <span class="kw">impl</span> <span class="ident">CanDeriveDebug</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">can_derive_debug</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">can_derive_debug</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">id</span>().<span class="ident">can_derive_debug</span>(<span class="ident">ctx</span>)
     }
 }
 
 <span class="kw">impl</span> <span class="ident">CanDeriveDefault</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">can_derive_default</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">can_derive_default</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">id</span>().<span class="ident">can_derive_default</span>(<span class="ident">ctx</span>)
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">CanDeriveCopy</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">can_derive_copy</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">can_derive_copy</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">id</span>().<span class="ident">can_derive_copy</span>(<span class="ident">ctx</span>)
     }
 }
 
 <span class="kw">impl</span> <span class="ident">CanDeriveHash</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">can_derive_hash</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">can_derive_hash</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">id</span>().<span class="ident">can_derive_hash</span>(<span class="ident">ctx</span>)
     }
 }
 
 <span class="kw">impl</span> <span class="ident">CanDerivePartialOrd</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">can_derive_partialord</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">can_derive_partialord</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">id</span>().<span class="ident">can_derive_partialord</span>(<span class="ident">ctx</span>)
     }
 }
 
 <span class="kw">impl</span> <span class="ident">CanDerivePartialEq</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">can_derive_partialeq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">can_derive_partialeq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">id</span>().<span class="ident">can_derive_partialeq</span>(<span class="ident">ctx</span>)
     }
 }
 
 <span class="kw">impl</span> <span class="ident">CanDeriveEq</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">can_derive_eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">can_derive_eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">id</span>().<span class="ident">can_derive_eq</span>(<span class="ident">ctx</span>)
     }
 }
 
 <span class="kw">impl</span> <span class="ident">CanDeriveOrd</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">can_derive_ord</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">can_derive_ord</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">id</span>().<span class="ident">can_derive_ord</span>(<span class="ident">ctx</span>)
     }
 }
@@ -2261,7 +2261,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note that only structs, unions, and enums get a local type id. In any</span>
     <span class="doccomment">/// case this is an implementation detail.</span>
-    <span class="ident">local_id</span>: <span class="ident">Cell</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;&gt;</span>,
+    <span class="ident">local_id</span>: <span class="ident">Cell</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// The next local id to use for a child or template instantiation.</span>
     <span class="ident">next_child_local_id</span>: <span class="ident">Cell</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>,
@@ -2270,7 +2270,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is a fairly used operation during codegen so this makes bindgen</span>
     <span class="doccomment">/// considerably faster in those cases.</span>
-    <span class="ident">canonical_name_cache</span>: <span class="ident">RefCell</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;&gt;</span>,
+    <span class="ident">canonical_name_cache</span>: <span class="ident">RefCell</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 
     <span class="doccomment">/// A doc comment over the item, if any.</span>
     <span class="ident">comment</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
@@ -2288,7 +2288,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">ItemId</span> {
+    <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">ItemId</span> {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">id</span>
     }
 }
@@ -2301,8 +2301,8 @@
         <span class="ident">annotations</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Annotations</span><span class="op">&gt;</span>,
         <span class="ident">parent_id</span>: <span class="ident">ItemId</span>,
         <span class="ident">kind</span>: <span class="ident">ItemKind</span>,
-    ) <span class="op">-&gt;</span> <span class="self">Self</span> {
-        <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="ident">id</span> <span class="op">!=</span> <span class="ident">parent_id</span> <span class="op">||</span> <span class="ident">kind</span>.<span class="ident">is_module</span>());
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+        <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="ident">id</span> <span class="op">!</span><span class="op">=</span> <span class="ident">parent_id</span> <span class="op">|</span><span class="op">|</span> <span class="ident">kind</span>.<span class="ident">is_module</span>());
         <span class="ident">Item</span> {
             <span class="ident">id</span>: <span class="ident">id</span>,
             <span class="ident">local_id</span>: <span class="ident">Cell</span>::<span class="ident">new</span>(<span class="prelude-val">None</span>),
@@ -2320,7 +2320,7 @@
         <span class="ident">with_id</span>: <span class="ident">ItemId</span>,
         <span class="ident">ty</span>: <span class="kw-2">&amp;</span><span class="ident">clang</span>::<span class="ident">Type</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">TypeId</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TypeId</span> {
         <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="ident">Opaque</span>::<span class="ident">from_clang_ty</span>(<span class="ident">ty</span>);
         <span class="kw">let</span> <span class="ident">kind</span> <span class="op">=</span> <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="ident">ty</span>);
         <span class="kw">let</span> <span class="ident">parent</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">root_module</span>().<span class="ident">into</span>();
@@ -2329,28 +2329,28 @@
     }
 
     <span class="doccomment">/// Get this `Item`&#39;s identifier.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">ItemId</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ItemId</span> {
         <span class="self">self</span>.<span class="ident">id</span>
     }
 
     <span class="doccomment">/// Get this `Item`&#39;s parent&#39;s identifier.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// For the root module, the parent&#39;s ID is its own ID.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parent_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">ItemId</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parent_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ItemId</span> {
         <span class="self">self</span>.<span class="ident">parent_id</span>
     }
 
     <span class="doccomment">/// Set this item&#39;s parent id.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is only used so replacements get generated in the proper module.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_parent_for_replacement</span><span class="op">&lt;</span><span class="ident">Id</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">Id</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_parent_for_replacement</span><span class="op">&lt;</span><span class="ident">Id</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">Id</span>) {
         <span class="self">self</span>.<span class="ident">parent_id</span> <span class="op">=</span> <span class="ident">id</span>.<span class="ident">into</span>();
     }
 
     <span class="doccomment">/// Returns the depth this item is indented to.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// FIXME(emilio): This may need fixes for the enums within modules stuff.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">codegen_depth</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">codegen_depth</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">enable_cxx_namespaces</span> {
             <span class="kw">return</span> <span class="number">0</span>;
         }
@@ -2358,7 +2358,7 @@
         <span class="self">self</span>.<span class="ident">ancestors</span>(<span class="ident">ctx</span>)
             .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">id</span><span class="op">|</span> {
                 <span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="kw-2">*</span><span class="ident">id</span>).<span class="ident">as_module</span>().<span class="ident">map_or</span>(<span class="bool-val">false</span>, <span class="op">|</span><span class="ident">module</span><span class="op">|</span> {
-                    <span class="op">!</span><span class="ident">module</span>.<span class="ident">is_inline</span>() <span class="op">||</span>
+                    <span class="op">!</span><span class="ident">module</span>.<span class="ident">is_inline</span>() <span class="op">|</span><span class="op">|</span>
                         <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">conservative_inline_namespaces</span>
                 })
             })
@@ -2368,7 +2368,7 @@
 
     <span class="doccomment">/// Get this `Item`&#39;s comment, if it has any, already preprocessed and with</span>
     <span class="doccomment">/// the right indentation.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">comment</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">comment</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">generate_comments</span> {
             <span class="kw">return</span> <span class="prelude-val">None</span>;
         }
@@ -2379,12 +2379,12 @@
     }
 
     <span class="doccomment">/// What kind of item is this?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">ItemKind</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">ItemKind</span> {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">kind</span>
     }
 
     <span class="doccomment">/// Get a mutable reference to this item&#39;s kind.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ItemKind</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ItemKind</span> {
         <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">kind</span>
     }
 
@@ -2393,7 +2393,7 @@
     <span class="doccomment">/// This should stay relatively stable in the face of code motion outside or</span>
     <span class="doccomment">/// below this item&#39;s lexical scope, meaning that this can be useful for</span>
     <span class="doccomment">/// generating relatively stable identifiers within a scope.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">local_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">local_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">local_id</span>.<span class="ident">get</span>().<span class="ident">is_none</span>() {
             <span class="kw">let</span> <span class="ident">parent</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="self">self</span>.<span class="ident">parent_id</span>);
             <span class="self">self</span>.<span class="ident">local_id</span>.<span class="ident">set</span>(<span class="prelude-val">Some</span>(<span class="ident">parent</span>.<span class="ident">next_child_local_id</span>()));
@@ -2407,7 +2407,7 @@
     <span class="doccomment">/// This is currently used for anonymous items, and template instantiation</span>
     <span class="doccomment">/// tests, in both cases in order to reduce noise when system headers are at</span>
     <span class="doccomment">/// place.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">next_child_local_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">next_child_local_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
         <span class="kw">let</span> <span class="ident">local_id</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">next_child_local_id</span>.<span class="ident">get</span>();
         <span class="self">self</span>.<span class="ident">next_child_local_id</span>.<span class="ident">set</span>(<span class="ident">local_id</span> <span class="op">+</span> <span class="number">1</span>);
         <span class="ident">local_id</span>
@@ -2431,11 +2431,11 @@
     <span class="doccomment">/// This function is used to determine when the codegen phase should call</span>
     <span class="doccomment">/// `codegen` on an item, since any item that is not top-level will be</span>
     <span class="doccomment">/// generated by its parent.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_toplevel</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_toplevel</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="comment">// FIXME: Workaround for some types falling behind when parsing weird</span>
         <span class="comment">// stl classes, for example.</span>
-        <span class="kw">if</span> <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">enable_cxx_namespaces</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">kind</span>().<span class="ident">is_module</span>() <span class="op">&amp;&amp;</span>
-            <span class="self">self</span>.<span class="ident">id</span>() <span class="op">!=</span> <span class="ident">ctx</span>.<span class="ident">root_module</span>()
+        <span class="kw">if</span> <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">enable_cxx_namespaces</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">kind</span>().<span class="ident">is_module</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span>
+            <span class="self">self</span>.<span class="ident">id</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">root_module</span>()
         {
             <span class="kw">return</span> <span class="bool-val">false</span>;
         }
@@ -2443,13 +2443,13 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">parent</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">parent_id</span>;
         <span class="kw">loop</span> {
             <span class="kw">let</span> <span class="ident">parent_item</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">ctx</span>.<span class="ident">resolve_item_fallible</span>(<span class="ident">parent</span>) {
-                <span class="prelude-val">Some</span>(<span class="ident">item</span>) <span class="op">=&gt;</span> <span class="ident">item</span>,
-                <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="bool-val">false</span>,
+                <span class="prelude-val">Some</span>(<span class="ident">item</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">item</span>,
+                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="bool-val">false</span>,
             };
 
-            <span class="kw">if</span> <span class="ident">parent_item</span>.<span class="ident">id</span>() <span class="op">==</span> <span class="ident">ctx</span>.<span class="ident">root_module</span>() {
+            <span class="kw">if</span> <span class="ident">parent_item</span>.<span class="ident">id</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">root_module</span>() {
                 <span class="kw">return</span> <span class="bool-val">true</span>;
-            } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">enable_cxx_namespaces</span> <span class="op">||</span>
+            } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">enable_cxx_namespaces</span> <span class="op">|</span><span class="op">|</span>
                        <span class="op">!</span><span class="ident">parent_item</span>.<span class="ident">kind</span>().<span class="ident">is_module</span>()
             {
                 <span class="kw">return</span> <span class="bool-val">false</span>;
@@ -2461,57 +2461,57 @@
 
     <span class="doccomment">/// Get a reference to this item&#39;s underlying `Type`. Panic if this is some</span>
     <span class="doccomment">/// other kind of item.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">expect_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Type</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">expect_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Type</span> {
         <span class="self">self</span>.<span class="ident">kind</span>().<span class="ident">expect_type</span>()
     }
 
     <span class="doccomment">/// Get a reference to this item&#39;s underlying `Type`, or `None` if this is</span>
     <span class="doccomment">/// some other kind of item.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Type</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Type</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">kind</span>().<span class="ident">as_type</span>()
     }
 
     <span class="doccomment">/// Get a reference to this item&#39;s underlying `Function`. Panic if this is</span>
     <span class="doccomment">/// some other kind of item.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">expect_function</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Function</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">expect_function</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Function</span> {
         <span class="self">self</span>.<span class="ident">kind</span>().<span class="ident">expect_function</span>()
     }
 
     <span class="doccomment">/// Is this item a module?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_module</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_module</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">ItemKind</span>::<span class="ident">Module</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">ItemKind</span>::<span class="ident">Module</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Get this item&#39;s annotations.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">annotations</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Annotations</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">annotations</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Annotations</span> {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">annotations</span>
     }
 
     <span class="doccomment">/// Whether this item should be blacklisted.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This may be due to either annotations or to other kind of configuration.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_blacklisted</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_blacklisted</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="macro">debug_assert</span><span class="macro">!</span>(
             <span class="ident">ctx</span>.<span class="ident">in_codegen_phase</span>(),
             <span class="string">&quot;You&#39;re not supposed to call this yet&quot;</span>
         );
-        <span class="self">self</span>.<span class="ident">annotations</span>.<span class="ident">hide</span>() <span class="op">||</span>
+        <span class="self">self</span>.<span class="ident">annotations</span>.<span class="ident">hide</span>() <span class="op">|</span><span class="op">|</span>
             <span class="ident">ctx</span>.<span class="ident">blacklisted_by_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">canonical_path</span>(<span class="ident">ctx</span>), <span class="self">self</span>.<span class="ident">id</span>)
     }
 
     <span class="doccomment">/// Is this a reference to another type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_type_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_type_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">as_type</span>().<span class="ident">map_or</span>(<span class="bool-val">false</span>, <span class="op">|</span><span class="ident">ty</span><span class="op">|</span> <span class="ident">ty</span>.<span class="ident">is_type_ref</span>())
     }
 
     <span class="doccomment">/// Is this item a var type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_var</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_var</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">kind</span>() {
-            <span class="ident">ItemKind</span>::<span class="ident">Var</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">ItemKind</span>::<span class="ident">Var</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
@@ -2519,12 +2519,12 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">NameOptions</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">NameOptions</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
         <span class="ident">NameOptions</span>::<span class="ident">new</span>(<span class="self">self</span>, <span class="ident">ctx</span>)
     }
 
     <span class="doccomment">/// Get the target item id for name generation.</span>
-    <span class="kw">fn</span> <span class="ident">name_target</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">ItemId</span> {
+    <span class="kw">fn</span> <span class="ident">name_target</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ItemId</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">targets_seen</span> <span class="op">=</span> <span class="ident">DebugOnlyItemSet</span>::<span class="ident">new</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">item</span> <span class="op">=</span> <span class="self">self</span>;
 
@@ -2537,25 +2537,25 @@
             }
 
             <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">item</span>.<span class="ident">kind</span>() {
-                <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw-2">ref</span> <span class="ident">ty</span>) <span class="op">=&gt;</span> {
+                <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw-2">ref</span> <span class="ident">ty</span>) <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">ty</span>.<span class="ident">kind</span>() {
-                        <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">inner</span>) <span class="op">=&gt;</span> {
+                        <span class="ident">TypeKind</span>::<span class="ident">ResolvedTypeRef</span>(<span class="ident">inner</span>) <span class="op">=</span><span class="op">&gt;</span> {
                             <span class="ident">item</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="ident">inner</span>);
                         }
-                        <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">inst</span>) <span class="op">=&gt;</span> {
+                        <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">inst</span>) <span class="op">=</span><span class="op">&gt;</span> {
                             <span class="ident">item</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="ident">inst</span>.<span class="ident">template_definition</span>());
                         }
-                        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="ident">item</span>.<span class="ident">id</span>(),
+                        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">item</span>.<span class="ident">id</span>(),
                     }
                 }
-                <span class="kw">_</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="ident">item</span>.<span class="ident">id</span>(),
+                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">item</span>.<span class="ident">id</span>(),
             }
         }
     }
 
     <span class="doccomment">/// Create a fully disambiguated name for an item, including template</span>
     <span class="doccomment">/// parameters if it is a type</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">full_disambiguated_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">full_disambiguated_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">String</span>::<span class="ident">new</span>();
         <span class="kw">let</span> <span class="ident">level</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="self">self</span>.<span class="ident">push_disambiguated_name</span>(<span class="ident">ctx</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">s</span>, <span class="ident">level</span>);
@@ -2586,16 +2586,16 @@
     }
 
     <span class="doccomment">/// Get this function item&#39;s name, or `None` if this item is not a function.</span>
-    <span class="kw">fn</span> <span class="ident">func_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">func_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">kind</span>() {
-            <span class="ident">ItemKind</span>::<span class="ident">Function</span>(<span class="kw-2">ref</span> <span class="ident">func</span>) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">func</span>.<span class="ident">name</span>()),
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">ItemKind</span>::<span class="ident">Function</span>(<span class="kw-2">ref</span> <span class="ident">func</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">func</span>.<span class="ident">name</span>()),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 
     <span class="doccomment">/// Get the overload index for this method. If this is not a method, return</span>
     <span class="doccomment">/// `None`.</span>
-    <span class="kw">fn</span> <span class="ident">overload_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">overload_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">func_name</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">func_name</span><span class="op">|</span> {
             <span class="kw">let</span> <span class="ident">parent</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="self">self</span>.<span class="ident">parent_id</span>());
             <span class="kw">if</span> <span class="kw">let</span> <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw-2">ref</span> <span class="ident">ty</span>) <span class="op">=</span> <span class="kw-2">*</span><span class="ident">parent</span>.<span class="ident">kind</span>() {
@@ -2604,16 +2604,16 @@
                     <span class="comment">// resolve and check.</span>
                     <span class="kw">return</span> <span class="ident">ci</span>.<span class="ident">constructors</span>()
                         .<span class="ident">iter</span>()
-                        .<span class="ident">position</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">c</span> <span class="op">==</span> <span class="self">self</span>.<span class="ident">id</span>())
-                        .<span class="ident">or_else</span>(<span class="op">||</span> {
+                        .<span class="ident">position</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">c</span> <span class="op">=</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">id</span>())
+                        .<span class="ident">or_else</span>(<span class="op">|</span><span class="op">|</span> {
                             <span class="ident">ci</span>.<span class="ident">methods</span>()
                                 .<span class="ident">iter</span>()
                                 .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">m</span><span class="op">|</span> {
                                     <span class="kw">let</span> <span class="ident">item</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="ident">m</span>.<span class="ident">signature</span>());
                                     <span class="kw">let</span> <span class="ident">func</span> <span class="op">=</span> <span class="ident">item</span>.<span class="ident">expect_function</span>();
-                                    <span class="ident">func</span>.<span class="ident">name</span>() <span class="op">==</span> <span class="ident">func_name</span>
+                                    <span class="ident">func</span>.<span class="ident">name</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">func_name</span>
                                 })
-                                .<span class="ident">position</span>(<span class="op">|</span><span class="ident">m</span><span class="op">|</span> <span class="ident">m</span>.<span class="ident">signature</span>() <span class="op">==</span> <span class="self">self</span>.<span class="ident">id</span>())
+                                .<span class="ident">position</span>(<span class="op">|</span><span class="ident">m</span><span class="op">|</span> <span class="ident">m</span>.<span class="ident">signature</span>() <span class="op">=</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">id</span>())
                         });
                 }
             }
@@ -2623,24 +2623,24 @@
     }
 
     <span class="doccomment">/// Get this item&#39;s base name (aka non-namespaced name).</span>
-    <span class="kw">fn</span> <span class="ident">base_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">fn</span> <span class="ident">base_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">path</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">annotations</span>().<span class="ident">use_instead_of</span>() {
             <span class="kw">return</span> <span class="ident">path</span>.<span class="ident">last</span>().<span class="ident">unwrap</span>().<span class="ident">clone</span>();
         }
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">kind</span>() {
-            <span class="ident">ItemKind</span>::<span class="ident">Var</span>(<span class="kw-2">ref</span> <span class="ident">var</span>) <span class="op">=&gt;</span> <span class="ident">var</span>.<span class="ident">name</span>().<span class="ident">to_owned</span>(),
-            <span class="ident">ItemKind</span>::<span class="ident">Module</span>(<span class="kw-2">ref</span> <span class="ident">module</span>) <span class="op">=&gt;</span> {
-                <span class="ident">module</span>.<span class="ident">name</span>().<span class="ident">map</span>(<span class="ident">ToOwned</span>::<span class="ident">to_owned</span>).<span class="ident">unwrap_or_else</span>(<span class="op">||</span> {
+            <span class="ident">ItemKind</span>::<span class="ident">Var</span>(<span class="kw-2">ref</span> <span class="ident">var</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">var</span>.<span class="ident">name</span>().<span class="ident">to_owned</span>(),
+            <span class="ident">ItemKind</span>::<span class="ident">Module</span>(<span class="kw-2">ref</span> <span class="ident">module</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="ident">module</span>.<span class="ident">name</span>().<span class="ident">map</span>(<span class="ident">ToOwned</span>::<span class="ident">to_owned</span>).<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> {
                     <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;_bindgen_mod_{}&quot;</span>, <span class="self">self</span>.<span class="ident">exposed_id</span>(<span class="ident">ctx</span>))
                 })
             }
-            <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw-2">ref</span> <span class="ident">ty</span>) <span class="op">=&gt;</span> {
-                <span class="ident">ty</span>.<span class="ident">sanitized_name</span>(<span class="ident">ctx</span>).<span class="ident">map</span>(<span class="ident">Into</span>::<span class="ident">into</span>).<span class="ident">unwrap_or_else</span>(<span class="op">||</span> {
+            <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw-2">ref</span> <span class="ident">ty</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="ident">ty</span>.<span class="ident">sanitized_name</span>(<span class="ident">ctx</span>).<span class="ident">map</span>(<span class="ident">Into</span>::<span class="ident">into</span>).<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> {
                     <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;_bindgen_ty_{}&quot;</span>, <span class="self">self</span>.<span class="ident">exposed_id</span>(<span class="ident">ctx</span>))
                 })
             }
-            <span class="ident">ItemKind</span>::<span class="ident">Function</span>(<span class="kw-2">ref</span> <span class="ident">fun</span>) <span class="op">=&gt;</span> {
+            <span class="ident">ItemKind</span>::<span class="ident">Function</span>(<span class="kw-2">ref</span> <span class="ident">fun</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">fun</span>.<span class="ident">name</span>().<span class="ident">to_owned</span>();
 
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">idx</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">overload_index</span>(<span class="ident">ctx</span>) {
@@ -2669,7 +2669,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
         <span class="ident">opt</span>: <span class="kw-2">&amp;</span><span class="ident">NameOptions</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="kw">let</span> <span class="ident">target</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="self">self</span>.<span class="ident">name_target</span>(<span class="ident">ctx</span>));
 
         <span class="comment">// Short-circuit if the target has an override, and just use that.</span>
@@ -2692,11 +2692,11 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">names</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">target</span>
             .<span class="ident">parent_id</span>()
             .<span class="ident">ancestors</span>(<span class="ident">ctx</span>)
-            .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">id</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">id</span> <span class="op">!=</span> <span class="ident">ctx</span>.<span class="ident">root_module</span>())
+            .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">id</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">id</span> <span class="op">!</span><span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">root_module</span>())
             .<span class="ident">take_while</span>(<span class="op">|</span><span class="ident">id</span><span class="op">|</span> {
                 <span class="comment">// Stop iterating ancestors once we reach a non-inline namespace</span>
                 <span class="comment">// when opt.within_namespaces is set.</span>
-                <span class="op">!</span><span class="ident">opt</span>.<span class="ident">within_namespaces</span> <span class="op">||</span> <span class="op">!</span><span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="kw-2">*</span><span class="ident">id</span>).<span class="ident">is_module</span>()
+                <span class="op">!</span><span class="ident">opt</span>.<span class="ident">within_namespaces</span> <span class="op">|</span><span class="op">|</span> <span class="op">!</span><span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="kw-2">*</span><span class="ident">id</span>).<span class="ident">is_module</span>()
             })
             .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">id</span><span class="op">|</span> {
                 <span class="kw">if</span> <span class="op">!</span><span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">conservative_inline_namespaces</span> {
@@ -2730,7 +2730,7 @@
 
     <span class="doccomment">/// The exposed id that represents an unique id among the siblings of a</span>
     <span class="doccomment">/// given item.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">exposed_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">exposed_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="comment">// Only use local ids for enums, classes, structs and union types.  All</span>
         <span class="comment">// other items use their global id.</span>
         <span class="kw">let</span> <span class="ident">ty_kind</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">kind</span>().<span class="ident">as_type</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">t</span><span class="op">|</span> <span class="ident">t</span>.<span class="ident">kind</span>());
@@ -2738,8 +2738,8 @@
             <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">ty_kind</span> {
                 <span class="ident">TypeKind</span>::<span class="ident">Comp</span>(..) <span class="op">|</span>
                 <span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(..) <span class="op">|</span>
-                <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(..) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="self">self</span>.<span class="ident">local_id</span>(<span class="ident">ctx</span>).<span class="ident">to_string</span>(),
-                <span class="kw">_</span> <span class="op">=&gt;</span> {}
+                <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="self">self</span>.<span class="ident">local_id</span>(<span class="ident">ctx</span>).<span class="ident">to_string</span>(),
+                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {}
             }
         }
 
@@ -2751,72 +2751,72 @@
 
     <span class="doccomment">/// Get a reference to this item&#39;s `Module`, or `None` if this is not a</span>
     <span class="doccomment">/// `Module` item.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_module</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Module</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_module</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Module</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">ItemKind</span>::<span class="ident">Module</span>(<span class="kw-2">ref</span> <span class="ident">module</span>) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">module</span>),
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">ItemKind</span>::<span class="ident">Module</span>(<span class="kw-2">ref</span> <span class="ident">module</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">module</span>),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 
     <span class="doccomment">/// Get a mutable reference to this item&#39;s `Module`, or `None` if this is</span>
     <span class="doccomment">/// not a `Module` item.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_module_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Module</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_module_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Module</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
-            <span class="ident">ItemKind</span>::<span class="ident">Module</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">module</span>) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">module</span>),
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">ItemKind</span>::<span class="ident">Module</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">module</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">module</span>),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 
     <span class="doccomment">/// Returns whether the item is a constified module enum</span>
-    <span class="kw">fn</span> <span class="ident">is_constified_enum_module</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">is_constified_enum_module</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="comment">// Do not jump through aliases, except for aliases that point to a type</span>
         <span class="comment">// with the same name, since we dont generate coe for them.</span>
         <span class="kw">let</span> <span class="ident">item</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">id</span>.<span class="ident">into_resolver</span>().<span class="ident">through_type_refs</span>().<span class="ident">resolve</span>(<span class="ident">ctx</span>);
         <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">item</span>.<span class="ident">kind</span>() {
-            <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw-2">ref</span> <span class="ident">type_</span>) <span class="op">=&gt;</span> <span class="ident">type_</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="bool-val">false</span>,
+            <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw-2">ref</span> <span class="ident">type_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">type_</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="bool-val">false</span>,
         };
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">type_</span>.<span class="ident">kind</span>() {
-            <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(<span class="kw-2">ref</span> <span class="ident">enum_</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Enum</span>(<span class="kw-2">ref</span> <span class="ident">enum_</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">enum_</span>.<span class="ident">is_constified_enum_module</span>(<span class="ident">ctx</span>, <span class="self">self</span>)
             }
-            <span class="ident">TypeKind</span>::<span class="ident">Alias</span>(<span class="ident">inner_id</span>) <span class="op">=&gt;</span> {
+            <span class="ident">TypeKind</span>::<span class="ident">Alias</span>(<span class="ident">inner_id</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="comment">// TODO(emilio): Make this &quot;hop through type aliases that aren&#39;t</span>
                 <span class="comment">// really generated&quot; an option in `ItemResolver`?</span>
                 <span class="kw">let</span> <span class="ident">inner_item</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="ident">inner_id</span>);
                 <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">item</span>.<span class="ident">canonical_name</span>(<span class="ident">ctx</span>);
 
-                <span class="kw">if</span> <span class="ident">inner_item</span>.<span class="ident">canonical_name</span>(<span class="ident">ctx</span>) <span class="op">==</span> <span class="ident">name</span> {
+                <span class="kw">if</span> <span class="ident">inner_item</span>.<span class="ident">canonical_name</span>(<span class="ident">ctx</span>) <span class="op">=</span><span class="op">=</span> <span class="ident">name</span> {
                     <span class="ident">inner_item</span>.<span class="ident">is_constified_enum_module</span>(<span class="ident">ctx</span>)
                 } <span class="kw">else</span> {
                     <span class="bool-val">false</span>
                 }
             }
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Is this item of a kind that is enabled for code generation?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_enabled_for_codegen</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_enabled_for_codegen</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">let</span> <span class="ident">cc</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">codegen_config</span>;
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">kind</span>() {
-            <span class="ident">ItemKind</span>::<span class="ident">Module</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="ident">ItemKind</span>::<span class="ident">Var</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="ident">cc</span>.<span class="ident">vars</span>,
-            <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="ident">cc</span>.<span class="ident">types</span>,
-            <span class="ident">ItemKind</span>::<span class="ident">Function</span>(<span class="kw-2">ref</span> <span class="ident">f</span>) <span class="op">=&gt;</span> {
+            <span class="ident">ItemKind</span>::<span class="ident">Module</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="ident">ItemKind</span>::<span class="ident">Var</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">cc</span>.<span class="ident">vars</span>,
+            <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">cc</span>.<span class="ident">types</span>,
+            <span class="ident">ItemKind</span>::<span class="ident">Function</span>(<span class="kw-2">ref</span> <span class="ident">f</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">match</span> <span class="ident">f</span>.<span class="ident">kind</span>() {
-                    <span class="ident">FunctionKind</span>::<span class="ident">Function</span> <span class="op">=&gt;</span> <span class="ident">cc</span>.<span class="ident">functions</span>,
-                    <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(<span class="ident">MethodKind</span>::<span class="ident">Constructor</span>) <span class="op">=&gt;</span> {
+                    <span class="ident">FunctionKind</span>::<span class="ident">Function</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">cc</span>.<span class="ident">functions</span>,
+                    <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(<span class="ident">MethodKind</span>::<span class="ident">Constructor</span>) <span class="op">=</span><span class="op">&gt;</span> {
                         <span class="ident">cc</span>.<span class="ident">constructors</span>
                     }
                     <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(<span class="ident">MethodKind</span>::<span class="ident">Destructor</span>) <span class="op">|</span>
-                    <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(<span class="ident">MethodKind</span>::<span class="ident">VirtualDestructor</span>) <span class="op">=&gt;</span> {
+                    <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(<span class="ident">MethodKind</span>::<span class="ident">VirtualDestructor</span>) <span class="op">=</span><span class="op">&gt;</span> {
                         <span class="ident">cc</span>.<span class="ident">destructors</span>
                     }
                     <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(<span class="ident">MethodKind</span>::<span class="ident">Static</span>) <span class="op">|</span>
                     <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(<span class="ident">MethodKind</span>::<span class="ident">Normal</span>) <span class="op">|</span>
-                    <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(<span class="ident">MethodKind</span>::<span class="ident">Virtual</span>) <span class="op">=&gt;</span> <span class="ident">cc</span>.<span class="ident">methods</span>,
+                    <span class="ident">FunctionKind</span>::<span class="ident">Method</span>(<span class="ident">MethodKind</span>::<span class="ident">Virtual</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">cc</span>.<span class="ident">methods</span>,
                 }
             }
         }
@@ -2829,7 +2829,7 @@
 {
     <span class="kw">type</span> <span class="ident">Extra</span> <span class="op">=</span> ();
 
-    <span class="kw">fn</span> <span class="ident">is_opaque</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>()) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">is_opaque</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>()) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="macro">debug_assert</span><span class="macro">!</span>(
             <span class="ident">ctx</span>.<span class="ident">in_codegen_phase</span>(),
             <span class="string">&quot;You&#39;re not supposed to call this yet&quot;</span>
@@ -2841,13 +2841,13 @@
 <span class="kw">impl</span> <span class="ident">IsOpaque</span> <span class="kw">for</span> <span class="ident">Item</span> {
     <span class="kw">type</span> <span class="ident">Extra</span> <span class="op">=</span> ();
 
-    <span class="kw">fn</span> <span class="ident">is_opaque</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>()) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">is_opaque</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>()) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="macro">debug_assert</span><span class="macro">!</span>(
             <span class="ident">ctx</span>.<span class="ident">in_codegen_phase</span>(),
             <span class="string">&quot;You&#39;re not supposed to call this yet&quot;</span>
         );
-        <span class="self">self</span>.<span class="ident">annotations</span>.<span class="ident">opaque</span>() <span class="op">||</span>
-            <span class="self">self</span>.<span class="ident">as_type</span>().<span class="ident">map_or</span>(<span class="bool-val">false</span>, <span class="op">|</span><span class="ident">ty</span><span class="op">|</span> <span class="ident">ty</span>.<span class="ident">is_opaque</span>(<span class="ident">ctx</span>, <span class="self">self</span>)) <span class="op">||</span>
+        <span class="self">self</span>.<span class="ident">annotations</span>.<span class="ident">opaque</span>() <span class="op">|</span><span class="op">|</span>
+            <span class="self">self</span>.<span class="ident">as_type</span>().<span class="ident">map_or</span>(<span class="bool-val">false</span>, <span class="op">|</span><span class="ident">ty</span><span class="op">|</span> <span class="ident">ty</span>.<span class="ident">is_opaque</span>(<span class="ident">ctx</span>, <span class="self">self</span>)) <span class="op">|</span><span class="op">|</span>
             <span class="ident">ctx</span>.<span class="ident">opaque_by_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">canonical_path</span>(<span class="ident">ctx</span>))
     }
 }
@@ -2856,31 +2856,31 @@
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>
 {
-    <span class="kw">fn</span> <span class="ident">has_vtable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_vtable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">let</span> <span class="ident">id</span>: <span class="ident">ItemId</span> <span class="op">=</span> (<span class="kw-2">*</span><span class="self">self</span>).<span class="ident">into</span>();
         <span class="ident">id</span>.<span class="ident">as_type_id</span>(<span class="ident">ctx</span>)
             .<span class="ident">map_or</span>(<span class="bool-val">false</span>, <span class="op">|</span><span class="ident">id</span><span class="op">|</span> <span class="kw">match</span> <span class="ident">ctx</span>.<span class="ident">lookup_has_vtable</span>(<span class="ident">id</span>) {
-                <span class="ident">HasVtableResult</span>::<span class="ident">No</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
-                <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">true</span>,
+                <span class="ident">HasVtableResult</span>::<span class="ident">No</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
+                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
             })
     }
 
-    <span class="kw">fn</span> <span class="ident">has_vtable_ptr</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_vtable_ptr</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">let</span> <span class="ident">id</span>: <span class="ident">ItemId</span> <span class="op">=</span> (<span class="kw-2">*</span><span class="self">self</span>).<span class="ident">into</span>();
         <span class="ident">id</span>.<span class="ident">as_type_id</span>(<span class="ident">ctx</span>)
             .<span class="ident">map_or</span>(<span class="bool-val">false</span>, <span class="op">|</span><span class="ident">id</span><span class="op">|</span> <span class="kw">match</span> <span class="ident">ctx</span>.<span class="ident">lookup_has_vtable</span>(<span class="ident">id</span>) {
-                <span class="ident">HasVtableResult</span>::<span class="ident">SelfHasVtable</span> <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-                <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+                <span class="ident">HasVtableResult</span>::<span class="ident">SelfHasVtable</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
             })
     }
 }
 
 <span class="kw">impl</span> <span class="ident">HasVtable</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">has_vtable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_vtable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">id</span>().<span class="ident">has_vtable</span>(<span class="ident">ctx</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">has_vtable_ptr</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_vtable_ptr</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">id</span>().<span class="ident">has_vtable_ptr</span>(<span class="ident">ctx</span>)
     }
 }
@@ -2889,7 +2889,7 @@
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>
 {
-    <span class="kw">fn</span> <span class="ident">sizedness</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">SizednessResult</span> {
+    <span class="kw">fn</span> <span class="ident">sizedness</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SizednessResult</span> {
         <span class="kw">let</span> <span class="ident">id</span>: <span class="ident">ItemId</span> <span class="op">=</span> (<span class="kw-2">*</span><span class="self">self</span>).<span class="ident">into</span>();
         <span class="ident">id</span>.<span class="ident">as_type_id</span>(<span class="ident">ctx</span>)
             .<span class="ident">map_or</span>(<span class="ident">SizednessResult</span>::<span class="ident">default</span>(), <span class="op">|</span><span class="ident">id</span><span class="op">|</span> <span class="ident">ctx</span>.<span class="ident">lookup_sizedness</span>(<span class="ident">id</span>))
@@ -2897,7 +2897,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Sizedness</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">sizedness</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">SizednessResult</span> {
+    <span class="kw">fn</span> <span class="ident">sizedness</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SizednessResult</span> {
         <span class="self">self</span>.<span class="ident">id</span>().<span class="ident">sizedness</span>(<span class="ident">ctx</span>)
     }
 }
@@ -2906,7 +2906,7 @@
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>
 {
-    <span class="kw">fn</span> <span class="ident">has_type_param_in_array</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_type_param_in_array</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="macro">debug_assert</span><span class="macro">!</span>(
             <span class="ident">ctx</span>.<span class="ident">in_codegen_phase</span>(),
             <span class="string">&quot;You&#39;re not supposed to call this yet&quot;</span>
@@ -2916,7 +2916,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">HasTypeParamInArray</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">has_type_param_in_array</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_type_param_in_array</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="macro">debug_assert</span><span class="macro">!</span>(
             <span class="ident">ctx</span>.<span class="ident">in_codegen_phase</span>(),
             <span class="string">&quot;You&#39;re not supposed to call this yet&quot;</span>
@@ -2929,7 +2929,7 @@
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>
 {
-    <span class="kw">fn</span> <span class="ident">has_float</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_float</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="ident">ctx</span>.<span class="ident">in_codegen_phase</span>(),
                       <span class="string">&quot;You&#39;re not supposed to call this yet&quot;</span>);
         <span class="ident">ctx</span>.<span class="ident">lookup_has_float</span>(<span class="kw-2">*</span><span class="self">self</span>)
@@ -2937,7 +2937,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">HasFloat</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">has_float</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_float</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="ident">ctx</span>.<span class="ident">in_codegen_phase</span>(),
                       <span class="string">&quot;You&#39;re not supposed to call this yet&quot;</span>);
         <span class="ident">ctx</span>.<span class="ident">lookup_has_float</span>(<span class="self">self</span>.<span class="ident">id</span>())
@@ -2952,7 +2952,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
         <span class="ident">out</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">W</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">W</span>: <span class="ident">io</span>::<span class="ident">Write</span>,
     {
@@ -2979,7 +2979,7 @@
     <span class="kw">fn</span> <span class="ident">self_template_params</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="ident">ctx</span>.<span class="ident">resolve_item_fallible</span>(<span class="kw-2">*</span><span class="self">self</span>).<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">item</span><span class="op">|</span> {
             <span class="ident">item</span>.<span class="ident">self_template_params</span>(<span class="ident">ctx</span>)
         })
@@ -2990,7 +2990,7 @@
     <span class="kw">fn</span> <span class="ident">self_template_params</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">kind</span>.<span class="ident">self_template_params</span>(<span class="ident">ctx</span>)
     }
 }
@@ -2999,15 +2999,15 @@
     <span class="kw">fn</span> <span class="ident">self_template_params</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw-2">ref</span> <span class="ident">ty</span>) <span class="op">=&gt;</span> <span class="ident">ty</span>.<span class="ident">self_template_params</span>(<span class="ident">ctx</span>),
+            <span class="ident">ItemKind</span>::<span class="ident">Type</span>(<span class="kw-2">ref</span> <span class="ident">ty</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ty</span>.<span class="ident">self_template_params</span>(<span class="ident">ctx</span>),
             <span class="comment">// If we start emitting bindings to explicitly instantiated</span>
             <span class="comment">// functions, then we&#39;ll need to check ItemKind::Function for</span>
             <span class="comment">// template params.</span>
             <span class="ident">ItemKind</span>::<span class="ident">Function</span>(<span class="kw">_</span>) <span class="op">|</span>
             <span class="ident">ItemKind</span>::<span class="ident">Module</span>(<span class="kw">_</span>) <span class="op">|</span>
-            <span class="ident">ItemKind</span>::<span class="ident">Var</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">ItemKind</span>::<span class="ident">Var</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 }
@@ -3020,7 +3020,7 @@
     <span class="ident">parent_id</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>,
     <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>,
     <span class="ident">result</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TypeId</span>, <span class="ident">ParseError</span><span class="op">&gt;</span>,
-) <span class="op">-&gt;</span> <span class="ident">clang_sys</span>::<span class="ident">CXChildVisitResult</span> {
+) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">clang_sys</span>::<span class="ident">CXChildVisitResult</span> {
     <span class="kw">use</span> <span class="ident">clang_sys</span>::<span class="kw-2">*</span>;
     <span class="kw">if</span> <span class="ident">result</span>.<span class="ident">is_ok</span>() {
         <span class="kw">return</span> <span class="ident">CXChildVisit_Break</span>;
@@ -3029,12 +3029,12 @@
     <span class="kw-2">*</span><span class="ident">result</span> <span class="op">=</span> <span class="ident">Item</span>::<span class="ident">from_ty_with_id</span>(<span class="ident">id</span>, <span class="ident">ty</span>, <span class="ident">cur</span>, <span class="ident">parent_id</span>, <span class="ident">ctx</span>);
 
     <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">result</span> {
-        <span class="prelude-val">Ok</span>(..) <span class="op">=&gt;</span> <span class="ident">CXChildVisit_Break</span>,
-        <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>) <span class="op">=&gt;</span> {
+        <span class="prelude-val">Ok</span>(..) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">CXChildVisit_Break</span>,
+        <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>) <span class="op">=</span><span class="op">&gt;</span> {
             <span class="ident">cur</span>.<span class="ident">visit</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">visit_child</span>(<span class="ident">c</span>, <span class="ident">id</span>, <span class="ident">ty</span>, <span class="ident">parent_id</span>, <span class="ident">ctx</span>, <span class="ident">result</span>));
             <span class="ident">CXChildVisit_Continue</span>
         }
-        <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>) <span class="op">=&gt;</span> <span class="ident">CXChildVisit_Continue</span>,
+        <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">CXChildVisit_Continue</span>,
     }
 }
 
@@ -3043,14 +3043,14 @@
         <span class="ident">kind</span>: <span class="ident">TypeKind</span>,
         <span class="ident">is_const</span>: <span class="ident">bool</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">TypeId</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TypeId</span> {
         <span class="comment">// Feel free to add more here, I&#39;m just lazy.</span>
         <span class="kw">match</span> <span class="ident">kind</span> {
             <span class="ident">TypeKind</span>::<span class="ident">Void</span> <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">Int</span>(..) <span class="op">|</span>
             <span class="ident">TypeKind</span>::<span class="ident">Pointer</span>(..) <span class="op">|</span>
-            <span class="ident">TypeKind</span>::<span class="ident">Float</span>(..) <span class="op">=&gt;</span> {}
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;Unsupported builtin type&quot;</span>),
+            <span class="ident">TypeKind</span>::<span class="ident">Float</span>(..) <span class="op">=</span><span class="op">&gt;</span> {}
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;Unsupported builtin type&quot;</span>),
         }
 
         <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="ident">Type</span>::<span class="ident">new</span>(<span class="prelude-val">None</span>, <span class="prelude-val">None</span>, <span class="ident">kind</span>, <span class="ident">is_const</span>);
@@ -3069,7 +3069,7 @@
         <span class="ident">cursor</span>: <span class="ident">clang</span>::<span class="ident">Cursor</span>,
         <span class="ident">parent_id</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ItemId</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ItemId</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">ir</span>::<span class="ident">function</span>::<span class="ident">Function</span>;
         <span class="kw">use</span> <span class="ident">ir</span>::<span class="ident">module</span>::<span class="ident">Module</span>;
         <span class="kw">use</span> <span class="ident">ir</span>::<span class="ident">var</span>::<span class="ident">Var</span>;
@@ -3086,9 +3086,9 @@
         <span class="kw">let</span> <span class="ident">relevant_parent_id</span> <span class="op">=</span> <span class="ident">parent_id</span>.<span class="ident">unwrap_or</span>(<span class="ident">current_module</span>);
 
         <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">try_parse</span> {
-            (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">what</span>:<span class="ident">ident</span>) <span class="op">=&gt;</span> {
+            (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">what</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">match</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">what</span>::<span class="ident">parse</span>(<span class="ident">cursor</span>, <span class="ident">ctx</span>) {
-                    <span class="prelude-val">Ok</span>(<span class="ident">ParseResult</span>::<span class="ident">New</span>(<span class="ident">item</span>, <span class="ident">declaration</span>)) <span class="op">=&gt;</span> {
+                    <span class="prelude-val">Ok</span>(<span class="ident">ParseResult</span>::<span class="ident">New</span>(<span class="ident">item</span>, <span class="ident">declaration</span>)) <span class="op">=</span><span class="op">&gt;</span> {
                         <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">next_item_id</span>();
 
                         <span class="ident">ctx</span>.<span class="ident">add_item</span>(<span class="ident">Item</span>::<span class="ident">new</span>(<span class="ident">id</span>, <span class="ident">comment</span>, <span class="ident">annotations</span>,
@@ -3098,11 +3098,11 @@
                                          <span class="prelude-val">Some</span>(<span class="ident">cursor</span>));
                         <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">id</span>);
                     }
-                    <span class="prelude-val">Ok</span>(<span class="ident">ParseResult</span>::<span class="ident">AlreadyResolved</span>(<span class="ident">id</span>)) <span class="op">=&gt;</span> {
+                    <span class="prelude-val">Ok</span>(<span class="ident">ParseResult</span>::<span class="ident">AlreadyResolved</span>(<span class="ident">id</span>)) <span class="op">=</span><span class="op">&gt;</span> {
                         <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">id</span>);
                     }
-                    <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>),
-                    <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>) <span class="op">=&gt;</span> {},
+                    <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>),
+                    <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>) <span class="op">=</span><span class="op">&gt;</span> {},
                 }
             }
         }
@@ -3127,8 +3127,8 @@
 
 
             <span class="kw">let</span> <span class="ident">relevant_parent_id</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">definition</span> {
-                <span class="prelude-val">Some</span>(<span class="ident">definition</span>) <span class="op">=&gt;</span> {
-                    <span class="kw">if</span> <span class="ident">definition</span> <span class="op">!=</span> <span class="ident">cursor</span> {
+                <span class="prelude-val">Some</span>(<span class="ident">definition</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                    <span class="kw">if</span> <span class="ident">definition</span> <span class="op">!</span><span class="op">=</span> <span class="ident">cursor</span> {
                         <span class="ident">ctx</span>.<span class="ident">add_semantic_parent</span>(<span class="ident">definition</span>, <span class="ident">relevant_parent_id</span>);
                         <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">Item</span>::<span class="ident">from_ty_or_ref</span>(
                             <span class="ident">applicable_cursor</span>.<span class="ident">cur_type</span>(),
@@ -3141,7 +3141,7 @@
                         .<span class="ident">or</span>(<span class="ident">parent_id</span>)
                         .<span class="ident">unwrap_or</span>(<span class="ident">ctx</span>.<span class="ident">current_module</span>().<span class="ident">into</span>())
                 }
-                <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="ident">relevant_parent_id</span>,
+                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">relevant_parent_id</span>,
             };
 
             <span class="kw">match</span> <span class="ident">Item</span>::<span class="ident">from_ty</span>(
@@ -3150,14 +3150,14 @@
                 <span class="prelude-val">Some</span>(<span class="ident">relevant_parent_id</span>),
                 <span class="ident">ctx</span>,
             ) {
-                <span class="prelude-val">Ok</span>(<span class="ident">ty</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">ty</span>.<span class="ident">into</span>()),
-                <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>),
-                <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>) <span class="op">=&gt;</span> {}
+                <span class="prelude-val">Ok</span>(<span class="ident">ty</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">ty</span>.<span class="ident">into</span>()),
+                <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>),
+                <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>) <span class="op">=</span><span class="op">&gt;</span> {}
             }
         }
 
         <span class="comment">// Guess how does clang treat extern &quot;C&quot; blocks?</span>
-        <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_UnexposedDecl</span> {
+        <span class="kw">if</span> <span class="ident">cursor</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_UnexposedDecl</span> {
             <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>)
         } <span class="kw">else</span> {
             <span class="comment">// We whitelist cursors here known to be unhandled, to prevent being</span>
@@ -3168,14 +3168,14 @@
                 <span class="ident">CXCursor_UsingDeclaration</span> <span class="op">|</span>
                 <span class="ident">CXCursor_UsingDirective</span> <span class="op">|</span>
                 <span class="ident">CXCursor_StaticAssert</span> <span class="op">|</span>
-                <span class="ident">CXCursor_InclusionDirective</span> <span class="op">=&gt;</span> {
+                <span class="ident">CXCursor_InclusionDirective</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="macro">debug</span><span class="macro">!</span>(
                         <span class="string">&quot;Unhandled cursor kind {:?}: {:?}&quot;</span>,
                         <span class="ident">cursor</span>.<span class="ident">kind</span>(),
                         <span class="ident">cursor</span>
                     );
                 }
-                <span class="kw">_</span> <span class="op">=&gt;</span> {
+                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="comment">// ignore toplevel operator overloads</span>
                     <span class="kw">let</span> <span class="ident">spelling</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">spelling</span>();
                     <span class="kw">if</span> <span class="op">!</span><span class="ident">spelling</span>.<span class="ident">starts_with</span>(<span class="string">&quot;operator&quot;</span>) {
@@ -3197,7 +3197,7 @@
         <span class="ident">location</span>: <span class="ident">clang</span>::<span class="ident">Cursor</span>,
         <span class="ident">parent_id</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">TypeId</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TypeId</span> {
         <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">next_item_id</span>();
         <span class="self">Self</span>::<span class="ident">from_ty_or_ref_with_id</span>(<span class="ident">id</span>, <span class="ident">ty</span>, <span class="ident">location</span>, <span class="ident">parent_id</span>, <span class="ident">ctx</span>)
     }
@@ -3218,7 +3218,7 @@
         <span class="ident">location</span>: <span class="ident">clang</span>::<span class="ident">Cursor</span>,
         <span class="ident">parent_id</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">TypeId</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TypeId</span> {
         <span class="macro">debug</span><span class="macro">!</span>(
             <span class="string">&quot;from_ty_or_ref_with_id: {:?} {:?}, {:?}, {:?}&quot;</span>,
             <span class="ident">potential_id</span>,
@@ -3275,7 +3275,7 @@
         <span class="ident">location</span>: <span class="ident">clang</span>::<span class="ident">Cursor</span>,
         <span class="ident">parent_id</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TypeId</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TypeId</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">next_item_id</span>();
         <span class="ident">Item</span>::<span class="ident">from_ty_with_id</span>(<span class="ident">id</span>, <span class="ident">ty</span>, <span class="ident">location</span>, <span class="ident">parent_id</span>, <span class="ident">ctx</span>)
     }
@@ -3294,7 +3294,7 @@
         <span class="ident">location</span>: <span class="ident">clang</span>::<span class="ident">Cursor</span>,
         <span class="ident">parent_id</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TypeId</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TypeId</span>, <span class="ident">ParseError</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">clang_sys</span>::<span class="kw-2">*</span>;
 
         <span class="macro">debug</span><span class="macro">!</span>(
@@ -3306,11 +3306,11 @@
             <span class="ident">location</span>
         );
 
-        <span class="kw">if</span> <span class="ident">ty</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">clang_sys</span>::<span class="ident">CXType_Unexposed</span> <span class="op">||</span>
-            <span class="ident">location</span>.<span class="ident">cur_type</span>().<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">clang_sys</span>::<span class="ident">CXType_Unexposed</span>
+        <span class="kw">if</span> <span class="ident">ty</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">clang_sys</span>::<span class="ident">CXType_Unexposed</span> <span class="op">|</span><span class="op">|</span>
+            <span class="ident">location</span>.<span class="ident">cur_type</span>().<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">clang_sys</span>::<span class="ident">CXType_Unexposed</span>
         {
 
-            <span class="kw">if</span> <span class="ident">ty</span>.<span class="ident">is_associated_type</span>() <span class="op">||</span>
+            <span class="kw">if</span> <span class="ident">ty</span>.<span class="ident">is_associated_type</span>() <span class="op">|</span><span class="op">|</span>
                 <span class="ident">location</span>.<span class="ident">cur_type</span>().<span class="ident">is_associated_type</span>()
             {
                 <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">Item</span>::<span class="ident">new_opaque_type</span>(<span class="ident">id</span>, <span class="ident">ty</span>, <span class="ident">ctx</span>));
@@ -3326,9 +3326,9 @@
             <span class="ident">decl</span>.<span class="ident">definition</span>().<span class="ident">unwrap_or</span>(<span class="ident">decl</span>)
         };
 
-        <span class="kw">let</span> <span class="ident">comment</span> <span class="op">=</span> <span class="ident">decl</span>.<span class="ident">raw_comment</span>().<span class="ident">or_else</span>(<span class="op">||</span> <span class="ident">location</span>.<span class="ident">raw_comment</span>());
+        <span class="kw">let</span> <span class="ident">comment</span> <span class="op">=</span> <span class="ident">decl</span>.<span class="ident">raw_comment</span>().<span class="ident">or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">location</span>.<span class="ident">raw_comment</span>());
         <span class="kw">let</span> <span class="ident">annotations</span> <span class="op">=</span>
-            <span class="ident">Annotations</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">decl</span>).<span class="ident">or_else</span>(<span class="op">||</span> <span class="ident">Annotations</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">location</span>));
+            <span class="ident">Annotations</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">decl</span>).<span class="ident">or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Annotations</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">location</span>));
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">annotations</span>) <span class="op">=</span> <span class="ident">annotations</span> {
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">replaced</span>) <span class="op">=</span> <span class="ident">annotations</span>.<span class="ident">use_instead_of</span>() {
@@ -3347,10 +3347,10 @@
         }
 
         <span class="comment">// First, check we&#39;re not recursing.</span>
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">valid_decl</span> <span class="op">=</span> <span class="ident">decl</span>.<span class="ident">kind</span>() <span class="op">!=</span> <span class="ident">CXCursor_NoDeclFound</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">valid_decl</span> <span class="op">=</span> <span class="ident">decl</span>.<span class="ident">kind</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">CXCursor_NoDeclFound</span>;
         <span class="kw">let</span> <span class="ident">declaration_to_look_for</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">valid_decl</span> {
             <span class="ident">decl</span>.<span class="ident">canonical</span>()
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">location</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_ClassTemplate</span> {
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">location</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_ClassTemplate</span> {
             <span class="ident">valid_decl</span> <span class="op">=</span> <span class="bool-val">true</span>;
             <span class="ident">location</span>
         } <span class="kw">else</span> {
@@ -3360,7 +3360,7 @@
         <span class="kw">if</span> <span class="ident">valid_decl</span> {
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">partial</span>) <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">currently_parsed_types</span>().<span class="ident">iter</span>().<span class="ident">find</span>(
                 <span class="op">|</span><span class="ident">ty</span><span class="op">|</span> {
-                    <span class="kw-2">*</span><span class="ident">ty</span>.<span class="ident">decl</span>() <span class="op">==</span> <span class="ident">declaration_to_look_for</span>
+                    <span class="kw-2">*</span><span class="ident">ty</span>.<span class="ident">decl</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">declaration_to_look_for</span>
                 },
             )
             {
@@ -3379,8 +3379,8 @@
         <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">Type</span>::<span class="ident">from_clang_ty</span>(<span class="ident">id</span>, <span class="ident">ty</span>, <span class="ident">location</span>, <span class="ident">parent_id</span>, <span class="ident">ctx</span>);
         <span class="kw">let</span> <span class="ident">relevant_parent_id</span> <span class="op">=</span> <span class="ident">parent_id</span>.<span class="ident">unwrap_or</span>(<span class="ident">current_module</span>);
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">result</span> {
-            <span class="prelude-val">Ok</span>(<span class="ident">ParseResult</span>::<span class="ident">AlreadyResolved</span>(<span class="ident">ty</span>)) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">ty</span>.<span class="ident">as_type_id_unchecked</span>()),
-            <span class="prelude-val">Ok</span>(<span class="ident">ParseResult</span>::<span class="ident">New</span>(<span class="ident">item</span>, <span class="ident">declaration</span>)) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Ok</span>(<span class="ident">ParseResult</span>::<span class="ident">AlreadyResolved</span>(<span class="ident">ty</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">ty</span>.<span class="ident">as_type_id_unchecked</span>()),
+            <span class="prelude-val">Ok</span>(<span class="ident">ParseResult</span>::<span class="ident">New</span>(<span class="ident">item</span>, <span class="ident">declaration</span>)) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">ctx</span>.<span class="ident">add_item</span>(
                     <span class="ident">Item</span>::<span class="ident">new</span>(
                         <span class="ident">id</span>,
@@ -3394,8 +3394,8 @@
                 );
                 <span class="prelude-val">Ok</span>(<span class="ident">id</span>.<span class="ident">as_type_id_unchecked</span>())
             }
-            <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Continue</span>),
+            <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">debug</span><span class="macro">!</span>(<span class="string">&quot;Item::from_ty recursing in the ast&quot;</span>);
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">result</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>::<span class="ident">Recurse</span>);
 
@@ -3455,7 +3455,7 @@
         <span class="ident">with_id</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span>,
         <span class="ident">location</span>: <span class="ident">clang</span>::<span class="ident">Cursor</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeId</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="ident">location</span>.<span class="ident">cur_type</span>();
 
         <span class="macro">debug</span><span class="macro">!</span>(
@@ -3469,7 +3469,7 @@
             <span class="ident">location</span>
         );
 
-        <span class="kw">if</span> <span class="ident">ty</span>.<span class="ident">kind</span>() <span class="op">!=</span> <span class="ident">clang_sys</span>::<span class="ident">CXType_Unexposed</span> {
+        <span class="kw">if</span> <span class="ident">ty</span>.<span class="ident">kind</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">clang_sys</span>::<span class="ident">CXType_Unexposed</span> {
             <span class="comment">// If the given cursor&#39;s type&#39;s kind is not Unexposed, then we</span>
             <span class="comment">// aren&#39;t looking at a template parameter. This check may need to be</span>
             <span class="comment">// updated in the future if they start properly exposing template</span>
@@ -3527,34 +3527,34 @@
         <span class="kw">fn</span> <span class="ident">is_template_with_spelling</span>(
             <span class="ident">refd</span>: <span class="kw-2">&amp;</span><span class="ident">clang</span>::<span class="ident">Cursor</span>,
             <span class="ident">spelling</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        ) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+        ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
             <span class="macro">lazy_static</span><span class="macro">!</span> {
                 <span class="kw">static</span> <span class="kw-2">ref</span> <span class="ident">ANON_TYPE_PARAM_RE</span>: <span class="ident">regex</span>::<span class="ident">Regex</span> <span class="op">=</span>
                     <span class="ident">regex</span>::<span class="ident">Regex</span>::<span class="ident">new</span>(<span class="string">r&quot;^type\-parameter\-\d+\-\d+$&quot;</span>).<span class="ident">unwrap</span>();
             }
 
-            <span class="kw">if</span> <span class="ident">refd</span>.<span class="ident">kind</span>() <span class="op">!=</span> <span class="ident">clang_sys</span>::<span class="ident">CXCursor_TemplateTypeParameter</span> {
+            <span class="kw">if</span> <span class="ident">refd</span>.<span class="ident">kind</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">clang_sys</span>::<span class="ident">CXCursor_TemplateTypeParameter</span> {
                 <span class="kw">return</span> <span class="bool-val">false</span>;
             }
 
             <span class="kw">let</span> <span class="ident">refd_spelling</span> <span class="op">=</span> <span class="ident">refd</span>.<span class="ident">spelling</span>();
-            <span class="ident">refd_spelling</span> <span class="op">==</span> <span class="ident">spelling</span> <span class="op">||</span>
+            <span class="ident">refd_spelling</span> <span class="op">=</span><span class="op">=</span> <span class="ident">spelling</span> <span class="op">|</span><span class="op">|</span>
                 <span class="comment">// Allow for anonymous template parameters.</span>
-                (<span class="ident">refd_spelling</span>.<span class="ident">is_empty</span>() <span class="op">&amp;&amp;</span> <span class="ident">ANON_TYPE_PARAM_RE</span>.<span class="ident">is_match</span>(<span class="ident">spelling</span>.<span class="ident">as_ref</span>()))
+                (<span class="ident">refd_spelling</span>.<span class="ident">is_empty</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">ANON_TYPE_PARAM_RE</span>.<span class="ident">is_match</span>(<span class="ident">spelling</span>.<span class="ident">as_ref</span>()))
         }
 
         <span class="kw">let</span> <span class="ident">definition</span> <span class="op">=</span>
             <span class="kw">if</span> <span class="ident">is_template_with_spelling</span>(<span class="kw-2">&amp;</span><span class="ident">location</span>, <span class="kw-2">&amp;</span><span class="ident">ty_spelling</span>) {
                 <span class="comment">// Situation (1)</span>
                 <span class="ident">location</span>
-            } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">location</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">clang_sys</span>::<span class="ident">CXCursor_TypeRef</span> {
+            } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">location</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">clang_sys</span>::<span class="ident">CXCursor_TypeRef</span> {
                 <span class="comment">// Situation (2)</span>
                 <span class="kw">match</span> <span class="ident">location</span>.<span class="ident">referenced</span>() {
                     <span class="prelude-val">Some</span>(<span class="ident">refd</span>)
-                        <span class="kw">if</span> <span class="ident">is_template_with_spelling</span>(<span class="kw-2">&amp;</span><span class="ident">refd</span>, <span class="kw-2">&amp;</span><span class="ident">ty_spelling</span>) <span class="op">=&gt;</span> {
+                        <span class="kw">if</span> <span class="ident">is_template_with_spelling</span>(<span class="kw-2">&amp;</span><span class="ident">refd</span>, <span class="kw-2">&amp;</span><span class="ident">ty_spelling</span>) <span class="op">=</span><span class="op">&gt;</span> {
                         <span class="ident">refd</span>
                     }
-                    <span class="kw">_</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
+                    <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
                 }
             } <span class="kw">else</span> {
                 <span class="comment">// Situation (3)</span>
@@ -3562,19 +3562,19 @@
 
                 <span class="ident">location</span>.<span class="ident">visit</span>(<span class="op">|</span><span class="ident">child</span><span class="op">|</span> {
                     <span class="kw">let</span> <span class="ident">child_ty</span> <span class="op">=</span> <span class="ident">child</span>.<span class="ident">cur_type</span>();
-                    <span class="kw">if</span> <span class="ident">child_ty</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">clang_sys</span>::<span class="ident">CXCursor_TypeRef</span> <span class="op">&amp;&amp;</span>
-                        <span class="ident">child_ty</span>.<span class="ident">spelling</span>() <span class="op">==</span> <span class="ident">ty_spelling</span>
+                    <span class="kw">if</span> <span class="ident">child_ty</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">clang_sys</span>::<span class="ident">CXCursor_TypeRef</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span>
+                        <span class="ident">child_ty</span>.<span class="ident">spelling</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">ty_spelling</span>
                     {
                         <span class="kw">match</span> <span class="ident">child</span>.<span class="ident">referenced</span>() {
                             <span class="prelude-val">Some</span>(<span class="ident">refd</span>)
                                 <span class="kw">if</span> <span class="ident">is_template_with_spelling</span>(
                                     <span class="kw-2">&amp;</span><span class="ident">refd</span>,
                                     <span class="kw-2">&amp;</span><span class="ident">ty_spelling</span>,
-                                ) <span class="op">=&gt;</span> {
+                                ) <span class="op">=</span><span class="op">&gt;</span> {
                                 <span class="ident">definition</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">refd</span>);
                                 <span class="kw">return</span> <span class="ident">clang_sys</span>::<span class="ident">CXChildVisit_Break</span>;
                             }
-                            <span class="kw">_</span> <span class="op">=&gt;</span> {}
+                            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {}
                         }
                     }
 
@@ -3609,7 +3609,7 @@
         <span class="comment">// tests/headers/variadic_tname.hpp.</span>
         <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">ty_spelling</span>.<span class="ident">replace</span>(<span class="string">&quot;const &quot;</span>, <span class="string">&quot;&quot;</span>).<span class="ident">replace</span>(<span class="string">&quot;.&quot;</span>, <span class="string">&quot;&quot;</span>);
 
-        <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">with_id</span>.<span class="ident">unwrap_or_else</span>(<span class="op">||</span> <span class="ident">ctx</span>.<span class="ident">next_item_id</span>());
+        <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">with_id</span>.<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">ctx</span>.<span class="ident">next_item_id</span>());
         <span class="kw">let</span> <span class="ident">item</span> <span class="op">=</span> <span class="ident">Item</span>::<span class="ident">new</span>(
             <span class="ident">id</span>,
             <span class="prelude-val">None</span>,
@@ -3623,13 +3623,13 @@
 }
 
 <span class="kw">impl</span> <span class="ident">ItemCanonicalName</span> <span class="kw">for</span> <span class="ident">Item</span> {
-    <span class="kw">fn</span> <span class="ident">canonical_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">fn</span> <span class="ident">canonical_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="macro">debug_assert</span><span class="macro">!</span>(
             <span class="ident">ctx</span>.<span class="ident">in_codegen_phase</span>(),
             <span class="string">&quot;You&#39;re not supposed to call this yet&quot;</span>
         );
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">canonical_name_cache</span>.<span class="ident">borrow</span>().<span class="ident">is_none</span>() {
-            <span class="kw">let</span> <span class="ident">in_namespace</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">enable_cxx_namespaces</span> <span class="op">||</span>
+            <span class="kw">let</span> <span class="ident">in_namespace</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">enable_cxx_namespaces</span> <span class="op">|</span><span class="op">|</span>
                 <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">disable_name_namespacing</span>;
 
             <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">canonical_name_cache</span>.<span class="ident">borrow_mut</span>() <span class="op">=</span> <span class="kw">if</span> <span class="ident">in_namespace</span> {
@@ -3646,7 +3646,7 @@
     <span class="kw">fn</span> <span class="ident">namespace_aware_canonical_path</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">path</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">canonical_path</span>(<span class="ident">ctx</span>);
 
         <span class="comment">// ASSUMPTION: (disable_name_namespacing &amp;&amp; cxx_namespaces)</span>
@@ -3668,7 +3668,7 @@
         <span class="kw">return</span> <span class="ident">path</span>;
     }
 
-    <span class="kw">fn</span> <span class="ident">canonical_path</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">canonical_path</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">path</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">annotations</span>().<span class="ident">use_instead_of</span>() {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ret</span> <span class="op">=</span>
                 <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="ident">ctx</span>.<span class="ident">root_module</span>()).<span class="ident">name</span>(<span class="ident">ctx</span>).<span class="ident">get</span>()];
@@ -3682,9 +3682,9 @@
             .<span class="ident">chain</span>(<span class="ident">iter</span>::<span class="ident">once</span>(<span class="ident">ctx</span>.<span class="ident">root_module</span>().<span class="ident">into</span>()))
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">id</span><span class="op">|</span> <span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="ident">id</span>))
             .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">item</span><span class="op">|</span> {
-                <span class="ident">item</span>.<span class="ident">id</span>() <span class="op">==</span> <span class="ident">target</span>.<span class="ident">id</span>() <span class="op">||</span>
+                <span class="ident">item</span>.<span class="ident">id</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">target</span>.<span class="ident">id</span>() <span class="op">|</span><span class="op">|</span>
                     <span class="ident">item</span>.<span class="ident">as_module</span>().<span class="ident">map_or</span>(<span class="bool-val">false</span>, <span class="op">|</span><span class="ident">module</span><span class="op">|</span> {
-                        <span class="op">!</span><span class="ident">module</span>.<span class="ident">is_inline</span>() <span class="op">||</span>
+                        <span class="op">!</span><span class="ident">module</span>.<span class="ident">is_inline</span>() <span class="op">|</span><span class="op">|</span>
                             <span class="ident">ctx</span>.<span class="ident">options</span>().<span class="ident">conservative_inline_namespaces</span>
                     })
             })
@@ -3711,7 +3711,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">NameOptions</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Construct a new `NameOptions`</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">item</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Item</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BindgenContext</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">item</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Item</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BindgenContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">NameOptions</span> {
             <span class="ident">item</span>: <span class="ident">item</span>,
             <span class="ident">ctx</span>: <span class="ident">ctx</span>,
@@ -3721,15 +3721,15 @@
 
     <span class="doccomment">/// Construct the name without the item&#39;s containing C++ namespaces mangled</span>
     <span class="doccomment">/// into it. In other words, the item&#39;s name within the item&#39;s namespace.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">within_namespaces</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">within_namespaces</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">within_namespaces</span> <span class="op">=</span> <span class="bool-val">true</span>;
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Construct a name `String`</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="self">self</span>.<span class="ident">item</span>.<span class="ident">real_canonical_name</span>(<span class="self">self</span>.<span class="ident">ctx</span>, <span class="self">self</span>)
     }
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../../";window.currentCrate = "bindgen";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../";window.currentCrate = "bindgen";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>

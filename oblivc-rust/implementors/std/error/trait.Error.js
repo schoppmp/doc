@@ -1,4 +1,5 @@
 (function() {var implementors = {};
+implementors["cc"] = [{text:"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/error/trait.Error.html\" title=\"trait std::error::Error\">Error</a> for <a class=\"struct\" href=\"cc/struct.Error.html\" title=\"struct cc::Error\">Error</a>",synthetic:false,types:["cc::Error"]},];
 implementors["clap"] = [{text:"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/error/trait.Error.html\" title=\"trait std::error::Error\">Error</a> for <a class=\"struct\" href=\"clap/struct.Error.html\" title=\"struct clap::Error\">Error</a>",synthetic:false,types:["clap::errors::Error"]},];
 implementors["glob"] = [{text:"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/error/trait.Error.html\" title=\"trait std::error::Error\">Error</a> for <a class=\"struct\" href=\"glob/struct.GlobError.html\" title=\"struct glob::GlobError\">GlobError</a>",synthetic:false,types:["glob::GlobError"]},{text:"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/error/trait.Error.html\" title=\"trait std::error::Error\">Error</a> for <a class=\"struct\" href=\"glob/struct.PatternError.html\" title=\"struct glob::PatternError\">PatternError</a>",synthetic:false,types:["glob::PatternError"]},];
 implementors["log"] = [{text:"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/error/trait.Error.html\" title=\"trait std::error::Error\">Error</a> for <a class=\"struct\" href=\"log/struct.SetLoggerError.html\" title=\"struct log::SetLoggerError\">SetLoggerError</a>",synthetic:false,types:["log::SetLoggerError"]},{text:"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/std/error/trait.Error.html\" title=\"trait std::error::Error\">Error</a> for <a class=\"struct\" href=\"log/struct.ShutdownLoggerError.html\" title=\"struct log::ShutdownLoggerError\">ShutdownLoggerError</a>",synthetic:false,types:["log::ShutdownLoggerError"]},];
@@ -12,5 +13,4 @@ implementors["regex_syntax"] = [{text:"impl <a class=\"trait\" href=\"https://do
             } else {
                 window.pending_implementors = implementors;
             }
-        
-})()
+        })()

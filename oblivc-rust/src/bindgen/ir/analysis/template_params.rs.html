@@ -740,9 +740,9 @@
 
     <span class="comment">// The Option is only there for temporary moves out of the hash map. See the</span>
     <span class="comment">// comments in `UsedTemplateParameters::constrain` below.</span>
-    <span class="ident">used</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">ItemId</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemSet</span><span class="op">&gt;&gt;</span>,
+    <span class="ident">used</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">ItemId</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ItemSet</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 
-    <span class="ident">dependencies</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">ItemId</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;&gt;</span>,
+    <span class="ident">dependencies</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">ItemId</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 
     <span class="comment">// The set of whitelisted items, without any blacklisted items reachable</span>
     <span class="comment">// from the whitelisted items which would otherwise be considered</span>
@@ -751,7 +751,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> <span class="ident">UsedTemplateParameters</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">consider_edge</span>(<span class="ident">kind</span>: <span class="ident">EdgeKind</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">consider_edge</span>(<span class="ident">kind</span>: <span class="ident">EdgeKind</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="ident">kind</span> {
             <span class="comment">// For each of these kinds of edges, if the referent uses a template</span>
             <span class="comment">// parameter, then it should be considered that the origin of the</span>
@@ -764,11 +764,11 @@
             <span class="ident">EdgeKind</span>::<span class="ident">VarType</span> <span class="op">|</span>
             <span class="ident">EdgeKind</span>::<span class="ident">FunctionReturn</span> <span class="op">|</span>
             <span class="ident">EdgeKind</span>::<span class="ident">FunctionParameter</span> <span class="op">|</span>
-            <span class="ident">EdgeKind</span>::<span class="ident">TypeReference</span> <span class="op">=&gt;</span> <span class="bool-val">true</span>,
+            <span class="ident">EdgeKind</span>::<span class="ident">TypeReference</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
 
             <span class="comment">// An inner var or type using a template parameter is orthogonal</span>
             <span class="comment">// from whether we use it. See template-param-usage-{6,11}.hpp.</span>
-            <span class="ident">EdgeKind</span>::<span class="ident">InnerVar</span> <span class="op">|</span> <span class="ident">EdgeKind</span>::<span class="ident">InnerType</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">EdgeKind</span>::<span class="ident">InnerVar</span> <span class="op">|</span> <span class="ident">EdgeKind</span>::<span class="ident">InnerType</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
 
             <span class="comment">// We can&#39;t emit machine code for new monomorphizations of class</span>
             <span class="comment">// templates&#39; methods (and don&#39;t detect explicit instantiations) so</span>
@@ -777,22 +777,22 @@
             <span class="comment">// parameter types, however, because of type aliases of function</span>
             <span class="comment">// pointers that use template parameters, eg</span>
             <span class="comment">// tests/headers/struct_with_typedef_template_arg.hpp</span>
-            <span class="ident">EdgeKind</span>::<span class="ident">Method</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">EdgeKind</span>::<span class="ident">Method</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
 
             <span class="comment">// If we considered these edges, we would end up mistakenly claiming</span>
             <span class="comment">// that every template parameter always used.</span>
             <span class="ident">EdgeKind</span>::<span class="ident">TemplateDeclaration</span> <span class="op">|</span>
-            <span class="ident">EdgeKind</span>::<span class="ident">TemplateParameterDefinition</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">EdgeKind</span>::<span class="ident">TemplateParameterDefinition</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
 
             <span class="comment">// Since we have to be careful about which edges we consider for</span>
             <span class="comment">// this analysis to be correct, we ignore generic edges. We also</span>
             <span class="comment">// avoid a `_` wild card to force authors of new edge kinds to</span>
             <span class="comment">// determine whether they need to be considered by this analysis.</span>
-            <span class="ident">EdgeKind</span>::<span class="ident">Generic</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">EdgeKind</span>::<span class="ident">Generic</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">take_this_id_usage_set</span><span class="op">&lt;</span><span class="ident">Id</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">this_id</span>: <span class="ident">Id</span>) <span class="op">-&gt;</span> <span class="ident">ItemSet</span> {
+    <span class="kw">fn</span> <span class="ident">take_this_id_usage_set</span><span class="op">&lt;</span><span class="ident">Id</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">this_id</span>: <span class="ident">Id</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ItemSet</span> {
         <span class="kw">let</span> <span class="ident">this_id</span> <span class="op">=</span> <span class="ident">this_id</span>.<span class="ident">into</span>();
         <span class="self">self</span>.<span class="ident">used</span>
             .<span class="ident">get_mut</span>(<span class="kw-2">&amp;</span><span class="ident">this_id</span>)
@@ -833,7 +833,7 @@
                     .<span class="ident">resolve</span>(<span class="self">self</span>.<span class="ident">ctx</span>)
                     .<span class="ident">id</span>()
             })
-            .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">a</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">a</span> <span class="op">!=</span> <span class="ident">this_id</span>)
+            .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">a</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">a</span> <span class="op">!</span><span class="op">=</span> <span class="ident">this_id</span>)
             .<span class="ident">flat_map</span>(<span class="op">|</span><span class="ident">a</span><span class="op">|</span> {
                 <span class="self">self</span>.<span class="ident">used</span>
                     .<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="ident">a</span>)
@@ -866,7 +866,7 @@
 
         <span class="kw">let</span> <span class="ident">params</span> <span class="op">=</span> <span class="ident">decl</span>.<span class="ident">self_template_params</span>(<span class="self">self</span>.<span class="ident">ctx</span>).<span class="ident">unwrap_or</span>(<span class="macro">vec</span><span class="macro">!</span>[]);
 
-        <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="ident">this_id</span> <span class="op">!=</span> <span class="ident">instantiation</span>.<span class="ident">template_definition</span>());
+        <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="ident">this_id</span> <span class="op">!</span><span class="op">=</span> <span class="ident">instantiation</span>.<span class="ident">template_definition</span>());
         <span class="kw">let</span> <span class="ident">used_by_def</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">used</span>
             .<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="ident">instantiation</span>.<span class="ident">template_definition</span>().<span class="ident">into</span>())
             .<span class="ident">expect</span>(<span class="string">&quot;Should have a used entry for instantiation&#39;s template definition&quot;</span>)
@@ -892,7 +892,7 @@
                     .<span class="ident">resolve</span>(<span class="self">self</span>.<span class="ident">ctx</span>)
                     .<span class="ident">id</span>();
 
-                <span class="kw">if</span> <span class="ident">arg</span> <span class="op">==</span> <span class="ident">this_id</span> {
+                <span class="kw">if</span> <span class="ident">arg</span> <span class="op">=</span><span class="op">=</span> <span class="ident">this_id</span> {
                     <span class="kw">continue</span>;
                 }
 
@@ -924,7 +924,7 @@
                 <span class="comment">// Ignore ourselves, since union with ourself is a</span>
                 <span class="comment">// no-op. Ignore edges that aren&#39;t relevant to the</span>
                 <span class="comment">// analysis.</span>
-                <span class="kw">if</span> <span class="ident">sub_id</span> <span class="op">==</span> <span class="ident">item</span>.<span class="ident">id</span>() <span class="op">||</span> <span class="op">!</span><span class="self">Self</span>::<span class="ident">consider_edge</span>(<span class="ident">edge_kind</span>) {
+                <span class="kw">if</span> <span class="ident">sub_id</span> <span class="op">=</span><span class="op">=</span> <span class="ident">item</span>.<span class="ident">id</span>() <span class="op">|</span><span class="op">|</span> <span class="op">!</span><span class="self">Self</span>::<span class="ident">consider_edge</span>(<span class="ident">edge_kind</span>) {
                     <span class="kw">return</span>;
                 }
 
@@ -944,7 +944,7 @@
                 <span class="macro">trace</span><span class="macro">!</span>(
                     <span class="string">&quot;      union with {:?}&#39;s usage: {:?}&quot;</span>,
                     <span class="ident">sub_id</span>,
-                    <span class="ident">used_by_sub_id</span>.<span class="ident">clone</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;&gt;</span>()
+                    <span class="ident">used_by_sub_id</span>.<span class="ident">clone</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()
                 );
 
                 <span class="ident">used_by_this_id</span>.<span class="ident">extend</span>(<span class="ident">used_by_sub_id</span>);
@@ -961,7 +961,7 @@
 
     <span class="kw">fn</span> <span class="ident">new</span>(
         <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;ctx</span> <span class="ident">BindgenContext</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">UsedTemplateParameters</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">UsedTemplateParameters</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">used</span> <span class="op">=</span> <span class="ident">HashMap</span>::<span class="ident">new</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">dependencies</span> <span class="op">=</span> <span class="ident">HashMap</span>::<span class="ident">new</span>();
         <span class="kw">let</span> <span class="ident">whitelisted_items</span>: <span class="ident">HashSet</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span> <span class="op">=</span>
@@ -1000,7 +1000,7 @@
             <span class="comment">// arguments are used depends on whether the template declaration&#39;s</span>
             <span class="comment">// generic template parameters are used.</span>
             <span class="ident">ctx</span>.<span class="ident">resolve_item</span>(<span class="ident">item</span>).<span class="ident">as_type</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">ty</span><span class="op">|</span> <span class="kw">match</span> <span class="ident">ty</span>.<span class="ident">kind</span>() {
-                <span class="kw-2">&amp;</span><span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">inst</span>) <span class="op">=&gt;</span> {
+                <span class="kw-2">&amp;</span><span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">inst</span>) <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">let</span> <span class="ident">decl</span> <span class="op">=</span> <span class="ident">ctx</span>.<span class="ident">resolve_type</span>(<span class="ident">inst</span>.<span class="ident">template_definition</span>());
                     <span class="kw">let</span> <span class="ident">args</span> <span class="op">=</span> <span class="ident">inst</span>.<span class="ident">template_arguments</span>();
 
@@ -1030,7 +1030,7 @@
                         <span class="ident">dependencies</span>.<span class="ident">entry</span>(<span class="ident">arg</span>).<span class="ident">or_insert</span>(<span class="macro">vec</span><span class="macro">!</span>[]).<span class="ident">push</span>(<span class="ident">param</span>);
                     }
                 }
-                <span class="kw">_</span> <span class="op">=&gt;</span> {}
+                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {}
             });
         }
 
@@ -1067,7 +1067,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">initial_worklist</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">initial_worklist</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemId</span><span class="op">&gt;</span> {
         <span class="comment">// The transitive closure of all whitelisted items, including explicitly</span>
         <span class="comment">// blacklisted items.</span>
         <span class="self">self</span>.<span class="ident">ctx</span>
@@ -1082,7 +1082,7 @@
             .<span class="ident">collect</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">constrain</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">ItemId</span>) <span class="op">-&gt;</span> <span class="ident">ConstrainResult</span> {
+    <span class="kw">fn</span> <span class="ident">constrain</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">ItemId</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ConstrainResult</span> {
         <span class="comment">// Invariant: all hash map entries&#39; values are `Some` upon entering and</span>
         <span class="comment">// exiting this method.</span>
         <span class="macro">extra_assert</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">used</span>.<span class="ident">values</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">is_some</span>()));
@@ -1102,13 +1102,13 @@
         <span class="kw">let</span> <span class="ident">ty_kind</span> <span class="op">=</span> <span class="ident">item</span>.<span class="ident">as_type</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">ty</span><span class="op">|</span> <span class="ident">ty</span>.<span class="ident">kind</span>());
         <span class="kw">match</span> <span class="ident">ty_kind</span> {
             <span class="comment">// Named template type parameters trivially use themselves.</span>
-            <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">TypeKind</span>::<span class="ident">TypeParam</span>) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">TypeKind</span>::<span class="ident">TypeParam</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;    named type, trivially uses itself&quot;</span>);
                 <span class="ident">used_by_this_id</span>.<span class="ident">insert</span>(<span class="ident">id</span>);
             }
             <span class="comment">// Template instantiations only use their template arguments if the</span>
             <span class="comment">// template definition uses the corresponding template parameter.</span>
-            <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">inst</span>)) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">TypeKind</span>::<span class="ident">TemplateInstantiation</span>(<span class="kw-2">ref</span> <span class="ident">inst</span>)) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">if</span> <span class="self">self</span>.<span class="ident">whitelisted_items</span>.<span class="ident">contains</span>(
                     <span class="kw-2">&amp;</span><span class="ident">inst</span>.<span class="ident">template_definition</span>().<span class="ident">into</span>(),
                 )
@@ -1128,14 +1128,14 @@
             }
             <span class="comment">// Otherwise, add the union of each of its referent item&#39;s template</span>
             <span class="comment">// parameter usage.</span>
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="self">self</span>.<span class="ident">constrain_join</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">used_by_this_id</span>, <span class="ident">item</span>),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">constrain_join</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">used_by_this_id</span>, <span class="ident">item</span>),
         }
 
         <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;  finally, used set is {:?}&quot;</span>, <span class="ident">used_by_this_id</span>);
 
         <span class="kw">let</span> <span class="ident">new_len</span> <span class="op">=</span> <span class="ident">used_by_this_id</span>.<span class="ident">len</span>();
         <span class="macro">assert</span><span class="macro">!</span>(
-            <span class="ident">new_len</span> <span class="op">&gt;=</span> <span class="ident">original_len</span>,
+            <span class="ident">new_len</span> <span class="op">&gt;</span><span class="op">=</span> <span class="ident">original_len</span>,
             <span class="string">&quot;This is the property that ensures this function is monotone -- \
                  if it doesn&#39;t hold, the analysis might never terminate!&quot;</span>
         );
@@ -1145,7 +1145,7 @@
         <span class="self">self</span>.<span class="ident">used</span>.<span class="ident">insert</span>(<span class="ident">id</span>, <span class="prelude-val">Some</span>(<span class="ident">used_by_this_id</span>));
         <span class="macro">extra_assert</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">used</span>.<span class="ident">values</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">is_some</span>()));
 
-        <span class="kw">if</span> <span class="ident">new_len</span> <span class="op">!=</span> <span class="ident">original_len</span> {
+        <span class="kw">if</span> <span class="ident">new_len</span> <span class="op">!</span><span class="op">=</span> <span class="ident">original_len</span> {
             <span class="ident">ConstrainResult</span>::<span class="ident">Changed</span>
         } <span class="kw">else</span> {
             <span class="ident">ConstrainResult</span>::<span class="ident">Same</span>
@@ -1165,9 +1165,9 @@
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">UsedTemplateParameters</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;&gt;</span>
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">UsedTemplateParameters</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span><span class="op">&gt;</span>
     <span class="kw">for</span> <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">ItemId</span>, <span class="ident">ItemSet</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">used_templ_params</span>: <span class="ident">UsedTemplateParameters</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">used_templ_params</span>: <span class="ident">UsedTemplateParameters</span><span class="op">&lt;</span><span class="lifetime">&#39;ctx</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">used_templ_params</span>
             .<span class="ident">used</span>
             .<span class="ident">into_iter</span>()
@@ -1176,4 +1176,4 @@
     }
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../../../";window.currentCrate = "bindgen";</script><script src="../../../../aliases.js"></script><script src="../../../../main.js"></script><script src="../../../../source-script.js"></script><script src="../../../../source-files.js"></script><script defer src="../../../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../../";window.currentCrate = "bindgen";</script><script src="../../../../aliases.js"></script><script src="../../../../main.js"></script><script src="../../../../source-script.js"></script><script src="../../../../source-files.js"></script><script defer src="../../../../search-index.js"></script></body></html>

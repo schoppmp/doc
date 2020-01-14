@@ -1837,7 +1837,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">Cursor</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
         <span class="macro">write</span><span class="macro">!</span>(
             <span class="ident">fmt</span>,
             <span class="string">&quot;Cursor({} kind: {}, loc: {}, usr: {:?})&quot;</span>,
@@ -1854,25 +1854,25 @@
     <span class="doccomment">/// available.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The USR can be used to compare entities across translation units.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">usr</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">usr</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">cxstring_into_string</span>(<span class="ident">clang_getCursorUSR</span>(<span class="self">self</span>.<span class="ident">x</span>)) };
         <span class="kw">if</span> <span class="ident">s</span>.<span class="ident">is_empty</span>() { <span class="prelude-val">None</span> } <span class="kw">else</span> { <span class="prelude-val">Some</span>(<span class="ident">s</span>) }
     }
 
     <span class="doccomment">/// Is this cursor&#39;s referent a declaration?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_declaration</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">clang_isDeclaration</span>(<span class="self">self</span>.<span class="ident">kind</span>()) <span class="op">!=</span> <span class="number">0</span> }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_declaration</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">unsafe</span> { <span class="ident">clang_isDeclaration</span>(<span class="self">self</span>.<span class="ident">kind</span>()) <span class="op">!</span><span class="op">=</span> <span class="number">0</span> }
     }
 
     <span class="doccomment">/// Get the null cursor, which has no referent.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">null</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">null</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">Cursor</span> {
             <span class="ident">x</span>: <span class="kw">unsafe</span> { <span class="ident">clang_getNullCursor</span>() },
         }
     }
 
     <span class="doccomment">/// Get this cursor&#39;s referent&#39;s spelling.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">spelling</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">spelling</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="kw">unsafe</span> { <span class="ident">cxstring_into_string</span>(<span class="ident">clang_getCursorSpelling</span>(<span class="self">self</span>.<span class="ident">x</span>)) }
     }
 
@@ -1880,12 +1880,12 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is not necessarily a valid identifier. It includes extra</span>
     <span class="doccomment">/// information, such as parameters for a function, etc.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">display_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">display_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="kw">unsafe</span> { <span class="ident">cxstring_into_string</span>(<span class="ident">clang_getCursorDisplayName</span>(<span class="self">self</span>.<span class="ident">x</span>)) }
     }
 
     <span class="doccomment">/// Get the mangled name of this cursor&#39;s referent.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mangling</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mangling</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="kw">if</span> <span class="ident">clang_Cursor_getMangling</span>::<span class="ident">is_loaded</span>() {
             <span class="kw">unsafe</span> { <span class="ident">cxstring_into_string</span>(<span class="ident">clang_Cursor_getMangling</span>(<span class="self">self</span>.<span class="ident">x</span>)) }
         } <span class="kw">else</span> {
@@ -1895,7 +1895,7 @@
 
     <span class="doccomment">/// Gets the C++ manglings for this cursor, or an error if the function is</span>
     <span class="doccomment">/// not loaded or the manglings are not available.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cxx_manglings</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, ()<span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cxx_manglings</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>, ()<span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">clang_sys</span>::<span class="kw-2">*</span>;
         <span class="kw">if</span> <span class="op">!</span><span class="ident">clang_Cursor_getCXXManglings</span>::<span class="ident">is_loaded</span>() {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(());
@@ -1918,7 +1918,7 @@
     }
 
     <span class="doccomment">/// Returns whether the cursor refers to a built-in definition.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_builtin</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_builtin</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">let</span> (<span class="ident">file</span>, <span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">location</span>().<span class="ident">location</span>();
         <span class="ident">file</span>.<span class="ident">name</span>().<span class="ident">is_none</span>()
     }
@@ -1940,7 +1940,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// void Foo::method() { /* ... */ }</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">lexical_parent</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Cursor</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">lexical_parent</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cursor</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">Cursor</span> {
                 <span class="ident">x</span>: <span class="ident">clang_getCursorLexicalParent</span>(<span class="self">self</span>.<span class="ident">x</span>),
@@ -1952,13 +1952,13 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// See documentation for `lexical_parent` for details on semantic vs</span>
     <span class="doccomment">/// lexical parents.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fallible_semantic_parent</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Cursor</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fallible_semantic_parent</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Cursor</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">sp</span> <span class="op">=</span> <span class="kw">unsafe</span> {
             <span class="ident">Cursor</span> {
                 <span class="ident">x</span>: <span class="ident">clang_getCursorSemanticParent</span>(<span class="self">self</span>.<span class="ident">x</span>),
             }
         };
-        <span class="kw">if</span> <span class="ident">sp</span> <span class="op">==</span> <span class="kw-2">*</span><span class="self">self</span> <span class="op">||</span> <span class="op">!</span><span class="ident">sp</span>.<span class="ident">is_valid</span>() {
+        <span class="kw">if</span> <span class="ident">sp</span> <span class="op">=</span><span class="op">=</span> <span class="kw-2">*</span><span class="self">self</span> <span class="op">|</span><span class="op">|</span> <span class="op">!</span><span class="ident">sp</span>.<span class="ident">is_valid</span>() {
             <span class="kw">return</span> <span class="prelude-val">None</span>;
         }
         <span class="prelude-val">Some</span>(<span class="ident">sp</span>)
@@ -1968,7 +1968,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// See documentation for `lexical_parent` for details on semantic vs</span>
     <span class="doccomment">/// lexical parents.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">semantic_parent</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Cursor</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">semantic_parent</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cursor</span> {
         <span class="self">self</span>.<span class="ident">fallible_semantic_parent</span>().<span class="ident">unwrap</span>()
     }
 
@@ -1978,27 +1978,27 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// NOTE: This may not return `Some` for partial template specializations,</span>
     <span class="doccomment">/// see #193 and #194.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_template_args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_template_args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> {
         <span class="comment">// XXX: `clang_Type_getNumTemplateArguments` is sort of reliable, while</span>
         <span class="comment">// `clang_Cursor_getNumTemplateArguments` is totally unreliable.</span>
         <span class="comment">// Therefore, try former first, and only fallback to the latter if we</span>
         <span class="comment">// have to.</span>
         <span class="self">self</span>.<span class="ident">cur_type</span>()
             .<span class="ident">num_template_args</span>()
-            .<span class="ident">or_else</span>(<span class="op">||</span> {
+            .<span class="ident">or_else</span>(<span class="op">|</span><span class="op">|</span> {
                 <span class="kw">let</span> <span class="ident">n</span>: <span class="ident">c_int</span> <span class="op">=</span>
                     <span class="kw">unsafe</span> { <span class="ident">clang_Cursor_getNumTemplateArguments</span>(<span class="self">self</span>.<span class="ident">x</span>) };
 
-                <span class="kw">if</span> <span class="ident">n</span> <span class="op">&gt;=</span> <span class="number">0</span> {
+                <span class="kw">if</span> <span class="ident">n</span> <span class="op">&gt;</span><span class="op">=</span> <span class="number">0</span> {
                     <span class="prelude-val">Some</span>(<span class="ident">n</span> <span class="kw">as</span> <span class="ident">u32</span>)
                 } <span class="kw">else</span> {
                     <span class="macro">debug_assert_eq</span><span class="macro">!</span>(<span class="ident">n</span>, <span class="op">-</span><span class="number">1</span>);
                     <span class="prelude-val">None</span>
                 }
             })
-            .<span class="ident">or_else</span>(<span class="op">||</span> {
+            .<span class="ident">or_else</span>(<span class="op">|</span><span class="op">|</span> {
                 <span class="kw">let</span> <span class="ident">canonical</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">canonical</span>();
-                <span class="kw">if</span> <span class="ident">canonical</span> <span class="op">!=</span> <span class="kw-2">*</span><span class="self">self</span> {
+                <span class="kw">if</span> <span class="ident">canonical</span> <span class="op">!</span><span class="op">=</span> <span class="kw-2">*</span><span class="self">self</span> {
                     <span class="ident">canonical</span>.<span class="ident">num_template_args</span>()
                 } <span class="kw">else</span> {
                     <span class="prelude-val">None</span>
@@ -2012,7 +2012,7 @@
     <span class="doccomment">/// bindgen assumes there will only be one of them alive at a time, and</span>
     <span class="doccomment">/// disposes it on drop. That can change if this would be required, but I</span>
     <span class="doccomment">/// think we can survive fine without it.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">translation_unit</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Cursor</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">translation_unit</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cursor</span> {
         <span class="macro">assert</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">is_valid</span>());
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">tu</span> <span class="op">=</span> <span class="ident">clang_Cursor_getTranslationUnit</span>(<span class="self">self</span>.<span class="ident">x</span>);
@@ -2025,13 +2025,13 @@
     }
 
     <span class="doccomment">/// Is the referent a top level construct?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_toplevel</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_toplevel</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">semantic_parent</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">fallible_semantic_parent</span>();
 
-        <span class="kw">while</span> <span class="ident">semantic_parent</span>.<span class="ident">is_some</span>() <span class="op">&amp;&amp;</span>
-            (<span class="ident">semantic_parent</span>.<span class="ident">unwrap</span>().<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_Namespace</span> <span class="op">||</span>
-                 <span class="ident">semantic_parent</span>.<span class="ident">unwrap</span>().<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_NamespaceAlias</span> <span class="op">||</span>
-                 <span class="ident">semantic_parent</span>.<span class="ident">unwrap</span>().<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_NamespaceRef</span>)
+        <span class="kw">while</span> <span class="ident">semantic_parent</span>.<span class="ident">is_some</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span>
+            (<span class="ident">semantic_parent</span>.<span class="ident">unwrap</span>().<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_Namespace</span> <span class="op">|</span><span class="op">|</span>
+                 <span class="ident">semantic_parent</span>.<span class="ident">unwrap</span>().<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_NamespaceAlias</span> <span class="op">|</span><span class="op">|</span>
+                 <span class="ident">semantic_parent</span>.<span class="ident">unwrap</span>().<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_NamespaceRef</span>)
         {
             <span class="ident">semantic_parent</span> <span class="op">=</span>
                 <span class="ident">semantic_parent</span>.<span class="ident">unwrap</span>().<span class="ident">fallible_semantic_parent</span>();
@@ -2039,47 +2039,47 @@
 
         <span class="kw">let</span> <span class="ident">tu</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">translation_unit</span>();
         <span class="comment">// Yes, this can happen with, e.g., macro definitions.</span>
-        <span class="ident">semantic_parent</span> <span class="op">==</span> <span class="ident">tu</span>.<span class="ident">fallible_semantic_parent</span>()
+        <span class="ident">semantic_parent</span> <span class="op">=</span><span class="op">=</span> <span class="ident">tu</span>.<span class="ident">fallible_semantic_parent</span>()
     }
 
     <span class="doccomment">/// There are a few kinds of types that we need to treat specially, mainly</span>
     <span class="doccomment">/// not tracking the type declaration but the location of the cursor, given</span>
     <span class="doccomment">/// clang doesn&#39;t expose a proper declaration for these types.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_template_like</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_template_like</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span>() {
             <span class="ident">CXCursor_ClassTemplate</span> <span class="op">|</span>
             <span class="ident">CXCursor_ClassTemplatePartialSpecialization</span> <span class="op">|</span>
-            <span class="ident">CXCursor_TypeAliasTemplateDecl</span> <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">CXCursor_TypeAliasTemplateDecl</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Get the kind of referent this cursor is pointing to.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CXCursorKind</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXCursorKind</span> {
         <span class="self">self</span>.<span class="ident">x</span>.<span class="ident">kind</span>
     }
 
     <span class="doccomment">/// Returns true is the cursor is a definition</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_definition</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">clang_isCursorDefinition</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!=</span> <span class="number">0</span> }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_definition</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">unsafe</span> { <span class="ident">clang_isCursorDefinition</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span> }
     }
 
     <span class="doccomment">/// Is the referent a template specialization?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_template_specialization</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_template_specialization</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">specialized</span>().<span class="ident">is_some</span>()
     }
 
     <span class="doccomment">/// Is the referent a fully specialized template specialization without any</span>
     <span class="doccomment">/// remaining free template arguments?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_fully_specialized_template</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">is_template_specialization</span>() <span class="op">&amp;&amp;</span>
-            <span class="self">self</span>.<span class="ident">kind</span>() <span class="op">!=</span> <span class="ident">CXCursor_ClassTemplatePartialSpecialization</span> <span class="op">&amp;&amp;</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_fully_specialized_template</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="self">self</span>.<span class="ident">is_template_specialization</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span>
+            <span class="self">self</span>.<span class="ident">kind</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">CXCursor_ClassTemplatePartialSpecialization</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span>
             <span class="self">self</span>.<span class="ident">num_template_args</span>().<span class="ident">unwrap_or</span>(<span class="number">0</span>) <span class="op">&gt;</span> <span class="number">0</span>
     }
 
     <span class="doccomment">/// Is the referent a template specialization that still has remaining free</span>
     <span class="doccomment">/// template arguments?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_in_non_fully_specialized_template</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_in_non_fully_specialized_template</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_toplevel</span>() {
             <span class="kw">return</span> <span class="bool-val">false</span>;
         }
@@ -2097,12 +2097,12 @@
     }
 
     <span class="doccomment">/// Is this cursor pointing a valid referent?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">clang_isInvalid</span>(<span class="self">self</span>.<span class="ident">kind</span>()) <span class="op">==</span> <span class="number">0</span> }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">unsafe</span> { <span class="ident">clang_isInvalid</span>(<span class="self">self</span>.<span class="ident">kind</span>()) <span class="op">=</span><span class="op">=</span> <span class="number">0</span> }
     }
 
     <span class="doccomment">/// Get the source location for the referent.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">location</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SourceLocation</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">location</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SourceLocation</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">SourceLocation</span> {
                 <span class="ident">x</span>: <span class="ident">clang_getCursorLocation</span>(<span class="self">self</span>.<span class="ident">x</span>),
@@ -2111,12 +2111,12 @@
     }
 
     <span class="doccomment">/// Get the source location range for the referent.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">extent</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CXSourceRange</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">extent</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXSourceRange</span> {
         <span class="kw">unsafe</span> { <span class="ident">clang_getCursorExtent</span>(<span class="self">self</span>.<span class="ident">x</span>) }
     }
 
     <span class="doccomment">/// Get the raw declaration comment for this referent, if one exists.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">raw_comment</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">raw_comment</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="kw">unsafe</span> {
             <span class="ident">cxstring_into_string</span>(<span class="ident">clang_Cursor_getRawCommentText</span>(<span class="self">self</span>.<span class="ident">x</span>))
         };
@@ -2124,7 +2124,7 @@
     }
 
     <span class="doccomment">/// Get the referent&#39;s parsed comment.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">comment</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Comment</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">comment</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Comment</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">Comment</span> {
                 <span class="ident">x</span>: <span class="ident">clang_Cursor_getParsedComment</span>(<span class="self">self</span>.<span class="ident">x</span>),
@@ -2133,7 +2133,7 @@
     }
 
     <span class="doccomment">/// Get the referent&#39;s type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cur_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Type</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cur_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Type</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">Type</span> {
                 <span class="ident">x</span>: <span class="ident">clang_getCursorType</span>(<span class="self">self</span>.<span class="ident">x</span>),
@@ -2144,13 +2144,13 @@
     <span class="doccomment">/// Given that this cursor&#39;s referent is a reference to another type, or is</span>
     <span class="doccomment">/// a declaration, get the cursor pointing to the referenced type or type of</span>
     <span class="doccomment">/// the declared thing.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">definition</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Cursor</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">definition</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Cursor</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">Cursor</span> {
                 <span class="ident">x</span>: <span class="ident">clang_getCursorDefinition</span>(<span class="self">self</span>.<span class="ident">x</span>),
             };
 
-            <span class="kw">if</span> <span class="ident">ret</span>.<span class="ident">is_valid</span>() <span class="op">&amp;&amp;</span> <span class="ident">ret</span>.<span class="ident">kind</span>() <span class="op">!=</span> <span class="ident">CXCursor_NoDeclFound</span> {
+            <span class="kw">if</span> <span class="ident">ret</span>.<span class="ident">is_valid</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">ret</span>.<span class="ident">kind</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">CXCursor_NoDeclFound</span> {
                 <span class="prelude-val">Some</span>(<span class="ident">ret</span>)
             } <span class="kw">else</span> {
                 <span class="prelude-val">None</span>
@@ -2160,7 +2160,7 @@
 
     <span class="doccomment">/// Given that this cursor&#39;s referent is reference type, get the cursor</span>
     <span class="doccomment">/// pointing to the referenced type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">referenced</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Cursor</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">referenced</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Cursor</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">Cursor</span> {
                 <span class="ident">x</span>: <span class="ident">clang_getCursorReferenced</span>(<span class="self">self</span>.<span class="ident">x</span>),
@@ -2175,7 +2175,7 @@
     <span class="doccomment">/// Many types can be declared multiple times before finally being properly</span>
     <span class="doccomment">/// defined. This method allows us to get the canonical cursor for the</span>
     <span class="doccomment">/// referent type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">canonical</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Cursor</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">canonical</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cursor</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">Cursor</span> {
                 <span class="ident">x</span>: <span class="ident">clang_getCanonicalCursor</span>(<span class="self">self</span>.<span class="ident">x</span>),
@@ -2186,7 +2186,7 @@
     <span class="doccomment">/// Given that this cursor points to either a template specialization or a</span>
     <span class="doccomment">/// template instantiation, get a cursor pointing to the template definition</span>
     <span class="doccomment">/// that is being specialized.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">specialized</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Cursor</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">specialized</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Cursor</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">Cursor</span> {
                 <span class="ident">x</span>: <span class="ident">clang_getSpecializedCursorTemplate</span>(<span class="self">self</span>.<span class="ident">x</span>),
@@ -2197,7 +2197,7 @@
 
     <span class="doccomment">/// Assuming that this cursor&#39;s referent is a template declaration, get the</span>
     <span class="doccomment">/// kind of cursor that would be generated for its specializations.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">template_kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CXCursorKind</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">template_kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXCursorKind</span> {
         <span class="kw">unsafe</span> { <span class="ident">clang_getTemplateCursorKind</span>(<span class="self">self</span>.<span class="ident">x</span>) }
     }
 
@@ -2206,7 +2206,7 @@
     <span class="doccomment">/// Call the given function on each AST node traversed.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">visit</span><span class="op">&lt;</span><span class="ident">Visitor</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">visitor</span>: <span class="ident">Visitor</span>)
     <span class="kw">where</span>
-        <span class="ident">Visitor</span>: <span class="ident">FnMut</span>(<span class="ident">Cursor</span>) <span class="op">-&gt;</span> <span class="ident">CXChildVisitResult</span>,
+        <span class="ident">Visitor</span>: <span class="ident">FnMut</span>(<span class="ident">Cursor</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXChildVisitResult</span>,
     {
         <span class="kw">unsafe</span> {
             <span class="ident">clang_visitChildren</span>(
@@ -2218,7 +2218,7 @@
     }
 
     <span class="doccomment">/// Collect all of this cursor&#39;s children into a vec and return them.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">collect_children</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Cursor</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">collect_children</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Cursor</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">children</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
         <span class="self">self</span>.<span class="ident">visit</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> {
             <span class="ident">children</span>.<span class="ident">push</span>(<span class="ident">c</span>);
@@ -2228,7 +2228,7 @@
     }
 
     <span class="doccomment">/// Does this cursor have any children?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_children</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_children</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">has_children</span> <span class="op">=</span> <span class="bool-val">false</span>;
         <span class="self">self</span>.<span class="ident">visit</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
             <span class="ident">has_children</span> <span class="op">=</span> <span class="bool-val">true</span>;
@@ -2238,27 +2238,27 @@
     }
 
     <span class="doccomment">/// Does this cursor have at least `n` children?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_at_least_num_children</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">n</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_at_least_num_children</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">n</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">n</span> <span class="op">&gt;</span> <span class="number">0</span>);
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">num_left</span> <span class="op">=</span> <span class="ident">n</span>;
         <span class="self">self</span>.<span class="ident">visit</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
-            <span class="ident">num_left</span> <span class="op">-=</span> <span class="number">1</span>;
-            <span class="kw">if</span> <span class="ident">num_left</span> <span class="op">==</span> <span class="number">0</span> {
+            <span class="ident">num_left</span> <span class="op">-</span><span class="op">=</span> <span class="number">1</span>;
+            <span class="kw">if</span> <span class="ident">num_left</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> {
                 <span class="ident">CXChildVisit_Break</span>
             } <span class="kw">else</span> {
                 <span class="ident">CXChildVisit_Continue</span>
             }
         });
-        <span class="ident">num_left</span> <span class="op">==</span> <span class="number">0</span>
+        <span class="ident">num_left</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span>
     }
 
     <span class="doccomment">/// Returns whether the given location contains a cursor with the given</span>
     <span class="doccomment">/// kind in the first level of nesting underneath (doesn&#39;t look</span>
     <span class="doccomment">/// recursively).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">contains_cursor</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">CXCursorKind</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">contains_cursor</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">CXCursorKind</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">found</span> <span class="op">=</span> <span class="bool-val">false</span>;
 
-        <span class="self">self</span>.<span class="ident">visit</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="kw">if</span> <span class="ident">c</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">kind</span> {
+        <span class="self">self</span>.<span class="ident">visit</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="kw">if</span> <span class="ident">c</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">kind</span> {
             <span class="ident">found</span> <span class="op">=</span> <span class="bool-val">true</span>;
             <span class="ident">CXChildVisit_Break</span>
         } <span class="kw">else</span> {
@@ -2269,23 +2269,23 @@
     }
 
     <span class="doccomment">/// Is the referent an inlined function?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_inlined_function</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="ident">clang_Cursor_isFunctionInlined</span>::<span class="ident">is_loaded</span>() <span class="op">&amp;&amp;</span>
-            <span class="kw">unsafe</span> { <span class="ident">clang_Cursor_isFunctionInlined</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!=</span> <span class="number">0</span> }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_inlined_function</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="ident">clang_Cursor_isFunctionInlined</span>::<span class="ident">is_loaded</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span>
+            <span class="kw">unsafe</span> { <span class="ident">clang_Cursor_isFunctionInlined</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span> }
     }
 
     <span class="doccomment">/// Get the width of this cursor&#39;s referent bit field, or `None` if the</span>
     <span class="doccomment">/// referent is not a bit field.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bit_width</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bit_width</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">w</span> <span class="op">=</span> <span class="ident">clang_getFieldDeclBitWidth</span>(<span class="self">self</span>.<span class="ident">x</span>);
-            <span class="kw">if</span> <span class="ident">w</span> <span class="op">==</span> <span class="op">-</span><span class="number">1</span> { <span class="prelude-val">None</span> } <span class="kw">else</span> { <span class="prelude-val">Some</span>(<span class="ident">w</span> <span class="kw">as</span> <span class="ident">u32</span>) }
+            <span class="kw">if</span> <span class="ident">w</span> <span class="op">=</span><span class="op">=</span> <span class="op">-</span><span class="number">1</span> { <span class="prelude-val">None</span> } <span class="kw">else</span> { <span class="prelude-val">Some</span>(<span class="ident">w</span> <span class="kw">as</span> <span class="ident">u32</span>) }
         }
     }
 
     <span class="doccomment">/// Get the integer representation type used to hold this cursor&#39;s referent</span>
     <span class="doccomment">/// enum type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enum_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enum_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">t</span> <span class="op">=</span> <span class="ident">Type</span> {
                 <span class="ident">x</span>: <span class="ident">clang_getEnumDeclIntegerType</span>(<span class="self">self</span>.<span class="ident">x</span>),
@@ -2297,9 +2297,9 @@
     <span class="doccomment">/// Get the signed constant value for this cursor&#39;s enum variant referent.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns None if the cursor&#39;s referent is not an enum variant.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enum_val_signed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">i64</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enum_val_signed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">i64</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
-            <span class="kw">if</span> <span class="self">self</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_EnumConstantDecl</span> {
+            <span class="kw">if</span> <span class="self">self</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_EnumConstantDecl</span> {
                 <span class="prelude-val">Some</span>(<span class="ident">clang_getEnumConstantDeclValue</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="kw">as</span> <span class="ident">i64</span>)
             } <span class="kw">else</span> {
                 <span class="prelude-val">None</span>
@@ -2310,9 +2310,9 @@
     <span class="doccomment">/// Get the unsigned constant value for this cursor&#39;s enum variant referent.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns None if the cursor&#39;s referent is not an enum variant.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enum_val_unsigned</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enum_val_unsigned</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
-            <span class="kw">if</span> <span class="self">self</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_EnumConstantDecl</span> {
+            <span class="kw">if</span> <span class="self">self</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_EnumConstantDecl</span> {
                 <span class="prelude-val">Some</span>(<span class="ident">clang_getEnumConstantDeclUnsignedValue</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="kw">as</span> <span class="ident">u64</span>)
             } <span class="kw">else</span> {
                 <span class="prelude-val">None</span>
@@ -2322,7 +2322,7 @@
 
     <span class="doccomment">/// Given that this cursor&#39;s referent is a `typedef`, get the `Type` that is</span>
     <span class="doccomment">/// being aliased.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">typedef_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">typedef_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="ident">Type</span> {
             <span class="ident">x</span>: <span class="kw">unsafe</span> { <span class="ident">clang_getTypedefDeclUnderlyingType</span>(<span class="self">self</span>.<span class="ident">x</span>) },
         };
@@ -2333,12 +2333,12 @@
     <span class="doccomment">/// Get the linkage kind for this cursor&#39;s referent.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This only applies to functions and variables.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">linkage</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CXLinkageKind</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">linkage</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXLinkageKind</span> {
         <span class="kw">unsafe</span> { <span class="ident">clang_getCursorLinkage</span>(<span class="self">self</span>.<span class="ident">x</span>) }
     }
 
     <span class="doccomment">/// Get the visibility of this cursor&#39;s referent.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">visibility</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CXVisibilityKind</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">visibility</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXVisibilityKind</span> {
         <span class="kw">if</span> <span class="ident">clang_getCursorVisibility</span>::<span class="ident">is_loaded</span>() {
             <span class="kw">unsafe</span> { <span class="ident">clang_getCursorVisibility</span>(<span class="self">self</span>.<span class="ident">x</span>) }
         } <span class="kw">else</span> {
@@ -2348,14 +2348,14 @@
 
     <span class="doccomment">/// Given that this cursor&#39;s referent is a function, return cursors to its</span>
     <span class="doccomment">/// parameters.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Cursor</span><span class="op">&gt;&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Cursor</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="comment">// XXX: We might want to use and keep num_args</span>
         <span class="comment">// match self.kind() {</span>
         <span class="comment">// CXCursor_FunctionDecl |</span>
         <span class="comment">// CXCursor_CXXMethod =&gt; {</span>
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">w</span> <span class="op">=</span> <span class="ident">clang_Cursor_getNumArguments</span>(<span class="self">self</span>.<span class="ident">x</span>);
-            <span class="kw">if</span> <span class="ident">w</span> <span class="op">==</span> <span class="op">-</span><span class="number">1</span> {
+            <span class="kw">if</span> <span class="ident">w</span> <span class="op">=</span><span class="op">=</span> <span class="op">-</span><span class="number">1</span> {
                 <span class="prelude-val">None</span>
             } <span class="kw">else</span> {
                 <span class="kw">let</span> <span class="ident">num</span> <span class="op">=</span> <span class="ident">w</span> <span class="kw">as</span> <span class="ident">u32</span>;
@@ -2376,27 +2376,27 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns -1 if the cursor&#39;s referent is not a function/method call or</span>
     <span class="doccomment">/// declaration.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">u32</span>, ()<span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">u32</span>, ()<span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">w</span> <span class="op">=</span> <span class="ident">clang_Cursor_getNumArguments</span>(<span class="self">self</span>.<span class="ident">x</span>);
-            <span class="kw">if</span> <span class="ident">w</span> <span class="op">==</span> <span class="op">-</span><span class="number">1</span> { <span class="prelude-val">Err</span>(()) } <span class="kw">else</span> { <span class="prelude-val">Ok</span>(<span class="ident">w</span> <span class="kw">as</span> <span class="ident">u32</span>) }
+            <span class="kw">if</span> <span class="ident">w</span> <span class="op">=</span><span class="op">=</span> <span class="op">-</span><span class="number">1</span> { <span class="prelude-val">Err</span>(()) } <span class="kw">else</span> { <span class="prelude-val">Ok</span>(<span class="ident">w</span> <span class="kw">as</span> <span class="ident">u32</span>) }
         }
     }
 
     <span class="doccomment">/// Get the access specifier for this cursor&#39;s referent.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">access_specifier</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CX_CXXAccessSpecifier</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">access_specifier</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CX_CXXAccessSpecifier</span> {
         <span class="kw">unsafe</span> { <span class="ident">clang_getCXXAccessSpecifier</span>(<span class="self">self</span>.<span class="ident">x</span>) }
     }
 
     <span class="doccomment">/// Is this cursor&#39;s referent a field declaration that is marked as</span>
     <span class="doccomment">/// `mutable`?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_mutable_field</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="ident">clang_CXXField_isMutable</span>::<span class="ident">is_loaded</span>() <span class="op">&amp;&amp;</span>
-            <span class="kw">unsafe</span> { <span class="ident">clang_CXXField_isMutable</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!=</span> <span class="number">0</span> }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_mutable_field</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="ident">clang_CXXField_isMutable</span>::<span class="ident">is_loaded</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span>
+            <span class="kw">unsafe</span> { <span class="ident">clang_CXXField_isMutable</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span> }
     }
 
     <span class="doccomment">/// Get the offset of the field represented by the Cursor.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">offset_of_field</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">LayoutError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">offset_of_field</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">LayoutError</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="ident">clang_Cursor_getOffsetOfField</span>::<span class="ident">is_loaded</span>() {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">LayoutError</span>::<span class="ident">from</span>(<span class="op">-</span><span class="number">1</span>));
         }
@@ -2411,32 +2411,32 @@
     }
 
     <span class="doccomment">/// Is this cursor&#39;s referent a member function that is declared `static`?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">method_is_static</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">clang_CXXMethod_isStatic</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!=</span> <span class="number">0</span> }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">method_is_static</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">unsafe</span> { <span class="ident">clang_CXXMethod_isStatic</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span> }
     }
 
     <span class="doccomment">/// Is this cursor&#39;s referent a member function that is declared `const`?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">method_is_const</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">clang_CXXMethod_isConst</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!=</span> <span class="number">0</span> }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">method_is_const</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">unsafe</span> { <span class="ident">clang_CXXMethod_isConst</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span> }
     }
 
     <span class="doccomment">/// Is this cursor&#39;s referent a member function that is declared `const`?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">method_is_virtual</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">clang_CXXMethod_isVirtual</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!=</span> <span class="number">0</span> }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">method_is_virtual</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">unsafe</span> { <span class="ident">clang_CXXMethod_isVirtual</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span> }
     }
 
     <span class="doccomment">/// Is this cursor&#39;s referent a struct or class with virtual members?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_virtual_base</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">clang_isVirtualBase</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!=</span> <span class="number">0</span> }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_virtual_base</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">unsafe</span> { <span class="ident">clang_isVirtualBase</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span> }
     }
 
     <span class="doccomment">/// Try to evaluate this cursor.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">evaluate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">EvalResult</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">evaluate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">EvalResult</span><span class="op">&gt;</span> {
         <span class="ident">EvalResult</span>::<span class="ident">new</span>(<span class="kw-2">*</span><span class="self">self</span>)
     }
 
     <span class="doccomment">/// Return the result type for this cursor</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ret_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ret_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">rt</span> <span class="op">=</span> <span class="ident">Type</span> {
             <span class="ident">x</span>: <span class="kw">unsafe</span> { <span class="ident">clang_getCursorResultType</span>(<span class="self">self</span>.<span class="ident">x</span>) },
         };
@@ -2446,23 +2446,23 @@
 
 <span class="doccomment">/// Checks whether the name looks like an identifier, i.e. is alphanumeric</span>
 <span class="doccomment">/// (including &#39;_&#39;) and does not start with a digit.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_valid_identifier</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_valid_identifier</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">chars</span> <span class="op">=</span> <span class="ident">name</span>.<span class="ident">chars</span>();
     <span class="kw">let</span> <span class="ident">first_valid</span> <span class="op">=</span> <span class="ident">chars</span>
         .<span class="ident">next</span>()
-        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_alphabetic</span>() <span class="op">||</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;_&#39;</span>)
+        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_alphabetic</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">=</span><span class="op">=</span> <span class="string">&#39;_&#39;</span>)
         .<span class="ident">unwrap_or</span>(<span class="bool-val">false</span>);
 
-    <span class="ident">first_valid</span> <span class="op">&amp;&amp;</span> <span class="ident">chars</span>.<span class="ident">all</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_alphanumeric</span>() <span class="op">||</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;_&#39;</span>)
+    <span class="ident">first_valid</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">chars</span>.<span class="ident">all</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_alphanumeric</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">=</span><span class="op">=</span> <span class="string">&#39;_&#39;</span>)
 }
 
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">visit_children</span><span class="op">&lt;</span><span class="ident">Visitor</span><span class="op">&gt;</span>(
     <span class="ident">cur</span>: <span class="ident">CXCursor</span>,
     <span class="ident">_parent</span>: <span class="ident">CXCursor</span>,
     <span class="ident">data</span>: <span class="ident">CXClientData</span>,
-) <span class="op">-&gt;</span> <span class="ident">CXChildVisitResult</span>
+) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXChildVisitResult</span>
 <span class="kw">where</span>
-    <span class="ident">Visitor</span>: <span class="ident">FnMut</span>(<span class="ident">Cursor</span>) <span class="op">-&gt;</span> <span class="ident">CXChildVisitResult</span>,
+    <span class="ident">Visitor</span>: <span class="ident">FnMut</span>(<span class="ident">Cursor</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXChildVisitResult</span>,
 {
     <span class="kw">let</span> <span class="ident">func</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Visitor</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="ident">data</span>) };
     <span class="kw">let</span> <span class="ident">child</span> <span class="op">=</span> <span class="ident">Cursor</span> {
@@ -2473,8 +2473,8 @@
 }
 
 <span class="kw">impl</span> <span class="ident">PartialEq</span> <span class="kw">for</span> <span class="ident">Cursor</span> {
-    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">Cursor</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">clang_equalCursors</span>(<span class="self">self</span>.<span class="ident">x</span>, <span class="ident">other</span>.<span class="ident">x</span>) <span class="op">==</span> <span class="number">1</span> }
+    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">Cursor</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">unsafe</span> { <span class="ident">clang_equalCursors</span>(<span class="self">self</span>.<span class="ident">x</span>, <span class="ident">other</span>.<span class="ident">x</span>) <span class="op">=</span><span class="op">=</span> <span class="number">1</span> }
     }
 }
 
@@ -2493,15 +2493,15 @@
 }
 
 <span class="kw">impl</span> <span class="ident">PartialEq</span> <span class="kw">for</span> <span class="ident">Type</span> {
-    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">clang_equalTypes</span>(<span class="self">self</span>.<span class="ident">x</span>, <span class="ident">other</span>.<span class="ident">x</span>) <span class="op">!=</span> <span class="number">0</span> }
+    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">unsafe</span> { <span class="ident">clang_equalTypes</span>(<span class="self">self</span>.<span class="ident">x</span>, <span class="ident">other</span>.<span class="ident">x</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span> }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Eq</span> <span class="kw">for</span> <span class="ident">Type</span> {}
 
 <span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">Type</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
         <span class="macro">write</span><span class="macro">!</span>(
             <span class="ident">fmt</span>,
             <span class="string">&quot;Type({}, kind: {}, cconv: {}, decl: {:?}, canon: {:?})&quot;</span>,
@@ -2533,28 +2533,28 @@
 }
 
 <span class="kw">impl</span> ::<span class="ident">std</span>::<span class="ident">convert</span>::<span class="ident">From</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">LayoutError</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">val</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">val</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">LayoutError</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="ident">val</span> {
-            <span class="ident">CXTypeLayoutError_Invalid</span> <span class="op">=&gt;</span> <span class="ident">Invalid</span>,
-            <span class="ident">CXTypeLayoutError_Incomplete</span> <span class="op">=&gt;</span> <span class="ident">Incomplete</span>,
-            <span class="ident">CXTypeLayoutError_Dependent</span> <span class="op">=&gt;</span> <span class="ident">Dependent</span>,
-            <span class="ident">CXTypeLayoutError_NotConstantSize</span> <span class="op">=&gt;</span> <span class="ident">NotConstantSize</span>,
-            <span class="ident">CXTypeLayoutError_InvalidFieldName</span> <span class="op">=&gt;</span> <span class="ident">InvalidFieldName</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="ident">Unknown</span>,
+            <span class="ident">CXTypeLayoutError_Invalid</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Invalid</span>,
+            <span class="ident">CXTypeLayoutError_Incomplete</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Incomplete</span>,
+            <span class="ident">CXTypeLayoutError_Dependent</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Dependent</span>,
+            <span class="ident">CXTypeLayoutError_NotConstantSize</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">NotConstantSize</span>,
+            <span class="ident">CXTypeLayoutError_InvalidFieldName</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">InvalidFieldName</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Unknown</span>,
         }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Type</span> {
     <span class="doccomment">/// Get this type&#39;s kind.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CXTypeKind</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXTypeKind</span> {
         <span class="self">self</span>.<span class="ident">x</span>.<span class="ident">kind</span>
     }
 
     <span class="doccomment">/// Get a cursor pointing to this type&#39;s declaration.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">declaration</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Cursor</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">declaration</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cursor</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">Cursor</span> {
                 <span class="ident">x</span>: <span class="ident">clang_getTypeDeclaration</span>(<span class="self">self</span>.<span class="ident">x</span>),
@@ -2566,7 +2566,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">canonical_declaration</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">location</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Cursor</span><span class="op">&gt;</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CanonicalTypeDeclaration</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CanonicalTypeDeclaration</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">declaration</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">declaration</span>();
         <span class="kw">if</span> <span class="op">!</span><span class="ident">declaration</span>.<span class="ident">is_valid</span>() {
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">location</span>) <span class="op">=</span> <span class="ident">location</span> {
@@ -2581,7 +2581,7 @@
         }
 
         <span class="kw">let</span> <span class="ident">canonical</span> <span class="op">=</span> <span class="ident">declaration</span>.<span class="ident">canonical</span>();
-        <span class="kw">if</span> <span class="ident">canonical</span>.<span class="ident">is_valid</span>() <span class="op">&amp;&amp;</span> <span class="ident">canonical</span>.<span class="ident">kind</span>() <span class="op">!=</span> <span class="ident">CXCursor_NoDeclFound</span> {
+        <span class="kw">if</span> <span class="ident">canonical</span>.<span class="ident">is_valid</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">canonical</span>.<span class="ident">kind</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">CXCursor_NoDeclFound</span> {
             <span class="prelude-val">Some</span>(<span class="ident">CanonicalTypeDeclaration</span>(<span class="kw-2">*</span><span class="self">self</span>, <span class="ident">canonical</span>))
         } <span class="kw">else</span> {
             <span class="prelude-val">None</span>
@@ -2589,7 +2589,7 @@
     }
 
     <span class="doccomment">/// Get a raw display name for this type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">spelling</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">spelling</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">cxstring_into_string</span>(<span class="ident">clang_getTypeSpelling</span>(<span class="self">self</span>.<span class="ident">x</span>)) };
         <span class="comment">// Clang 5.0 introduced changes in the spelling API so it returned the</span>
         <span class="comment">// full qualified name. Let&#39;s undo that here.</span>
@@ -2603,13 +2603,13 @@
     }
 
     <span class="doccomment">/// Is this type const qualified?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_const</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">clang_isConstQualifiedType</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!=</span> <span class="number">0</span> }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_const</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">unsafe</span> { <span class="ident">clang_isConstQualifiedType</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span> }
     }
 
     <span class="doccomment">/// What is the size of this type? Paper over invalid types by returning `0`</span>
     <span class="doccomment">/// for them.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">clang_Type_getSizeOf</span>(<span class="self">self</span>.<span class="ident">x</span>);
             <span class="kw">if</span> <span class="ident">val</span> <span class="op">&lt;</span> <span class="number">0</span> { <span class="number">0</span> } <span class="kw">else</span> { <span class="ident">val</span> <span class="kw">as</span> <span class="ident">usize</span> }
@@ -2617,7 +2617,7 @@
     }
 
     <span class="doccomment">/// What is the size of this type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fallible_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">LayoutError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fallible_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">LayoutError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">clang_Type_getSizeOf</span>(<span class="self">self</span>.<span class="ident">x</span>) };
         <span class="kw">if</span> <span class="ident">val</span> <span class="op">&lt;</span> <span class="number">0</span> {
             <span class="prelude-val">Err</span>(<span class="ident">LayoutError</span>::<span class="ident">from</span>(<span class="ident">val</span> <span class="kw">as</span> <span class="ident">i32</span>))
@@ -2628,7 +2628,7 @@
 
     <span class="doccomment">/// What is the alignment of this type? Paper over invalid types by</span>
     <span class="doccomment">/// returning `0`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">align</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">align</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">clang_Type_getAlignOf</span>(<span class="self">self</span>.<span class="ident">x</span>);
             <span class="kw">if</span> <span class="ident">val</span> <span class="op">&lt;</span> <span class="number">0</span> { <span class="number">0</span> } <span class="kw">else</span> { <span class="ident">val</span> <span class="kw">as</span> <span class="ident">usize</span> }
@@ -2636,7 +2636,7 @@
     }
 
     <span class="doccomment">/// What is the alignment of this type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fallible_align</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">LayoutError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fallible_align</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">LayoutError</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="ident">clang_Type_getAlignOf</span>(<span class="self">self</span>.<span class="ident">x</span>);
             <span class="kw">if</span> <span class="ident">val</span> <span class="op">&lt;</span> <span class="number">0</span> {
@@ -2649,7 +2649,7 @@
 
     <span class="doccomment">/// Get the layout for this type, or an error describing why it does not</span>
     <span class="doccomment">/// have a valid layout.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fallible_layout</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>::<span class="ident">ir</span>::<span class="ident">layout</span>::<span class="ident">Layout</span>, <span class="ident">LayoutError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fallible_layout</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>::<span class="ident">ir</span>::<span class="ident">layout</span>::<span class="ident">Layout</span>, <span class="ident">LayoutError</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">ir</span>::<span class="ident">layout</span>::<span class="ident">Layout</span>;
         <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">fallible_size</span>());
         <span class="kw">let</span> <span class="ident">align</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">fallible_align</span>());
@@ -2658,9 +2658,9 @@
 
     <span class="doccomment">/// Get the number of template arguments this type has, or `None` if it is</span>
     <span class="doccomment">/// not some kind of template.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_template_args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_template_args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">clang_Type_getNumTemplateArguments</span>(<span class="self">self</span>.<span class="ident">x</span>) };
-        <span class="kw">if</span> <span class="ident">n</span> <span class="op">&gt;=</span> <span class="number">0</span> {
+        <span class="kw">if</span> <span class="ident">n</span> <span class="op">&gt;</span><span class="op">=</span> <span class="number">0</span> {
             <span class="prelude-val">Some</span>(<span class="ident">n</span> <span class="kw">as</span> <span class="ident">u32</span>)
         } <span class="kw">else</span> {
             <span class="macro">debug_assert_eq</span><span class="macro">!</span>(<span class="ident">n</span>, <span class="op">-</span><span class="number">1</span>);
@@ -2670,7 +2670,7 @@
 
     <span class="doccomment">/// If this type is a class template specialization, return its</span>
     <span class="doccomment">/// template arguments. Otherwise, return None.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">template_args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeTemplateArgIterator</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">template_args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TypeTemplateArgIterator</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">num_template_args</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">n</span><span class="op">|</span> {
             <span class="ident">TypeTemplateArgIterator</span> {
                 <span class="ident">x</span>: <span class="self">self</span>.<span class="ident">x</span>,
@@ -2682,26 +2682,26 @@
 
     <span class="doccomment">/// Given that this type is a pointer type, return the type that it points</span>
     <span class="doccomment">/// to.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pointee_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pointee_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span>() {
             <span class="ident">CXType_Pointer</span> <span class="op">|</span>
             <span class="ident">CXType_RValueReference</span> <span class="op">|</span>
             <span class="ident">CXType_LValueReference</span> <span class="op">|</span>
             <span class="ident">CXType_MemberPointer</span> <span class="op">|</span>
-            <span class="ident">CXType_ObjCObjectPointer</span> <span class="op">=&gt;</span> {
+            <span class="ident">CXType_ObjCObjectPointer</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">Type</span> {
                     <span class="ident">x</span>: <span class="kw">unsafe</span> { <span class="ident">clang_getPointeeType</span>(<span class="self">self</span>.<span class="ident">x</span>) },
                 };
                 <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="ident">ret</span>.<span class="ident">is_valid</span>());
                 <span class="prelude-val">Some</span>(<span class="ident">ret</span>)
             }
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 
     <span class="doccomment">/// Given that this type is an array, vector, or complex type, return the</span>
     <span class="doccomment">/// type of its elements.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">elem_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">elem_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">current_type</span> <span class="op">=</span> <span class="ident">Type</span> {
             <span class="ident">x</span>: <span class="kw">unsafe</span> { <span class="ident">clang_getElementType</span>(<span class="self">self</span>.<span class="ident">x</span>) },
         };
@@ -2714,9 +2714,9 @@
 
     <span class="doccomment">/// Given that this type is an array or vector type, return its number of</span>
     <span class="doccomment">/// elements.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_elements</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_elements</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">num_elements_returned</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">clang_getNumElements</span>(<span class="self">self</span>.<span class="ident">x</span>) };
-        <span class="kw">if</span> <span class="ident">num_elements_returned</span> <span class="op">!=</span> <span class="op">-</span><span class="number">1</span> {
+        <span class="kw">if</span> <span class="ident">num_elements_returned</span> <span class="op">!</span><span class="op">=</span> <span class="op">-</span><span class="number">1</span> {
             <span class="prelude-val">Some</span>(<span class="ident">num_elements_returned</span> <span class="kw">as</span> <span class="ident">usize</span>)
         } <span class="kw">else</span> {
             <span class="prelude-val">None</span>
@@ -2725,7 +2725,7 @@
 
     <span class="doccomment">/// Get the canonical version of this type. This sees through `typdef`s and</span>
     <span class="doccomment">/// aliases to get the underlying, canonical type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">canonical_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Type</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">canonical_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Type</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">Type</span> {
                 <span class="ident">x</span>: <span class="ident">clang_getCanonicalType</span>(<span class="self">self</span>.<span class="ident">x</span>),
@@ -2734,13 +2734,13 @@
     }
 
     <span class="doccomment">/// Is this type a variadic function type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_variadic</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">unsafe</span> { <span class="ident">clang_isFunctionTypeVariadic</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!=</span> <span class="number">0</span> }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_variadic</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">unsafe</span> { <span class="ident">clang_isFunctionTypeVariadic</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="op">!</span><span class="op">=</span> <span class="number">0</span> }
     }
 
     <span class="doccomment">/// Given that this type is a function type, get the type of its return</span>
     <span class="doccomment">/// value.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ret_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ret_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">rt</span> <span class="op">=</span> <span class="ident">Type</span> {
             <span class="ident">x</span>: <span class="kw">unsafe</span> { <span class="ident">clang_getResultType</span>(<span class="self">self</span>.<span class="ident">x</span>) },
         };
@@ -2749,13 +2749,13 @@
 
     <span class="doccomment">/// Given that this type is a function type, get its calling convention. If</span>
     <span class="doccomment">/// this is not a function type, `CXCallingConv_Invalid` is returned.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">call_conv</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CXCallingConv</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">call_conv</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXCallingConv</span> {
         <span class="kw">unsafe</span> { <span class="ident">clang_getFunctionTypeCallingConv</span>(<span class="self">self</span>.<span class="ident">x</span>) }
     }
 
     <span class="doccomment">/// For elaborated types (types which use `class`, `struct`, or `union` to</span>
     <span class="doccomment">/// disambiguate types from local bindings), get the underlying type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">named</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Type</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">named</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Type</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">Type</span> {
                 <span class="ident">x</span>: <span class="kw">if</span> <span class="ident">clang_Type_getNamedType</span>::<span class="ident">is_loaded</span>() {
@@ -2768,26 +2768,26 @@
     }
 
     <span class="doccomment">/// Is this a valid type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">kind</span>() <span class="op">!=</span> <span class="ident">CXType_Invalid</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="self">self</span>.<span class="ident">kind</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">CXType_Invalid</span>
     }
 
     <span class="doccomment">/// Is this a valid and exposed type?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_valid_and_exposed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">is_valid</span>() <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">kind</span>() <span class="op">!=</span> <span class="ident">CXType_Unexposed</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_valid_and_exposed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="self">self</span>.<span class="ident">is_valid</span>() <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="self">self</span>.<span class="ident">kind</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">CXType_Unexposed</span>
     }
 
     <span class="doccomment">/// Is this type a fully instantiated template?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_fully_instantiated_template</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_fully_instantiated_template</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="comment">// Yep, the spelling of this containing type-parameter is extremely</span>
         <span class="comment">// nasty... But can happen in &lt;type_traits&gt;. Unfortunately I couldn&#39;t</span>
         <span class="comment">// reduce it enough :(</span>
-        <span class="self">self</span>.<span class="ident">template_args</span>().<span class="ident">map_or</span>(<span class="bool-val">false</span>, <span class="op">|</span><span class="ident">args</span><span class="op">|</span> <span class="ident">args</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="number">0</span>) <span class="op">&amp;&amp;</span>
+        <span class="self">self</span>.<span class="ident">template_args</span>().<span class="ident">map_or</span>(<span class="bool-val">false</span>, <span class="op">|</span><span class="ident">args</span><span class="op">|</span> <span class="ident">args</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="number">0</span>) <span class="kw-2">&amp;</span><span class="op">&amp;</span>
             <span class="kw">match</span> <span class="self">self</span>.<span class="ident">declaration</span>().<span class="ident">kind</span>() {
                 <span class="ident">CXCursor_ClassTemplatePartialSpecialization</span> <span class="op">|</span>
                 <span class="ident">CXCursor_TypeAliasTemplateDecl</span> <span class="op">|</span>
-                <span class="ident">CXCursor_TemplateTemplateParameter</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
-                <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">true</span>,
+                <span class="ident">CXCursor_TemplateTemplateParameter</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
+                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
             }
     }
 
@@ -2800,9 +2800,9 @@
     <span class="doccomment">///     typename T::Associated member;</span>
     <span class="doccomment">/// };</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_associated_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_associated_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="comment">// This is terrible :(</span>
-        <span class="kw">fn</span> <span class="ident">hacky_parse_associated_type</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="ident">spelling</span>: <span class="ident">S</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">fn</span> <span class="ident">hacky_parse_associated_type</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">spelling</span>: <span class="ident">S</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
             <span class="macro">lazy_static</span><span class="macro">!</span> {
                 <span class="kw">static</span> <span class="kw-2">ref</span> <span class="ident">ASSOC_TYPE_RE</span>: <span class="ident">regex</span>::<span class="ident">Regex</span> <span class="op">=</span>
                     <span class="ident">regex</span>::<span class="ident">Regex</span>::<span class="ident">new</span>(<span class="string">r&quot;typename type\-parameter\-\d+\-\d+::.+&quot;</span>).<span class="ident">unwrap</span>();
@@ -2810,8 +2810,8 @@
             <span class="ident">ASSOC_TYPE_RE</span>.<span class="ident">is_match</span>(<span class="ident">spelling</span>.<span class="ident">as_ref</span>())
         }
 
-        <span class="self">self</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXType_Unexposed</span> <span class="op">&amp;&amp;</span>
-            (<span class="ident">hacky_parse_associated_type</span>(<span class="self">self</span>.<span class="ident">spelling</span>()) <span class="op">||</span>
+        <span class="self">self</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXType_Unexposed</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span>
+            (<span class="ident">hacky_parse_associated_type</span>(<span class="self">self</span>.<span class="ident">spelling</span>()) <span class="op">|</span><span class="op">|</span>
                  <span class="ident">hacky_parse_associated_type</span>(<span class="self">self</span>.<span class="ident">canonical_type</span>().<span class="ident">spelling</span>()))
     }
 }
@@ -2826,12 +2826,12 @@
 
 <span class="kw">impl</span> <span class="ident">CanonicalTypeDeclaration</span> {
     <span class="doccomment">/// Get the type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ty</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Type</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ty</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Type</span> {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>
     }
 
     <span class="doccomment">/// Get the type&#39;s canonical declaration cursor.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cursor</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Cursor</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cursor</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Cursor</span> {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">1</span>
     }
 }
@@ -2845,10 +2845,10 @@
 
 <span class="kw">impl</span> <span class="ident">Iterator</span> <span class="kw">for</span> <span class="ident">TypeTemplateArgIterator</span> {
     <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">Type</span>;
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">index</span> <span class="op">&lt;</span> <span class="self">self</span>.<span class="ident">length</span> {
             <span class="kw">let</span> <span class="ident">idx</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">index</span> <span class="kw">as</span> <span class="ident">c_uint</span>;
-            <span class="self">self</span>.<span class="ident">index</span> <span class="op">+=</span> <span class="number">1</span>;
+            <span class="self">self</span>.<span class="ident">index</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
             <span class="prelude-val">Some</span>(<span class="ident">Type</span> {
                 <span class="ident">x</span>: <span class="kw">unsafe</span> { <span class="ident">clang_Type_getTemplateArgumentAsType</span>(<span class="self">self</span>.<span class="ident">x</span>, <span class="ident">idx</span>) },
             })
@@ -2859,8 +2859,8 @@
 }
 
 <span class="kw">impl</span> <span class="ident">ExactSizeIterator</span> <span class="kw">for</span> <span class="ident">TypeTemplateArgIterator</span> {
-    <span class="kw">fn</span> <span class="ident">len</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
-        <span class="macro">assert</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">index</span> <span class="op">&lt;=</span> <span class="self">self</span>.<span class="ident">length</span>);
+    <span class="kw">fn</span> <span class="ident">len</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
+        <span class="macro">assert</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">index</span> <span class="op">&lt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">length</span>);
         (<span class="self">self</span>.<span class="ident">length</span> <span class="op">-</span> <span class="self">self</span>.<span class="ident">index</span>) <span class="kw">as</span> <span class="ident">usize</span>
     }
 }
@@ -2874,7 +2874,7 @@
 <span class="kw">impl</span> <span class="ident">SourceLocation</span> {
     <span class="doccomment">/// Get the (file, line, column, byte offset) tuple for this source</span>
     <span class="doccomment">/// location.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">location</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> (<span class="ident">File</span>, <span class="ident">usize</span>, <span class="ident">usize</span>, <span class="ident">usize</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">location</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">File</span>, <span class="ident">usize</span>, <span class="ident">usize</span>, <span class="ident">usize</span>) {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">file</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">zeroed</span>();
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">line</span> <span class="op">=</span> <span class="number">0</span>;
@@ -2900,7 +2900,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Display</span> <span class="kw">for</span> <span class="ident">SourceLocation</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
         <span class="kw">let</span> (<span class="ident">file</span>, <span class="ident">line</span>, <span class="ident">col</span>, <span class="kw">_</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">location</span>();
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">name</span>) <span class="op">=</span> <span class="ident">file</span>.<span class="ident">name</span>() {
             <span class="macro">write</span><span class="macro">!</span>(<span class="ident">f</span>, <span class="string">&quot;{}:{}:{}&quot;</span>, <span class="ident">name</span>, <span class="ident">line</span>, <span class="ident">col</span>)
@@ -2919,12 +2919,12 @@
 
 <span class="kw">impl</span> <span class="ident">Comment</span> {
     <span class="doccomment">/// What kind of comment is this?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CXCommentKind</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXCommentKind</span> {
         <span class="kw">unsafe</span> { <span class="ident">clang_Comment_getKind</span>(<span class="self">self</span>.<span class="ident">x</span>) }
     }
 
     <span class="doccomment">/// Get this comment&#39;s children comment</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_children</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CommentChildrenIterator</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_children</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CommentChildrenIterator</span> {
         <span class="ident">CommentChildrenIterator</span> {
             <span class="ident">parent</span>: <span class="self">self</span>.<span class="ident">x</span>,
             <span class="ident">length</span>: <span class="kw">unsafe</span> { <span class="ident">clang_Comment_getNumChildren</span>(<span class="self">self</span>.<span class="ident">x</span>) },
@@ -2934,12 +2934,12 @@
 
     <span class="doccomment">/// Given that this comment is the start or end of an HTML tag, get its tag</span>
     <span class="doccomment">/// name.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_tag_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_tag_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="kw">unsafe</span> { <span class="ident">cxstring_into_string</span>(<span class="ident">clang_HTMLTagComment_getTagName</span>(<span class="self">self</span>.<span class="ident">x</span>)) }
     }
 
     <span class="doccomment">/// Given that this comment is an HTML start tag, get its attributes.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_tag_attrs</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CommentAttributesIterator</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_tag_attrs</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CommentAttributesIterator</span> {
         <span class="ident">CommentAttributesIterator</span> {
             <span class="ident">x</span>: <span class="self">self</span>.<span class="ident">x</span>,
             <span class="ident">length</span>: <span class="kw">unsafe</span> { <span class="ident">clang_HTMLStartTag_getNumAttrs</span>(<span class="self">self</span>.<span class="ident">x</span>) },
@@ -2957,10 +2957,10 @@
 
 <span class="kw">impl</span> <span class="ident">Iterator</span> <span class="kw">for</span> <span class="ident">CommentChildrenIterator</span> {
     <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">Comment</span>;
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Comment</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Comment</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">index</span> <span class="op">&lt;</span> <span class="self">self</span>.<span class="ident">length</span> {
             <span class="kw">let</span> <span class="ident">idx</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">index</span>;
-            <span class="self">self</span>.<span class="ident">index</span> <span class="op">+=</span> <span class="number">1</span>;
+            <span class="self">self</span>.<span class="ident">index</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
             <span class="prelude-val">Some</span>(<span class="ident">Comment</span> {
                 <span class="ident">x</span>: <span class="kw">unsafe</span> { <span class="ident">clang_Comment_getChild</span>(<span class="self">self</span>.<span class="ident">parent</span>, <span class="ident">idx</span>) },
             })
@@ -2987,10 +2987,10 @@
 
 <span class="kw">impl</span> <span class="ident">Iterator</span> <span class="kw">for</span> <span class="ident">CommentAttributesIterator</span> {
     <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">CommentAttribute</span>;
-    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CommentAttribute</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CommentAttribute</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">index</span> <span class="op">&lt;</span> <span class="self">self</span>.<span class="ident">length</span> {
             <span class="kw">let</span> <span class="ident">idx</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">index</span>;
-            <span class="self">self</span>.<span class="ident">index</span> <span class="op">+=</span> <span class="number">1</span>;
+            <span class="self">self</span>.<span class="ident">index</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
             <span class="prelude-val">Some</span>(<span class="ident">CommentAttribute</span> {
                 <span class="ident">name</span>: <span class="kw">unsafe</span> {
                     <span class="ident">cxstring_into_string</span>(
@@ -3016,7 +3016,7 @@
 
 <span class="kw">impl</span> <span class="ident">File</span> {
     <span class="doccomment">/// Get the name of this source file.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">x</span>.<span class="ident">is_null</span>() {
             <span class="kw">return</span> <span class="prelude-val">None</span>;
         }
@@ -3024,7 +3024,7 @@
     }
 }
 
-<span class="kw">fn</span> <span class="ident">cxstring_to_string_leaky</span>(<span class="ident">s</span>: <span class="ident">CXString</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+<span class="kw">fn</span> <span class="ident">cxstring_to_string_leaky</span>(<span class="ident">s</span>: <span class="ident">CXString</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
     <span class="kw">if</span> <span class="ident">s</span>.<span class="ident">data</span>.<span class="ident">is_null</span>() {
         <span class="kw">return</span> <span class="string">&quot;&quot;</span>.<span class="ident">to_owned</span>();
     }
@@ -3032,7 +3032,7 @@
     <span class="ident">c_str</span>.<span class="ident">to_string_lossy</span>().<span class="ident">into_owned</span>()
 }
 
-<span class="kw">fn</span> <span class="ident">cxstring_into_string</span>(<span class="ident">s</span>: <span class="ident">CXString</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+<span class="kw">fn</span> <span class="ident">cxstring_into_string</span>(<span class="ident">s</span>: <span class="ident">CXString</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">cxstring_to_string_leaky</span>(<span class="ident">s</span>);
     <span class="kw">unsafe</span> { <span class="ident">clang_disposeString</span>(<span class="ident">s</span>) };
     <span class="ident">ret</span>
@@ -3051,7 +3051,7 @@
     <span class="doccomment">/// headers are included when enumerating a translation unit&#39;s &quot;locals&quot;.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The `diag` parameter controls whether debugging diagnostics are enabled.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">pch</span>: <span class="ident">bool</span>, <span class="ident">diag</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="ident">Index</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">pch</span>: <span class="ident">bool</span>, <span class="ident">diag</span>: <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Index</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">Index</span> {
                 <span class="ident">x</span>: <span class="ident">clang_createIndex</span>(<span class="ident">pch</span> <span class="kw">as</span> <span class="ident">c_int</span>, <span class="ident">diag</span> <span class="kw">as</span> <span class="ident">c_int</span>),
@@ -3061,7 +3061,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">Index</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
         <span class="macro">write</span><span class="macro">!</span>(<span class="ident">fmt</span>, <span class="string">&quot;Index {{ }}&quot;</span>)
     }
 }
@@ -3089,7 +3089,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">TranslationUnit</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
         <span class="macro">write</span><span class="macro">!</span>(<span class="ident">fmt</span>, <span class="string">&quot;TranslationUnit {{ }}&quot;</span>)
     }
 }
@@ -3102,7 +3102,7 @@
         <span class="ident">cmd_args</span>: <span class="kw-2">&amp;</span>[<span class="ident">String</span>],
         <span class="ident">unsaved</span>: <span class="kw-2">&amp;</span>[<span class="ident">UnsavedFile</span>],
         <span class="ident">opts</span>: <span class="ident">CXTranslationUnit_Flags</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TranslationUnit</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TranslationUnit</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">fname</span> <span class="op">=</span> <span class="ident">CString</span>::<span class="ident">new</span>(<span class="ident">file</span>).<span class="ident">unwrap</span>();
         <span class="kw">let</span> <span class="ident">_c_args</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">CString</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">cmd_args</span>
             .<span class="ident">iter</span>()
@@ -3134,7 +3134,7 @@
 
     <span class="doccomment">/// Get the Clang diagnostic information associated with this translation</span>
     <span class="doccomment">/// unit.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">diags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Diagnostic</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">diags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Diagnostic</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">num</span> <span class="op">=</span> <span class="ident">clang_getNumDiagnostics</span>(<span class="self">self</span>.<span class="ident">x</span>) <span class="kw">as</span> <span class="ident">usize</span>;
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">diags</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
@@ -3148,7 +3148,7 @@
     }
 
     <span class="doccomment">/// Get a cursor pointing to the root of this translation unit&#39;s AST.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cursor</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Cursor</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cursor</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cursor</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">Cursor</span> {
                 <span class="ident">x</span>: <span class="ident">clang_getTranslationUnitCursor</span>(<span class="self">self</span>.<span class="ident">x</span>),
@@ -3157,13 +3157,13 @@
     }
 
     <span class="doccomment">/// Is this the null translation unit?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_null</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_null</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">x</span>.<span class="ident">is_null</span>()
     }
 
     <span class="doccomment">/// Invoke Clang&#39;s lexer on this translation unit and get the stream of</span>
     <span class="doccomment">/// tokens that come out.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">cursor</span>: <span class="kw-2">&amp;</span><span class="ident">Cursor</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Token</span><span class="op">&gt;&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">cursor</span>: <span class="kw-2">&amp;</span><span class="ident">Cursor</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Token</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">range</span> <span class="op">=</span> <span class="ident">cursor</span>.<span class="ident">extent</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
         <span class="kw">unsafe</span> {
@@ -3196,7 +3196,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cexpr_tokens</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">cursor</span>: <span class="kw-2">&amp;</span><span class="ident">Cursor</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">cexpr</span>::<span class="ident">token</span>::<span class="ident">Token</span><span class="op">&gt;&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">cexpr</span>::<span class="ident">token</span>::<span class="ident">Token</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">cexpr</span>::<span class="ident">token</span>;
 
         <span class="self">self</span>.<span class="ident">tokens</span>(<span class="ident">cursor</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">tokens</span><span class="op">|</span> {
@@ -3204,14 +3204,14 @@
                 .<span class="ident">into_iter</span>()
                 .<span class="ident">filter_map</span>(<span class="op">|</span><span class="ident">token</span><span class="op">|</span> {
                     <span class="kw">let</span> <span class="ident">kind</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">token</span>.<span class="ident">kind</span> {
-                        <span class="ident">CXToken_Punctuation</span> <span class="op">=&gt;</span> <span class="ident">token</span>::<span class="ident">Kind</span>::<span class="ident">Punctuation</span>,
-                        <span class="ident">CXToken_Literal</span> <span class="op">=&gt;</span> <span class="ident">token</span>::<span class="ident">Kind</span>::<span class="ident">Literal</span>,
-                        <span class="ident">CXToken_Identifier</span> <span class="op">=&gt;</span> <span class="ident">token</span>::<span class="ident">Kind</span>::<span class="ident">Identifier</span>,
-                        <span class="ident">CXToken_Keyword</span> <span class="op">=&gt;</span> <span class="ident">token</span>::<span class="ident">Kind</span>::<span class="ident">Keyword</span>,
+                        <span class="ident">CXToken_Punctuation</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">token</span>::<span class="ident">Kind</span>::<span class="ident">Punctuation</span>,
+                        <span class="ident">CXToken_Literal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">token</span>::<span class="ident">Kind</span>::<span class="ident">Literal</span>,
+                        <span class="ident">CXToken_Identifier</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">token</span>::<span class="ident">Kind</span>::<span class="ident">Identifier</span>,
+                        <span class="ident">CXToken_Keyword</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">token</span>::<span class="ident">Kind</span>::<span class="ident">Keyword</span>,
                         <span class="comment">// NB: cexpr is not too happy about comments inside</span>
                         <span class="comment">// expressions, so we strip them down here.</span>
-                        <span class="ident">CXToken_Comment</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
-                        <span class="kw">_</span> <span class="op">=&gt;</span> {
+                        <span class="ident">CXToken_Comment</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
+                        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {
                             <span class="macro">error</span><span class="macro">!</span>(<span class="string">&quot;Found unexpected token kind: {:?}&quot;</span>, <span class="ident">token</span>);
                             <span class="kw">return</span> <span class="prelude-val">None</span>;
                         }
@@ -3222,7 +3222,7 @@
                         <span class="ident">raw</span>: <span class="ident">token</span>.<span class="ident">spelling</span>.<span class="ident">into_bytes</span>().<span class="ident">into_boxed_slice</span>(),
                     })
                 })
-                .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;&gt;</span>()
+                .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()
         })
     }
 }
@@ -3244,7 +3244,7 @@
 <span class="kw">impl</span> <span class="ident">Diagnostic</span> {
     <span class="doccomment">/// Format this diagnostic message as a string, using the given option bit</span>
     <span class="doccomment">/// flags.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">format</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">format</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">opts</span> <span class="op">=</span> <span class="ident">clang_defaultDiagnosticDisplayOptions</span>();
             <span class="ident">cxstring_into_string</span>(<span class="ident">clang_formatDiagnostic</span>(<span class="self">self</span>.<span class="ident">x</span>, <span class="ident">opts</span>))
@@ -3252,7 +3252,7 @@
     }
 
     <span class="doccomment">/// What is the severity of this diagnostic message?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">severity</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CXDiagnosticSeverity</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">severity</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXDiagnosticSeverity</span> {
         <span class="kw">unsafe</span> { <span class="ident">clang_getDiagnosticSeverity</span>(<span class="self">self</span>.<span class="ident">x</span>) }
     }
 }
@@ -3277,7 +3277,7 @@
 
 <span class="kw">impl</span> <span class="ident">UnsavedFile</span> {
     <span class="doccomment">/// Construct a new unsaved file with the given `name` and `contents`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">contents</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="ident">UnsavedFile</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">contents</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">UnsavedFile</span> {
         <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">CString</span>::<span class="ident">new</span>(<span class="ident">name</span>).<span class="ident">unwrap</span>();
         <span class="kw">let</span> <span class="ident">contents</span> <span class="op">=</span> <span class="ident">CString</span>::<span class="ident">new</span>(<span class="ident">contents</span>).<span class="ident">unwrap</span>();
         <span class="kw">let</span> <span class="ident">x</span> <span class="op">=</span> <span class="ident">CXUnsavedFile</span> {
@@ -3294,7 +3294,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">UnsavedFile</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
         <span class="macro">write</span><span class="macro">!</span>(
             <span class="ident">fmt</span>,
             <span class="string">&quot;UnsavedFile(name: {:?}, contents: {:?})&quot;</span>,
@@ -3305,25 +3305,25 @@
 }
 
 <span class="doccomment">/// Convert a cursor kind into a static string.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind_to_str</span>(<span class="ident">x</span>: <span class="ident">CXCursorKind</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">kind_to_str</span>(<span class="ident">x</span>: <span class="ident">CXCursorKind</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
     <span class="kw">unsafe</span> { <span class="ident">cxstring_into_string</span>(<span class="ident">clang_getCursorKindSpelling</span>(<span class="ident">x</span>)) }
 }
 
 <span class="doccomment">/// Convert a type kind to a static string.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_to_str</span>(<span class="ident">x</span>: <span class="ident">CXTypeKind</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_to_str</span>(<span class="ident">x</span>: <span class="ident">CXTypeKind</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
     <span class="kw">unsafe</span> { <span class="ident">cxstring_into_string</span>(<span class="ident">clang_getTypeKindSpelling</span>(<span class="ident">x</span>)) }
 }
 
 <span class="doccomment">/// Dump the Clang AST to stdout for debugging purposes.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ast_dump</span>(<span class="ident">c</span>: <span class="kw-2">&amp;</span><span class="ident">Cursor</span>, <span class="ident">depth</span>: <span class="ident">isize</span>) <span class="op">-&gt;</span> <span class="ident">CXChildVisitResult</span> {
-    <span class="kw">fn</span> <span class="ident">print_indent</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="ident">depth</span>: <span class="ident">isize</span>, <span class="ident">s</span>: <span class="ident">S</span>) {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ast_dump</span>(<span class="ident">c</span>: <span class="kw-2">&amp;</span><span class="ident">Cursor</span>, <span class="ident">depth</span>: <span class="ident">isize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXChildVisitResult</span> {
+    <span class="kw">fn</span> <span class="ident">print_indent</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">depth</span>: <span class="ident">isize</span>, <span class="ident">s</span>: <span class="ident">S</span>) {
         <span class="kw">for</span> <span class="kw">_</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">depth</span> {
             <span class="macro">print</span><span class="macro">!</span>(<span class="string">&quot;    &quot;</span>);
         }
         <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">s</span>.<span class="ident">as_ref</span>());
     }
 
-    <span class="kw">fn</span> <span class="ident">print_cursor</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="ident">depth</span>: <span class="ident">isize</span>, <span class="ident">prefix</span>: <span class="ident">S</span>, <span class="ident">c</span>: <span class="kw-2">&amp;</span><span class="ident">Cursor</span>) {
+    <span class="kw">fn</span> <span class="ident">print_cursor</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">depth</span>: <span class="ident">isize</span>, <span class="ident">prefix</span>: <span class="ident">S</span>, <span class="ident">c</span>: <span class="kw-2">&amp;</span><span class="ident">Cursor</span>) {
         <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">prefix</span>.<span class="ident">as_ref</span>();
         <span class="ident">print_indent</span>(
             <span class="ident">depth</span>,
@@ -3352,7 +3352,7 @@
         );
 
         <span class="kw">let</span> <span class="ident">templ_kind</span> <span class="op">=</span> <span class="ident">c</span>.<span class="ident">template_kind</span>();
-        <span class="kw">if</span> <span class="ident">templ_kind</span> <span class="op">!=</span> <span class="ident">CXCursor_NoDeclFound</span> {
+        <span class="kw">if</span> <span class="ident">templ_kind</span> <span class="op">!</span><span class="op">=</span> <span class="ident">CXCursor_NoDeclFound</span> {
             <span class="ident">print_indent</span>(
                 <span class="ident">depth</span>,
                 <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot; {}template-kind = {}&quot;</span>, <span class="ident">prefix</span>, <span class="ident">kind_to_str</span>(<span class="ident">templ_kind</span>)),
@@ -3396,7 +3396,7 @@
         }
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">refd</span>) <span class="op">=</span> <span class="ident">c</span>.<span class="ident">referenced</span>() {
-            <span class="kw">if</span> <span class="ident">refd</span> <span class="op">!=</span> <span class="kw-2">*</span><span class="ident">c</span> {
+            <span class="kw">if</span> <span class="ident">refd</span> <span class="op">!</span><span class="op">=</span> <span class="kw-2">*</span><span class="ident">c</span> {
                 <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;&quot;</span>);
                 <span class="ident">print_cursor</span>(
                     <span class="ident">depth</span>,
@@ -3407,7 +3407,7 @@
         }
 
         <span class="kw">let</span> <span class="ident">canonical</span> <span class="op">=</span> <span class="ident">c</span>.<span class="ident">canonical</span>();
-        <span class="kw">if</span> <span class="ident">canonical</span> <span class="op">!=</span> <span class="kw-2">*</span><span class="ident">c</span> {
+        <span class="kw">if</span> <span class="ident">canonical</span> <span class="op">!</span><span class="op">=</span> <span class="kw-2">*</span><span class="ident">c</span> {
             <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;&quot;</span>);
             <span class="ident">print_cursor</span>(
                 <span class="ident">depth</span>,
@@ -3417,7 +3417,7 @@
         }
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">specialized</span>) <span class="op">=</span> <span class="ident">c</span>.<span class="ident">specialized</span>() {
-            <span class="kw">if</span> <span class="ident">specialized</span> <span class="op">!=</span> <span class="kw-2">*</span><span class="ident">c</span> {
+            <span class="kw">if</span> <span class="ident">specialized</span> <span class="op">!</span><span class="op">=</span> <span class="kw-2">*</span><span class="ident">c</span> {
                 <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;&quot;</span>);
                 <span class="ident">print_cursor</span>(
                     <span class="ident">depth</span>,
@@ -3437,12 +3437,12 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">print_type</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;&gt;</span>(<span class="ident">depth</span>: <span class="ident">isize</span>, <span class="ident">prefix</span>: <span class="ident">S</span>, <span class="ident">ty</span>: <span class="kw-2">&amp;</span><span class="ident">Type</span>) {
+    <span class="kw">fn</span> <span class="ident">print_type</span><span class="op">&lt;</span><span class="ident">S</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">depth</span>: <span class="ident">isize</span>, <span class="ident">prefix</span>: <span class="ident">S</span>, <span class="ident">ty</span>: <span class="kw-2">&amp;</span><span class="ident">Type</span>) {
         <span class="kw">let</span> <span class="ident">prefix</span> <span class="op">=</span> <span class="ident">prefix</span>.<span class="ident">as_ref</span>();
 
         <span class="kw">let</span> <span class="ident">kind</span> <span class="op">=</span> <span class="ident">ty</span>.<span class="ident">kind</span>();
         <span class="ident">print_indent</span>(<span class="ident">depth</span>, <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot; {}kind = {}&quot;</span>, <span class="ident">prefix</span>, <span class="ident">type_to_str</span>(<span class="ident">kind</span>)));
-        <span class="kw">if</span> <span class="ident">kind</span> <span class="op">==</span> <span class="ident">CXType_Invalid</span> {
+        <span class="kw">if</span> <span class="ident">kind</span> <span class="op">=</span><span class="op">=</span> <span class="ident">CXType_Invalid</span> {
             <span class="kw">return</span>;
         }
 
@@ -3454,7 +3454,7 @@
         );
         <span class="kw">let</span> <span class="ident">num_template_args</span> <span class="op">=</span>
             <span class="kw">unsafe</span> { <span class="ident">clang_Type_getNumTemplateArguments</span>(<span class="ident">ty</span>.<span class="ident">x</span>) };
-        <span class="kw">if</span> <span class="ident">num_template_args</span> <span class="op">&gt;=</span> <span class="number">0</span> {
+        <span class="kw">if</span> <span class="ident">num_template_args</span> <span class="op">&gt;</span><span class="op">=</span> <span class="number">0</span> {
             <span class="ident">print_indent</span>(
                 <span class="ident">depth</span>,
                 <span class="macro">format</span><span class="macro">!</span>(
@@ -3476,34 +3476,34 @@
         );
 
         <span class="kw">let</span> <span class="ident">canonical</span> <span class="op">=</span> <span class="ident">ty</span>.<span class="ident">canonical_type</span>();
-        <span class="kw">if</span> <span class="ident">canonical</span> <span class="op">!=</span> <span class="kw-2">*</span><span class="ident">ty</span> {
+        <span class="kw">if</span> <span class="ident">canonical</span> <span class="op">!</span><span class="op">=</span> <span class="kw-2">*</span><span class="ident">ty</span> {
             <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;&quot;</span>);
             <span class="ident">print_type</span>(<span class="ident">depth</span>, <span class="ident">String</span>::<span class="ident">from</span>(<span class="ident">prefix</span>) <span class="op">+</span> <span class="string">&quot;canonical.&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">canonical</span>);
         }
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">pointee</span>) <span class="op">=</span> <span class="ident">ty</span>.<span class="ident">pointee_type</span>() {
-            <span class="kw">if</span> <span class="ident">pointee</span> <span class="op">!=</span> <span class="kw-2">*</span><span class="ident">ty</span> {
+            <span class="kw">if</span> <span class="ident">pointee</span> <span class="op">!</span><span class="op">=</span> <span class="kw-2">*</span><span class="ident">ty</span> {
                 <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;&quot;</span>);
                 <span class="ident">print_type</span>(<span class="ident">depth</span>, <span class="ident">String</span>::<span class="ident">from</span>(<span class="ident">prefix</span>) <span class="op">+</span> <span class="string">&quot;pointee.&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">pointee</span>);
             }
         }
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">elem</span>) <span class="op">=</span> <span class="ident">ty</span>.<span class="ident">elem_type</span>() {
-            <span class="kw">if</span> <span class="ident">elem</span> <span class="op">!=</span> <span class="kw-2">*</span><span class="ident">ty</span> {
+            <span class="kw">if</span> <span class="ident">elem</span> <span class="op">!</span><span class="op">=</span> <span class="kw-2">*</span><span class="ident">ty</span> {
                 <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;&quot;</span>);
                 <span class="ident">print_type</span>(<span class="ident">depth</span>, <span class="ident">String</span>::<span class="ident">from</span>(<span class="ident">prefix</span>) <span class="op">+</span> <span class="string">&quot;elements.&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">elem</span>);
             }
         }
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ret</span>) <span class="op">=</span> <span class="ident">ty</span>.<span class="ident">ret_type</span>() {
-            <span class="kw">if</span> <span class="ident">ret</span> <span class="op">!=</span> <span class="kw-2">*</span><span class="ident">ty</span> {
+            <span class="kw">if</span> <span class="ident">ret</span> <span class="op">!</span><span class="op">=</span> <span class="kw-2">*</span><span class="ident">ty</span> {
                 <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;&quot;</span>);
                 <span class="ident">print_type</span>(<span class="ident">depth</span>, <span class="ident">String</span>::<span class="ident">from</span>(<span class="ident">prefix</span>) <span class="op">+</span> <span class="string">&quot;return.&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">ret</span>);
             }
         }
 
         <span class="kw">let</span> <span class="ident">named</span> <span class="op">=</span> <span class="ident">ty</span>.<span class="ident">named</span>();
-        <span class="kw">if</span> <span class="ident">named</span> <span class="op">!=</span> <span class="kw-2">*</span><span class="ident">ty</span> <span class="op">&amp;&amp;</span> <span class="ident">named</span>.<span class="ident">is_valid</span>() {
+        <span class="kw">if</span> <span class="ident">named</span> <span class="op">!</span><span class="op">=</span> <span class="kw-2">*</span><span class="ident">ty</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">named</span>.<span class="ident">is_valid</span>() {
             <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;&quot;</span>);
             <span class="ident">print_type</span>(<span class="ident">depth</span>, <span class="ident">String</span>::<span class="ident">from</span>(<span class="ident">prefix</span>) <span class="op">+</span> <span class="string">&quot;named.&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">named</span>);
         }
@@ -3517,7 +3517,7 @@
     <span class="ident">print_type</span>(<span class="ident">depth</span>, <span class="string">&quot;type.&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">ty</span>);
 
     <span class="kw">let</span> <span class="ident">declaration</span> <span class="op">=</span> <span class="ident">ty</span>.<span class="ident">declaration</span>();
-    <span class="kw">if</span> <span class="ident">declaration</span> <span class="op">!=</span> <span class="kw-2">*</span><span class="ident">c</span> <span class="op">&amp;&amp;</span> <span class="ident">declaration</span>.<span class="ident">kind</span>() <span class="op">!=</span> <span class="ident">CXCursor_NoDeclFound</span> {
+    <span class="kw">if</span> <span class="ident">declaration</span> <span class="op">!</span><span class="op">=</span> <span class="kw-2">*</span><span class="ident">c</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">declaration</span>.<span class="ident">kind</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">CXCursor_NoDeclFound</span> {
         <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;&quot;</span>);
         <span class="ident">print_cursor</span>(<span class="ident">depth</span>, <span class="string">&quot;type.declaration.&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">declaration</span>);
     }
@@ -3538,7 +3538,7 @@
 }
 
 <span class="doccomment">/// Try to extract the clang version to a string</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">extract_clang_version</span>() <span class="op">-&gt;</span> <span class="ident">String</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">extract_clang_version</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
     <span class="kw">unsafe</span> { <span class="ident">cxstring_into_string</span>(<span class="ident">clang_getClangVersion</span>()) }
 }
 
@@ -3550,7 +3550,7 @@
 
 <span class="kw">impl</span> <span class="ident">EvalResult</span> {
     <span class="doccomment">/// Evaluate `cursor` and return the result.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">cursor</span>: <span class="ident">Cursor</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">cursor</span>: <span class="ident">Cursor</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="ident">clang_Cursor_Evaluate</span>::<span class="ident">is_loaded</span>() {
             <span class="kw">return</span> <span class="prelude-val">None</span>;
         }
@@ -3564,8 +3564,8 @@
         <span class="comment">// unexposed type. Our solution is to just flat out ban all</span>
         <span class="comment">// `CXType_Unexposed` from evaluation.</span>
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">found_cant_eval</span> <span class="op">=</span> <span class="bool-val">false</span>;
-        <span class="ident">cursor</span>.<span class="ident">visit</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="kw">if</span> <span class="ident">c</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXCursor_TypeRef</span> <span class="op">&amp;&amp;</span>
-            <span class="ident">c</span>.<span class="ident">cur_type</span>().<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">CXType_Unexposed</span>
+        <span class="ident">cursor</span>.<span class="ident">visit</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="kw">if</span> <span class="ident">c</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXCursor_TypeRef</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span>
+            <span class="ident">c</span>.<span class="ident">cur_type</span>().<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CXType_Unexposed</span>
         {
             <span class="ident">found_cant_eval</span> <span class="op">=</span> <span class="bool-val">true</span>;
             <span class="ident">CXChildVisit_Break</span>
@@ -3581,41 +3581,41 @@
         })
     }
 
-    <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">CXEvalResultKind</span> {
+    <span class="kw">fn</span> <span class="ident">kind</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CXEvalResultKind</span> {
         <span class="kw">unsafe</span> { <span class="ident">clang_EvalResult_getKind</span>(<span class="self">self</span>.<span class="ident">x</span>) }
     }
 
     <span class="doccomment">/// Try to get back the result as a double.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_double</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_double</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span>() {
-            <span class="ident">CXEval_Float</span> <span class="op">=&gt;</span> {
+            <span class="ident">CXEval_Float</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="prelude-val">Some</span>(<span class="kw">unsafe</span> { <span class="ident">clang_EvalResult_getAsDouble</span>(<span class="self">self</span>.<span class="ident">x</span>) } <span class="kw">as</span> <span class="ident">f64</span>)
             }
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 
     <span class="doccomment">/// Try to get back the result as an integer.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_int</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_int</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span>() {
-            <span class="ident">CXEval_Int</span> <span class="op">=&gt;</span> {
+            <span class="ident">CXEval_Int</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="prelude-val">Some</span>(<span class="kw">unsafe</span> { <span class="ident">clang_EvalResult_getAsInt</span>(<span class="self">self</span>.<span class="ident">x</span>) } <span class="kw">as</span> <span class="ident">i32</span>)
             }
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 
     <span class="doccomment">/// Evaluates the expression as a literal string, that may or may not be</span>
     <span class="doccomment">/// valid utf-8.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_literal_string</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_literal_string</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span>() {
-            <span class="ident">CXEval_StrLiteral</span> <span class="op">=&gt;</span> {
+            <span class="ident">CXEval_StrLiteral</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
                     <span class="ident">CStr</span>::<span class="ident">from_ptr</span>(<span class="ident">clang_EvalResult_getAsStr</span>(<span class="self">self</span>.<span class="ident">x</span>))
                 };
                 <span class="prelude-val">Some</span>(<span class="ident">ret</span>.<span class="ident">to_bytes</span>().<span class="ident">to_vec</span>())
             }
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 }
@@ -3626,4 +3626,4 @@
     }
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "bindgen";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "bindgen";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>
