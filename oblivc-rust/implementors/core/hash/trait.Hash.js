@@ -6,10 +6,4 @@ implementors["log"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-
 implementors["nom"] = [{"text":"impl&lt;E:&nbsp;<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html\" title=\"trait core::hash::Hash\">Hash</a>&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html\" title=\"trait core::hash::Hash\">Hash</a> for <a class=\"enum\" href=\"nom/enum.ErrorKind.html\" title=\"enum nom::ErrorKind\">ErrorKind</a>&lt;E&gt;","synthetic":false,"types":["nom::util::ErrorKind"]}];
 implementors["quote"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html\" title=\"trait core::hash::Hash\">Hash</a> for <a class=\"struct\" href=\"quote/struct.Ident.html\" title=\"struct quote::Ident\">Ident</a>","synthetic":false,"types":["quote::ident::Ident"]}];
 implementors["vec_map"] = [{"text":"impl&lt;V:&nbsp;<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html\" title=\"trait core::hash::Hash\">Hash</a>&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html\" title=\"trait core::hash::Hash\">Hash</a> for <a class=\"struct\" href=\"vec_map/struct.VecMap.html\" title=\"struct vec_map::VecMap\">VecMap</a>&lt;V&gt;","synthetic":false,"types":["vec_map::VecMap"]}];
-
-            if (window.register_implementors) {
-                window.register_implementors(implementors);
-            } else {
-                window.pending_implementors = implementors;
-            }
-        })()
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
